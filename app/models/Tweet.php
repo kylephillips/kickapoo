@@ -1,0 +1,11 @@
+<?php
+/**
+* Individual Tweets
+*/
+class Tweet extends Eloquent {
+
+	protected $table = 'tweets';
+	public $timestamps = false;
+	protected $fillable = ['twitter_id', 'text', 'datetime', 'retweet_count', 'favorite_count', 'screen_name', 'profile_image', 'language', 'location', 'image'];
+
+}
