@@ -1,4 +1,5 @@
 <?php namespace Kickapoo\SocialImport;
+use Kickapoo\SocialFeed\InstagramFeed;
 use \Gram;
 use \Image;
 
@@ -23,30 +24,32 @@ class InstagramImport {
 	*/
 	private function doImport()
 	{
-		foreach ( $this->feed as $key=>$gram )
-		{
-			if ( !$this->exists($gram['id']) ){
-				$date = strtotime($gram['date']);
-				$date = date('Y-m-d H:i:s');
-				$image = ( isset($gram['image']) ) ? $this->importImage($gram['image'], $gram['id']) : null;
+		if ( $this->feed ) :
+			foreach ( $this->feed as $key=>$gram )
+			{
+				if ( !$this->exists($gram['id']) ){
+					$date = strtotime($gram['date']);
+					$date = date('Y-m-d H:i:s');
+					$image = ( isset($gram['image']) ) ? $this->importImage($gram['image'], $gram['id']) : null;
 
-				Gram::create([
-					'instagram_id' => $gram['id'],
-					'datetime' => $date,
-					'link' => $gram['link'],
-					'type' => $gram['type'],
-					'like_count' => $gram['like_count'],
-					'image' => ( $image ) ? $image : null,
-					'video_url' => ( isset($gram['video_url']) ) ? $gram['video_url'] : null,
-					'text' => ( isset($gram['caption']) ) ? $gram['caption'] : null,
-					'user_id' => $gram['user_id'],
-					'screen_name' => $gram['user_id'],
-					'profile_image' => ( isset($gram['profile_image']) ) ? $gram['profile_image'] : null,
-					'latitude' => ( isset($gram['latitude']) ) ? $gram['latitude'] : null,
-					'longitude' => ( isset($gram['longitude']) ) ? $gram['longitude'] : null
-				]);
+					Gram::create([
+						'instagram_id' => $gram['id'],
+						'datetime' => $date,
+						'link' => $gram['link'],
+						'type' => $gram['type'],
+						'like_count' => $gram['like_count'],
+						'image' => ( $image ) ? $image : null,
+						'video_url' => ( isset($gram['video_url']) ) ? $gram['video_url'] : null,
+						'text' => ( isset($gram['caption']) ) ? $gram['caption'] : null,
+						'user_id' => $gram['user_id'],
+						'screen_name' => $gram['user_id'],
+						'profile_image' => ( isset($gram['profile_image']) ) ? $gram['profile_image'] : null,
+						'latitude' => ( isset($gram['latitude']) ) ? $gram['latitude'] : null,
+						'longitude' => ( isset($gram['longitude']) ) ? $gram['longitude'] : null
+					]);
+				}
 			}
-		}
+		endif;
 	}
 
 	/**

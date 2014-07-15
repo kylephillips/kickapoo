@@ -1,24 +1,25 @@
 <?php namespace Kickapoo\SocialImport;
 use Kickapoo\SocialFeed\TwitterFeed;
-use Kickapoo\SocialFeed\InstagramFeed;
 use Kickapoo\SocialImport\TwitterImport;
+use Kickapoo\SocialFeed\InstagramFeed;
 use Kickapoo\SocialImport\InstagramImport;
 /**
 * Import all the Feeds
 */
 class Import {
 
+
 	public function __construct()
 	{
-		$this->twitterFeed();
-		$this->instagramFeed();
+		$this->twitterImport();
+		$this->instagramImport();
 	}
 
 
 	/**
-	* Twitter Feed
+	* Twitter Import
 	*/
-	public function twitterFeed()
+	public function twitterImport()
 	{
 		$feed = new TwitterFeed;
 		$feed = ( $feed ) ? $feed->formatted() : false;
@@ -27,9 +28,9 @@ class Import {
 
 
 	/**
-	* Instagram Feed
+	* Instagram Import
 	*/
-	public function instagramFeed()
+	public function instagramImport()
 	{
 		$feed = new InstagramFeed;
 		$feed = ( $feed ) ? $feed->formatted() : false;
