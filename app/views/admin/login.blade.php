@@ -22,6 +22,9 @@
 						<label for="password">Password <a href="/forgot_password">(forgot password)</a></label>
 						{{Form::password('password', ['placeholder'=>'Password', 'class'=>'form-control', 'style'=>'border-radius:0px'])}}
 					</div>
+					<div class="checkbox">
+						<label>{{Form::checkbox('remember', 'remember', true)}} Remember Me</label>
+					</div>
 					<button type="submit" class="btn btn-block btn-primary">Sign in</button>
 				{{Form::close()}}
 			</div>

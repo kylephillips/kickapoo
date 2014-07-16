@@ -14,7 +14,8 @@ class SessionController extends BaseController {
 	*/
 	public function postLogin()
 	{
-		if ( Auth::attempt(['email'=>Input::get('email'), 'password'=>Input::get('password')]) ){
+		$remember = ( Input::get('remember') ) ? true : false;
+		if ( Auth::attempt(['email'=>Input::get('email'), 'password'=>Input::get('password')], $remember) ){
 			return Redirect::back()
 				->with('success', 'You are now logged in');
 		}

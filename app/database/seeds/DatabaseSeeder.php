@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder {
 		$this->call('SettingsSeeder');
 		$this->call('GroupSeeder');
 		$this->call('LanguageSeeder');
+		if ( App::environment() == 'local' ) $this->call('UserSeeder');
 	}
 
 }
