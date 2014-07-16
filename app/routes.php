@@ -2,6 +2,13 @@
 
 Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
 
+/**
+* Admin
+*/
+Route::get('login', ['as'=>'login_form', 'uses'=>'SessionController@getLogin']);
+Route::post('login', ['as'=>'login', 'uses'=>'SessionController@postLogin']);
+Route::get('logout', ['as'=>'logout', 'uses'=>'SessionController@logout']);
+
 
 /**
 * Social Feeds (Testing Only)

@@ -1,6 +1,7 @@
 /bootstrap/compiled.php
 /vendor
 /public/assets/uploads/*
+/app/database/seeds/UserSeeder.php
 composer.phar
 composer.lock
 .env.*.php

@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration {
 			$table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');
 			$table->string('first_name');
 			$table->string('last_name');
+			$table->string('remember_token', 100)->nullable();
 			$table->timestamps();
 		});
 	}
