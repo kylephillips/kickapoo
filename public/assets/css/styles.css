@@ -2,6 +2,9 @@ header {
   background-color: #fff;
   color: #ffffff; }
 
-.test {
-  background-color: #000;
-  color: #000; }
+body {
+  overflow: hidden; }
+
+#big-video-wrap {
+  overflow-x: hidden;
+  width: 100%; }

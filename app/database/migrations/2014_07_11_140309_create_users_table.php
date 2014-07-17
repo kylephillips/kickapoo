@@ -16,7 +16,6 @@ class CreateUsersTable extends Migration {
 		{
 			$table->increments('id')->unsigned();
 			$table->string('email')->unique();
-			$table->string('username')->unique();
 			$table->string('password');
 			$table->integer('group_id')->default(3)->nullable()->unsigned();
 			$table->foreign('group_id')->references('id')->on('groups')->onDelete('cascade');

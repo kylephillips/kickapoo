@@ -3,6 +3,7 @@
 /public/assets/uploads/*
 /app/database/seeds/UserSeeder.php
 /node_modules/*
+/public/assets/videos/*
 composer.phar
 composer.lock
 .env.*.php

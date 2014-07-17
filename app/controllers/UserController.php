@@ -1,5 +1,6 @@
 <?php
 use Kickapoo\Repositories\UserRepository;
+use Kickapoo\Factories\UserFactory;
 
 class UserController extends \BaseController {
 
@@ -9,9 +10,17 @@ class UserController extends \BaseController {
 	protected $user_repo;
 
 
-	public function __construct(UserRepository $user_repo)
+	/**
+	* User Factory
+	*/
+	protected $user_factory;
+
+
+	public function __construct(UserRepository $user_repo, UserFactory $user_factory)
 	{
+		$this->beforeFilter('admin', ['only'=>['index','destroy','create','store']]);
 		$this->user_repo = $user_repo;
+		$this->user_factory = $user_factory;
 	}
 
 	/**
@@ -30,7 +39,7 @@ class UserController extends \BaseController {
 	/**
 	 * Show the form for adding a new user
 	 *
-	 * @return Response
+	 * @return View
 	 */
 	public function create()
 	{
@@ -41,61 +50,82 @@ class UserController extends \BaseController {
 
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Store a new user
 	 *
-	 * @return Response
 	 */
 	public function store()
 	{
-		//
+		$validation = Validator::make(Input::all(), User::$required);
+		if ( $validation->fails() ){
+			return Redirect::back()
+				->withErrors($validation)->withInput();
+		} else {
+			$this->user_factory->createUser(Input::all());
+			return Redirect::route('admin.user.index')
+				->with('success', 'User successfully added! Joy!');
+		}
 	}
 
 
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
+	 * Show the form for editing user
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function edit($id)
 	{
-		//
+		$groups = $this->user_repo->groupsArray();
+		$user = $this->user_repo->getUser($id);
+
+		return View::make('admin.users.edit')
+			->with('groups', $groups)
+			->with('user', $user);
 	}
 
 
 	/**
-	 * Update the specified resource in storage.
+	 * Update the User
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		//
+		$user = $this->user_repo->getUser($id);
+		$validation = Validator::make(Input::all(), [
+			'firstname' => 'required',
+			'lastname' => 'required',
+			'email' => 'required'
+		]);
+		$validation->sometimes('email', 'unique:users,email', function($input) use ($user) {
+			return $input->email !== $user->email;
+		});
+		$validation->sometimes('password', ['min:6', 'confirmed'], function($input){
+			return $input->password !== '';
+		});
+
+		if ( $validation->fails() ){
+			return Redirect::back()
+				->withErrors($validation)->withInput();	
+		}
+
+		$this->user_factory->updateUser($id, $input = Input::all());
+
+		return Redirect::route('admin.user.index')
+			->with('success', 'User successfully updated!');
 	}
 
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Remove a User.
 	 *
 	 * @param  int  $id
-	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		//
+		$user = User::find($id);
+		$user->delete();
 	}
 
 

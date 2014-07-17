@@ -1,0 +1,37 @@
+//
+// Primary Scaffolding
+// --------------------------------------------------
+html {
+	height: 100%;
+}
+body {
+	background-color: $lime;
+	height: 100%;
+	@include proxima;
+	font-size: 16px;
+}
+.pagewrap {
+	height: 100%;
+	box-shadow: inset 0px 0px 600px 0px $green-dark;
+}
+
+a {
+	//transition: all 200ms ease;
+}
+
+img {
+	width: 100%;
+}
+
+.well {
+	box-shadow: none;
+}
+
+h1 {
+	color: darken($green-dark, 8%);
+	font-size: 50px;
+	@include bello;
+	.btn {
+		@include proxima;
+	}
+}

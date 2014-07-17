@@ -1,7 +1,7 @@
 @extends('admin.partials.admin-master')
 @section('content')
 
-<div class="container" style="margin-top:30px">
+<div class="container login">
 	<div class="col-md-4 col-md-offset-4">
 		@if(Session::has('success'))
 			<div class="alert alert-success">{{Session::get('success')}}</div>

@@ -9,3 +9,19 @@
 	@endif
 @endforeach
 @stop
+
+@section('footercontent')
+<script src="/assets/js/video.js"></script>
+<script src="/assets/js/bigvideo.js"></script>
+<script>
+$(function(){
+var BV = new $.BigVideo({
+		useFlashForFirefox:false,
+		doLoop: true,
+		shrinkable: true
+	});
+    BV.init();
+    BV.show('assets/videos/test_bubbles.mp4', {altSource:'assets/videos/test_bubbles.ogv'});
+});
+</script>
+@stop

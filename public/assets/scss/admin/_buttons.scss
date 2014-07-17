@@ -1,0 +1,15 @@
+//
+// Buttons
+// --------------------------------------------------
+.btn-primary {
+	background-color: $green-dark;
+	border-color: darken($green-dark, 5%);
+	&:hover {
+		background-color: $green;
+		border-color: darken($green, 5%);
+	}
+}
+
+.btn {
+	border-radius: 2px;
+}

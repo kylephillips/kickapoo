@@ -14,6 +14,14 @@ class UserRepository {
 	}
 
 	/**
+	* Get Specific User
+	*/
+	public function getUser($id)
+	{
+		return User::findOrFail($id);
+	}
+
+	/**
 	* Get all groups and return as array
 	*/
 	public function groupsArray()

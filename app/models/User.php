@@ -53,4 +53,12 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->belongsTo('Group');
 	}
 
+	public static $required = [
+		'firstname' => 'required',
+		'lastname' => 'required',
+		'email' => 'required|unique:users,email',
+		'password' => 'required|min:6|confirmed',
+		'password_confirmation' => 'required'
+	];
+
 }

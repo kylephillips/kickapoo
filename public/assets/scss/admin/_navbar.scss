@@ -1,0 +1,29 @@
+//
+// Navbar
+// --------------------------------------------------
+.navbar-inverse {
+	background-color: darken($green-dark, 8%);
+	color: $white;
+	border-color: $green;
+	.navbar-nav li {
+		a {
+			color: $white;
+		}
+		ul li a {
+			color: $black;
+		}
+	}
+	.navbar-brand {
+		color: $green;
+		img {
+			width: auto;
+			max-height: 30px;
+			position: relative;
+			top: -5px;
+		}
+	}
+}
+.navclear {
+	display: block;
+	height: 60px;
+}
