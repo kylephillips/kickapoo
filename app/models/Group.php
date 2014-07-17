@@ -5,4 +5,9 @@ class Group extends Eloquent {
 
 	protected $fillable = ['title', 'slug'];
 
+	public function users()
+	{
+		return $this->hasMany('User');
+	}
+
 }

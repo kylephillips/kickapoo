@@ -25,4 +25,12 @@ class PageController extends BaseController {
 			->with('posts', $posts);
 	}
 
+	/**
+	* Admin Homepage
+	*/
+	public function getAdmin()
+	{
+		return 'admin home';
+	}
+
 }

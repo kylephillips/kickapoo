@@ -1,6 +1,10 @@
 <?php
 
+/**
+* Pages
+*/
 Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
+
 
 /**
 * Admin
@@ -8,6 +12,11 @@ Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
 Route::get('login', ['as'=>'login_form', 'uses'=>'SessionController@getLogin']);
 Route::post('login', ['as'=>'login', 'uses'=>'SessionController@postLogin']);
 Route::get('logout', ['as'=>'logout', 'uses'=>'SessionController@logout']);
+Route::group(['before'=>'auth'], function()
+{
+	Route::get('admin', ['as'=>'admin_index', 'uses'=>'PageController@getAdmin']);
+	Route::resource('admin/user', 'UserController');
+});
 
 
 /**
