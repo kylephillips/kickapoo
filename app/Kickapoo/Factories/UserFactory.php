@@ -1,11 +1,15 @@
 <?php namespace Kickapoo\Factories;
 
+use Kickapoo\Repositories\UserRepository;
 use \User;
 use \Input;
 use \Hash;
 
 class UserFactory {
 
+	/**
+	* Create a new user
+	*/
 	public function createUser($input)
 	{
 		User::create([
@@ -17,7 +21,9 @@ class UserFactory {
 		]);
 	}
 
-
+	/**
+	* Update a current user
+	*/
 	public function updateUser($id, $input)
 	{
 		$user = User::findOrFail($id);

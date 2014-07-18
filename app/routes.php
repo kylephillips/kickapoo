@@ -16,6 +16,9 @@ Route::group(['before'=>'auth'], function()
 {
 	Route::get('admin', ['as'=>'admin_index', 'uses'=>'PageController@getAdmin']);
 	Route::resource('admin/user', 'UserController');
+	Route::resource('admin/post', 'PostController');
+	Route::post('searchterms', ['as'=>'update_search', 'uses'=>'PostController@updateSearchTerms']);
+	Route::get('removePost', ['as'=>'remove_post', 'uses'=>'PostController@removePost']);
 });
 
 

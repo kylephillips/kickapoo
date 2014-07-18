@@ -3,6 +3,8 @@ use Kickapoo\SocialFeed\TwitterFeed;
 use Kickapoo\SocialImport\TwitterImport;
 use Kickapoo\SocialFeed\InstagramFeed;
 use Kickapoo\SocialImport\InstagramImport;
+use \AppLog;
+
 /**
 * Import all the Feeds
 */
@@ -13,6 +15,7 @@ class Import {
 	{
 		$this->twitterImport();
 		$this->instagramImport();
+		$this->log();
 	}
 
 
@@ -35,6 +38,17 @@ class Import {
 		$feed = new InstagramFeed;
 		$feed = ( $feed ) ? $feed->formatted() : false;
 		if ( $feed ) $import = new InstagramImport($feed);
+	}
+
+	/**
+	* Add a log of the Import
+	*/
+	public function log()
+	{
+		AppLog::create([
+			'type' => 'import',
+			'description' => 'Import completed successfully.'
+		]);
 	}
 
 }

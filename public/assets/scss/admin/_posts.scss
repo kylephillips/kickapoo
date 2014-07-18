@@ -1,0 +1,142 @@
+//
+// Post Feed in Admin
+// --------------------------------------------------
+.admin-posts {
+	h3 {
+		background-color: darken($white, 8%);
+		text-align: center;
+		margin: 0;
+		padding: 10px;
+		font-size: 18px;
+		border-radius: 2px 2px 0px 0px;
+		color: $green-dark;
+	}
+	ul {
+		@include unstyled();
+		background-color: $white;
+		li {
+			border-top: 1px solid darken($white, 20%);
+			box-shadow: inset 0px 6px 0px 0px darken($white, 5%);
+			.content {
+				padding: 30px 20px 20px 20px;
+				@include clearfix();
+			}
+			.avatar {
+				float: left;
+				width: 10%;
+				img {
+					max-width: 60px;
+				}
+			}
+			.main {
+				float: right;
+				width: 89%;
+			}
+			.date {
+				display: block;
+				color: darken($white, 50%);
+			}
+			p {
+				font-size: 16px;
+				line-height: 24px;
+				overflow-x: hidden;
+			}
+			.image {
+				background-color: darken($white, 8%);
+				padding: 10px;
+				clear: both;
+				text-align: center;
+				border-radius: 3px;
+				img {
+					max-width: 100%;
+				}
+			}
+			video {
+				width: 100%;
+			}
+		} // li
+		.status {
+			clear: both;
+			padding: 20px;
+			ul {
+				background-color: darken($white, 8%);
+				padding: 6px;
+				border-radius: 3px;
+				@include clearfix();
+				li {
+					border: 0;
+					float: left;
+					width: 50%;
+					text-align: center;
+					a {
+						display: block;
+						height: 40px;
+						line-height: 40px;
+						color: $white;
+						background-color: $green;
+						border-radius: 0px 3px 3px 0px;
+						position: relative;
+						transition: all 200ms ease;
+						&:hover {
+							text-decoration: none;
+							background-color: darken($green, 10%);
+							transition: all 200ms ease;
+						}
+						i {
+							position: absolute;
+							right: 0;
+							background-color: rgba(0,0,0,.2);
+							display: block;
+							width: 40px;
+							line-height: 40px;
+						}
+					}
+					&:first-child a {
+						background-color: $red;
+						border-radius: 3px 0px 0px 3px;
+						&:hover {
+							background-color: darken($red, 10%);
+						}
+						i {
+							left: 0;
+						}
+					} // a
+				} // li
+			} // ul
+		} // status
+		&.info {
+			float: right;
+			margin-bottom: 10px;
+			background-color: darken($white, 8%);
+			border-radius: 3px;
+			margin-left: 10px;
+			li {
+				float: left;
+				padding: 5px;
+				text-align: center;
+				border: 1px solid darken($white, 12%);
+				i {
+					position: relative;
+					top: 3px;
+					font-size: 18px;
+					color: darken($white, 40%);
+				}
+				a:hover {
+					text-decoration: none;
+					i {
+						color: $green-dark;
+					}
+				}
+				&:first-child {
+					border-radius: 3px 0px 0px 3px;
+				}
+				&:last-child {
+					border-radius: 0px 3px 3px 0px;
+				}
+				&.like-count {
+					border-radius: 3px;	
+				}
+			}
+		}
+	} // ul
+}

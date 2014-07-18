@@ -1,0 +1,76 @@
+//
+// Search form for social feeds
+// --------------------------------------------------
+.searchterm {
+	background-color: rgba(darken($green-dark, 5%), .8);
+	border-radius: 3px;
+	padding: 8px;
+	margin-bottom: 30px;
+	@include clearfix();
+	ul {
+		float: left;
+		width: 80%;
+		@include unstyled();
+		@include clearfix();
+		li {
+			position: relative;
+			box-sizing: border-box;
+			border-radius: 2px;
+			padding: 3px;
+			float: left;
+			width: 49%;
+			font-size: 18px;
+			background-color: darken($green-lighter, 5%);
+			&:nth-child(even){
+				float: right;
+			}
+			label {
+				position: absolute;
+				color: $green-dark;
+				font-size: 20px;
+				top: 9px;
+				left: 13px;
+			}
+		}
+	}
+	.btn {
+		float: right;
+		width: 18%;
+		font-size: 18px;
+		height: 40px;
+		line-height: 40px;
+		padding: 0;
+		background-color: $lime;
+		border-color: darken($lime, 8%);
+	}
+	input[type='text']{
+		border: 1px solid darken($green-lighter, 10%);
+		height: 35px;
+		width: 100%;
+		box-sizing: border-box;
+		padding-left: 40px;
+		margin: 0;
+		&:focus {
+			outline: none;
+		}
+	}
+}
+
+@media (max-width: 767px)
+{
+	.searchterm {
+		ul {
+			float: none;
+			width: 100%;
+			li {
+				float: none;
+				width: 100%;
+				margin-bottom: 10px;
+			}
+		}
+		.btn {
+			float: none;
+			width: 100%;
+		}
+	}
+}

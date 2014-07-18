@@ -42,7 +42,7 @@ class InstagramImport {
 						'video_url' => ( isset($gram['video_url']) ) ? $gram['video_url'] : null,
 						'text' => ( isset($gram['caption']) ) ? $gram['caption'] : null,
 						'user_id' => $gram['user_id'],
-						'screen_name' => $gram['user_id'],
+						'screen_name' => $gram['screen_name'],
 						'profile_image' => ( isset($gram['profile_image']) ) ? $gram['profile_image'] : null,
 						'latitude' => ( isset($gram['latitude']) ) ? $gram['latitude'] : null,
 						'longitude' => ( isset($gram['longitude']) ) ? $gram['longitude'] : null

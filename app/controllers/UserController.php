@@ -71,10 +71,11 @@ class UserController extends \BaseController {
 	 * Show the form for editing user
 	 *
 	 * @param  int  $id
-	 * @return Response
 	 */
 	public function edit($id)
 	{
+		if ( (Auth::user()->id != $id) && (Auth::user()->group_id != 1) ) return Redirect::route('admin_index');
+
 		$groups = $this->user_repo->groupsArray();
 		$user = $this->user_repo->getUser($id);
 
@@ -88,11 +89,12 @@ class UserController extends \BaseController {
 	 * Update the User
 	 *
 	 * @param  int  $id
-	 * @return Response
 	 */
 	public function update($id)
 	{
-		$user = $this->user_repo->getUser($id);
+		$user_repo = new UserRepository;
+		$user = $user_repo->getUser($id);
+
 		$validation = Validator::make(Input::all(), [
 			'firstname' => 'required',
 			'lastname' => 'required',
@@ -106,12 +108,10 @@ class UserController extends \BaseController {
 		});
 
 		if ( $validation->fails() ){
-			return Redirect::back()
-				->withErrors($validation)->withInput();	
+			return Redirect::back()->withErrors($validation)->withInput();	
 		}
-
+		
 		$this->user_factory->updateUser($id, $input = Input::all());
-
 		return Redirect::route('admin.user.index')
 			->with('success', 'User successfully updated!');
 	}

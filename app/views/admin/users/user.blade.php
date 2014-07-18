@@ -1,13 +1,13 @@
 @extends('admin.partials.admin-master')
 @section('content')
 
-<div class="container">
+<div class="container small">
 
-	<div class="col-lg-8 col-lg-offset-2">
+	
 		<h1>Kickapoo Users <span class="pull-right"><a href="{{URL::route('admin.user.create')}}" class="btn btn-large btn-primary">+ Add User</a></span></h1>
-	</div>
+	
 
-	<div class="well col-lg-8 col-lg-offset-2">
+	<div class="well">
 
 		@if(Session::has('success'))
 		<div class="alert alert-success">{{Session::get('success')}}</div>

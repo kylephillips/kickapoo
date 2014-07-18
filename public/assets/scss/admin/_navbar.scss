@@ -3,8 +3,9 @@
 // --------------------------------------------------
 .navbar-inverse {
 	background-color: darken($green-dark, 8%);
+	background: linear-gradient($green-dark, darken($green-dark, 5%));
 	color: $white;
-	border-color: $green;
+	border: 0;
 	.navbar-nav li {
 		a {
 			color: $white;
@@ -26,4 +27,8 @@
 .navclear {
 	display: block;
 	height: 60px;
+}
+
+.navbar-inverse .navbar-toggle:hover {
+	background-color: $lime;
 }

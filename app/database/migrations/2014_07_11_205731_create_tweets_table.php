@@ -25,6 +25,7 @@ class CreateTweetsTable extends Migration {
 			$table->string('profile_image');
 			$table->string('location')->nullable();
 			$table->string('image')->nullable();
+			$table->integer('approved')->nullable();
 		});
 	}
 

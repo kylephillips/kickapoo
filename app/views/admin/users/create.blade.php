@@ -3,25 +3,23 @@
 
 <div class="container">
 
-	<div class="col-lg-8 col-lg-offset-2">
-		<h1>Add New User</h1>
-	</div>
+	<h1>Add New User</h1>
 
-	<div class="well col-lg-8 col-lg-offset-2">
+	<div class="well">
 
 		@if(Session::has('errors'))
 		<div class="alert alert-danger">Ooops! Looks like there were some errors. That's not Joyful!</div>
 		@endif
 
 		{{Form::open(['url'=>URL::route('admin.user.store')])}}
-		<div class="form-group">
+		<div class="form-group half">
 			@if($errors->firstname)
 				<span class="text-danger"><strong>{{$errors->first('firstname')}}</strong></span><br />
 			@endif
 			{{Form::label('firstname', 'First Name')}}
 			{{Form::text('firstname', null, ['class'=>'form-control'])}}
 		</div>
-		<div class="form-group">
+		<div class="form-group half right">
 			@if($errors->lastname)
 				<span class="text-danger"><strong>{{$errors->first('lastname')}}</strong></span><br />
 			@endif

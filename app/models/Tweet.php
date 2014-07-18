@@ -5,6 +5,8 @@
 class Tweet extends Eloquent {
 
 	protected $table = 'tweets';
+
+	protected $primaryKey = 'twitter_id';
 	
 	public $timestamps = false;
 	

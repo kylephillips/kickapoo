@@ -5,6 +5,8 @@
 class Gram extends Eloquent {
 
 	protected $table = 'grams';
+
+	protected $primaryKey = 'instagram_id';
 	
 	public $timestamps = false;
 	

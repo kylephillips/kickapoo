@@ -28,6 +28,7 @@ class CreateGramsTable extends Migration {
 			$table->string('profile_image')->nullable();
 			$table->string('latitude')->nullable();
 			$table->string('longitude')->nullable();
+			$table->integer('approved')->nullable();
 		});
 	}
 

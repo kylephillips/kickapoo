@@ -1,0 +1,14 @@
+//
+// Forms
+// --------------------------------------------------
+.form-group.half {
+	float: left;
+	width: 48%;
+	&.right {
+		float: right;
+		clear: none;
+	}
+}
+.form-group {
+	clear: both;
+}

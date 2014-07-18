@@ -1,13 +1,15 @@
 @extends('admin.partials.admin-master')
 @section('content')
 
-<div class="container">
+<div class="container small">
 
-	<div class="col-lg-8 col-lg-offset-2">
+	@if( Auth::user()->id == $user->id )
+		<h1>Edit Your Profile</h1>
+	@else
 		<h1>Edit User: {{$user->first_name}} {{$user->last_name}}</h1>
-	</div>
+	@endif
 
-	<div class="well col-lg-8 col-lg-offset-2">
+	<div class="well">
 
 		@if(Session::has('errors'))
 		<div class="alert alert-danger">Ooops! Looks like there were some errors. That's not Joyful!</div>

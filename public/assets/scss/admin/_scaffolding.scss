@@ -5,18 +5,18 @@ html {
 	height: 100%;
 }
 body {
-	background-color: $lime;
+	background-color: #3b7d0b;
 	height: 100%;
 	@include proxima;
 	font-size: 16px;
 }
 .pagewrap {
-	height: 100%;
-	box-shadow: inset 0px 0px 600px 0px $green-dark;
+	box-shadow: inset 0px 0px 600px 0px darken($green-dark, 8%);
+	min-height: 100%;
+	background: url('../images/ray-bg.jpg') no-repeat center top fixed;
 }
-
-a {
-	//transition: all 200ms ease;
+.container.small {
+	max-width: 800px;
 }
 
 img {
@@ -28,9 +28,10 @@ img {
 }
 
 h1 {
-	color: darken($green-dark, 8%);
-	font-size: 50px;
-	@include bello;
+	color: $white;
+	font-size: 30px;
+	font-weight:bold;
+	-webkit-font-smoothing: antialiased;
 	.btn {
 		@include proxima;
 	}

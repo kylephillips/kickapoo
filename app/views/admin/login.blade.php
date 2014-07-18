@@ -3,6 +3,7 @@
 
 <div class="container login">
 	<div class="col-md-4 col-md-offset-4">
+		<div class="logo"><img src="{{URL::asset('assets/images/kickapoo-admin-logo-full.png')}}"></div>
 		@if(Session::has('success'))
 			<div class="alert alert-success">{{Session::get('success')}}</div>
 		@endif
