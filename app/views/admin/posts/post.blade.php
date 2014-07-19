@@ -36,7 +36,7 @@
 			?>
 			
 			@if(isset($post['twitter_id']))
-			<li class="tweet">
+			<li class="tweet post">
 				<div class="content">
 					<div class="avatar">
 						<img src="{{$post['profile_image']}}" alt="user icon">
@@ -59,14 +59,14 @@
 				</div><!-- .content -->
 				<div class="status">
 					<ul>
-						<li><a href="#" class="remove" data-id="{{$post['id']}}" data-type="{{$post_type}}"><i class="icon-close"></i> Delete</a></li>
-						<li><a href="#" class="approve" data-id="{{$post['id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Approve</a></li>
+						<li><a href="#" class="remove" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}"><i class="icon-close"></i> Delete</a></li>
+						<li><a href="#" class="approve" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Approve</a></li>
 					</ul>
 				</div>
 			</li>
 			
 			@else
-			<li class="gram">
+			<li class="gram post">
 				<div class="content">
 					<div class="avatar">
 						<img src="{{$post['profile_image']}}" alt="user icon">
@@ -92,8 +92,8 @@
 				</div><!-- .content -->
 				<div class="status">
 					<ul>
-						<li><a href="#" class="remove" data-id="{{$post['id']}}" data-type="{{$post_type}}"><i class="icon-close"></i> Delete</a></li>
-						<li><a href="#" class="approve" data-id="{{$post['id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Approve</a></li>
+						<li><a href="#" class="remove" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-close"></i> Delete</a></li>
+						<li><a href="#" class="approve" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Approve</a></li>
 					</ul>
 				</div>
 			</li>
@@ -110,7 +110,7 @@
 @section('footercontent')
 <script>
 
-function removePost(id, type)
+function removePost(id, type, item)
 {
 	$.ajax({
 		url: '{{URL::route('remove_post')}}',
@@ -119,7 +119,10 @@ function removePost(id, type)
 			type: type
 		},
 		success: function(data){
-			console.log(data);
+			if (data == 'success')
+			{
+				$(item).fadeOut();
+			}
 		}
 	});
 }
@@ -128,7 +131,8 @@ $(document).on('click', '.remove', function(e){
 	e.preventDefault();
 	var id = $(this).data('id');
 	var type = $(this).data('type');
-	removePost(id, type);
+	var item = $(this).parents('.post');
+	removePost(id, type, item);
 });
 
 $(document).on('click', '.approve', function(e){

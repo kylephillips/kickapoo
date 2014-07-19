@@ -112,24 +112,23 @@ class PostController extends \BaseController {
 
 
 	/**
-	 * Update the specified resource in storage.
+	 * Remove the post from the list of pending approval
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function removePost()
 	{
-		if ( Input::get('type') == 'twitter' ){
-			
-			$id = Input::get('id');
-			$type = Input::get('type');
-			
-			$post = Tweet::findOrFail($id);
-			
-			return Response::json(intval($id));
+		if ( Input::get('type') == 'twitter' ){			
+			$post = Tweet::findOrFail(Input::get('id'));
+			$post->approved = 0;
+			$post->save();
+			return Response::json('success');
 		} else {
-			//$post = Gram::findOrFail(Input::get('id'));
-			return Response::json($post->text);
+			$post = Gram::findOrFail(Input::get('id'));
+			$post->approved = 0;
+			$post->save();
+			return Response::json('success');
 		}
 	}
 
