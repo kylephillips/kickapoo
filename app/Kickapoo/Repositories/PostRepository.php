@@ -24,9 +24,10 @@ class PostRepository {
 	*/
 	public function getPosts()
 	{
-		$tweets = Tweet::whereRaw('approved IS NULL')->orWhere('approved', 1)->get();
-		$grams = Gram::whereRaw('approved IS NULL')->orWhere('approved', 1)->get();
+		$tweets = Tweet::with('post')->whereRaw('approved IS NULL')->orWhere('approved', 1)->get();
+		$grams = Gram::with('post')->whereRaw('approved IS NULL')->orWhere('approved', 1)->get();
 		$posts = $tweets->merge($grams)->sortByDesc('datetime');
+
 
 		return $posts;
 		
