@@ -2,6 +2,7 @@
 @section('content')
 	<div class="container small">
 		<h1>Social Posts</h1>
+
 		{{Form::open(['url'=>URL::route('update_search'), 'class'=>'searchterm'])}}
 			@if(Session::has('errors'))
 				<div class="alert alert-danger">{{Session::get('errors')->first()}}</div>
@@ -22,10 +23,19 @@
 			{{Form::submit('Save', ['class'=>'btn btn-small btn-primary'])}}
 		{{Form::close()}}
 
-		<div class="alert alert-info">Last Import: {{$last_import}}</div>
+		<div class="alert alert-info">
+			Last Import: {{$last_import}} 
+			<span class="pull-right import-buttons">
+				<span id="import-loading"><img src="{{URL::asset('assets/images/loading-small-blue.gif')}}" alt="loading" /></span>
+				<a href="#" class="btn btn-mini btn-default pull-right">Run Import</a>
+				<a href="#" class="btn btn-mini btn-default pull-right">Import Single</a>
+			</span>
+		</div>
+
 	</div>
 
 	<div class="container small admin-posts">
+		
 		<h3>Posts</h3>
 
 		<ul id="postfeed">

@@ -237,6 +237,17 @@ footer .container {
     float: none;
     width: 100%; } }
 
+.import-buttons {
+  margin-top: -7px; }
+  .import-buttons .btn {
+    margin-left: 10px;
+    float: left; }
+  .import-buttons #import-loading {
+    display: none; }
+    .import-buttons #import-loading img {
+      float: left;
+      width: auto; }
+
 .admin-posts h3 {
   background-color: #ebebeb;
   text-align: center;

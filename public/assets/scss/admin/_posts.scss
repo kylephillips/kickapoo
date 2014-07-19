@@ -1,6 +1,24 @@
 //
 // Post Feed in Admin
 // --------------------------------------------------
+
+// Alert area for imports
+.import-buttons{
+	margin-top: -7px;
+	.btn {
+		margin-left: 10px;
+		float: left;
+	}
+	#import-loading {
+		display: none;
+		img {
+			float: left;
+			width: auto;
+		}
+	}
+}
+
+// Listing of posts with save/remove buttons
 .admin-posts {
 	h3 {
 		background-color: darken($white, 8%);
