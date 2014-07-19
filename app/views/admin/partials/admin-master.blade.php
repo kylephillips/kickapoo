@@ -8,7 +8,7 @@
 	<link rel="icon" href="/favicon.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{URL::asset('assets/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/admin-styles.css')}}">
 
 	<!--[if IE 8]>
@@ -43,8 +43,7 @@
 	</div><!-- .pagewrap -->
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-	<script src="/assets/js/jquery.fitvids.js"></script>
+	<script src="{{URL::asset('assets/js/bootstrap.min.js')}}"></script>
 
 	@yield('footercontent')
 </body>
