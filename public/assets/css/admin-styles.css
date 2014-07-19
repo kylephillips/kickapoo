@@ -13,8 +13,9 @@ body {
   font-size: 16px; }
 
 .pagewrap {
-  -webkit-box-shadow: inset 0px 0px 600px 0px #02351c;
-          box-shadow: inset 0px 0px 600px 0px #02351c;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
   min-height: 100%;
   background: url('../images/ray-bg.jpg') no-repeat center top fixed; }
 
