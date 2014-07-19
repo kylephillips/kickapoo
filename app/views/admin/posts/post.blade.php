@@ -26,9 +26,11 @@
 		<div class="alert alert-info">
 			Last Import: {{$last_import}} 
 			<span class="pull-right import-buttons">
-				<span id="import-loading"><img src="{{URL::asset('assets/images/loading-small-blue.gif')}}" alt="loading" /></span>
-				<a href="#" class="btn btn-mini btn-default pull-right">Run Import</a>
-				<a href="#" class="btn btn-mini btn-default pull-right">Import Single</a>
+				<span id="import-loading">
+					<img src="{{URL::asset('assets/images/loading-small-blue.gif')}}" alt="loading" />
+				</span>
+				<button class="btn btn-min btn-default run-import">Run Import</button>
+				<button class="btn btn-min btn-default">Import Single</button>
 			</span>
 		</div>
 
@@ -119,7 +121,9 @@
 
 @section('footercontent')
 <script>
-
+/**
+* Remove Post from list
+*/
 function removePost(id, type, item)
 {
 	$.ajax({
@@ -129,10 +133,42 @@ function removePost(id, type, item)
 			type: type
 		},
 		success: function(data){
-			if (data == 'success')
-			{
+			if (data == 'success'){
 				$(item).fadeOut();
 			}
+		}
+	});
+}
+
+/**
+* Run an Import Manually
+*/
+function doImport()
+{
+	$.ajax({
+		url: '{{URL::route('do_import')}}',
+		success: function(data){
+			if ( data.status == 'success' ){
+				window.location.reload();
+			}
+		}
+	});
+}
+
+/**
+* Approve a Post
+*/
+function approvePost(id, type)
+{
+	$.ajax({
+		url: '{{URL::route('admin.post.store')}}',
+		method: 'POST',
+		data: {
+			id : id,
+			type : type
+		},
+		success: function(data){
+			console.log(data);
 		}
 	});
 }
@@ -145,8 +181,21 @@ $(document).on('click', '.remove', function(e){
 	removePost(id, type, item);
 });
 
+// Approve Button
 $(document).on('click', '.approve', function(e){
 	e.preventDefault();
+	var id = $(this).data('id');
+	var type = $(this).data('type');
+	approvePost(id, type);
+});
+
+// Manual Import Button
+$(document).on('click', '.run-import', function(e){
+	e.preventDefault();
+	$('#import-loading').show();
+	$(this).attr('disabled', 'disabled');
+	$(this).text('Importing');
+	doImport();
 });
 
 </script>

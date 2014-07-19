@@ -19,6 +19,7 @@ Route::group(['before'=>'auth'], function()
 	Route::resource('admin/post', 'PostController');
 	Route::post('searchterms', ['as'=>'update_search', 'uses'=>'PostController@updateSearchTerms']);
 	Route::get('removePost', ['as'=>'remove_post', 'uses'=>'PostController@removePost']);
+	Route::get('doimport', ['as'=>'do_import', 'uses'=>'FeedController@doImport']);
 });
 
 
