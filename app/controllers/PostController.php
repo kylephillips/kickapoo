@@ -47,9 +47,7 @@ class PostController extends \BaseController {
 		$twitter_search = $this->settings_repo->twitterSearch();
 		$instagram_search = $this->settings_repo->instagramSearch();
 		$posts = $this->post_repo->getPosts();
-
 		$last_import = $this->log_repo->getLast();
-		$last_import_date = date('D, M jS, g:i:s a', strtotime($last_import->created_at));
 
 		$perPage = 10;
 		$currentPage = Input::get('page', 1) - 1;
@@ -61,7 +59,7 @@ class PostController extends \BaseController {
 			->with('twitter_search', $twitter_search)
 			->with('instagram_search', $instagram_search)
 			->with('posts', $posts)
-			->with('last_import', $last_import_date);
+			->with('last_import', $last_import);
 	}
 
 
@@ -77,7 +75,7 @@ class PostController extends \BaseController {
 
 
 	/**
-	 * Store a newly created resource in storage.
+	 * Store a new post – approved
 	 *
 	 * @return Response
 	 */
@@ -119,16 +117,18 @@ class PostController extends \BaseController {
 	 */
 	public function removePost()
 	{
-		if ( Input::get('type') == 'twitter' ){			
-			$post = Tweet::findOrFail(Input::get('id'));
-			$post->approved = 0;
-			$post->save();
-			return Response::json('success');
-		} else {
-			$post = Gram::findOrFail(Input::get('id'));
-			$post->approved = 0;
-			$post->save();
-			return Response::json('success');
+		if ( Request::ajax() ) {
+			if ( Input::get('type') == 'twitter' ){			
+				$post = Tweet::findOrFail(Input::get('id'));
+				$post->approved = 0;
+				$post->save();
+				return Response::json('success');
+			} else {
+				$post = Gram::findOrFail(Input::get('id'));
+				$post->approved = 0;
+				$post->save();
+				return Response::json('success');
+			}
 		}
 	}
 

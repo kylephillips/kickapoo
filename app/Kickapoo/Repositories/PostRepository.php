@@ -8,6 +8,7 @@ use \Paginator;
 
 class PostRepository {
 
+
 	/**
 	* Get all approved Posts
 	*/
@@ -17,8 +18,9 @@ class PostRepository {
 		return $posts;
 	}
 
+
 	/**
-	* Get all Tweets
+	* Get all Tweets & Grams
 	*/
 	public function getPosts()
 	{
