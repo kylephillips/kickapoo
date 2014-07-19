@@ -17,7 +17,7 @@ class Tweet extends Eloquent {
 	*/
 	public function post()
 	{
-		return $this->hasOne('Post');
+		return $this->hasOne('Post', 'tweet_id', 'id');
 	}
 
 }

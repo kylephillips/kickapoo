@@ -17,7 +17,7 @@ class Gram extends Eloquent {
 	*/
 	public function post()
 	{
-		return $this->hasOne('Post');
+		return $this->hasOne('Post', 'gram_id', 'id');
 	}
 
 }
