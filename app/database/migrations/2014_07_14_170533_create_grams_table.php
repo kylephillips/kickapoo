@@ -14,6 +14,7 @@ class CreateGramsTable extends Migration {
 	{
 		Schema::create('grams', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->bigInteger('instagram_id');
 			$table->datetime('datetime');

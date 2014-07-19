@@ -14,6 +14,7 @@ class CreateTweetsTable extends Migration {
 	{
 		Schema::create('tweets', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->bigInteger('twitter_id');
 			$table->text('text');
