@@ -37,8 +37,6 @@
 	</div>
 
 	<div class="container small admin-posts">
-		
-		<h3>Posts</h3>
 
 		<ul id="postfeed">
 		@foreach($posts as $post)
@@ -101,13 +99,13 @@
 						</video>
 						@endif
 					</div>
+					<div class="status">
+						<ul>
+							<li><a href="#" class="remove" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-close"></i> Delete</a></li>
+							<li><a href="#" class="approve" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Approve</a></li>
+						</ul>
+					</div>
 				</div><!-- .content -->
-				<div class="status">
-					<ul>
-						<li><a href="#" class="remove" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-close"></i> Delete</a></li>
-						<li><a href="#" class="approve" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Approve</a></li>
-					</ul>
-				</div>
 			</li>
 			@endif
 

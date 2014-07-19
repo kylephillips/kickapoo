@@ -31,13 +31,20 @@
 	}
 	ul {
 		@include unstyled();
-		background-color: $white;
+		background-color: darken($white, 8%);
+		border-top: 0;
 		li {
-			border-top: 1px solid darken($white, 20%);
-			box-shadow: inset 0px 6px 0px 0px darken($white, 5%);
+			padding: 30px;
+			&:first-child {
+				border: 0;
+				box-shadow: none;
+			}
 			.content {
+				border-radius: 4px;
 				padding: 30px 20px 20px 20px;
+				background-color: $white;
 				@include clearfix();
+				box-shadow: 0px 0px 3px 0px rgba(0,0,0,.15);
 			}
 			.avatar {
 				float: left;
@@ -75,16 +82,17 @@
 		} // li
 		.status {
 			clear: both;
-			padding: 20px;
 			ul {
-				background-color: darken($white, 8%);
-				padding: 6px;
+				background-color: $white;
+				border: 0;
 				border-radius: 3px;
+				padding: 30px 10px 10px 10px;
 				@include clearfix();
 				li {
 					border: 0;
 					float: left;
 					width: 50%;
+					padding: 0;
 					text-align: center;
 					a {
 						display: block;
@@ -128,6 +136,7 @@
 			background-color: darken($white, 8%);
 			border-radius: 3px;
 			margin-left: 10px;
+			border: 0;
 			li {
 				float: left;
 				padding: 5px;

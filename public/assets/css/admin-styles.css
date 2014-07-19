@@ -262,14 +262,22 @@ footer .container {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  background-color: #ffffff; }
+  background-color: #ebebeb;
+  border-top: 0; }
   .admin-posts ul li {
-    border-top: 1px solid #cccccc;
-    -webkit-box-shadow: inset 0px 6px 0px 0px #f2f2f2;
-            box-shadow: inset 0px 6px 0px 0px #f2f2f2; }
+    padding: 30px; }
+    .admin-posts ul li:first-child {
+      border: 0;
+      -webkit-box-shadow: none;
+              box-shadow: none; }
     .admin-posts ul li .content {
+      -webkit-border-radius: 4px;
+              border-radius: 4px;
       padding: 30px 20px 20px 20px;
-      zoom: 1; }
+      background-color: #ffffff;
+      zoom: 1;
+      -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.15);
+              box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.15); }
       .admin-posts ul li .content:before, .admin-posts ul li .content:after {
         content: " ";
         /* 1 */
@@ -304,13 +312,13 @@ footer .container {
     .admin-posts ul li video {
       width: 100%; }
   .admin-posts ul .status {
-    clear: both;
-    padding: 20px; }
+    clear: both; }
     .admin-posts ul .status ul {
-      background-color: #ebebeb;
-      padding: 6px;
+      background-color: #ffffff;
+      border: 0;
       -webkit-border-radius: 3px;
               border-radius: 3px;
+      padding: 30px 10px 10px 10px;
       zoom: 1; }
       .admin-posts ul .status ul:before, .admin-posts ul .status ul:after {
         content: " ";
@@ -323,6 +331,7 @@ footer .container {
         border: 0;
         float: left;
         width: 50%;
+        padding: 0;
         text-align: center; }
         .admin-posts ul .status ul li a {
           display: block;
@@ -363,7 +372,8 @@ footer .container {
     background-color: #ebebeb;
     -webkit-border-radius: 3px;
             border-radius: 3px;
-    margin-left: 10px; }
+    margin-left: 10px;
+    border: 0; }
     .admin-posts ul.info li {
       float: left;
       padding: 5px;
