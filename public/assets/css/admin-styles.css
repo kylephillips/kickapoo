@@ -472,3 +472,17 @@ footer .container {
   padding-top: 10px; }
   .loading-infinite img {
     width: auto; }
+
+.admin-posts .pagination {
+  width: 100%;
+  -webkit-border-radius: 0 0 4px 4px;
+          border-radius: 0 0 4px 4px;
+  text-align: center;
+  padding-bottom: 20px; }
+  .admin-posts .pagination li {
+    display: inline-block;
+    padding: 0; }
+    .admin-posts .pagination li.active span {
+      background-color: #00a950; }
+    .admin-posts .pagination li a {
+      color: #00a950; }

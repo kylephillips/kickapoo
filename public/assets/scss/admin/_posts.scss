@@ -156,56 +156,57 @@
 	} // ul
 }
 
+// Status Switch
 .status {
-			clear: both;
-			ul {
-				background-color: $white;
-				border: 0;
-				border-radius: 3px;
-				padding: 30px 10px 10px 10px;
-				@include clearfix();
-				li {
-					border: 0;
-					float: left;
-					width: 50%;
-					padding: 0;
-					text-align: center;
-					a {
-						display: block;
-						height: 40px;
-						line-height: 40px;
-						color: $white;
-						background-color: $green;
-						border-radius: 0px 3px 3px 0px;
-						position: relative;
-						transition: all 200ms ease;
-						&:hover {
-							text-decoration: none;
-							background-color: darken($green, 10%);
-							transition: all 200ms ease;
-						}
-						i {
-							position: absolute;
-							right: 0;
-							background-color: rgba(0,0,0,.2);
-							display: block;
-							width: 40px;
-							line-height: 40px;
-						}
-					}
-					&:first-child a {
-						background-color: $red;
-						border-radius: 3px 0px 0px 3px;
-						&:hover {
-							background-color: darken($red, 10%);
-						}
-						i {
-							left: 0;
-						}
-					} // a
-				} // li
-			} // ul
-		} // status
+	clear: both;
+	ul {
+		background-color: $white;
+		border: 0;
+		border-radius: 3px;
+		padding: 30px 10px 10px 10px;
+		@include clearfix();
+		li {
+			border: 0;
+			float: left;
+			width: 50%;
+			padding: 0;
+			text-align: center;
+			a {
+				display: block;
+				height: 40px;
+				line-height: 40px;
+				color: $white;
+				background-color: $green;
+				border-radius: 0px 3px 3px 0px;
+				position: relative;
+				transition: all 200ms ease;
+				&:hover {
+					text-decoration: none;
+					background-color: darken($green, 10%);
+					transition: all 200ms ease;
+				}
+				i {
+					position: absolute;
+					right: 0;
+					background-color: rgba(0,0,0,.2);
+					display: block;
+					width: 40px;
+					line-height: 40px;
+				}
+			}
+			&:first-child a {
+				background-color: $red;
+				border-radius: 3px 0px 0px 3px;
+				&:hover {
+					background-color: darken($red, 10%);
+				}
+				i {
+					left: 0;
+				}
+			} // a
+		} // li
+	} // ul
+} // status
 
 // Approved Posts
 .status-approved {
@@ -232,4 +233,20 @@
 	}
 }
 
-
+// Pagination
+.admin-posts .pagination {
+	width: 100%;
+	border-radius: 0 0 4px 4px;
+	text-align: center;
+	padding-bottom: 20px;
+	li {
+		display: inline-block;
+		padding: 0;
+		&.active span {
+			background-color: $green;
+		}
+		a {
+			color: $green;
+		}
+	}
+}
