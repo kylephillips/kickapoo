@@ -4,10 +4,14 @@
 	<h1><i class="icon-remove"></i> Trash <span class="pull-right"><a href="{{URL::route('admin.post.index')}}">&laquo; Back to Posts</a></span></h1>
 	<div class="alert alert-info">
 		Last emptied: {{$last_trash}}
+		@if( count($posts) > 0 )
 		<button class="btn btn-danger pull-right empty-trash"><i class="icon-remove2"></i> Empty Trash</button>
 		<span id="trash-loading" class="pull-right">
 			<img src="{{URL::asset('assets/images/loading-small-blue.gif')}}" alt="loading" />
 		</span>
+		@else
+		<button class="btn btn-default pull-right" disabled="disabled">No Trash to Empty</button>
+		@endif
 	</div>
 </div>
 
