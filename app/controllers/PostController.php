@@ -146,20 +146,6 @@ class PostController extends \BaseController {
 
 
 	/**
-	 * Get a list of Posts in the trash
-	 *
-	 */
-	public function getTrash()
-	{
-		$last_trash = $this->log_repo->getLastTrash();
-		$posts = $this->post_repo->getTrash();
-		return View::make('admin.posts.trash')
-			->with('last_trash', $last_trash)
-			->with('posts', $posts);
-	}
-
-
-	/**
 	* Update the social search terms
 	*/
 	public function updateSearchTerms()
