@@ -89,4 +89,16 @@ class TrashController extends BaseController {
 		}
 	}
 
+	/**
+	* Delete a single post
+	*/
+	public function deletePost()
+	{
+		if ( Request::ajax() ){
+			$post = ( Input::get('type') == 'twitter' ) ? Tweet::findOrFail(Input::get('id')) : Gram::findOrFail(Input::get('id'));
+			$this->trash_factory->deletePost($post);
+			return Response::json(['status'=>'success']);
+		}
+	}
+
 }

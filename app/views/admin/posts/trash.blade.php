@@ -122,6 +122,26 @@ function emptyTrash()
 	});
 }
 
+/**
+* Delete an Item Permanently
+*/
+function deletePost(id, type, item)
+{
+	$.ajax({
+		url: '{{URL::route('delete_post')}}',
+		method: 'POST',
+		data: {
+			id: id,
+			type: type
+		},
+		success: function(data){
+			$(item).fadeOut('fast', function(){
+				$(item).remove();
+			});
+		}
+	});
+}
+
 $(document).on('click', '.restore', function(e){
 	e.preventDefault();
 	$(this).addClass('disabled');
@@ -136,6 +156,15 @@ $(document).on('click', '.empty-trash', function(e){
 	$(this).attr('disabled', 'disabled');
 	$('#trash-loading').show();
 	emptyTrash();
+});
+
+$(document).on('click', '.remove', function(e){
+	e.preventDefault();
+	$(this).addClass('disabled');
+	var id = $(this).data('id');
+	var type = $(this).data('type');
+	var item = $(this).parents('.post');
+	deletePost(id, type, item);
 });
 </script>
 @stop

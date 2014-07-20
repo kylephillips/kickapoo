@@ -31,9 +31,10 @@ Route::group(['before'=>'auth'], function()
 	Route::post('searchterms', ['as'=>'update_search', 'uses'=>'PostController@updateSearchTerms']);
 
 	// Trash
-	Route::get('removePost', ['as'=>'remove_post', 'uses'=>'TrashController@store']);
-	Route::post('restorePost', ['as'=>'restore_post', 'uses'=>'TrashController@restore']);
+	Route::get('remove-post', ['as'=>'remove_post', 'uses'=>'TrashController@store']);
+	Route::post('restore-post', ['as'=>'restore_post', 'uses'=>'TrashController@restore']);
 	Route::get('empty-trash', ['as'=>'empty_trash', 'uses'=>'TrashController@emptyTrash']);
+	Route::post('delete-post', ['as'=>'delete_post', 'uses'=>'TrashController@deletePost']);
 
 	// Imports
 	Route::get('doimport', ['as'=>'do_import', 'uses'=>'FeedController@doImport']);
