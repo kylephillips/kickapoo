@@ -94,12 +94,12 @@
 				@if($post['approved'] == 1)
 				<div class="status-approved">
 					<p><i class="icon-checkmark"></i> Approved {{$postdate}}</p>
-					<a href="#" class="remove-approved" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}" data-postid="{{$post['post']['id']}}">Unapprove and Delete</a>
+					<a href="#" class="remove-approved" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}" data-postid="{{$post['post']['id']}}">Unapprove and Trash</a>
 				</div>
 				@else
 				<div class="status">
 					<ul>
-						<li><a href="#" class="remove" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}"><i class="icon-close"></i> Delete</a></li>
+						<li><a href="#" class="remove" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}"><i class="icon-remove"></i> Trash</a></li>
 						<li><a href="#" class="approve" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Approve</a></li>
 					</ul>
 				</div>
@@ -133,12 +133,12 @@
 					@if($post['approved'] == 1)
 					<div class="status-approved">
 						<p><i class="icon-checkmark"></i> Approved {{$postdate}}</p>
-						<a href="#" class="remove-approved" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}" data-postid="{{$post['post']['id']}}">Unapprove and Delete</a>
+						<a href="#" class="remove-approved" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}" data-postid="{{$post['post']['id']}}">Unapprove and Trash</a>
 					</div>
 					@else
 					<div class="status">
 						<ul>
-							<li><a href="#" class="remove" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-close"></i> Delete</a></li>
+							<li><a href="#" class="remove" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-remove"></i> Trash</a></li>
 							<li><a href="#" class="approve" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Approve</a></li>
 						</ul>
 					</div>
@@ -216,7 +216,7 @@ function approvePost(id, type, item)
 
 function addApprovedStatus(id, item, type, post)
 {
-	var out = '<div class="status-approved"><p><i class="icon-checkmark"></i> Approved ' + post.approval_date + '</p><a href="#" class="remove-approved" data-id="' + id + '" data-type="' + type + '" data-postid="' + post.postid + '">Unapprove and Delete</a></div>';
+	var out = '<div class="status-approved"><p><i class="icon-checkmark"></i> Approved ' + post.approval_date + '</p><a href="#" class="remove-approved" data-id="' + id + '" data-type="' + type + '" data-postid="' + post.postid + '">Unapprove and Trash</a></div>';
 	$(item).find('.content').append(out);
 }
 
@@ -291,6 +291,7 @@ $(document).on('click', '.import-single-toggle', function(){
 // Infinite Scroll
 $(function() {
 	$('.scroll').jscroll({
+		loadingHtml: '<div class="loading-infinite"><img src="{{URL::asset('assets/images/loading-small-white.gif')}}" alt="Loading" /></div>',
 		autoTrigger: true,
 		nextSelector: '.pagination li.active + li a', 
 		contentSelector: 'div.scroll',

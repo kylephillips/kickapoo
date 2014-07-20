@@ -119,26 +119,35 @@ footer .container {
 .icon-users:before {
   content: "\e602"; }
 
-.icon-star:before {
-  content: "\e605"; }
-
-.icon-close:before {
-  content: "\e606"; }
-
-.icon-checkmark:before {
-  content: "\e607"; }
-
-.icon-loop:before {
-  content: "\e608"; }
-
-.icon-instagram:before {
+.icon-remove:before {
   content: "\e603"; }
 
-.icon-twitter:before {
+.icon-remove2:before {
   content: "\e604"; }
 
+.icon-attachment:before {
+  content: "\e605"; }
+
+.icon-star:before {
+  content: "\e606"; }
+
 .icon-heart:before {
+  content: "\e607"; }
+
+.icon-close:before {
+  content: "\e608"; }
+
+.icon-checkmark:before {
   content: "\e609"; }
+
+.icon-loop:before {
+  content: "\e60a"; }
+
+.icon-instagram:before {
+  content: "\e60b"; }
+
+.icon-twitter:before {
+  content: "\e60c"; }
 
 .login {
   padding-top: 50px; }
@@ -457,3 +466,9 @@ footer .container {
             border-radius: 3px; }
   .status-approved a {
     color: #ca171e; }
+
+.loading-infinite {
+  text-align: center;
+  padding-top: 10px; }
+  .loading-infinite img {
+    width: auto; }
