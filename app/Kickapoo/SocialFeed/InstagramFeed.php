@@ -35,7 +35,7 @@ class InstagramFeed implements SocialFeed {
 	private $feed_formatted;
 
 
-	public function __construct()
+	public function __construct($id = null)
 	{
 		$this->setCredentials();
 		$this->setSearch();
