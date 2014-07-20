@@ -1,6 +1,13 @@
 //
 // Trash
 // --------------------------------------------------
+#trash-loading {
+	margin-top: -6px;
+	display: none;
+	img {
+		width: auto;
+	}
+}
 // Listing of posts with save/remove buttons
 .admin-posts.trash {
 	ul {

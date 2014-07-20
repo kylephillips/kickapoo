@@ -4,7 +4,10 @@
 	<h1><i class="icon-remove"></i> Trash <span class="pull-right"><a href="{{URL::route('admin.post.index')}}">&laquo; Back to Posts</a></span></h1>
 	<div class="alert alert-info">
 		Last emptied: {{$last_trash}}
-		<button class="btn btn-danger pull-right"><i class="icon-remove2"></i> Empty Trash</button>
+		<button class="btn btn-danger pull-right empty-trash"><i class="icon-remove2"></i> Empty Trash</button>
+		<span id="trash-loading" class="pull-right">
+			<img src="{{URL::asset('assets/images/loading-small-blue.gif')}}" alt="loading" />
+		</span>
 	</div>
 </div>
 
@@ -101,6 +104,20 @@ function restorePost(id, type, item)
 	});
 }
 
+/**
+* Empty the trash
+*/
+function emptyTrash()
+{
+	$.ajax({
+		url: '{{URL::route('empty_trash')}}',
+		method: 'GET',
+		success: function(data){
+			window.location.reload();
+		}
+	});
+}
+
 $(document).on('click', '.restore', function(e){
 	e.preventDefault();
 	$(this).addClass('disabled');
@@ -108,6 +125,13 @@ $(document).on('click', '.restore', function(e){
 	var type = $(this).data('type');
 	var item = $(this).parents('.post');
 	restorePost(id, type, item);
+});
+
+$(document).on('click', '.empty-trash', function(e){
+	e.preventDefault();
+	$(this).attr('disabled', 'disabled');
+	$('#trash-loading').show();
+	emptyTrash();
 });
 </script>
 @stop

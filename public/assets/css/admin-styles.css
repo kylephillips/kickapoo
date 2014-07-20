@@ -557,6 +557,12 @@ footer .container {
         -webkit-border-radius: 0;
                 border-radius: 0; } }
 
+#trash-loading {
+  margin-top: -6px;
+  display: none; }
+  #trash-loading img {
+    width: auto; }
+
 .admin-posts.trash ul li {
   padding: 0px 20px 20px 20px; }
   .admin-posts.trash ul li:first-child {

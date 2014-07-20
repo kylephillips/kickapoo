@@ -77,4 +77,16 @@ class TrashController extends BaseController {
 		}
 	}
 
+
+	/**
+	* Empty the Trash
+	*/
+	public function emptyTrash()
+	{
+		if ( Request::ajax() ){
+			$this->trash_factory->emptyTrash();
+			return Response::json(['status'=>'success']);
+		}
+	}
+
 }

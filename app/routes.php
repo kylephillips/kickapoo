@@ -33,6 +33,7 @@ Route::group(['before'=>'auth'], function()
 	// Trash
 	Route::get('removePost', ['as'=>'remove_post', 'uses'=>'TrashController@store']);
 	Route::post('restorePost', ['as'=>'restore_post', 'uses'=>'TrashController@restore']);
+	Route::get('empty-trash', ['as'=>'empty_trash', 'uses'=>'TrashController@emptyTrash']);
 
 	// Imports
 	Route::get('doimport', ['as'=>'do_import', 'uses'=>'FeedController@doImport']);
