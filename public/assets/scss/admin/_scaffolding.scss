@@ -35,4 +35,18 @@ h1 {
 	.btn {
 		@include proxima;
 	}
+	span {
+		font-size: 16px;
+		font-weight: normal;
+		margin-top: 15px;
+		a {
+			color: $white;
+			&:hover {
+				color: $yellow;
+			}
+		}
+		.btn {
+			margin-top: -20px;
+		}
+	}
 }

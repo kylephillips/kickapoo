@@ -4,10 +4,12 @@
 <div class="container small">
 
 	@if( Auth::user()->id == $user->id )
-		<h1>Edit Your Profile</h1>
+		<h1>Edit Your Profile
 	@else
-		<h1>Edit User: {{$user->first_name}} {{$user->last_name}}</h1>
+		<h1>Edit User: {{$user->first_name}} {{$user->last_name}}
 	@endif
+		<span class="pull-right"><a href="{{URL::route('admin.user.index')}}">&laquo; Back to Users</a></span>
+		</h1>
 
 	<div class="well">
 

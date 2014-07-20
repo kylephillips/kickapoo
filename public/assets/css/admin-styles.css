@@ -38,6 +38,16 @@ h1 {
     font-family: "proxima-nova", sans-serif;
     font-style: normal;
     font-weight: 400; }
+  h1 span {
+    font-size: 16px;
+    font-weight: normal;
+    margin-top: 15px; }
+    h1 span a {
+      color: #ffffff; }
+      h1 span a:hover {
+        color: #fff200; }
+    h1 span .btn {
+      margin-top: -20px; }
 
 .navbar-inverse {
   background-color: #02351c;
@@ -76,6 +86,11 @@ h1 {
 .btn {
   -webkit-border-radius: 2px;
           border-radius: 2px; }
+
+.alert .btn {
+  margin-left: 10px;
+  float: left;
+  margin-top: -7px; }
 
 .form-group.half {
   float: left;
@@ -262,16 +277,11 @@ footer .container {
     float: none;
     width: 100%; } }
 
-.import-buttons {
-  margin-top: -7px; }
-  .import-buttons .btn {
-    margin-left: 10px;
-    float: left; }
-  .import-buttons #import-loading {
-    display: none; }
-    .import-buttons #import-loading img {
-      float: left;
-      width: auto; }
+.import-buttons #import-loading {
+  display: none; }
+  .import-buttons #import-loading img {
+    float: left;
+    width: auto; }
 
 .single-form {
   display: none;
