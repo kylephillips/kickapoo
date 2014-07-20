@@ -59,6 +59,8 @@
 	<!-- Post Feed -->
 	<div class="container small admin-posts">
 
+		<div class="scroll">
+
 		<ul id="postfeed">
 		@foreach($posts as $post)
 			<?php 
@@ -90,6 +92,10 @@
 					</div><!-- .main -->
 				</div><!-- .content -->
 				@if($post['approved'] == 1)
+				<div class="status-approved">
+					<p><i class="icon-checkmark"></i> Approved {{$postdate}}</p>
+					<a href="#" class="remove-approved" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}" data-postid="{{$post['post']['id']}}">Unapprove and Delete</a>
+				</div>
 				@else
 				<div class="status">
 					<ul>
@@ -146,7 +152,9 @@
 
 		<?php echo $posts->links(); ?>
 
-	</div>
+		</div><!-- .scroll -->
+
+	</div><!-- .container -->
 @stop
 
 @section('footercontent')
@@ -278,6 +286,18 @@ $(document).on('change', 'input[name="social-type"]', function(){
 $(document).on('click', '.import-single-toggle', function(){
 	$('.single-form').toggle();
 	$(this).toggleClass('active');
+});
+
+// Infinite Scroll
+$(function() {
+	$('.scroll').jscroll({
+		autoTrigger: true,
+		nextSelector: '.pagination li.active + li a', 
+		contentSelector: 'div.scroll',
+		callback: function() {
+			$('ul.pagination:visible:first').hide();
+		}
+	});
 });
 
 </script>

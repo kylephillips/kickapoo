@@ -44,6 +44,7 @@
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="{{URL::asset('assets/js/bootstrap.min.js')}}"></script>
+	<script src="{{URL::asset('assets/js/jquery.jscroll.min.js')}}"></script>
 
 	@yield('footercontent')
 </body>
