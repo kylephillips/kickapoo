@@ -20,6 +20,16 @@ class PostRepository {
 
 
 	/**
+	* Get a single Post
+	*/
+	public function getSingle($id, $type)
+	{
+		$post = ( $type == 'twitter' ) ? Tweet::where('id', $id)->first() : Gram::where('id', $id)->first();
+		return $post;
+	}
+
+
+	/**
 	* Get all Posts that haven't been trashed
 	*/
 	public function getPosts()
