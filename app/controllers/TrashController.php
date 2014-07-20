@@ -35,4 +35,39 @@ class TrashController extends BaseController {
 			->with('posts', $posts);
 	}
 
+
+	/**
+	 * Add an item to the trash
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function store()
+	{
+		if ( Request::ajax() ) {
+			$post = ( Input::get('type') == 'twitter' ) ? Tweet::findOrFail(Input::get('id')) : Gram::findOrFail(Input::get('id'));
+			$post->approved = 0;
+			$post->save();
+			if ( Input::get('postid') ){
+				$post = Post::findOrFail(Input::get('postid'));
+				$post->delete();
+			}
+			return Response::json('success');
+		}
+	}
+
+
+	/**
+	* Restore item from Trash
+	*/
+	public function restore()
+	{
+		if ( Request::ajax() ){
+			$post = ( Input::get('type') == 'twitter' ) ? Tweet::findOrFail(Input::get('id')) : Gram::findOrFail(Input::get('id'));
+			$post->approved = null;
+			$post->save();
+			return Response::json(['success'=>'Post Restored.']);
+		}
+	}
+
 }

@@ -466,6 +466,11 @@ footer .container {
         -webkit-transition: all 200ms ease;
              -o-transition: all 200ms ease;
                 transition: all 200ms ease; }
+        .status ul li a.disabled {
+          opacity: 0.5;
+          cursor: not-allowed; }
+          .status ul li a.disabled:hover {
+            background-color: #00a950; }
         .status ul li a:hover {
           text-decoration: none;
           background-color: #007637;

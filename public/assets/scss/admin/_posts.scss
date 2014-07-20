@@ -166,6 +166,13 @@
 				border-radius: 0px 3px 3px 0px;
 				position: relative;
 				transition: all 200ms ease;
+				&.disabled {
+					opacity: .5;
+					cursor: not-allowed;
+					&:hover {
+						background-color: $green;
+					}
+				}
 				&:hover {
 					text-decoration: none;
 					background-color: darken($green, 10%);

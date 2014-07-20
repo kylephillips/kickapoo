@@ -41,7 +41,7 @@
 				<div class="status">
 					<ul>
 						<li><a href="#" class="remove" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}"><i class="icon-remove"></i> Remove Permanently</a></li>
-						<li><a href="#" class="approve" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Restore</a></li>
+						<li><a href="#" class="restore" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Restore</a></li>
 					</ul>
 				</div>
 			</li>
@@ -69,7 +69,7 @@
 					<div class="status">
 						<ul>
 							<li><a href="#" class="remove" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-remove"></i> Remove Permanently</a></li>
-							<li><a href="#" class="approve" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Restore</a></li>
+							<li><a href="#" class="restore" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Restore</a></li>
 						</ul>
 					</div>
 				@endif
@@ -78,3 +78,38 @@
 	</div><!-- .container -->
 @endif
 @stop
+
+@section('footercontent')
+<script>
+/**
+* Restore a post back to the feed
+*/
+function restorePost(id, type, item)
+{
+	$.ajax({
+		url: '{{URL::route('restore_post')}}',
+		method: 'POST',
+		data: {
+			id: id,
+			type: type
+		},
+		success: function(data){
+			$(item).fadeOut('fast', function(){
+				$(item).remove();
+			});
+		}
+	});
+}
+
+$(document).on('click', '.restore', function(e){
+	e.preventDefault();
+	$(this).addClass('disabled');
+	var id = $(this).data('id');
+	var type = $(this).data('type');
+	var item = $(this).parents('.post');
+	restorePost(id, type, item);
+});
+</script>
+@stop
+
+

@@ -7,19 +7,34 @@ Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
 
 
 /**
-* Admin
+* Admin Login
 */
 Route::get('login', ['as'=>'login_form', 'uses'=>'SessionController@getLogin']);
 Route::post('login', ['as'=>'login', 'uses'=>'SessionController@postLogin']);
 Route::get('logout', ['as'=>'logout', 'uses'=>'SessionController@logout']);
+
+/**
+* Admin Authorized
+*/
 Route::group(['before'=>'auth'], function()
 {
 	Route::get('admin', ['as'=>'admin_index', 'uses'=>'PageController@getAdmin']);
+
+	// User Management
 	Route::resource('admin/user', 'UserController');
+
+	// Post Management
 	Route::get('admin/post/trash', ['as'=>'post_trash', 'uses'=>'TrashController@index']);
 	Route::resource('admin/post', 'PostController');
+
+	// Social Search Terms
 	Route::post('searchterms', ['as'=>'update_search', 'uses'=>'PostController@updateSearchTerms']);
-	Route::get('removePost', ['as'=>'remove_post', 'uses'=>'PostController@removePost']);
+
+	// Trash
+	Route::get('removePost', ['as'=>'remove_post', 'uses'=>'TrashController@store']);
+	Route::post('restorePost', ['as'=>'restore_post', 'uses'=>'TrashController@restore']);
+
+	// Imports
 	Route::get('doimport', ['as'=>'do_import', 'uses'=>'FeedController@doImport']);
 });
 
