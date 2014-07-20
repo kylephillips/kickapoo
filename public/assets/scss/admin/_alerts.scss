@@ -8,3 +8,18 @@
 		margin-top: -7px;
 	}
 }
+@media (max-width: 767px)
+{
+	.alert {
+		@include clearfix();
+		.pull-right {
+			float: none !important;
+			text-align: center;
+		}
+		.btn {
+			float: none;
+			display: inline-block;
+			margin: 0;
+		}
+	}
+}

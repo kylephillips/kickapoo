@@ -92,6 +92,24 @@ h1 {
   float: left;
   margin-top: -7px; }
 
+@media (max-width: 767px) {
+  .alert {
+    zoom: 1; }
+    .alert:before, .alert:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */ }
+    .alert:after {
+      clear: both; }
+    .alert .pull-right {
+      float: none !important;
+      text-align: center; }
+    .alert .btn {
+      float: none;
+      display: inline-block;
+      margin: 0; } }
+
 .form-group.half {
   float: left;
   width: 48%; }
@@ -502,6 +520,37 @@ footer .container {
       background-color: #00a950; }
     .admin-posts .pagination li a {
       color: #00a950; }
+
+@media (max-width: 767px) {
+  .admin-posts ul li {
+    padding: 10px; }
+    .admin-posts ul li .content {
+      padding: 20px 10px 10px 10px; }
+    .admin-posts ul li .avatar {
+      width: 15%; }
+    .admin-posts ul li .main {
+      width: 82%; }
+    .admin-posts ul li p {
+      font-size: 15px;
+      line-height: 20px; }
+    .admin-posts ul li .image {
+      padding: 3px; }
+  .status ul {
+    padding: 20px 10px 10px 10px; }
+    .status ul li {
+      float: none;
+      width: 100%;
+      padding: 0; }
+      .status ul li a {
+        -webkit-border-radius: 0;
+                border-radius: 0; }
+        .status ul li a i {
+          left: 0;
+          -webkit-border-radius: 0;
+                  border-radius: 0; }
+      .status ul li:first-child a {
+        -webkit-border-radius: 0;
+                border-radius: 0; } }
 
 .admin-posts.trash ul li {
   padding: 0px 20px 20px 20px; }
