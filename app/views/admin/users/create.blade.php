@@ -1,7 +1,7 @@
 @extends('admin.partials.admin-master')
 @section('content')
 
-<div class="container">
+<div class="container small">
 
 	<h1>
 		Add New User
