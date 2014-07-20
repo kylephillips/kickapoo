@@ -2,6 +2,7 @@
 
 use Kickapoo\Repositories\PostRepository;
 use Kickapoo\Repositories\AppLogRepository;
+use Kickapoo\Factories\TrashFactory;
 
 class TrashController extends BaseController {
 
@@ -15,11 +16,17 @@ class TrashController extends BaseController {
 	*/
 	protected $post_repo;
 
+	/**
+	* Trash Factory
+	*/
+	protected $trash_factory;
 
-	public function __construct(AppLogRepository $log_repo, PostRepository $post_repo)
+
+	public function __construct(AppLogRepository $log_repo, PostRepository $post_repo, TrashFactory $trash_factory)
 	{
 		$this->log_repo = $log_repo;
 		$this->post_repo = $post_repo;
+		$this->trash_factory = $trash_factory;
 	}
 
 	/**
