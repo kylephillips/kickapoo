@@ -47,11 +47,11 @@ class PostController extends \BaseController {
 		$twitter_search = $this->settings_repo->twitterSearch();
 		$instagram_search = $this->settings_repo->instagramSearch();
 		$posts = $this->post_repo->getPosts();
-		$last_import = $this->log_repo->getLast();
+		$last_import = $this->log_repo->getLastImport();
 
+		// Paginate Posts
 		$perPage = 5;
 		$currentPage = Input::get('page', 1) - 1;
-		
 		$current_posts = array_slice($posts->toArray(), $currentPage * $perPage, $perPage);
 		$posts = Paginator::make($current_posts, count($posts), $perPage);
 
@@ -77,7 +77,6 @@ class PostController extends \BaseController {
 	/**
 	 * Store an approved post
 	 *
-	 * @return Response
 	 */
 	public function store()
 	{
@@ -147,14 +146,16 @@ class PostController extends \BaseController {
 
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Get a list of Posts in the trash
 	 *
-	 * @param  int  $id
-	 * @return Response
 	 */
-	public function destroy($id)
+	public function getTrash()
 	{
-		//
+		$last_trash = $this->log_repo->getLastTrash();
+		$posts = $this->post_repo->getTrash();
+		return View::make('admin.posts.trash')
+			->with('last_trash', $last_trash)
+			->with('posts', $posts);
 	}
 
 

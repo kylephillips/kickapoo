@@ -29,9 +29,15 @@
 				<span id="import-loading">
 					<img src="{{URL::asset('assets/images/loading-small-blue.gif')}}" alt="loading" />
 				</span>
-				<button class="btn btn-mini btn-default run-import"><i class="icon-box-add"></i> Run Import</button>
-				<button class="btn btn-mini btn-default import-single-toggle">Import Single</button>
-				<button class="btn btn-mini btn-default trash-toggle"><i class="icon-remove"></i> Trash</button>
+				<button class="btn btn-mini btn-default run-import">
+					<i class="icon-box-add"></i> Run Import
+				</button>
+				<button class="btn btn-mini btn-default import-single-toggle">
+					Import Single
+				</button>
+				<a href="{{URL::route('post_trash')}}" class="btn btn-mini btn-default trash-toggle">
+					<i class="icon-remove"></i> Trash
+				</a>
 			</span>
 		</div>
 
