@@ -18,6 +18,41 @@
 	}
 }
 
+// Single Import Form
+.single-form {
+	display: none;
+	background-color: $white;
+	margin-bottom: 20px;
+	padding: 8px;
+	border-radius: 3px;
+	@include clearfix();
+	.btn-group {
+		float: left;
+		width: 20%;
+		.btn {
+			width: 50%;
+		}
+	}
+	.inputs {
+		float: right;
+		width: 78%;
+		@include clearfix();
+		input[type='text']{
+			float: left;
+			width: 78%;
+			height: 35px;
+			border: 0;
+			background-color: darken($white, 8%);
+			padding: 0 8px;
+		}
+		button {
+			float: right;
+			width: 20%;
+			height: 35px;
+		}
+	}
+}
+
 // Listing of posts with save/remove buttons
 .admin-posts {
 	h3 {
@@ -45,6 +80,9 @@
 				background-color: $white;
 				@include clearfix();
 				box-shadow: 0px 0px 3px 0px rgba(0,0,0,.15);
+			}
+			&.approved .content {
+				box-shadow: inset 0px 0px 0px 6px $green;
 			}
 			.avatar {
 				float: left;
@@ -80,7 +118,45 @@
 				width: 100%;
 			}
 		} // li
-		.status {
+		&.info {
+			float: right;
+			margin-bottom: 10px;
+			background-color: darken($white, 8%);
+			border-radius: 3px;
+			margin-left: 10px;
+			border: 0;
+			li {
+				float: left;
+				padding: 5px;
+				text-align: center;
+				border: 1px solid darken($white, 12%);
+				i {
+					position: relative;
+					top: 3px;
+					font-size: 18px;
+					color: darken($white, 40%);
+				}
+				a:hover {
+					text-decoration: none;
+					i {
+						color: $green-dark;
+					}
+				}
+				&:first-child {
+					border-radius: 3px 0px 0px 3px;
+				}
+				&:last-child {
+					border-radius: 0px 3px 3px 0px;
+				}
+				&.like-count {
+					border-radius: 3px;	
+				}
+			}
+		}
+	} // ul
+}
+
+.status {
 			clear: both;
 			ul {
 				background-color: $white;
@@ -130,40 +206,19 @@
 				} // li
 			} // ul
 		} // status
-		&.info {
-			float: right;
-			margin-bottom: 10px;
-			background-color: darken($white, 8%);
-			border-radius: 3px;
-			margin-left: 10px;
-			border: 0;
-			li {
-				float: left;
-				padding: 5px;
-				text-align: center;
-				border: 1px solid darken($white, 12%);
-				i {
-					position: relative;
-					top: 3px;
-					font-size: 18px;
-					color: darken($white, 40%);
-				}
-				a:hover {
-					text-decoration: none;
-					i {
-						color: $green-dark;
-					}
-				}
-				&:first-child {
-					border-radius: 3px 0px 0px 3px;
-				}
-				&:last-child {
-					border-radius: 0px 3px 3px 0px;
-				}
-				&.like-count {
-					border-radius: 3px;	
-				}
-			}
-		}
-	} // ul
+
+// Approved Posts
+.status-approved {
+	clear: both;
+	text-align: center;
+	padding-top: 15px;
+	p {
+		background-color: $green;
+		color: $white;
+		padding: 8px 0;
+		border-radius: 3px;
+	}
+	a {
+		color: $red;
+	}
 }

@@ -49,7 +49,7 @@ class PostController extends \BaseController {
 		$posts = $this->post_repo->getPosts();
 		$last_import = $this->log_repo->getLast();
 
-		$perPage = 10;
+		$perPage = 5;
 		$currentPage = Input::get('page', 1) - 1;
 		
 		$current_posts = array_slice($posts->toArray(), $currentPage * $perPage, $perPage);
@@ -75,13 +75,29 @@ class PostController extends \BaseController {
 
 
 	/**
-	 * Store a new post – approved
+	 * Store an approved post
 	 *
 	 * @return Response
 	 */
 	public function store()
 	{
-		//
+		$type = Input::get('type');
+		$id = Input::get('id');
+		$post = ( $type == 'twitter' ) ? Tweet::findOrFail($id) : Gram::findOrFail($id);
+
+		$tweet_id = ( $type == 'twitter' ) ? $post->id : null;
+		$gram_id = ( $type != 'twitter' ) ? $post->id : null;
+		$post->approved = 1;
+		$post->save();
+
+		$newpost = Post::create([
+			'type' => $type,
+			'tweet_id' => $tweet_id,
+			'gram_id' => $gram_id
+		]);
+
+		$approval_date = date('D, M jS y - g:i a', strtotime($newpost->created_at));
+		return Response::json(['status' => 'success', 'approval_date'=>$approval_date, 'postid'=>$newpost->id]);
 	}
 
 
@@ -118,17 +134,14 @@ class PostController extends \BaseController {
 	public function removePost()
 	{
 		if ( Request::ajax() ) {
-			if ( Input::get('type') == 'twitter' ){			
-				$post = Tweet::findOrFail(Input::get('id'));
-				$post->approved = 0;
-				$post->save();
-				return Response::json('success');
-			} else {
-				$post = Gram::findOrFail(Input::get('id'));
-				$post->approved = 0;
-				$post->save();
-				return Response::json('success');
+			$post = ( Input::get('type') == 'twitter' ) ? Tweet::findOrFail(Input::get('id')) : Gram::findOrFail(Input::get('id'));
+			$post->approved = 0;
+			$post->save();
+			if ( Input::get('postid') ){
+				$post = Post::findOrFail(Input::get('postid'));
+				$post->delete();
 			}
+			return Response::json('success');
 		}
 	}
 
