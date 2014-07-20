@@ -326,15 +326,6 @@ footer .container {
       width: 20%;
       height: 35px; }
 
-.admin-posts h3 {
-  background-color: #ebebeb;
-  text-align: center;
-  margin: 0;
-  padding: 10px;
-  font-size: 18px;
-  -webkit-border-radius: 2px 2px 0px 0px;
-          border-radius: 2px 2px 0px 0px;
-  color: #035d32; }
 .admin-posts ul {
   list-style-type: none;
   margin: 0;
@@ -511,3 +502,29 @@ footer .container {
       background-color: #00a950; }
     .admin-posts .pagination li a {
       color: #00a950; }
+
+.admin-posts.trash ul li {
+  padding: 0px 20px 20px 20px; }
+  .admin-posts.trash ul li:first-child {
+    padding-top: 20px; }
+  .admin-posts.trash ul li p {
+    max-height: 100px;
+    overflow: hidden; }
+  .admin-posts.trash ul li .content {
+    padding: 20px 10px 10px 10px; }
+  .admin-posts.trash ul li p {
+    float: left;
+    width: 70%;
+    font-size: 16px;
+    line-height: 24px;
+    overflow-x: hidden; }
+  .admin-posts.trash ul li .image {
+    float: right;
+    width: 24%;
+    background-color: #ebebeb;
+    padding: 3px;
+    clear: none; }
+.admin-posts.trash .status ul {
+  padding: 10px; }
+  .admin-posts.trash .status ul li {
+    padding: 0; }

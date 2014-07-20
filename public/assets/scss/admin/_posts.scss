@@ -50,15 +50,6 @@
 
 // Listing of posts with save/remove buttons
 .admin-posts {
-	h3 {
-		background-color: darken($white, 8%);
-		text-align: center;
-		margin: 0;
-		padding: 10px;
-		font-size: 18px;
-		border-radius: 2px 2px 0px 0px;
-		color: $green-dark;
-	}
 	ul {
 		@include unstyled();
 		background-color: darken($white, 8%);
