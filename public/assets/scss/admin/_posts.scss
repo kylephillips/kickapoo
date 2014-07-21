@@ -21,11 +21,11 @@
 	padding: 8px;
 	border-radius: 3px;
 	@include clearfix();
-	.btn-group {
+	.buttons {
 		float: left;
 		width: 20%;
-		.btn {
-			width: 50%;
+		.help-btn {
+			margin-left: 8px;
 		}
 	}
 	.inputs {

@@ -49,6 +49,10 @@ h1 {
     h1 span .btn {
       margin-top: -20px; }
 
+.modal-body {
+  max-height: 300px;
+  overflow: auto; }
+
 .navbar-inverse {
   background-color: #02351c;
   background: -webkit-gradient(linear, left top, left bottom, from(#035d32), to(#024424));
@@ -328,11 +332,11 @@ footer .container {
     /* 2 */ }
   .single-form:after {
     clear: both; }
-  .single-form .btn-group {
+  .single-form .buttons {
     float: left;
     width: 20%; }
-    .single-form .btn-group .btn {
-      width: 50%; }
+    .single-form .buttons .help-btn {
+      margin-left: 8px; }
   .single-form .inputs {
     float: right;
     width: 78%;

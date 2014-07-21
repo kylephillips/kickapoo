@@ -44,18 +44,22 @@
 		<!-- Single Import Form -->
 		<div class="single-form">
 			{{Form::open(['url'=>''])}}
-				<div class="btn-group" data-toggle="buttons">
-					<label class="btn btn-default active">
-						<input type="radio" name="social-type" value="twitter" checked>
-						<i class="icon-twitter"></i>
-					</label>
-					<label class="btn btn-default">
-						<input type="radio" name="social-type" value="instagram">
-						<i class="icon-instagram"></i>
-					</label>
-				</div>
+				<span class="buttons">
+					<div class="btn-group" data-toggle="buttons">
+						<label class="btn btn-default active">
+							<input type="radio" name="social-type" value="twitter" checked>
+							<i class="icon-twitter"></i>
+						</label>
+						<label class="btn btn-default">
+							<input type="radio" name="social-type" value="instagram">
+							<i class="icon-instagram"></i>
+						</label>
+					</div>
+					<a href="#twitterhelp" class="btn btn-default help-btn" data-toggle="modal"><strong>?</strong></a>
+				</span>
 				<div class="inputs">
 					{{Form::text('id', null, ['class'=>'social-id', 'placeholder'=>'Tweet ID'])}}
+					<input type="hidden" id="import-type" value="twitter" />
 					<button id="single-submit" class="btn btn-mini btn-default">Import</button>
 				</div>
 			{{Form::close()}}
@@ -165,6 +169,54 @@
 @stop
 
 @section('footercontent')
+<!-- Twitter help modal -->
+<div class="modal fade" id="twitterhelp">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title">Finding a Tweet's ID</h4>
+			</div>
+			<div class="modal-body">
+				<ol>
+					<li>Within your timeline, click the tweet to expand it (or click "more").</li>
+					<li>Once the tweet is expanded, look for the date of the tweet in gray lettering. Click the "Details" link next to the date. This will open the single view of the tweet.<br />
+						<img src="{{URL::asset('assets/images/twitter-help-one.jpg')}}"></li>
+					<li>The ID of the tweet is the last line of numbers in the browser address bar. It will appear as a long string of numbers:.<br />
+						<img src="{{URL::asset('assets/images/twitter-help-two.jpg')}}"></li>
+				</ol>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div><!-- /.modal -->
+
+<!-- Instagram help modal -->
+<div class="modal fade" id="instagramhelp">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title">Finding an Instagram ID</h4>
+			</div>
+			<div class="modal-body">
+				<ol>
+					<li>Under the user's timelime, click the image to embed. This will open a modal window.</li>
+					<li>The ID of the post will be in the address bar:<br />
+						<img src="{{URL::asset('assets/images/instagram-help.jpg')}}">
+					</li>
+				</ol>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary">Save changes</button>
+			</div>
+		</div>
+	</div>
+</div><!-- /.modal -->
+
 <script>
 /**
 * Remove Post from list
@@ -283,10 +335,14 @@ $(document).on('click', '.run-import', function(e){
 	doImport();
 });
 
-// Update single import label on change
+// Update single import label & help modal on change
 $(document).on('change', 'input[name="social-type"]', function(){
 	var text = ( $('input[name="social-type"]:checked').val() === 'twitter' ) ? 'Tweet ID' : 'Instagram ID';
+	var modal = ( text === 'Tweet ID' ) ? '#twitterhelp' : '#instagramhelp';
+	var type = ( text === 'Tweet ID' ) ? 'twitter' : 'instagram';
 	$('.social-id').attr('placeholder', text);
+	$('.help-btn').attr('href', modal);
+	$('#import-type').val(type);
 });
 
 // Toggle the single import form
