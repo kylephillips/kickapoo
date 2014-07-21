@@ -92,8 +92,7 @@ class UserController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$user_repo = new UserRepository;
-		$user = $user_repo->getUser($id);
+		$user = $this->user_repo->getUser($id);
 
 		$validation = Validator::make(Input::all(), [
 			'firstname' => 'required',
