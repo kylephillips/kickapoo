@@ -2,6 +2,7 @@
 use Kickapoo\SocialFeed\InstagramFeed;
 use \Gram;
 use \Image;
+use \Trash;
 
 class InstagramImport {
 
@@ -28,7 +29,7 @@ class InstagramImport {
 		if ( $this->feed ) :
 			foreach ( $this->feed as $key=>$gram )
 			{
-				if ( !$this->exists($gram['id']) ){
+				if ( (!$this->exists($gram['id'])) && (!$this->trashed($gram['id'])) ){
 					$date = strtotime($gram['date']);
 					$date = date('Y-m-d H:i:s');
 					$image = ( isset($gram['image']) ) ? $this->importImage($gram['image'], $gram['id']) : null;
@@ -50,6 +51,7 @@ class InstagramImport {
 					]);
 				} elseif ( count($this->feed) == 1 ){
 					if ( $this->exists($gram['id']) ) throw new \Kickapoo\Exceptions\PostExistsException;
+					if ( $this->trashed($gram['id']) ) throw new \Kickapoo\Exceptions\PostTrashedException;
 				}
 			}
 		endif;
@@ -61,6 +63,15 @@ class InstagramImport {
 	private function exists($gram)
 	{
 		return ( Gram::where('instagram_id', $gram)->count() ) ? true : false;
+	}
+
+
+	/**
+	* Check if Gram has been trashed
+	*/
+	private function trashed($gram)
+	{
+		return ( Trash::where('instagram_id', $gram)->count() ) ? true : false;
 	}
 
 

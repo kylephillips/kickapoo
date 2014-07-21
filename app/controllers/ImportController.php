@@ -64,11 +64,6 @@ class ImportController extends BaseController {
 		}
 	}
 
-	public function tweet()
-	{
-		$this->single_import->importTweet('491316161804374016');
-		dd($this->single_import->imported_item);
-	}
 
 
 }

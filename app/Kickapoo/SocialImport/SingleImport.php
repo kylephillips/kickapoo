@@ -40,6 +40,9 @@ class SingleImport {
 		} catch (\Kickapoo\Exceptions\TweetRetweetException $e){
 			$this->error = 'This is a retweet. Only original tweets may be imported.';
 			return false;
+		} catch(\Kickapoo\Exceptions\PostTrashedException $e){
+			$this->error = 'This tweet was previously trashed.';
+			return false;
 		}
 
 		$this->imported_item = $feed;
@@ -65,6 +68,9 @@ class SingleImport {
 			new InstagramImport($feed);
 		} catch (\Kickapoo\Exceptions\PostExistsException $e){
 			$this->error = 'This Instagram post has already been imported.';
+			return false;
+		} catch(\Kickapoo\Exceptions\PostTrashedException $e){
+			$this->error = 'This Instagram post was previously trashed.';
 			return false;
 		}
 

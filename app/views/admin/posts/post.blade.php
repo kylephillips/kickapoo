@@ -42,9 +42,10 @@
 		</div>
 
 		<!-- Single Import Form -->
-		<div id="single-error" class="alert alert-danger" style="display:none;"></div>
-		<div id="single-success" class="alert alert-success" style="display:none;"></div>
 		<div class="single-form">
+			<div id="single-error" class="alert alert-danger" style="display:none;"></div>
+			<div id="single-success" class="alert alert-success" style="display:none;"></div>
+			
 			{{Form::open(['url'=>''])}}
 				<span class="buttons">
 					<div class="btn-group" data-toggle="buttons">

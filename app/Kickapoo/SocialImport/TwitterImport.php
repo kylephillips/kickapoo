@@ -2,6 +2,8 @@
 use \Tweet;
 use \DB;
 use \Image;
+use \Trash;
+
 /**
 * Import a Twitter Feed into the DB
 */
@@ -26,7 +28,7 @@ class TwitterImport {
 	{
 		foreach ( $this->feed as $key=>$tweet )
 		{
-			if ( (!$tweet['is_retweet']) && (!$this->exists($tweet['id'])) )
+			if ( (!$tweet['is_retweet']) && (!$this->exists($tweet['id'])) && (!$this->trashed($tweet['id'])) )
 			{
 				$date = strtotime($tweet['date']);
 				$date = date('Y-m-d H:i:s');
@@ -47,9 +49,9 @@ class TwitterImport {
 					'image' => $image
 				]);
 			} elseif ( count($this->feed) == 1 ) {
-				// Exceptions for single Tweet Imports
 				if ( $this->exists($tweet['id']) ) throw new \Kickapoo\Exceptions\PostExistsException;
 				if ( $tweet['is_retweet'] ) throw new \Kickapoo\Exceptions\TweetRetweetException;
+				if ( $this->trashed($tweet['id']) ) throw new \Kickapoo\Exceptions\PostTrashedException;
 			}
 		}
 	}
@@ -61,6 +63,14 @@ class TwitterImport {
 	private function exists($tweet)
 	{
 		return ( Tweet::where('twitter_id', $tweet)->count() ) ? true : false;		
+	}
+
+	/**
+	* Check if Tweet has been trashed
+	*/
+	private function trashed($tweet)
+	{
+		return ( Trash::where('twitter_id', $tweet)->count() ) ? true : false;
 	}
 
 
