@@ -21,7 +21,6 @@ class TwitterImport {
 
 	/**
 	* Import the Tweets
-	* @todo copy images locally
 	*/
 	private function doImport()
 	{
@@ -47,6 +46,10 @@ class TwitterImport {
 					'profile_image' => $tweet['profile_image'],
 					'image' => $image
 				]);
+			} elseif ( count($this->feed) == 1 ) {
+				// Exceptions for single Tweet Imports
+				if ( $this->exists($tweet['id']) ) throw new \Kickapoo\Exceptions\PostExistsException;
+				if ( $tweet['is_retweet'] ) throw new \Kickapoo\Exceptions\TweetRetweetException;
 			}
 		}
 	}
@@ -63,7 +66,6 @@ class TwitterImport {
 
 	/**
 	* Import the Image if there is one
-	* @todo apply any crops needed from design
 	*/
 	private function importImage($image, $id)
 	{

@@ -18,6 +18,7 @@ class InstagramImport {
 		$this->doImport();
 	}
 
+
 	/**
 	* Import the Instagram Posts
 	* @todo copy images locally
@@ -47,6 +48,8 @@ class InstagramImport {
 						'latitude' => ( isset($gram['latitude']) ) ? $gram['latitude'] : null,
 						'longitude' => ( isset($gram['longitude']) ) ? $gram['longitude'] : null
 					]);
+				} elseif ( count($this->feed) == 1 ){
+					if ( $this->exists($gram['id']) ) throw new \Kickapoo\Exceptions\PostExistsException;
 				}
 			}
 		endif;
