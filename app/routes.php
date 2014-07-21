@@ -37,13 +37,11 @@ Route::group(['before'=>'auth'], function()
 	Route::post('delete-post', ['as'=>'delete_post', 'uses'=>'TrashController@deletePost']);
 
 	// Imports
-	Route::get('doimport', ['as'=>'do_import', 'uses'=>'ImportController@doImport']);
-	Route::post('import-single', ['as'=>'import_single', 'uses'=>'ImportController@importSingle']);
+	Route::get('do-import', ['as'=>'do_import', 'uses'=>'ImportController@doImport']);
+	Route::post('import-single', ['as'=>'import_single', 'uses'=>'ImportController@importPost']);
 });
 
 
 /**
 * Social Feeds
 */
-//Route::get('/feed/tweet', ['as'=>'single_tweet', 'uses'=>'FeedController@tweet']);
-//Route::get('/feed/gram', ['as'=>'single_gram', 'uses'=>'FeedController@gram']);

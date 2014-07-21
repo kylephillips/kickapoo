@@ -2,6 +2,8 @@
 
 use Kickapoo\SocialFeed\TwitterFeedSingle as Tweet;
 use Kickapoo\SocialFeed\InstagramFeedSingle as Gram;
+use Kickapoo\SocialImport\TwitterImport;
+use Kickapoo\SocialImport\InstagramImport;
 
 class SingleImport {
 
@@ -9,6 +11,12 @@ class SingleImport {
 	* Error
 	*/
 	public $error;
+
+
+	/**
+	* Imported Item
+	*/
+	public $imported_item;
 
 
 	/**
@@ -34,6 +42,7 @@ class SingleImport {
 			return false;
 		}
 
+		$this->imported_item = $feed;
 		return true;
 
 	}
@@ -59,6 +68,7 @@ class SingleImport {
 			return false;
 		}
 
+		$this->imported_item = $feed;
 		return true;
 
 	}

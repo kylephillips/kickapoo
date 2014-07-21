@@ -35,23 +35,39 @@ class ImportController extends BaseController {
 	/**
 	* Import a single post
 	*/
-	public function importSingle()
+	public function importPost()
 	{
 		$type = Input::get('type');
 
 		if ( $type == 'twitter' ){
 			if ( $this->single_import->importTweet(Input::get('id')) ){
-				return Response::json(['status'=>'success', 'message'=>'Tweet has been imported successfully. Refresh the page to approve the tweet.']);
+				return Response::json([
+					'status'=>'success', 
+					'message'=>'Tweet imported successfully.', 
+					'post'=>$this->single_import->imported_item, 
+					'post_id'=>Input::get('id')
+				]);
 			} else {
 				return Response::json(['status'=>'error','message'=>$this->single_import->error]);
 			}
 		} else {
 			if ( $this->single_import->importGram(Input::get('id')) ){
-				return Response::json(['status'=>'success', 'message'=>'Instagram post has been imported successfully. Refresh the page to approve the post.']);
+				return Response::json([
+					'status'=>'success', 
+					'message'=>'Instagram post imported successfully.',
+					'post' => $this->single_import->imported_item,
+					'post_id' => Input::get('id')
+				]);
 			} else {
 				return Response::json(['status'=>'error','message'=>$this->single_import->error]);
 			}
 		}
+	}
+
+	public function tweet()
+	{
+		$this->single_import->importTweet('491316161804374016');
+		dd($this->single_import->imported_item);
 	}
 
 

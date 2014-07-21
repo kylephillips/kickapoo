@@ -30,10 +30,10 @@
 					<img src="{{URL::asset('assets/images/loading-small-blue.gif')}}" alt="loading" />
 				</span>
 				<button class="btn btn-mini btn-default run-import">
-					<i class="icon-box-add"></i> Run Import
+					<i class="icon-loop2"></i> Run Import
 				</button>
 				<button class="btn btn-mini btn-default import-single-toggle">
-					Import Single
+					<i class="icon-box-add"></i> Import Single
 				</button>
 				<a href="{{URL::route('post_trash')}}" class="btn btn-mini btn-default trash-toggle">
 					<i class="icon-remove"></i> Trash
@@ -275,6 +275,9 @@ function approvePost(id, type, item)
 	});
 }
 
+/**
+* Add Approved Status to newly approved post
+*/
 function addApprovedStatus(id, item, type, post)
 {
 	var out = '<div class="status-approved"><p><i class="icon-checkmark"></i> Approved ' + post.approval_date + '</p><a href="#" class="remove-approved" data-id="' + id + '" data-type="' + type + '" data-postid="' + post.postid + '">Unapprove and Trash</a></div>';
@@ -314,11 +317,11 @@ function importSingle(type, id)
 			type: type
 		},
 		success: function(data){
-			console.log(data);
 			if ( data.status === 'success' ){
-				$('#single-success').text(data.message);
-				$('#single-success').show();
+				$('#single-success').text(data.message).show();
 				$('.import-single').removeAttr('disabled');
+				if ( type == 'twitter' ) { addNewTweet(data.post[0], data.post_id); }
+				if ( type == 'instagram' ) { addNewGram(data.post[0], data.post_id); }
 			} else {
 				$('#single-error').text(data.message);
 				$('#single-error').show();
@@ -327,6 +330,38 @@ function importSingle(type, id)
 		}
 	});
 }
+
+/**
+* Add a newly imported tweet to the feed
+*/
+function addNewTweet(tweet, id)
+{
+	var out = '<li class="tweet post"><div class="content"><div class="avatar"><img src="' + tweet.profile_image + '" alt="user icon"></div><div class="main"><ul class="info"><li><a href="https://twitter.com/' + tweet.screen_name + '/status/' + id + '" target="_blank"><i class="icon-twitter"></i></a></li><li>' + tweet.retweet_count + ' <i class="icon-loop"></i></li><li>' + tweet.favorite_count + ' <i class="icon-star"></i></li></ul><strong><a href="http://twitter.com/' + tweet.screen_name + '" target="_blank">' + tweet.screen_name + '</a></strong><span class="date">DATE HERE</span><p>' + tweet.text + '</p>';
+	if ( tweet.image ){
+		out += '<div class="image"><img src="/assets/uploads/twitter_images/' + tweet.image + '" /></div>';
+	}
+	out += '</div></div><div class="status"><ul><li><a href="#" class="remove" data-id="' + id + '" data-type="twitter"><i class="icon-remove"></i> Trash</a></li><li><a href="#" class="approve" data-id="' + id + '" data-type="twitter"><i class="icon-checkmark"></i> Approve</a></li></ul></div></li>';
+	$('#postfeed').prepend(out);
+}
+
+/**
+* Add a new imported gram to the feed
+*/
+function addNewGram(gram, id)
+{
+	var out = '<li class="gram post"><div class="content"><div class="avatar"><img src="' + gram.profile_image + '" alt="user icon"></div><div class="main"><ul class="info"><li><a href="' + gram.link + '" target="_blank"><i class="icon-instagram"></i></a></li><li>' + gram.like_count +' <i class="icon-heart"></i></li></ul><strong><a href="http://instagram.com/' + gram.screen_name + '" target="_blank">' + gram.screen_name + '</a></strong><span class="date">DATE HERE</span>';
+	if ( gram.text ){
+		out += '<p>' + gram.text + '</p>';
+	}
+	if ( gram.type === 'image' ){
+		out += '<div class="image"><img src="' + gram.image + '" /></div>';
+	} else {
+		out += '<video width="480" height="480" controls><source src="' + gram.video_url + '" type="video/mp4"/></video>';
+	}
+	out += '</div><div class="status"><ul><li><a href="#" class="remove" data-id="' + gram.id + '" data-type="instagram"><i class="icon-remove"></i> Trash</a></li><li><a href="#" class="approve" data-id="' + gram.id + '" data-type="instagram"><i class="icon-checkmark"></i> Approve</a></li></ul></div></div></li>';
+	$('#postfeed').prepend(out);
+}
+
 
 $(document).on('click', '.remove', function(e){
 	e.preventDefault();
