@@ -85,7 +85,7 @@ class TwitterFeed implements SocialFeed {
 		try {
 			$feed = json_decode($response->getBody());
 			$this->feed = $feed->statuses;
-		} catch (\Guzzle\Http\Exception\ServerErrorResponseException $e) {
+		} catch (\Exception $e) {
 			Error::create(['time' => date("Y-m-d H:i:s"), 'message' => $e]);
 			return false;
 		}

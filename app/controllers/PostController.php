@@ -125,27 +125,6 @@ class PostController extends \BaseController {
 
 
 	/**
-	 * Remove the post from the list of pending approval
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function removePost()
-	{
-		if ( Request::ajax() ) {
-			$post = ( Input::get('type') == 'twitter' ) ? Tweet::findOrFail(Input::get('id')) : Gram::findOrFail(Input::get('id'));
-			$post->approved = 0;
-			$post->save();
-			if ( Input::get('postid') ){
-				$post = Post::findOrFail(Input::get('postid'));
-				$post->delete();
-			}
-			return Response::json('success');
-		}
-	}
-
-
-	/**
 	* Update the social search terms
 	*/
 	public function updateSearchTerms()
