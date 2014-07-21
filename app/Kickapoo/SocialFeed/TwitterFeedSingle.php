@@ -69,7 +69,6 @@ class TwitterFeedSingle extends SocialFeed {
 		$request = $twitter_client->get('statuses/show.json');
 		$request->getQuery()->set('id', $this->search_term);
 		
-
 		try {
 			$response = $request->send();
 			$feed = json_decode($response->getBody());
@@ -87,18 +86,19 @@ class TwitterFeedSingle extends SocialFeed {
 	*/
 	public function formatFeed()
 	{
-		$this->feed_formatted['id'] = $this->feed->id;
-		$this->feed_formatted['text'] = Parse::tweet($this->feed->text);
-		$this->feed_formatted['is_retweet'] = $this->feed->retweeted;
-		$this->feed_formatted['date'] = $this->feed->created_at;
-		$this->feed_formatted['language_code'] = $this->feed->lang;
-		$this->feed_formatted['retweet_count'] = $this->feed->retweet_count;
-		$this->feed_formatted['favorite_count'] = $this->feed->favorite_count;
-		$this->feed_formatted['screen_name'] = $this->feed->user->screen_name;
-		$this->feed_formatted['profile_image'] = $this->feed->user->profile_image_url;
-		$this->feed_formatted['location'] = $this->feed->user->location;
-		$this->feed_formatted['media'] = ( isset($this->feed->entities->media) ) ? $this->feed->entities->media[0]->media_url : null;
-		$this->feed_formatted['coordinates'] = ( isset($this->feed->coordinates) ) ? $this->feed->coordinates->coordinates : null;
+		if ( !$this->feed ) return false;
+		$this->feed_formatted[0]['id'] = $this->feed->id;
+		$this->feed_formatted[0]['text'] = Parse::tweet($this->feed->text);
+		$this->feed_formatted[0]['is_retweet'] = $this->feed->retweeted;
+		$this->feed_formatted[0]['date'] = $this->feed->created_at;
+		$this->feed_formatted[0]['language_code'] = $this->feed->lang;
+		$this->feed_formatted[0]['retweet_count'] = $this->feed->retweet_count;
+		$this->feed_formatted[0]['favorite_count'] = $this->feed->favorite_count;
+		$this->feed_formatted[0]['screen_name'] = $this->feed->user->screen_name;
+		$this->feed_formatted[0]['profile_image'] = $this->feed->user->profile_image_url;
+		$this->feed_formatted[0]['location'] = $this->feed->user->location;
+		$this->feed_formatted[0]['media'] = ( isset($this->feed->entities->media) ) ? $this->feed->entities->media[0]->media_url : null;
+		$this->feed_formatted[0]['coordinates'] = ( isset($this->feed->coordinates) ) ? $this->feed->coordinates->coordinates : null;
 	}
 
 

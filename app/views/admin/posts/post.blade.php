@@ -42,6 +42,8 @@
 		</div>
 
 		<!-- Single Import Form -->
+		<div id="single-error" class="alert alert-danger" style="display:none;"></div>
+		<div id="single-success" class="alert alert-success" style="display:none;"></div>
 		<div class="single-form">
 			{{Form::open(['url'=>''])}}
 				<span class="buttons">
@@ -60,7 +62,7 @@
 				<div class="inputs">
 					{{Form::text('id', null, ['class'=>'social-id', 'placeholder'=>'Tweet ID'])}}
 					<input type="hidden" id="import-type" value="twitter" />
-					<button id="single-submit" class="btn btn-mini btn-default">Import</button>
+					<button id="single-submit" class="btn btn-mini btn-default import-single">Import</button>
 				</div>
 			{{Form::close()}}
 		</div><!-- .single-form -->
@@ -299,6 +301,33 @@ function removeApproved(id, type, item, postid)
 	});
 }
 
+/**
+* Import a single post
+*/
+function importSingle(type, id)
+{
+	$.ajax({
+		url: '{{URL::route('import_single')}}',
+		method: 'POST',
+		data: {
+			id: id,
+			type: type
+		},
+		success: function(data){
+			console.log(data);
+			if ( data.status === 'success' ){
+				$('#single-success').text(data.message);
+				$('#single-success').show();
+				$('.import-single').removeAttr('disabled');
+			} else {
+				$('#single-error').text(data.message);
+				$('#single-error').show();
+				$('.import-single').removeAttr('disabled');
+			} 
+		}
+	});
+}
+
 $(document).on('click', '.remove', function(e){
 	e.preventDefault();
 	var id = $(this).data('id');
@@ -333,6 +362,16 @@ $(document).on('click', '.run-import', function(e){
 	$(this).attr('disabled', 'disabled');
 	$(this).text('Importing');
 	doImport();
+});
+
+// Import Single Button
+$(document).on('click', '.import-single', function(e){
+	e.preventDefault();
+	$(this).attr('disabled', 'disabled');
+	$('#single-error, #single-success').hide();
+	var type = $('input[name="social-type"]:checked').val();
+	var id = $('.social-id').val();
+	importSingle(type, id);
 });
 
 // Update single import label & help modal on change
