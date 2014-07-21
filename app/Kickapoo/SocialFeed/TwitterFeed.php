@@ -71,22 +71,21 @@ class TwitterFeed extends SocialFeed {
 	*/
 	public function getFeed()
 	{
-		$twitter_client = new Client('https://api.twitter.com/1.1');
-		$twitter_client->addSubscriber(new OauthPlugin(array(
-			'consumer_key' => $this->credentials['api_key'],
-			'consumer_secret' => $this->credentials['api_secret'],
-			'token' => $this->credentials['access_token'],
-			'token_secret' => $this->credentials['access_token_secret']
-		)));
-		$request = $twitter_client->get('search/tweets.json');
-		$request->getQuery()->set('q', $this->search_term);
-		$response = $request->send();
-
 		try {
+			$twitter_client = new Client('https://api.twitter.com/1.1');
+			$twitter_client->addSubscriber(new OauthPlugin(array(
+				'consumer_key' => $this->credentials['api_key'],
+				'consumer_secret' => $this->credentials['api_secret'],
+				'token' => $this->credentials['access_token'],
+				'token_secret' => $this->credentials['access_token_secret']
+			)));
+			$request = $twitter_client->get('search/tweets.json');
+			$request->getQuery()->set('q', $this->search_term);
+			$response = $request->send();
 			$feed = json_decode($response->getBody());
 			$this->feed = $feed->statuses;
 		} catch (\Exception $e) {
-			Error::create(['time' => date("Y-m-d H:i:s"), 'message' => $e]);
+			Error::create(['time' => date("Y-m-d H:i:s"), 'message' => $e->getMessage()]);
 			return false;
 		}
 	}

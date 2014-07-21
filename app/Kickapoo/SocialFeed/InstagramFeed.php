@@ -69,15 +69,15 @@ class InstagramFeed extends SocialFeed {
 	*/
 	public function getFeed()
 	{
-		$instagram_client = new Client('https://api.instagram.com/v1/tags');
-		$request = $instagram_client->get($this->search_term . '/media/recent');
-		$request->getQuery()->set('client_id', $this->credentials['client_id']);
-		$response = $request->send();
 		try {
+			$instagram_client = new Client('https://api.instagram.com/v1/tags');
+			$request = $instagram_client->get($this->search_term . '/media/recent');
+			$request->getQuery()->set('client_id', $this->credentials['client_id']);
+			$response = $request->send();
 			$feed = json_decode($response->getBody());
 			$this->feed = $feed->data;
 		} catch (\Guzzle\Http\Exception\ServerErrorResponseException $e) {
-			Error::create(['time' => date("Y-m-d H:i:s"), 'message' => $e]);
+			Error::create(['time' => date("Y-m-d H:i:s"), 'message' => $e->getMessage()]);
 			return false;
 		}
 	}

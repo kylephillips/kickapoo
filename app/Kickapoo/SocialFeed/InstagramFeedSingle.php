@@ -2,9 +2,7 @@
 
 use \Guzzle\Http\Client;
 use \Guzzle\Plugin\Oauth\OauthPlugin;
-use \Config;
 use \Error;
-use \DB;
 use \Kickapoo\Libraries\Parse;
 
 class InstagramFeedSingle extends SocialFeed {
@@ -60,15 +58,16 @@ class InstagramFeedSingle extends SocialFeed {
 	*/
 	public function getFeed()
 	{
-		$instagram_client = new Client('https://api.instagram.com//');
-		$request = $instagram_client->get('v1/media/shortcode/' . $this->search_term);
-		$request->getQuery()->set('client_id', $this->credentials['client_id']);
-		$response = $request->send();
 		try {
+			$instagram_client = new Client('https://api.instagram.com//');
+			$request = $instagram_client->get('v1/media/shortcode/' . $this->search_term);
+			$request->getQuery()->set('client_id', $this->credentials['client_id']);
+			$response = $request->send();
 			$feed = json_decode($response->getBody());
 			$this->feed = $feed->data;
-		} catch (\Guzzle\Http\Exception\ServerErrorResponseException $e) {
-			Error::create(['time' => date("Y-m-d H:i:s"), 'message' => $e]);
+		} catch (\Exception $e) {
+			$this->feed = null;
+			Error::create(['time' => date("Y-m-d H:i:s"), 'message' => $e->getMessage()]);
 			return false;
 		}
 	}
