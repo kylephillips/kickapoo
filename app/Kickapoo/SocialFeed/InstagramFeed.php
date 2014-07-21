@@ -7,7 +7,7 @@ use \Error;
 use \DB;
 use \Kickapoo\Libraries\Parse;
 
-class InstagramFeed implements SocialFeed {
+class InstagramFeed extends SocialFeed {
 
 	/**
 	* API Credentials

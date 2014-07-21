@@ -2,12 +2,9 @@
 
 use \Guzzle\Http\Client;
 use \Guzzle\Plugin\Oauth\OauthPlugin;
-use \Config;
-use \Error;
-use \DB;
 use \Kickapoo\Libraries\Parse;
 
-class TwitterFeed extends SocialFeed {
+class TwitterFeedSingle extends SocialFeed {
 
 	/**
 	* API Credentials
@@ -35,10 +32,10 @@ class TwitterFeed extends SocialFeed {
 	private $feed_formatted;
 
 
-	public function __construct()
+	public function __construct($search_term)
 	{
 		$this->setCredentials();
-		$this->setSearch();
+		$this->search_term = $search_term;
 		$this->getFeed();
 		$this->formatFeed();
 	}
@@ -58,15 +55,6 @@ class TwitterFeed extends SocialFeed {
 	}
 
 	/**
-	* Set the Search Term
-	*/
-	public function setSearch()
-	{
-		$this->search_term = DB::table('settings')->where('key', 'twitter_search')->pluck('value');
-	}
-
-
-	/**
 	* Get the feed from the API
 	*/
 	public function getFeed()
@@ -78,40 +66,39 @@ class TwitterFeed extends SocialFeed {
 			'token' => $this->credentials['access_token'],
 			'token_secret' => $this->credentials['access_token_secret']
 		)));
-		$request = $twitter_client->get('search/tweets.json');
-		$request->getQuery()->set('q', $this->search_term);
-		$response = $request->send();
+		$request = $twitter_client->get('statuses/show.json');
+		$request->getQuery()->set('id', $this->search_term);
+		
 
 		try {
+			$response = $request->send();
 			$feed = json_decode($response->getBody());
-			$this->feed = $feed->statuses;
-		} catch (\Exception $e) {
-			Error::create(['time' => date("Y-m-d H:i:s"), 'message' => $e]);
+		} 
+		catch (\Exception $e) {
+			\Error::create(['time' => date("Y-m-d H:i:s"), 'message' => $e]);
 			return false;
 		}
-	}
 
+		$this->feed = $feed;
+	}
 
 	/**
 	* Format the feed into an array
 	*/
 	public function formatFeed()
 	{
-		foreach ( $this->feed as $key=>$item )
-		{
-			$this->feed_formatted[$key]['id'] = $item->id;
-			$this->feed_formatted[$key]['text'] = Parse::tweet($item->text);
-			$this->feed_formatted[$key]['is_retweet'] = ( isset($item->retweeted_status) ) ? true : false;
-			$this->feed_formatted[$key]['date'] = $item->created_at;
-			$this->feed_formatted[$key]['language_code'] = $item->lang;
-			$this->feed_formatted[$key]['retweet_count'] = $item->retweet_count;
-			$this->feed_formatted[$key]['favorite_count'] = $item->favorite_count;
-			$this->feed_formatted[$key]['screen_name'] = $item->user->screen_name;
-			$this->feed_formatted[$key]['profile_image'] = $item->user->profile_image_url;
-			$this->feed_formatted[$key]['location'] = $item->user->location;
-			$this->feed_formatted[$key]['media'] = ( isset($item->entities->media) ) ? $item->entities->media[0]->media_url : null;
-			$this->feed_formatted[$key]['coordinates'] = ( isset($item->coordinates) ) ? $item->coordinates->coordinates : null;
-		}
+		$this->feed_formatted['id'] = $this->feed->id;
+		$this->feed_formatted['text'] = Parse::tweet($this->feed->text);
+		$this->feed_formatted['is_retweet'] = $this->feed->retweeted;
+		$this->feed_formatted['date'] = $this->feed->created_at;
+		$this->feed_formatted['language_code'] = $this->feed->lang;
+		$this->feed_formatted['retweet_count'] = $this->feed->retweet_count;
+		$this->feed_formatted['favorite_count'] = $this->feed->favorite_count;
+		$this->feed_formatted['screen_name'] = $this->feed->user->screen_name;
+		$this->feed_formatted['profile_image'] = $this->feed->user->profile_image_url;
+		$this->feed_formatted['location'] = $this->feed->user->location;
+		$this->feed_formatted['media'] = ( isset($this->feed->entities->media) ) ? $this->feed->entities->media[0]->media_url : null;
+		$this->feed_formatted['coordinates'] = ( isset($this->feed->coordinates) ) ? $this->feed->coordinates->coordinates : null;
 	}
 
 
@@ -131,7 +118,5 @@ class TwitterFeed extends SocialFeed {
 	{
 		return $this->feed_formatted;
 	}
-
-
 
 }

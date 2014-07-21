@@ -1,14 +1,13 @@
 <?php
 use Kickapoo\SocialImport\Import;
-use Kickapoo\SocialFeedSingle\Tweet;
+use Kickapoo\SocialFeed\TwitterFeedSingle as Tweet;
 
 class FeedController extends BaseController {
 
-	protected $tweet_feed;
 
-	public function __construct(Tweet $tweet_feed)
+	public function __construct()
 	{
-		$this->tweet_feed = $tweet_feed;
+		
 	}
 
 	/**
@@ -27,7 +26,11 @@ class FeedController extends BaseController {
 	*/
 	public function tweet()
 	{
-		$feed = $this->tweet_feed->feed('491000645302767616');
+		$twitter_feed = new Tweet('491236743224377346');
+		$feed = $twitter_feed->formatted();
+		
+		if (!$feed) dd('not found');
+
 		dd($feed);
 	}
 
