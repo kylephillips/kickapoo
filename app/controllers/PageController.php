@@ -30,7 +30,7 @@ class PageController extends BaseController {
 	*/
 	public function getAdmin()
 	{
-		return 'admin home';
+		return Redirect::route('admin.post.index');
 	}
 
 }
