@@ -9,11 +9,11 @@ class SettingsSeeder extends Seeder {
 		DB::table('settings')->delete();
 		Setting::create([
 			'key' => 'twitter_search',
-			'value' => '#worldcup'
+			'value' => '#kickapoo'
 		]);
 		Setting::create([
 			'key' => 'instagram_search',
-			'value' => 'worldcup'
+			'value' => 'kickapoo'
 		]);
 	}
 
