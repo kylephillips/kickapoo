@@ -52,4 +52,15 @@ class PostRepository {
 		return $posts;
 	}
 
+	/**
+	* Get Trash count
+	*/
+	public function trashCount()
+	{
+		$tweets = Tweet::with('post')->where('approved', 0)->count();
+		$grams = Gram::with('post')->where('approved', 0)->count();
+		$count = $tweets + $grams;		
+		return $count;
+	}
+
 }

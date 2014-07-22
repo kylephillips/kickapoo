@@ -44,7 +44,7 @@ Route::group(['before'=>'auth'], function()
 	Route::post('import-single', ['as'=>'import_single', 'uses'=>'ImportController@importPost']);
 });
 
-
 /**
-* Social Feeds
+* View Composers
 */
+View::composer('admin.partials.nav', 'Kickapoo\ViewComposers\AdminNavComposer');
