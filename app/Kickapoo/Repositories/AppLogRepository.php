@@ -23,7 +23,11 @@ class AppLogRepository {
 		} catch (\Illuminate\Database\Eloquent\ModelNotFoundException $e){
 			return 'No imports yet.';
 		}
-		return $this->formatDate($last_import->created_at);
+		$data = [
+			'date' => $this->formatDate($last_import->created_at), 
+			'count' => $last_import->description
+		];
+		return $data;
 	}
 
 	/**

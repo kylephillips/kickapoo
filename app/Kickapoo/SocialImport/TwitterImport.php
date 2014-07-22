@@ -9,15 +9,25 @@ use \Trash;
 */
 class TwitterImport {
 
+	
 	/**
 	* The Feed to Import
 	* @var array
 	*/
 	private $feed;
 
+	
+	/**
+	* Import Count
+	* @var int
+	*/
+	private $import_count;
+
+
 	public function __construct($feed)
 	{
 		$this->feed = $feed;
+		$this->import_count = 0;
 		$this->doImport();
 	}
 
@@ -48,6 +58,8 @@ class TwitterImport {
 					'profile_image' => $tweet['profile_image'],
 					'image' => $image
 				]);
+
+				$this->import_count++;
 			} elseif ( count($this->feed) == 1 ) {
 				if ( $this->exists($tweet['id']) ) throw new \Kickapoo\Exceptions\PostExistsException;
 				if ( $tweet['is_retweet'] ) throw new \Kickapoo\Exceptions\TweetRetweetException;
@@ -92,6 +104,16 @@ class TwitterImport {
 		$upload = Image::make($image_file)->save($destination, 80);
 		
 		return $filename;
+	}
+
+	
+	/**
+	* Get the Import Count
+	* @return int
+	*/
+	public function getCount()
+	{
+		return $this->import_count;
 	}
 
 }

@@ -24,7 +24,7 @@
 		{{Form::close()}}
 
 		<div class="alert alert-info">
-			Last Import: {{$last_import}} 
+			Last Import: <strong>{{$last_import['count']}}</strong> items on {{$last_import['date']}} 
 			<span class="pull-right import-buttons">
 				<span id="import-loading">
 					<img src="{{URL::asset('assets/images/loading-small-blue.gif')}}" alt="loading" />
@@ -40,6 +40,8 @@
 				</a>
 			</span>
 		</div>
+
+		<div class="alert alert-info" id="import-alert" style="display:none;"></div>
 
 		<!-- Single Import Form -->
 		<div class="single-form">
@@ -261,8 +263,15 @@ function doImport()
 	$.ajax({
 		url: '{{URL::route('do_import')}}',
 		success: function(data){
+			console.log(data);
+			$('#import-loading').hide();
+			$('.run-import').removeAttr('disabled');
 			if ( data.status == 'success' ){
-				window.location.reload();
+				if ( data.import_count === 0 ){
+					$('#import-alert').text('There were no new items to import').show();
+				} else {
+					window.location.reload();
+				}
 			}
 		}
 	});

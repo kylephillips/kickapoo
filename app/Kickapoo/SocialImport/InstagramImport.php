@@ -6,6 +6,7 @@ use \Trash;
 
 class InstagramImport {
 
+
 	/**
 	* The Feed to Import
 	* @var array
@@ -13,9 +14,17 @@ class InstagramImport {
 	private $feed;
 
 
+	/**
+	* Import Count
+	* @var int
+	*/
+	private $import_count;
+
+
 	public function __construct($feed)
 	{
 		$this->feed = $feed;
+		$this->import_count = 0;
 		$this->doImport();
 	}
 
@@ -49,6 +58,8 @@ class InstagramImport {
 						'latitude' => ( isset($gram['latitude']) ) ? $gram['latitude'] : null,
 						'longitude' => ( isset($gram['longitude']) ) ? $gram['longitude'] : null
 					]);
+
+					$this->import_count++;
 				} elseif ( count($this->feed) == 1 ){
 					if ( $this->exists($gram['id']) ) throw new \Kickapoo\Exceptions\PostExistsException;
 					if ( $this->trashed($gram['id']) ) throw new \Kickapoo\Exceptions\PostTrashedException;
@@ -94,6 +105,16 @@ class InstagramImport {
 		$upload = Image::make($image_file)->save($destination, 80);
 		
 		return $filename;
+	}
+
+
+	/**
+	* Get the Import Count
+	* @return int
+	*/
+	public function getCount()
+	{
+		return $this->import_count;
 	}
 
 }

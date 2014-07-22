@@ -26,8 +26,9 @@ class ImportController extends BaseController {
 	public function doImport()
 	{
 		if ( Request::ajax() ){
-			new Import;
-			return Response::json(['status' => 'success']);
+			$import = new Import;
+			$count = $import->getCount();
+			return Response::json(['status' => 'success', 'import_count' => $count]);
 		}
 	}
 
