@@ -425,7 +425,10 @@ $(document).on('click', '.import-single-toggle', function(){
 	$('.single-form').toggle();
 	$(this).toggleClass('active');
 });
+</script>
 
+@if($num_posts > 4)
+<script>
 // Infinite Scroll
 $(function() {
 	$('.scroll').jscroll({
@@ -438,6 +441,6 @@ $(function() {
 		}
 	});
 });
-
 </script>
+@endif
 @stop

@@ -54,12 +54,14 @@ class PostController extends \BaseController {
 		$currentPage = Input::get('page', 1) - 1;
 		$current_posts = array_slice($posts->toArray(), $currentPage * $perPage, $perPage);
 		$posts = Paginator::make($current_posts, count($posts), $perPage);
+		$num_posts = count($posts);
 
 		return View::make('admin.posts.post')
 			->with('twitter_search', $twitter_search)
 			->with('instagram_search', $instagram_search)
 			->with('posts', $posts)
-			->with('last_import', $last_import);
+			->with('last_import', $last_import)
+			->with('num_posts', $num_posts);
 	}
 
 
