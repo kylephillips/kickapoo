@@ -1,6 +1,18 @@
 <?php
 
+use \Kickapoo\Repositories\UserRepository;
+
 class BanController extends \BaseController {
+
+	/**
+	* User Repo
+	*/
+	protected $user_repo;
+
+	public function __construct(UserRepository $user_repo)
+	{
+		$this->user_repo = $user_repo;
+	}
 
 	/**
 	 * Display a listing of the resource.
@@ -9,23 +21,14 @@ class BanController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$banned_users = $this->user_repo->getBanned();
+		return View::make('admin.banned.index')
+			->with('banned_users', $banned_users);
 	}
 
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
+	 * Ban a user.
 	 *
 	 * @return Response
 	 */
@@ -40,52 +43,14 @@ class BanController extends \BaseController {
 		}
 	}
 
-
 	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
+	* Unban a user.
+	*/
+	public function unban()
 	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
+		$banned = Banned::where('id', Input::get('id'));
+		$banned->delete();
+		return Response::json(['status'=>'success']);
 	}
 
 

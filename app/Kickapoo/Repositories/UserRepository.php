@@ -2,6 +2,7 @@
 
 use \User;
 use \Group;
+use \Banned;
 
 class UserRepository {
 
@@ -32,6 +33,14 @@ class UserRepository {
 			$all_groups[$group->id] = $group->title;
 		}
 		return $all_groups;
+	}
+
+	/**
+	* Get all Banned
+	*/
+	public function getBanned()
+	{
+		return Banned::get();
 	}
 
 }

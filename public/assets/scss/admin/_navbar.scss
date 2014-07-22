@@ -6,6 +6,7 @@
 	background: linear-gradient($green-dark, darken($green-dark, 5%));
 	color: $white;
 	border: 0;
+	border-radius: 0;
 	.navbar-nav li {
 		a {
 			color: $white;

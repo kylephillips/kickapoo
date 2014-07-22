@@ -34,7 +34,6 @@
 
 	@if(Auth::check())
 	@include('admin.partials.nav')
-	<div class="navclear"></div>
 	@endif
 
 	@yield('content')
@@ -47,5 +46,13 @@
 	<script src="{{URL::asset('assets/js/jquery.jscroll.min.js')}}"></script>
 
 	@yield('footercontent')
+	<script>
+	$(window).load(function(){
+		function hideFlash(){
+			$('.flash-message').addClass('moveup');
+		}
+		window.setTimeout(hideFlash, 5000);
+	});
+	</script>
 </body>
 </html>

@@ -45,7 +45,8 @@ Route::group(['before'=>'auth'], function()
 	Route::post('import-single', ['as'=>'import_single', 'uses'=>'ImportController@importPost']);
 
 	// User Banning
-	Route::resource('admin/ban', 'BanController');
+	Route::get('admin/ban/unban', ['as'=>'unban', 'uses'=>'BanController@unban']);
+	Route::resource('admin/ban', 'BanController', ['only'=>['index','store']]);
 });
 
 /**

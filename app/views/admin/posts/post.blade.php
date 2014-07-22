@@ -100,7 +100,7 @@
 						@if($post['banned'])
 							<span class="ban-user banned">Banned</span>
 						@else
-							<a href="#" class="ban-user" data-user="{{$post['screen_name']}}" data-type="instagram" data-id="{{$post['twitter_id']}}">Ban this User</a>
+							<a href="#" class="ban-user" data-user="{{$post['screen_name']}}" data-type="twitter" data-id="{{$post['twitter_id']}}">Ban this User</a>
 						@endif
 						<span class="date">{{$date}}</span>
 						<p>{{$post['text']}}</p>

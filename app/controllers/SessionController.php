@@ -16,6 +16,7 @@ class SessionController extends BaseController {
 	{
 		$remember = ( Input::get('remember') ) ? true : false;
 		if ( Auth::attempt(['email'=>Input::get('email'), 'password'=>Input::get('password')], $remember) ){
+			Session::flash('flashmessage', 'You are now logged in');
 			return Redirect::route('admin_index')
 				->with('success', 'You are now logged in');
 		}

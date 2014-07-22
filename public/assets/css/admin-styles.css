@@ -332,6 +332,7 @@ footer .container {
 .import-buttons #import-loading {
   display: none; }
   .import-buttons #import-loading img {
+    margin-top: -6px;
     float: left;
     width: auto; }
 
@@ -624,3 +625,30 @@ footer .container {
   padding: 10px; }
   .admin-posts.trash .status ul li {
     padding: 0; }
+
+.banned-users {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #ffffff; }
+  .banned-users li {
+    padding: 8px;
+    zoom: 1;
+    font-size: 16px; }
+    .banned-users li:before, .banned-users li:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */ }
+    .banned-users li:after {
+      clear: both; }
+    .banned-users li:nth-child(even) {
+      background-color: #ebebeb; }
+    .banned-users li i {
+      color: #035d32;
+      font-size: 22px;
+      position: relative;
+      top: 5px;
+      margin-right: 10px; }
+    .banned-users li .screenname {
+      color: #035d32; }

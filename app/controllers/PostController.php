@@ -66,17 +66,6 @@ class PostController extends \BaseController {
 
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-
-	/**
 	 * Store an approved post
 	 *
 	 */
@@ -99,30 +88,6 @@ class PostController extends \BaseController {
 
 		$approval_date = date('D, M jS y - g:i a', strtotime($newpost->created_at));
 		return Response::json(['status' => 'success', 'approval_date'=>$approval_date, 'postid'=>$newpost->id]);
-	}
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
 	}
 
 
