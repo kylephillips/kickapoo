@@ -35,7 +35,10 @@
 				</a>
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="{{URL::route('admin.user.edit', ['id'=>Auth::user()->id])}}">Update Profile</a></li>
-					@if(Auth::user()->group_id == 1)<li><a href="/admin/user">Users</a></li>@endif
+					@if(Auth::user()->group_id == 1)
+						<li><a href="/admin/user">Users</a></li>
+						<li><a href="{{URL::route('admin.settings.index')}}">Site Settings</a></li>
+					@endif
 					<li class="divider"></li>
 					<li><a href="/logout">Log Out</a></li>
 				</ul>

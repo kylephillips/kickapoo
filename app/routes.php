@@ -30,6 +30,9 @@ Route::group(['before'=>'auth'], function()
 	// Social Search Terms
 	Route::post('searchterms', ['as'=>'update_search', 'uses'=>'PostController@updateSearchTerms']);
 
+	// Settings Management
+	Route::resource('admin/settings', 'SettingController@index', ['only'=>['update','index']]);
+
 	// Trash
 	Route::get('remove-post', ['as'=>'remove_post', 'uses'=>'TrashController@store']);
 	Route::post('restore-post', ['as'=>'restore_post', 'uses'=>'TrashController@restore']);
