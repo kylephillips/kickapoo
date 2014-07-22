@@ -55,6 +55,9 @@
 		background-color: darken($white, 8%);
 		border-top: 0;
 		li {
+			.ban-user {
+				color: $red;
+			}
 			padding: 30px;
 			&:first-child {
 				border: 0;

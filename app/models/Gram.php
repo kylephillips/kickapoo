@@ -20,4 +20,12 @@ class Gram extends Eloquent {
 		return $this->hasOne('Post', 'gram_id', 'id');
 	}
 
+	/**
+	* Banned Users Relationship
+	*/
+	public function banned()
+	{
+		return $this->belongsTo('banned', 'screen_name', 'screen_name');
+	}
+
 }

@@ -20,4 +20,13 @@ class Tweet extends Eloquent {
 		return $this->hasOne('Post', 'tweet_id', 'id');
 	}
 
+	/**
+	* Banned User Relationship
+	*/
+	public function banned()
+	{
+		return $this->belongsTo('banned', 'screen_name', 'screen_name');
+	}
+
+
 }

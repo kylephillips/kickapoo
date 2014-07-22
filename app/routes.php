@@ -38,10 +38,14 @@ Route::group(['before'=>'auth'], function()
 	Route::post('restore-post', ['as'=>'restore_post', 'uses'=>'TrashController@restore']);
 	Route::get('empty-trash', ['as'=>'empty_trash', 'uses'=>'TrashController@emptyTrash']);
 	Route::post('delete-post', ['as'=>'delete_post', 'uses'=>'TrashController@deletePost']);
+	Route::post('trash-banned', ['as'=>'trash_banned', 'uses'=>'TrashController@trashBanned']);
 
 	// Imports
 	Route::get('do-import', ['as'=>'do_import', 'uses'=>'ImportController@doImport']);
 	Route::post('import-single', ['as'=>'import_single', 'uses'=>'ImportController@importPost']);
+
+	// User Banning
+	Route::resource('admin/ban', 'BanController');
 });
 
 /**

@@ -79,6 +79,24 @@ class TrashController extends BaseController {
 
 
 	/**
+	* Trash all posts by a banned user
+	*/
+	public function trashBanned()
+	{
+		if ( Input::get('type') == 'twitter' ){
+			Tweet::query()->where('screen_name', Input::get('user'))->update(array(
+				'approved' => 0,
+			));
+		} else {
+			Gram::query()->where('screen_name', Input::get('user'))->update(array(
+				'approved' => 0,
+			));
+		}
+		return Response::json(['status'=>'success']);
+	}
+
+
+	/**
 	* Empty the Trash
 	*/
 	public function emptyTrash()

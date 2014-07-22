@@ -96,6 +96,12 @@
 							<li>{{$post['favorite_count']}} <i class="icon-star"></i></li>
 						</ul>
 						<strong><a href="http://twitter.com/{{$post['screen_name']}}" target="_blank">{{$post['screen_name']}}</a></strong>
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+						@if($post['banned'])
+							<span class="ban-user banned">Banned</span>
+						@else
+							<a href="#" class="ban-user" data-user="{{$post['screen_name']}}" data-type="instagram" data-id="{{$post['twitter_id']}}">Ban this User</a>
+						@endif
 						<span class="date">{{$date}}</span>
 						<p>{{$post['text']}}</p>
 						@if($post['image'])
@@ -132,6 +138,12 @@
 							<li>{{$post['like_count']}} <i class="icon-heart"></i></li>
 						</ul>
 						<strong><a href="http://instagram.com/{{$post['screen_name']}}" target="_blank">{{$post['screen_name']}}</a></strong>
+						&nbsp;&nbsp;|&nbsp;&nbsp;
+						@if($post['banned'])
+							<span class="ban-user banned">Banned</span>
+						@else
+							<a href="#" class="ban-user" data-user="{{$post['screen_name']}}" data-type="instagram" data-id="{{$post['instagram_id']}}">Ban this User</a>
+						@endif
 						<span class="date">{{$date}}</span>
 						@if($post['text'])<p>{{$post['text']}}</p>@endif
 						@if($post['type'] == 'image')
@@ -233,6 +245,7 @@ function removePost(id, type, item)
 			type: type
 		},
 		success: function(data){
+			console.log(data);
 			if (data == 'success'){
 				$(item).fadeOut();
 			}
@@ -268,7 +281,6 @@ function approvePost(id, type, item)
 			type : type
 		},
 		success: function(data){
-			console.log(data);
 			$(item).addClass('approved');
 			$(item).find('.status').remove();
 			addApprovedStatus(id, item, type, data);
@@ -363,6 +375,57 @@ function addNewGram(gram, id)
 	$('#postfeed').prepend(out);
 }
 
+/**
+* Add a user to the banned list
+*/
+function banUser(user, type, id, item)
+{
+	$.ajax({
+		url: '{{URL::route('admin.ban.store')}}',
+		method: 'POST',
+		data: {
+			id: user,
+			type: type
+		},
+		success: function(data){
+			$(item).removeAttr('href');
+			removeBanned(id, type, user);
+		}
+	});
+}
+
+/**
+* Remove all posts by a banned user & put them in the trash
+*/
+function removeBanned(id, type, user)
+{
+	trashBanned(type, user)
+	$('.ban-user').each(function(){
+		if ( $(this).data('user') === user ){
+			var item = $(this).parents('.post');
+			$(item).fadeOut();
+		}
+	});
+}
+
+/**
+* Trash all posts by banned user
+*/
+function trashBanned(type, user)
+{
+	$.ajax({
+		url: '{{URL::route('trash_banned')}}',
+		method: 'POST',
+		data: {
+			type: type,
+			user: user
+		},
+		success: function(data){
+			console.log(data);
+		}
+	});
+}
+
 
 $(document).on('click', '.remove', function(e){
 	e.preventDefault();
@@ -425,6 +488,17 @@ $(document).on('click', '.import-single-toggle', function(){
 	$('.single-form').toggle();
 	$(this).toggleClass('active');
 });
+
+// Ban a user & trash all their posts
+$(document).on('click', 'a.ban-user', function(e){
+	e.preventDefault();
+	var user = $(this).data('user');
+	var type = $(this).data('type');
+	var id = $(this).data('id');
+	var item = $(this);
+	banUser(user, type, id, item);
+});
+
 </script>
 
 @if($num_posts > 4)

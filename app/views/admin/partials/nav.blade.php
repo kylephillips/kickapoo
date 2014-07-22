@@ -27,7 +27,7 @@
 				<ul class="dropdown-menu" role="menu">
 					<li><a href="{{URL::route('admin.post.index')}}">Social Feed</a></li>
 					<li><a href="{{URL::route('post_trash')}}">Trash ({{$trashcount}})</a></li>
-					<li><a href="#">Ban a User</a></li>
+					<li><a href="#">Banned Users</a></li>
 				</ul>
 			</li>
 			<li><a href="#">Products</a></li>

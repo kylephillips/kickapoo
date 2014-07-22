@@ -60,7 +60,9 @@ h1 {
   background: -o-linear-gradient(#035d32, #024424);
   background: linear-gradient(#035d32, #024424);
   color: #ffffff;
-  border: 0; }
+  border: 0;
+  -webkit-border-radius: 0;
+          border-radius: 0; }
   .navbar-inverse .navbar-nav li a {
     color: #ffffff; }
   .navbar-inverse .navbar-nav li ul li a {
@@ -212,6 +214,22 @@ footer .container {
 
 .icon-twitter:before {
   content: "\e604"; }
+
+.flash-message {
+  position: absolute;
+  z-index: 9999;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  top: 0;
+  width: 100%;
+  -webkit-transition: all 0.5s ease;
+       -o-transition: all 0.5s ease;
+          transition: all 0.5s ease; }
+  .flash-message.moveup {
+    top: -60px;
+    -webkit-transition: all 0.5s ease;
+         -o-transition: all 0.5s ease;
+            transition: all 0.5s ease; }
 
 .login {
   padding-top: 50px; }
@@ -368,6 +386,8 @@ footer .container {
   border-top: 0; }
   .admin-posts ul li {
     padding: 30px; }
+    .admin-posts ul li .ban-user {
+      color: #ca171e; }
     .admin-posts ul li:first-child {
       border: 0;
       -webkit-box-shadow: none;
