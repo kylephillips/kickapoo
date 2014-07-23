@@ -24,7 +24,12 @@
 		{{Form::close()}}
 
 		<div class="alert alert-info">
-			Last Import: <strong>{{$last_import['count']}}</strong> items on {{$last_import['date']}} 
+			Last Import: 
+			@if(isset($last_import['date']))
+				<strong>{{$last_import['count']}}</strong> items on {{$last_import['date']}}
+			@else
+				{{$last_import}}
+			@endif
 			<span class="pull-right import-buttons">
 				<span id="import-loading">
 					<img src="{{URL::asset('assets/images/loading-small-blue.gif')}}" alt="loading" />
