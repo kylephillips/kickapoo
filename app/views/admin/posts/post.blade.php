@@ -80,7 +80,7 @@
 	<!-- Post Feed -->
 	<div class="container small admin-posts">
 
-		<h3>Posts <em>({{$pending_count}} awaiting moderation)</em></h3>
+		<h3>Posts <em>(<span id="pending_count">{{$pending_count}}</span> awaiting moderation)</em></h3>
 
 		<div class="scroll">
 
@@ -254,9 +254,9 @@ function removePost(id, type, item)
 			type: type
 		},
 		success: function(data){
-			console.log(data);
 			if (data == 'success'){
 				$(item).fadeOut();
+				getPending();
 			}
 		}
 	});
@@ -300,6 +300,7 @@ function approvePost(id, type, item)
 			$(item).addClass('approved');
 			$(item).find('.status').remove();
 			addApprovedStatus(id, item, type, data);
+			getPending();
 		}
 	});
 }
@@ -351,6 +352,7 @@ function importSingle(type, id)
 				$('.import-single').removeAttr('disabled');
 				if ( type == 'twitter' ) { addNewTweet(data.post[0], data.post_id); }
 				if ( type == 'instagram' ) { addNewGram(data.post[0], data.post_id); }
+				getPending();
 			} else {
 				$('#single-error').text(data.message);
 				$('#single-error').show();
@@ -406,6 +408,7 @@ function banUser(user, type, id, item)
 		success: function(data){
 			$(item).removeAttr('href');
 			removeBanned(id, type, user);
+			getPending();
 		}
 	});
 }
@@ -438,6 +441,20 @@ function trashBanned(type, user)
 		},
 		success: function(data){
 			console.log(data);
+		}
+	});
+}
+
+/**
+* Update the pending count on approval of post
+*/
+function getPending()
+{
+	$.ajax({
+		url: '{{URL::route('pending_count')}}',
+		method: 'GET',
+		success: function(data){
+			$('#pending_count').text(data);
 		}
 	});
 }

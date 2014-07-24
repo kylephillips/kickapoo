@@ -46,9 +46,10 @@ class PostController extends \BaseController {
 	{
 		$twitter_search = $this->settings_repo->twitterSearch();
 		$instagram_search = $this->settings_repo->instagramSearch();
-		$posts = $this->post_repo->getPosts();
 		$last_import = $this->log_repo->getLastImport();
 		$pending_count = $this->post_repo->getPendingCount();
+
+		$posts = $this->post_repo->getPosts();
 
 		// Paginate Posts
 		$perPage = 5;
@@ -109,6 +110,17 @@ class PostController extends \BaseController {
 		$this->settings_factory->updateSearchTerms(Input::all());
 		return Redirect::route('admin.post.index')
 			->with('searchsuccess', 'Search Terms Updated. This will take effect during the next import.');
+	}
+
+
+	/**
+	* Get Pending count
+	*/
+	public function getPending()
+	{
+		if ( Request::ajax() ){
+			return $this->post_repo->getPendingCount();
+		}
 	}
 
 

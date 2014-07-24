@@ -14,11 +14,17 @@ class AdminNavComposer {
 	public function compose($view)
 	{
 		$view->with('trashcount', $this->trashCount());
+		$view->with('pendingcount', $this->pendingCount());
 	}
 
 	private function trashCount()
 	{
 		return $this->post_repo->trashCount();
+	}
+
+	private function pendingCount()
+	{
+		return $this->post_repo->getPendingCount();
 	}
 
 }

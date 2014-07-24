@@ -26,6 +26,7 @@ Route::group(['before'=>'auth'], function()
 	// Post Management
 	Route::get('admin/post/trash', ['as'=>'post_trash', 'uses'=>'TrashController@index']);
 	Route::resource('admin/post', 'PostController');
+	Route::get('admin/pending-count', ['as'=>'pending_count', 'uses'=>'PostController@getPending']);
 
 	// Social Search Terms
 	Route::post('searchterms', ['as'=>'update_search', 'uses'=>'PostController@updateSearchTerms']);
