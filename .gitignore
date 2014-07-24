@@ -4,6 +4,7 @@
 /app/database/seeds/UserSeeder.php
 /node_modules/*
 /public/assets/videos/*
+/app/config/staging/*
 composer.phar
 composer.lock
 .env.*.php
