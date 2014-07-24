@@ -25,7 +25,7 @@ class Tweet extends Eloquent {
 	*/
 	public function banned()
 	{
-		return $this->belongsTo('banned', 'screen_name', 'screen_name');
+		return $this->belongsTo('Banned', 'screen_name', 'screen_name');
 	}
 
 
