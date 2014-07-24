@@ -14,6 +14,7 @@
 	}
 }
 
+
 // Single Import Form
 .single-form {
 	display: none;
@@ -49,6 +50,61 @@
 	}
 } // .single-form
 
+
+// Filter Menus
+.post-filters {
+	background-color: darken($white, 8%);
+	ul {
+		@include unstyled();
+		@include clearfix();
+		padding: 10px 20px;
+		li {
+			float: right;
+			width: 48%;
+			&:first-child {
+				float: left;
+			}
+			.dropdown-toggle {
+				display: block;
+				position: relative;
+				background: linear-gradient($white, darken($white, 12%));
+				border-radius: 3px;
+				border: 1px solid darken($white, 18%);
+				padding: 6px 8px;
+				color: $black;
+				&:hover {
+					text-decoration: none;
+				}
+				em {
+					font-style: normal;
+					font-weight: bold;
+				}
+				span {
+					float: right;
+					margin-top: 8px;
+				}
+			}
+			ul {
+				width: 100%;
+				@include unstyled;
+				li {
+					float: none;
+					width: 100%;
+					border: 0;
+					border-top: 1px solid darken($white, 8%);
+					&:first-child {
+						float: none;
+					}
+					a {
+						display: block;
+						padding: 4px;
+					}
+				}
+			}
+		}
+	} //u l
+} // .post-filters
+
 // Listing of posts with save/remove buttons
 .admin-posts {
 	h3 {
@@ -63,7 +119,7 @@
 			font-size: 15px;
 		}
 	}
-	ul {
+	ul.postfeed {
 		@include unstyled();
 		background-color: darken($white, 8%);
 		border-top: 0;
@@ -75,6 +131,7 @@
 			&:first-child {
 				border: 0;
 				box-shadow: none;
+				padding-top: 10px;
 			}
 			.content {
 				border-radius: 4px;
@@ -120,7 +177,8 @@
 				width: 100%;
 			}
 		} // li
-		&.info {
+		.info {
+			@include unstyled();
 			float: right;
 			margin-bottom: 10px;
 			background-color: darken($white, 8%);
@@ -158,14 +216,16 @@
 	} // ul
 } // .admin-posts
 
+
 // Status Switch
-.status {
+.admin-posts .status {
 	clear: both;
 	ul {
+		@include unstyled();
 		background-color: $white;
 		border: 0;
 		border-radius: 3px;
-		padding: 30px 10px 10px 10px;
+		padding-top: 20px;
 		@include clearfix();
 		li {
 			border: 0;
@@ -203,19 +263,23 @@
 					line-height: 40px;
 				}
 			}
-			&:first-child a {
-				background-color: $red;
-				border-radius: 3px 0px 0px 3px;
-				&:hover {
-					background-color: darken($red, 10%);
-				}
-				i {
-					left: 0;
+			&:first-child {
+				padding: 0;
+				a {
+					background-color: $red;
+					border-radius: 3px 0px 0px 3px;
+					&:hover {
+						background-color: darken($red, 10%);
+					}
+					i {
+						left: 0;
+					}
 				}
 			} // a
 		} // li
 	} // ul
 } // status
+
 
 // Approved Posts
 .status-approved {
@@ -233,6 +297,7 @@
 	}
 }
 
+
 // Infinite Scrolling Loading Indicator
 .loading-infinite {
 	text-align: center;
@@ -241,6 +306,7 @@
 		width: auto;
 	}
 }
+
 
 // Pagination
 .admin-posts .pagination {

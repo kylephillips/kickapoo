@@ -379,6 +379,62 @@ footer .container {
       width: 20%;
       height: 35px; }
 
+.post-filters {
+  background-color: #ebebeb; }
+  .post-filters ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    zoom: 1;
+    padding: 10px 20px; }
+    .post-filters ul:before, .post-filters ul:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */ }
+    .post-filters ul:after {
+      clear: both; }
+    .post-filters ul li {
+      float: right;
+      width: 48%; }
+      .post-filters ul li:first-child {
+        float: left; }
+      .post-filters ul li .dropdown-toggle {
+        display: block;
+        position: relative;
+        background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#e0e0e0));
+        background: -webkit-linear-gradient(#ffffff, #e0e0e0);
+        background: -o-linear-gradient(#ffffff, #e0e0e0);
+        background: linear-gradient(#ffffff, #e0e0e0);
+        -webkit-border-radius: 3px;
+                border-radius: 3px;
+        border: 1px solid #d1d1d1;
+        padding: 6px 8px;
+        color: #000000; }
+        .post-filters ul li .dropdown-toggle:hover {
+          text-decoration: none; }
+        .post-filters ul li .dropdown-toggle em {
+          font-style: normal;
+          font-weight: bold; }
+        .post-filters ul li .dropdown-toggle span {
+          float: right;
+          margin-top: 8px; }
+      .post-filters ul li ul {
+        width: 100%;
+        list-style-type: none;
+        margin: 0;
+        padding: 0; }
+        .post-filters ul li ul li {
+          float: none;
+          width: 100%;
+          border: 0;
+          border-top: 1px solid #ebebeb; }
+          .post-filters ul li ul li:first-child {
+            float: none; }
+          .post-filters ul li ul li a {
+            display: block;
+            padding: 4px; }
+
 .admin-posts h3 {
   background-color: #ebebeb;
   text-align: center;
@@ -389,21 +445,22 @@ footer .container {
     font-style: normal;
     color: #4d4d4d;
     font-size: 15px; }
-.admin-posts ul {
+.admin-posts ul.postfeed {
   list-style-type: none;
   margin: 0;
   padding: 0;
   background-color: #ebebeb;
   border-top: 0; }
-  .admin-posts ul li {
+  .admin-posts ul.postfeed li {
     padding: 30px; }
-    .admin-posts ul li .ban-user {
+    .admin-posts ul.postfeed li .ban-user {
       color: #ca171e; }
-    .admin-posts ul li:first-child {
+    .admin-posts ul.postfeed li:first-child {
       border: 0;
       -webkit-box-shadow: none;
-              box-shadow: none; }
-    .admin-posts ul li .content {
+              box-shadow: none;
+      padding-top: 10px; }
+    .admin-posts ul.postfeed li .content {
       -webkit-border-radius: 4px;
               border-radius: 4px;
       padding: 30px 20px 20px 20px;
@@ -411,43 +468,46 @@ footer .container {
       zoom: 1;
       -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.15);
               box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.15); }
-      .admin-posts ul li .content:before, .admin-posts ul li .content:after {
+      .admin-posts ul.postfeed li .content:before, .admin-posts ul.postfeed li .content:after {
         content: " ";
         /* 1 */
         display: table;
         /* 2 */ }
-      .admin-posts ul li .content:after {
+      .admin-posts ul.postfeed li .content:after {
         clear: both; }
-    .admin-posts ul li.approved .content {
+    .admin-posts ul.postfeed li.approved .content {
       -webkit-box-shadow: inset 0px 0px 0px 6px #00a950;
               box-shadow: inset 0px 0px 0px 6px #00a950; }
-    .admin-posts ul li .avatar {
+    .admin-posts ul.postfeed li .avatar {
       float: left;
       width: 10%; }
-      .admin-posts ul li .avatar img {
+      .admin-posts ul.postfeed li .avatar img {
         max-width: 60px; }
-    .admin-posts ul li .main {
+    .admin-posts ul.postfeed li .main {
       float: right;
       width: 89%; }
-    .admin-posts ul li .date {
+    .admin-posts ul.postfeed li .date {
       display: block;
       color: #808080; }
-    .admin-posts ul li p {
+    .admin-posts ul.postfeed li p {
       font-size: 16px;
       line-height: 24px;
       overflow-x: hidden; }
-    .admin-posts ul li .image {
+    .admin-posts ul.postfeed li .image {
       background-color: #ebebeb;
       padding: 10px;
       clear: both;
       text-align: center;
       -webkit-border-radius: 3px;
               border-radius: 3px; }
-      .admin-posts ul li .image img {
+      .admin-posts ul.postfeed li .image img {
         max-width: 100%; }
-    .admin-posts ul li video {
+    .admin-posts ul.postfeed li video {
       width: 100%; }
-  .admin-posts ul.info {
+  .admin-posts ul.postfeed .info {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     float: right;
     margin-bottom: 10px;
     background-color: #ebebeb;
@@ -455,53 +515,56 @@ footer .container {
             border-radius: 3px;
     margin-left: 10px;
     border: 0; }
-    .admin-posts ul.info li {
+    .admin-posts ul.postfeed .info li {
       float: left;
       padding: 5px;
       text-align: center;
       border: 1px solid #e0e0e0; }
-      .admin-posts ul.info li i {
+      .admin-posts ul.postfeed .info li i {
         position: relative;
         top: 3px;
         font-size: 18px;
         color: #999999; }
-      .admin-posts ul.info li a:hover {
+      .admin-posts ul.postfeed .info li a:hover {
         text-decoration: none; }
-        .admin-posts ul.info li a:hover i {
+        .admin-posts ul.postfeed .info li a:hover i {
           color: #035d32; }
-      .admin-posts ul.info li:first-child {
+      .admin-posts ul.postfeed .info li:first-child {
         -webkit-border-radius: 3px 0px 0px 3px;
                 border-radius: 3px 0px 0px 3px; }
-      .admin-posts ul.info li:last-child {
+      .admin-posts ul.postfeed .info li:last-child {
         -webkit-border-radius: 0px 3px 3px 0px;
                 border-radius: 0px 3px 3px 0px; }
-      .admin-posts ul.info li.like-count {
+      .admin-posts ul.postfeed .info li.like-count {
         -webkit-border-radius: 3px;
                 border-radius: 3px; }
 
-.status {
+.admin-posts .status {
   clear: both; }
-  .status ul {
+  .admin-posts .status ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     background-color: #ffffff;
     border: 0;
     -webkit-border-radius: 3px;
             border-radius: 3px;
-    padding: 30px 10px 10px 10px;
+    padding-top: 20px;
     zoom: 1; }
-    .status ul:before, .status ul:after {
+    .admin-posts .status ul:before, .admin-posts .status ul:after {
       content: " ";
       /* 1 */
       display: table;
       /* 2 */ }
-    .status ul:after {
+    .admin-posts .status ul:after {
       clear: both; }
-    .status ul li {
+    .admin-posts .status ul li {
       border: 0;
       float: left;
       width: 50%;
       padding: 0;
       text-align: center; }
-      .status ul li a {
+      .admin-posts .status ul li a {
         display: block;
         height: 40px;
         line-height: 40px;
@@ -513,32 +576,34 @@ footer .container {
         -webkit-transition: all 200ms ease;
              -o-transition: all 200ms ease;
                 transition: all 200ms ease; }
-        .status ul li a.disabled {
+        .admin-posts .status ul li a.disabled {
           opacity: 0.5;
           cursor: not-allowed; }
-          .status ul li a.disabled:hover {
+          .admin-posts .status ul li a.disabled:hover {
             background-color: #00a950; }
-        .status ul li a:hover {
+        .admin-posts .status ul li a:hover {
           text-decoration: none;
           background-color: #007637;
           -webkit-transition: all 200ms ease;
                -o-transition: all 200ms ease;
                   transition: all 200ms ease; }
-        .status ul li a i {
+        .admin-posts .status ul li a i {
           position: absolute;
           right: 0;
           background-color: rgba(0, 0, 0, 0.2);
           display: block;
           width: 40px;
           line-height: 40px; }
-      .status ul li:first-child a {
-        background-color: #ca171e;
-        -webkit-border-radius: 3px 0px 0px 3px;
-                border-radius: 3px 0px 0px 3px; }
-        .status ul li:first-child a:hover {
-          background-color: #9c1219; }
-        .status ul li:first-child a i {
-          left: 0; }
+      .admin-posts .status ul li:first-child {
+        padding: 0; }
+        .admin-posts .status ul li:first-child a {
+          background-color: #ca171e;
+          -webkit-border-radius: 3px 0px 0px 3px;
+                  border-radius: 3px 0px 0px 3px; }
+          .admin-posts .status ul li:first-child a:hover {
+            background-color: #9c1219; }
+          .admin-posts .status ul li:first-child a i {
+            left: 0; }
 
 .status-approved {
   clear: both;

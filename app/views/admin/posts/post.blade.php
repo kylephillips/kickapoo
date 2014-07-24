@@ -82,9 +82,33 @@
 
 		<h3>Posts <em>(<span id="pending_count">{{$pending_count}}</span> awaiting moderation)</em></h3>
 
+		<div class="post-filters">
+			<ul class="filter">
+				<li class="dropdown">
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+						Type: <em>All</em> <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="#" class="filter-type">All</a></li>
+						<li><a href="#" class="filter-type">Twitter</a></li>
+						<li><a href="#" class="filter-type">Instagram</a></li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+						Status: <em>All</em> <span class="caret"></span>
+					</a>
+					<ul class="dropdown-menu">
+						<li><a href="#" class="filter-type">All</a></li>
+						<li><a href="#" class="filter-type">Approved</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div><!-- post-filters -->
+
 		<div class="scroll">
 
-		<ul id="postfeed">
+		<ul id="postfeed" class="postfeed">
 		@foreach($posts as $post)
 			<?php 
 				$date = date('D, M jS Y - g:i a', strtotime($post['datetime'])); 
