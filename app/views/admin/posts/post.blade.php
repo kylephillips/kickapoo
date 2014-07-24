@@ -26,7 +26,7 @@
 		<div class="alert alert-info">
 			Last Import: 
 			@if(isset($last_import['date']))
-				<strong>{{$last_import['count']}}</strong> items on {{$last_import['date']}}
+				{{$last_import['count']}} items on {{$last_import['date']}}
 			@else
 				{{$last_import}}
 			@endif

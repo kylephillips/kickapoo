@@ -47,7 +47,7 @@
 			height: 35px;
 		}
 	}
-}
+} // .single-form
 
 // Listing of posts with save/remove buttons
 .admin-posts {
@@ -59,8 +59,8 @@
 		font-size: 20px;
 		em {
 			font-style: normal;
-			color: darken($white, 60%);
-			font-size: 16px;
+			color: darken($white, 70%);
+			font-size: 15px;
 		}
 	}
 	ul {
@@ -156,7 +156,7 @@
 			}
 		}
 	} // ul
-}
+} // .admin-posts
 
 // Status Switch
 .status {
