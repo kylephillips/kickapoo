@@ -48,6 +48,7 @@ class PostController extends \BaseController {
 		$instagram_search = $this->settings_repo->instagramSearch();
 		$posts = $this->post_repo->getPosts();
 		$last_import = $this->log_repo->getLastImport();
+		$pending_count = $this->post_repo->getPendingCount();
 
 		// Paginate Posts
 		$perPage = 5;
@@ -61,7 +62,8 @@ class PostController extends \BaseController {
 			->with('instagram_search', $instagram_search)
 			->with('posts', $posts)
 			->with('last_import', $last_import)
-			->with('num_posts', $num_posts);
+			->with('num_posts', $num_posts)
+			->with('pending_count', $pending_count);
 	}
 
 

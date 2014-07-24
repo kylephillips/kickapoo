@@ -379,6 +379,16 @@ footer .container {
       width: 20%;
       height: 35px; }
 
+.admin-posts h3 {
+  background-color: #ebebeb;
+  text-align: center;
+  margin: 0;
+  padding: 10px 0 0 0;
+  font-size: 20px; }
+  .admin-posts h3 em {
+    font-style: normal;
+    color: #666666;
+    font-size: 16px; }
 .admin-posts ul {
   list-style-type: none;
   margin: 0;

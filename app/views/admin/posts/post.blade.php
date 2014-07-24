@@ -80,6 +80,8 @@
 	<!-- Post Feed -->
 	<div class="container small admin-posts">
 
+		<h3>Posts <em>({{$pending_count}} awaiting moderation)</em></h3>
+
 		<div class="scroll">
 
 		<ul id="postfeed">

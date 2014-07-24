@@ -63,4 +63,15 @@ class PostRepository {
 		return $count;
 	}
 
+	/**
+	* Get count of posts awaiting moderation
+	*/
+	public function getPendingCount()
+	{
+		$tweets = Tweet::with('post', 'banned')->whereRaw('approved IS NULL')->count();
+		$grams = Gram::with('post', 'banned')->whereRaw('approved IS NULL')->count();
+		$count = $tweets + $grams;
+		return $count;
+	}
+
 }
