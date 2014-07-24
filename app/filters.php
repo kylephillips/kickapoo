@@ -59,7 +59,7 @@ Route::filter('auth.basic', function()
 */
 Route::filter('admin', function()
 {
-	if ( Auth::user()->id != 1 ){
+	if ( Auth::user()->group_id != 1 ){
 		return Redirect::route('admin_index');
 	}
 });
