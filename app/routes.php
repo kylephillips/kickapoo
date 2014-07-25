@@ -55,3 +55,8 @@ Route::group(['before'=>'auth'], function()
 * View Composers
 */
 View::composer('admin.partials.nav', 'Kickapoo\ViewComposers\AdminNavComposer');
+// Append query string to paginator
+View::composer(Paginator::getViewName(), function($view) {
+	$query = array_except( Input::query(), Paginator::getPageName() );
+	$view->paginator->appends($query);
+});

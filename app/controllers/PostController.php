@@ -49,10 +49,15 @@ class PostController extends \BaseController {
 		$last_import = $this->log_repo->getLastImport();
 		$pending_count = $this->post_repo->getPendingCount();
 
-		$type = ( isset($_GET['type']) ) ? $_GET['type'] : null;
-		$status = ( isset($_GET['status']) ) ? $_GET['status'] : null;
-
+		$type = ( isset($_GET['type']) ) ? $_GET['type'] : 'all';
+		$status = ( isset($_GET['status']) ) ? $_GET['status'] : 'all';
 		$posts = $this->post_repo->getPosts($type, $status);
+
+		$type_link = URL::route('admin.post.index');
+		$type_link .= ( $status !== 'all' ) ? '?status=' . $status : '?status=all';
+
+		$status_link = URL::route('admin.post.index');
+		$status_link .= ( $type !== 'all' ) ? '?type=' . $type : '?type=all';
 
 		// Paginate Posts
 		$perPage = 5;
@@ -67,7 +72,11 @@ class PostController extends \BaseController {
 			->with('posts', $posts)
 			->with('last_import', $last_import)
 			->with('num_posts', $num_posts)
-			->with('pending_count', $pending_count);
+			->with('pending_count', $pending_count)
+			->with('type', ucfirst($type))
+			->with('status', ucfirst($status))
+			->with('type_link', $type_link)
+			->with('status_link', $status_link);
 	}
 
 

@@ -86,21 +86,22 @@
 			<ul class="filter">
 				<li class="dropdown">
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-						Type: <em>All</em> <span class="caret"></span>
+						Type: <em>{{$type}}</em> <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#" class="filter-type">All</a></li>
-						<li><a href="#" class="filter-type">Twitter</a></li>
-						<li><a href="#" class="filter-type">Instagram</a></li>
+						<li><a href="{{$type_link}}&type=all" class="filter-type">All</a></li>
+						<li><a href="{{$type_link}}&type=twitter" class="filter-type">Twitter</a></li>
+						<li><a href="{{$type_link}}&type=instagram" class="filter-type">Instagram</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
 					<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-						Status: <em>All</em> <span class="caret"></span>
+						Status: <em>{{$status}}</em> <span class="caret"></span>
 					</a>
 					<ul class="dropdown-menu">
-						<li><a href="#" class="filter-type">All</a></li>
-						<li><a href="#" class="filter-type">Approved</a></li>
+						<li><a href="{{$status_link}}&status=all" class="filter-type">All</a></li>
+						<li><a href="{{$status_link}}&status=unmoderated" class="filter-type">Unmoderated</a></li>
+						<li><a href="{{$status_link}}&status=approved" class="filter-type">Approved</a></li>
 					</ul>
 				</li>
 			</ul>
