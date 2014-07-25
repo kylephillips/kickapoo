@@ -12,6 +12,7 @@ Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
 Route::get('login', ['as'=>'login_form', 'uses'=>'SessionController@getLogin']);
 Route::post('login', ['as'=>'login', 'uses'=>'SessionController@postLogin']);
 Route::get('logout', ['as'=>'logout', 'uses'=>'SessionController@logout']);
+Route::controller('password', 'RemindersController');
 
 /**
 * Admin Authorized
