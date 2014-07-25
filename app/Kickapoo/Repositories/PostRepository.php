@@ -34,14 +34,14 @@ class PostRepository {
 	*/
 	public function getPosts($type = null, $status = null)
 	{
-		if ( $type == null ){
-			$tweets = $this->getPostType($status, $type = 'tweets');
-			$grams = $this->getPostType($status, $type = 'grams');
+		if ( $type == 'twitter' ){
+			$posts = $this->getPostType($status, $type = 'twitter');
+		} elseif ( $type == 'instagram' ){
+			$posts = $this->getPostType($status, $type = 'instagram');
+		} else {
+			$tweets = $this->getPostType($status, $type = 'twitter');
+			$grams = $this->getPostType($status, $type = 'instagram');
 			$posts = $tweets->merge($grams)->sortByDesc('datetime');
-		} elseif ( $type == 'tweets' ){
-			$posts = $this->getPostType($status, $type = 'tweets');
-		} elseif ( $type == 'grams' ){
-			$posts = $this->getPostType($status, $type = 'grams');
 		}
 		return $posts;
 	}
@@ -52,8 +52,8 @@ class PostRepository {
 	*/
 	private function getPostType($status = null, $type = null)
 	{
-		if ( $type == 'tweets' ) $query = Tweet::with('post', 'banned');
-		if ( $type == 'grams' ) $query = Gram::with('post', 'banned');
+		if ( $type == 'twitter' ) $query = Tweet::with('post', 'banned');
+		if ( $type == 'instagram' ) $query = Gram::with('post', 'banned');
 		
 		// Filter by status
 		if ( $status == null ){
