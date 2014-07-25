@@ -12,7 +12,11 @@
 		<div class="alert alert-danger">Ooops! Looks like there were some errors. That's not Joyful!</div>
 		@endif
 
-		{{Form::open(['url'=>URL::route('admin.user.store')])}}
+		@if(Session::has('success'))
+		<div class="alert alert-success">{{Session::get('success')}}</div>
+		@endif
+
+		{{Form::open(['url'=>URL::route('update_settings')])}}
 		
 		<div class="form-group">
 			@if($errors->twitter_api_key)

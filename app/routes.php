@@ -33,7 +33,8 @@ Route::group(['before'=>'auth'], function()
 	Route::post('searchterms', ['as'=>'update_search', 'uses'=>'PostController@updateSearchTerms']);
 
 	// Settings Management
-	Route::resource('admin/settings', 'SettingController@index', ['only'=>['update','index']]);
+	Route::get('admin/settings', ['as'=>'settings_form', 'uses'=>'SettingController@index']);
+	Route::post('admin/settings', ['as'=>'update_settings', 'uses'=>'SettingController@update']);
 
 	// Trash
 	Route::get('remove-post', ['as'=>'remove_post', 'uses'=>'TrashController@store']);

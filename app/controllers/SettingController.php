@@ -1,5 +1,6 @@
 <?php
 use Kickapoo\Repositories\SettingRepository;
+use Kickapoo\Factories\SettingFactory;
 
 class SettingController extends \BaseController {
 
@@ -8,10 +9,17 @@ class SettingController extends \BaseController {
 	*/
 	protected $settings_repo;
 
-	public function __construct(SettingRepository $settings_repo)
+	/**
+	* Settings Factory
+	*/
+	protected $settings_factory;
+
+
+	public function __construct(SettingRepository $settings_repo, SettingFactory $settings_factory)
 	{
 		$this->beforeFilter('admin');
 		$this->settings_repo = $settings_repo;
+		$this->settings_factory = $settings_factory;
 	}
 
 
@@ -19,7 +27,6 @@ class SettingController extends \BaseController {
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  int  $id
-	 * @return Response
 	 */
 	public function index()
 	{
@@ -30,14 +37,21 @@ class SettingController extends \BaseController {
 
 
 	/**
-	 * Update the specified resource in storage.
+	 * Update the settings
 	 *
 	 * @param  int  $id
-	 * @return Response
 	 */
-	public function update($id)
+	public function update()
 	{
-		//
+		$validation = Validator::make(Input::all(), Setting::$api_required);
+		if ( $validation->fails() ){
+			return Redirect::back()
+				->withErrors($validation->messages())
+				->withInput();
+		}
+		$this->settings_factory->updateSocialCreds(Input::all());
+		return Redirect::back()
+			->with('success', 'Settings successfully updated.');
 	}
 
 
