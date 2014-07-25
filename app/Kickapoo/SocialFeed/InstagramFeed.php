@@ -49,9 +49,8 @@ class InstagramFeed extends SocialFeed {
 	*/
 	public function setCredentials()
 	{
-		$this->credentials = [
-			'client_id' => $_ENV['instagram_client_id']
-		];
+		$settings_repo = new \Kickapoo\Repositories\SettingRepository;
+		$this->credentials = $settings_repo->socialCreds();
 	}
 
 
@@ -72,7 +71,7 @@ class InstagramFeed extends SocialFeed {
 		try {
 			$instagram_client = new Client('https://api.instagram.com/v1/tags');
 			$request = $instagram_client->get($this->search_term . '/media/recent');
-			$request->getQuery()->set('client_id', $this->credentials['client_id']);
+			$request->getQuery()->set('client_id', $this->credentials['instagram_client_id']);
 			$response = $request->send();
 			$feed = json_decode($response->getBody());
 			$this->feed = $feed->data;

@@ -47,12 +47,8 @@ class TwitterFeedSingle extends SocialFeed {
 	*/
 	public function setCredentials()
 	{
-		$this->credentials = [
-			'api_key' => $_ENV['twitter_api_key'],
-			'api_secret' => $_ENV['twitter_api_secret'],
-			'access_token' => $_ENV['twitter_access_token'],
-			'access_token_secret' => $_ENV['twitter_access_token_secret']
-		];
+		$settings_repo = new \Kickapoo\Repositories\SettingRepository;
+		$this->credentials = $settings_repo->socialCreds();
 	}
 
 
@@ -64,10 +60,10 @@ class TwitterFeedSingle extends SocialFeed {
 		try {
 			$twitter_client = new Client('https://api.twitter.com/1.1');
 			$twitter_client->addSubscriber(new OauthPlugin(array(
-				'consumer_key' => $this->credentials['api_key'],
-				'consumer_secret' => $this->credentials['api_secret'],
-				'token' => $this->credentials['access_token'],
-				'token_secret' => $this->credentials['access_token_secret']
+				'consumer_key' => $this->credentials['twitter_api_key'],
+				'consumer_secret' => $this->credentials['twitter_api_secret'],
+				'token' => $this->credentials['twitter_access_token'],
+				'token_secret' => $this->credentials['twitter_access_token_secret']
 			)));
 			$request = $twitter_client->get('statuses/show.json');
 			$request->getQuery()->set('id', $this->search_term);
