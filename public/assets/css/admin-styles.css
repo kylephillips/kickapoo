@@ -445,22 +445,22 @@ footer .container {
     font-style: normal;
     color: #4d4d4d;
     font-size: 15px; }
-.admin-posts ul.postfeed {
+.admin-posts ul.postfeed, .admin-posts ul.trash {
   list-style-type: none;
   margin: 0;
   padding: 0;
   background-color: #ebebeb;
   border-top: 0; }
-  .admin-posts ul.postfeed li {
+  .admin-posts ul.postfeed li, .admin-posts ul.trash li {
     padding: 30px; }
-    .admin-posts ul.postfeed li .ban-user {
+    .admin-posts ul.postfeed li .ban-user, .admin-posts ul.trash li .ban-user {
       color: #ca171e; }
-    .admin-posts ul.postfeed li:first-child {
+    .admin-posts ul.postfeed li:first-child, .admin-posts ul.trash li:first-child {
       border: 0;
       -webkit-box-shadow: none;
               box-shadow: none;
       padding-top: 10px; }
-    .admin-posts ul.postfeed li .content {
+    .admin-posts ul.postfeed li .content, .admin-posts ul.trash li .content {
       -webkit-border-radius: 4px;
               border-radius: 4px;
       padding: 30px 20px 20px 20px;
@@ -468,43 +468,43 @@ footer .container {
       zoom: 1;
       -webkit-box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.15);
               box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.15); }
-      .admin-posts ul.postfeed li .content:before, .admin-posts ul.postfeed li .content:after {
+      .admin-posts ul.postfeed li .content:before, .admin-posts ul.postfeed li .content:after, .admin-posts ul.trash li .content:before, .admin-posts ul.trash li .content:after {
         content: " ";
         /* 1 */
         display: table;
         /* 2 */ }
-      .admin-posts ul.postfeed li .content:after {
+      .admin-posts ul.postfeed li .content:after, .admin-posts ul.trash li .content:after {
         clear: both; }
-    .admin-posts ul.postfeed li.approved .content {
+    .admin-posts ul.postfeed li.approved .content, .admin-posts ul.trash li.approved .content {
       -webkit-box-shadow: inset 0px 0px 0px 6px #00a950;
               box-shadow: inset 0px 0px 0px 6px #00a950; }
-    .admin-posts ul.postfeed li .avatar {
+    .admin-posts ul.postfeed li .avatar, .admin-posts ul.trash li .avatar {
       float: left;
       width: 10%; }
-      .admin-posts ul.postfeed li .avatar img {
+      .admin-posts ul.postfeed li .avatar img, .admin-posts ul.trash li .avatar img {
         max-width: 60px; }
-    .admin-posts ul.postfeed li .main {
+    .admin-posts ul.postfeed li .main, .admin-posts ul.trash li .main {
       float: right;
       width: 89%; }
-    .admin-posts ul.postfeed li .date {
+    .admin-posts ul.postfeed li .date, .admin-posts ul.trash li .date {
       display: block;
       color: #808080; }
-    .admin-posts ul.postfeed li p {
+    .admin-posts ul.postfeed li p, .admin-posts ul.trash li p {
       font-size: 16px;
       line-height: 24px;
       overflow-x: hidden; }
-    .admin-posts ul.postfeed li .image {
+    .admin-posts ul.postfeed li .image, .admin-posts ul.trash li .image {
       background-color: #ebebeb;
       padding: 10px;
       clear: both;
       text-align: center;
       -webkit-border-radius: 3px;
               border-radius: 3px; }
-      .admin-posts ul.postfeed li .image img {
+      .admin-posts ul.postfeed li .image img, .admin-posts ul.trash li .image img {
         max-width: 100%; }
-    .admin-posts ul.postfeed li video {
+    .admin-posts ul.postfeed li video, .admin-posts ul.trash li video {
       width: 100%; }
-  .admin-posts ul.postfeed .info {
+  .admin-posts ul.postfeed .info, .admin-posts ul.trash .info {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -515,27 +515,27 @@ footer .container {
             border-radius: 3px;
     margin-left: 10px;
     border: 0; }
-    .admin-posts ul.postfeed .info li {
+    .admin-posts ul.postfeed .info li, .admin-posts ul.trash .info li {
       float: left;
       padding: 5px;
       text-align: center;
       border: 1px solid #e0e0e0; }
-      .admin-posts ul.postfeed .info li i {
+      .admin-posts ul.postfeed .info li i, .admin-posts ul.trash .info li i {
         position: relative;
         top: 3px;
         font-size: 18px;
         color: #999999; }
-      .admin-posts ul.postfeed .info li a:hover {
+      .admin-posts ul.postfeed .info li a:hover, .admin-posts ul.trash .info li a:hover {
         text-decoration: none; }
-        .admin-posts ul.postfeed .info li a:hover i {
+        .admin-posts ul.postfeed .info li a:hover i, .admin-posts ul.trash .info li a:hover i {
           color: #035d32; }
-      .admin-posts ul.postfeed .info li:first-child {
+      .admin-posts ul.postfeed .info li:first-child, .admin-posts ul.trash .info li:first-child {
         -webkit-border-radius: 3px 0px 0px 3px;
                 border-radius: 3px 0px 0px 3px; }
-      .admin-posts ul.postfeed .info li:last-child {
+      .admin-posts ul.postfeed .info li:last-child, .admin-posts ul.trash .info li:last-child {
         -webkit-border-radius: 0px 3px 3px 0px;
                 border-radius: 0px 3px 3px 0px; }
-      .admin-posts ul.postfeed .info li.like-count {
+      .admin-posts ul.postfeed .info li.like-count, .admin-posts ul.trash .info li.like-count {
         -webkit-border-radius: 3px;
                 border-radius: 3px; }
 

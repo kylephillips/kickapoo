@@ -20,8 +20,8 @@
 		<div class="alert alert-success">The trash is empty.</div>
 	</div>
 @else
-	<div class="container small trash admin-posts">	
-		<ul>
+	<div class="container small admin-posts">	
+		<ul class="trash">
 		@foreach($posts as $post)
 		<?php 
 			$date = date('D, M jS Y - g:i a', strtotime($post['datetime'])); 
