@@ -14,6 +14,7 @@ class CreateErrorsTable extends Migration {
 	{
 		Schema::create('errors', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->dateTime('time');
 			$table->text('message');

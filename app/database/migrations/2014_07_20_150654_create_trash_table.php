@@ -14,6 +14,7 @@ class CreateTrashTable extends Migration {
 	{
 		Schema::create('trash', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->string('type')->default('twitter');
 			$table->bigInteger('twitter_id')->nullable();

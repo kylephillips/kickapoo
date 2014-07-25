@@ -14,6 +14,7 @@ class CreateBannedusersTable extends Migration {
 	{
 		Schema::create('bannedusers', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->string('screen_name');
 			$table->string('type')->default('twitter');
