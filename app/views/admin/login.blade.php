@@ -20,7 +20,7 @@
 						{{Form::email('email', null, ['placeholder'=>'Enter Email', 'class'=>'form-control', 'style'=>'border-radius:0px'])}}
 					</div>
 					<div class="form-group">
-						<label for="password">Password <a href="/forgot_password">(forgot password)</a></label>
+						<label for="password">Password <a href="/password/remind/">(forgot password)</a></label>
 						{{Form::password('password', ['placeholder'=>'Password', 'class'=>'form-control', 'style'=>'border-radius:0px'])}}
 					</div>
 					<div class="checkbox">

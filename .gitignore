@@ -5,6 +5,7 @@
 /node_modules/*
 /public/assets/videos/*
 /app/config/staging/*
+/app/config/local/*
 composer.phar
 composer.lock
 .env.*.php
