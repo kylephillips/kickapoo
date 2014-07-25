@@ -10,11 +10,10 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Eloquent::unguard();
-
-		$this->call('SettingsSeeder');
 		$this->call('GroupSeeder');
 		$this->call('LanguageSeeder');
 		if ( (App::environment() == 'local') || (App::environment() == 'staging' ) ){
+			$this->call('SettingsSeeder');
 			$this->call('UserSeeder');
 		}
 	}

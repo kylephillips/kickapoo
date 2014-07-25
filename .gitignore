@@ -2,6 +2,7 @@
 /vendor
 /public/assets/uploads/*
 /app/database/seeds/UserSeeder.php
+/app/database/seeds/SettingsSeeder.php
 /node_modules/*
 /public/assets/videos/*
 /app/config/staging/*

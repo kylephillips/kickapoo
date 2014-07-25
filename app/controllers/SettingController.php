@@ -1,10 +1,17 @@
 <?php
+use Kickapoo\Repositories\SettingRepository;
 
 class SettingController extends \BaseController {
 
-	public function __construct()
+	/**
+	* Settings Repository
+	*/
+	protected $settings_repo;
+
+	public function __construct(SettingRepository $settings_repo)
 	{
 		$this->beforeFilter('admin');
+		$this->settings_repo = $settings_repo;
 	}
 
 
@@ -16,7 +23,9 @@ class SettingController extends \BaseController {
 	 */
 	public function index()
 	{
-		//
+		$settings = $this->settings_repo->socialCreds();
+		return View::make('admin.settings.index')
+			->with('settings', $settings);
 	}
 
 
