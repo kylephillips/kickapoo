@@ -5,7 +5,7 @@ html {
   height: 100%; }
 
 body {
-  background-color: #3b7d0b;
+  background-color: #009e39;
   height: 100%;
   font-family: "proxima-nova", sans-serif;
   font-style: normal;
@@ -17,7 +17,7 @@ body {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
   min-height: 100%;
-  background: url('../images/ray-bg.jpg') no-repeat center top fixed; }
+  background: url('../images/ray-bg.png') no-repeat center top fixed; }
 
 .container.small {
   max-width: 800px; }
@@ -54,11 +54,11 @@ h1 {
   overflow: auto; }
 
 .navbar-inverse {
-  background-color: #02351c;
-  background: -webkit-gradient(linear, left top, left bottom, from(#035d32), to(#024424));
-  background: -webkit-linear-gradient(#035d32, #024424);
-  background: -o-linear-gradient(#035d32, #024424);
-  background: linear-gradient(#035d32, #024424);
+  background-color: #00471b;
+  background: -webkit-gradient(linear, left top, left bottom, from(#00702c), to(#005721));
+  background: -webkit-linear-gradient(#00702c, #005721);
+  background: -o-linear-gradient(#00702c, #005721);
+  background: linear-gradient(#00702c, #005721);
   color: #ffffff;
   border: 0;
   -webkit-border-radius: 0;
@@ -80,11 +80,11 @@ h1 {
   height: 60px; }
 
 .navbar-inverse .navbar-toggle:hover {
-  background-color: #5f9c1d; }
+  background-color: #58c632; }
 
 .btn-primary {
-  background-color: #035d32;
-  border-color: #024424; }
+  background-color: #00702c;
+  border-color: #005721; }
   .btn-primary:hover {
     background-color: #00a950;
     border-color: #008f43; }
@@ -249,7 +249,7 @@ footer .container {
     border-top: 0; }
 
 .searchterm {
-  background-color: rgba(2, 68, 36, 0.8);
+  background-color: rgba(0, 86, 33, 0.8);
   -webkit-border-radius: 3px;
           border-radius: 3px;
   padding: 8px;
@@ -292,7 +292,7 @@ footer .container {
         float: right; }
       .searchterm ul li label {
         position: absolute;
-        color: #035d32;
+        color: #00702c;
         font-size: 20px;
         top: 9px;
         left: 13px; }
@@ -303,8 +303,8 @@ footer .container {
     height: 40px;
     line-height: 40px;
     padding: 0;
-    background-color: #5f9c1d;
-    border-color: #4b7a17; }
+    background-color: #58c632;
+    border-color: #4ba52a; }
   .searchterm input[type='text'] {
     border: 1px solid #ccdfb8;
     height: 35px;
@@ -528,7 +528,7 @@ footer .container {
       .admin-posts ul.postfeed .info li a:hover, .admin-posts ul.trash .info li a:hover {
         text-decoration: none; }
         .admin-posts ul.postfeed .info li a:hover i, .admin-posts ul.trash .info li a:hover i {
-          color: #035d32; }
+          color: #00702c; }
       .admin-posts ul.postfeed .info li:first-child, .admin-posts ul.trash .info li:first-child {
         -webkit-border-radius: 3px 0px 0px 3px;
                 border-radius: 3px 0px 0px 3px; }
@@ -720,10 +720,10 @@ footer .container {
     .banned-users li:nth-child(even) {
       background-color: #ebebeb; }
     .banned-users li i {
-      color: #035d32;
+      color: #00702c;
       font-size: 22px;
       position: relative;
       top: 5px;
       margin-right: 10px; }
     .banned-users li .screenname {
-      color: #035d32; }
+      color: #00702c; }
