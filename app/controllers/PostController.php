@@ -49,7 +49,10 @@ class PostController extends \BaseController {
 		$last_import = $this->log_repo->getLastImport();
 		$pending_count = $this->post_repo->getPendingCount();
 
-		$posts = $this->post_repo->getPosts();
+		$type = ( isset($_GET['type']) ) ? $_GET['type'] : null;
+		$status = ( isset($_GET['status']) ) ? $_GET['status'] : null;
+
+		$posts = $this->post_repo->getPosts($type, $status);
 
 		// Paginate Posts
 		$perPage = 5;

@@ -32,13 +32,40 @@ class PostRepository {
 	/**
 	* Get all Posts that haven't been trashed
 	*/
-	public function getPosts()
+	public function getPosts($type = null, $status = null)
 	{
-		$tweets = Tweet::with('post', 'banned')->whereRaw('approved IS NULL')->orWhere('approved', 1)->get();
-		$grams = Gram::with('post', 'banned')->whereRaw('approved IS NULL')->orWhere('approved', 1)->get();
-		$posts = $tweets->merge($grams)->sortByDesc('datetime');
+		if ( $type == null ){
+			$tweets = $this->getPostType($status, $type = 'tweets');
+			$grams = $this->getPostType($status, $type = 'grams');
+			$posts = $tweets->merge($grams)->sortByDesc('datetime');
+		} elseif ( $type == 'tweets' ){
+			$posts = $this->getPostType($status, $type = 'tweets');
+		} elseif ( $type == 'grams' ){
+			$posts = $this->getPostType($status, $type = 'grams');
+		}
 		return $posts;
 	}
+
+
+	/**
+	* Get Posts of a Specified Type
+	*/
+	private function getPostType($status = null, $type = null)
+	{
+		if ( $type == 'tweets' ) $query = Tweet::with('post', 'banned');
+		if ( $type == 'grams' ) $query = Gram::with('post', 'banned');
+		
+		// Filter by status
+		if ( $status == null ){
+			$query->whereRaw('approved IS NULL')->orWhere('approved', 1);
+		} elseif ( $status == 'approved' ){
+			$query->where('approved', 1);
+		} elseif ( $status == 'unmoderated' ){
+			$query->whereRaw('approved IS NULL');
+		}
+
+		return $query->get();
+	}	
 
 
 	/**
