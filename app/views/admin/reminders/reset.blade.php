@@ -27,7 +27,7 @@
 						<label for="password">New Password</label>
 				    	<input type="password" name="password" class="form-control">
 					</div>
-						<label for="password_confirmation">Confirm New Password</label>
+						<label for="password_confirmation">Reset Password</label>
 				    	<input type="password" name="password_confirmation" class="form-control">
 					</div>
 				    <input type="submit" value="Send Reset Link" class="btn btn-block btn-primary">
