@@ -1,7 +1,6 @@
 <?php namespace Kickapoo\SocialImport;
+use \Kickapoo\Factories\TweetFactory;
 use \Tweet;
-use \DB;
-use \Image;
 use \Trash;
 use \Banned;
 
@@ -32,6 +31,7 @@ class TwitterImport {
 		$this->doImport();
 	}
 
+
 	/**
 	* Import the Feed
 	*/
@@ -41,26 +41,10 @@ class TwitterImport {
 		{
 			if ( (!$item['is_retweet']) && ($this->validates($item)) )
 			{
-				$date = strtotime($item['date']);
-				$date = date('Y-m-d H:i:s');
-				$language = ( isset($item['language_code']) ) ? $item['language_code'] : null;
-				$location = ( isset($item['location']) ) ? $item['location'] : null;
-				$media = ( isset($item['media']) ) ? $item['media'] : null;
-				$image = ( $item['media'] ) ? $this->importImage($item['media'], $item['id']) : null;
-
-				Tweet::create([
-					'twitter_id' => $item['id'],
-					'text' => $item['text'],
-					'datetime' => $date,
-					'language' => $language,
-					'retweet_count' => $item['retweet_count'],
-					'favorite_count' => $item['favorite_count'],
-					'screen_name' => $item['screen_name'],
-					'profile_image' => $item['profile_image'],
-					'image' => $image
-				]);
-
+				$factory = new TweetFactory;
+				$factory->createTweet($item);
 				$this->import_count++;
+
 			} elseif ( count($this->feed) == 1 ) {
 				if ( $this->exists($item['id']) ) throw new \Kickapoo\Exceptions\PostExistsException;
 				if ( $item['is_retweet'] ) throw new \Kickapoo\Exceptions\TweetRetweetException;
@@ -109,27 +93,6 @@ class TwitterImport {
 	private function banned($screen_name)
 	{
 		return ( Banned::where('screen_name', $screen_name)->count() ) ? true : false;
-	}
-
-
-	/**
-	* Import the Image if there is one
-	*/
-	private function importImage($image, $id)
-	{
-		// Get the file extension
-		$image_parts = pathinfo($image);
-		$extension = $image_parts['extension'];
-
-		// Get the file itself, set the name & destination
-		$image_file = file_get_contents($image);
-		$filename = time() . '-' . $id . '.' . $extension;
-		$destination = public_path() . '/assets/uploads/twitter_images/' . $filename;
-
-		// Upload the file and return the generated filename
-		$upload = Image::make($image_file)->save($destination, 80);
-		
-		return $filename;
 	}
 
 	
