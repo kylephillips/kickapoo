@@ -16,10 +16,19 @@
 		<div class="panel panel-default">
 			<div class="panel-heading"><h3 class="panel-title"><strong>Reset your password </strong></h3></div>
 			<div class="panel-body">
-				<form action="{{ action('RemindersController@postRemind') }}" method="POST">
+				<form action="{{ action('RemindersController@postReset') }}" method="POST">
+					<input type="hidden" name="token" value="{{ $token }}">
 					<div class="form-group">
-						<label for="email">Your Email (<a href="{{URL::route('login')}}">Login</a>)</label>
+						<label for="email">Your Email</label>
 				    	<input type="email" name="email" class="form-control">
+					</div>
+					<div class="form-group">
+						<div class="form-group">
+						<label for="password">New Password</label>
+				    	<input type="password" name="password" class="form-control">
+					</div>
+						<label for="password_confirmation">Confirm New Password</label>
+				    	<input type="password" name="password_confirmation" class="form-control">
 					</div>
 				    <input type="submit" value="Send Reset Link" class="btn btn-block btn-primary">
 				</form>
