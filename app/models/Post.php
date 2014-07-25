@@ -6,7 +6,7 @@ class Post extends Eloquent {
 
 	protected $table = 'posts';
 	
-	protected $fillable = ['type', 'tweet_id', 'gram_id'];
+	protected $fillable = ['type', 'tweet_id', 'gram_id', 'user_id'];
 
 
 	/**
@@ -23,6 +23,14 @@ class Post extends Eloquent {
 	public function gram()
 	{
 		return $this->belongsTo('Gram', 'id', 'gram_id');
+	}
+
+	/**
+	* User Relationship
+	*/
+	public function user()
+	{
+		return $this->belongsTo('User');
 	}
 
 }

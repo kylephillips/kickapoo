@@ -53,6 +53,8 @@ class PostController extends \BaseController {
 		$status = ( isset($_GET['status']) ) ? $_GET['status'] : 'all';
 		$posts = $this->post_repo->getPosts($type, $status);
 
+//dd($posts[0]->post->user->first_name);
+
 		$type_link = URL::route('admin.post.index');
 		$type_link .= ( $status !== 'all' ) ? '?status=' . $status : '?status=all';
 
@@ -98,11 +100,18 @@ class PostController extends \BaseController {
 		$newpost = Post::create([
 			'type' => $type,
 			'tweet_id' => $tweet_id,
-			'gram_id' => $gram_id
+			'gram_id' => $gram_id,
+			'user_id' => Auth::user()->id
 		]);
 
 		$approval_date = date('D, M jS y - g:i a', strtotime($newpost->created_at));
-		return Response::json(['status' => 'success', 'approval_date'=>$approval_date, 'postid'=>$newpost->id]);
+		return Response::json([
+			'status' => 'success', 
+			'approval_date'=>$approval_date, 
+			'postid'=>$newpost->id,
+			'firstname' => $newpost->user->first_name,
+			'lastname' => $newpost->user->last_name
+		]);
 	}
 
 

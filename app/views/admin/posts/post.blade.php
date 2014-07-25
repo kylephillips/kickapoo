@@ -147,7 +147,8 @@
 				</div><!-- .content -->
 				@if($post['approved'] == 1)
 				<div class="status-approved">
-					<p><i class="icon-checkmark"></i> Approved {{$postdate}}</p>
+					<p><i class="icon-checkmark"></i> Approved {{$postdate}} by {{$postdate}} by {{$post['post']['user']['first_name']}} {{$post['post']['user']['last_name']}}
+</p>
 					<a href="#" class="remove-approved" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}" data-postid="{{$post['post']['id']}}">Unapprove and Trash</a>
 				</div>
 				@else
@@ -192,7 +193,7 @@
 					</div>
 					@if($post['approved'] == 1)
 					<div class="status-approved">
-						<p><i class="icon-checkmark"></i> Approved {{$postdate}}</p>
+						<p><i class="icon-checkmark"></i> Approved {{$postdate}} by {{$post['post']['user']['first_name']}} {{$post['post']['user']['last_name']}}</p>
 						<a href="#" class="remove-approved" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}" data-postid="{{$post['post']['id']}}">Unapprove and Trash</a>
 					</div>
 					@else
@@ -322,6 +323,7 @@ function approvePost(id, type, item)
 			type : type
 		},
 		success: function(data){
+			console.log(data);
 			$(item).addClass('approved');
 			$(item).find('.status').remove();
 			addApprovedStatus(id, item, type, data);
@@ -335,7 +337,7 @@ function approvePost(id, type, item)
 */
 function addApprovedStatus(id, item, type, post)
 {
-	var out = '<div class="status-approved"><p><i class="icon-checkmark"></i> Approved ' + post.approval_date + '</p><a href="#" class="remove-approved" data-id="' + id + '" data-type="' + type + '" data-postid="' + post.postid + '">Unapprove and Trash</a></div>';
+	var out = '<div class="status-approved"><p><i class="icon-checkmark"></i> Approved ' + post.approval_date + ' by ' + post.firstname + ' ' + post.lastname + '</p><a href="#" class="remove-approved" data-id="' + id + '" data-type="' + type + '" data-postid="' + post.postid + '">Unapprove and Trash</a></div>';
 	$(item).find('.content').append(out);
 }
 

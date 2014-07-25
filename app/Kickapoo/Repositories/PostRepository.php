@@ -52,8 +52,8 @@ class PostRepository {
 	*/
 	private function getPostType($status = null, $type = null)
 	{
-		if ( $type == 'twitter' ) $query = Tweet::with('post', 'banned');
-		if ( $type == 'instagram' ) $query = Gram::with('post', 'banned');
+		if ( $type == 'twitter' ) $query = Tweet::with('post', 'post.user', 'banned');
+		if ( $type == 'instagram' ) $query = Gram::with('post', 'post.user', 'banned');
 		
 		// Filter by status
 		if ( $status == null ){

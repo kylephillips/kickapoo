@@ -53,6 +53,14 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 		return $this->belongsTo('Group');
 	}
 
+	/**
+	* Post Relationship
+	*/
+	public function post()
+	{
+		return $this->hasMany('Post');
+	}
+
 	public static $required = [
 		'firstname' => 'required',
 		'lastname' => 'required',
