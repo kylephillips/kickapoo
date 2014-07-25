@@ -323,7 +323,6 @@ function approvePost(id, type, item)
 			type : type
 		},
 		success: function(data){
-			console.log(data);
 			$(item).addClass('approved');
 			$(item).find('.status').remove();
 			addApprovedStatus(id, item, type, data);
