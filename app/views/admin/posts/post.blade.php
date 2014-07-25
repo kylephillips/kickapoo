@@ -298,7 +298,7 @@ function doImport()
 		success: function(data){
 			console.log(data);
 			$('#import-loading').hide();
-			$('.run-import').removeAttr('disabled');
+			$('.run-import').removeAttr('disabled').html('<i class="icon-loop2"></i> Run Import');
 			if ( data.status == 'success' ){
 				if ( data.import_count === 0 ){
 					$('#import-alert').text('There were no new items to import').show();
