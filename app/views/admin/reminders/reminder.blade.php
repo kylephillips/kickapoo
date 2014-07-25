@@ -1,8 +1,9 @@
 @extends('admin.partials.admin-master')
 @section('content')
-<div class="container small">
+<div class="container login">
+	<div class="logo"><img src="{{URL::asset('assets/images/kickapoo-admin-logo-full.png')}}"></div>
+
 	<div class="col-md-6 col-md-offset-3">
-		<h1>Password Reset</h1>
 
 		@if(Session::get('error'))
 			<div class="alert alert-danger">{{Session::get('error')}}</div>
@@ -13,6 +14,7 @@
 
 		@else
 		<div class="panel panel-default">
+			<div class="panel-heading"><h3 class="panel-title"><strong>Reset your password </strong></h3></div>
 			<div class="panel-body">
 				<form action="{{ action('RemindersController@postRemind') }}" method="POST">
 					<div class="form-group">
