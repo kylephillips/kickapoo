@@ -3,6 +3,7 @@ use Kickapoo\SocialFeed\InstagramFeed;
 use \Gram;
 use \Image;
 use \Trash;
+use \Banned;
 
 class InstagramImport {
 
@@ -30,65 +31,86 @@ class InstagramImport {
 
 
 	/**
-	* Import the Instagram Posts
-	* @todo copy images locally
+	* Import the Posts
 	*/
 	private function doImport()
 	{
 		if ( $this->feed ) :
-			foreach ( $this->feed as $key=>$gram )
+			foreach ( $this->feed as $key=>$item )
 			{
-				if ( (!$this->exists($gram['id'])) && (!$this->trashed($gram['id'])) ){
-					$date = strtotime($gram['date']);
+				if ( $this->validates($item) ){
+					$date = strtotime($item['date']);
 					$date = date('Y-m-d H:i:s');
-					$image = ( isset($gram['image']) ) ? $this->importImage($gram['image'], $gram['id']) : null;
+					$image = ( isset($item['image']) ) ? $this->importImage($item['image'], $item['id']) : null;
 
 					Gram::create([
-						'instagram_id' => $gram['id'],
+						'instagram_id' => $item['id'],
 						'datetime' => $date,
-						'link' => $gram['link'],
-						'type' => $gram['type'],
-						'like_count' => $gram['like_count'],
+						'link' => $item['link'],
+						'type' => $item['type'],
+						'like_count' => $item['like_count'],
 						'image' => ( $image ) ? $image : null,
-						'video_url' => ( isset($gram['video_url']) ) ? $gram['video_url'] : null,
-						'text' => ( isset($gram['caption']) ) ? $gram['caption'] : null,
-						'user_id' => $gram['user_id'],
-						'screen_name' => $gram['screen_name'],
-						'profile_image' => ( isset($gram['profile_image']) ) ? $gram['profile_image'] : null,
-						'latitude' => ( isset($gram['latitude']) ) ? $gram['latitude'] : null,
-						'longitude' => ( isset($gram['longitude']) ) ? $gram['longitude'] : null
+						'video_url' => ( isset($item['video_url']) ) ? $item['video_url'] : null,
+						'text' => ( isset($item['caption']) ) ? $item['caption'] : null,
+						'user_id' => $item['user_id'],
+						'screen_name' => $item['screen_name'],
+						'profile_image' => ( isset($item['profile_image']) ) ? $item['profile_image'] : null,
+						'latitude' => ( isset($item['latitude']) ) ? $item['latitude'] : null,
+						'longitude' => ( isset($item['longitude']) ) ? $item['longitude'] : null
 					]);
 
 					$this->import_count++;
 				} elseif ( count($this->feed) == 1 ){
-					if ( $this->exists($gram['id']) ) throw new \Kickapoo\Exceptions\PostExistsException;
-					if ( $this->trashed($gram['id']) ) throw new \Kickapoo\Exceptions\PostTrashedException;
+					if ( $this->exists($item['id']) ) throw new \Kickapoo\Exceptions\PostExistsException;
+					if ( $this->trashed($item['id']) ) throw new \Kickapoo\Exceptions\PostTrashedException;
+					if ( $this->banned($item['screen_name']) ) throw new \Kickapoo\Exceptions\BannedUserException;
 				}
 			}
 		endif;
 	}
 
 	/**
-	* Check if a Gram is already imported
+	* Validate the Item
 	*/
-	private function exists($gram)
+	private function validates($item)
 	{
-		return ( Gram::where('instagram_id', $gram)->count() ) ? true : false;
+		if ( $this->exists($item['id']) ) return false;
+		if ( $this->trashed($item['id']) ) return false;
+		if ( $this->banned($item['screen_name']) ) return false;
+		return true;
 	}
 
 
 	/**
-	* Check if Gram has been trashed
+	* Check if already imported
+	* @param int
 	*/
-	private function trashed($gram)
+	private function exists($id)
 	{
-		return ( Trash::where('instagram_id', $gram)->count() ) ? true : false;
+		return ( Gram::where('instagram_id', $id)->count() ) ? true : false;
+	}
+
+
+	/**
+	* Check if trashed
+	* @param int
+	*/
+	private function trashed($id)
+	{
+		return ( Trash::where('instagram_id', $id)->count() ) ? true : false;
+	}
+
+	/**
+	* Check if user has been banned
+	*/
+	private function banned($screen_name)
+	{
+		return ( Banned::where('screen_name', $screen_name)->count() ) ? true : false;
 	}
 
 
 	/**
 	* Import the Image if there is one
-	* @todo apply any crops needed from design
 	*/
 	private function importImage($image, $id)
 	{

@@ -43,6 +43,9 @@ class SingleImport {
 		} catch(\Kickapoo\Exceptions\PostTrashedException $e){
 			$this->error = 'This tweet was previously trashed.';
 			return false;
+		} catch (\Kickapoo\Exceptions\BannedUserException $e){
+			$this->error = 'This user has been banned.';
+			return false;
 		}
 
 		$this->imported_item = $feed;
@@ -71,6 +74,9 @@ class SingleImport {
 			return false;
 		} catch(\Kickapoo\Exceptions\PostTrashedException $e){
 			$this->error = 'This Instagram post was previously trashed.';
+			return false;
+		} catch (\Kickapoo\Exceptions\BannedUserException $e){
+			$this->error = 'This user has been banned.';
 			return false;
 		}
 

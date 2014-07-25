@@ -3,6 +3,7 @@ use \Tweet;
 use \DB;
 use \Image;
 use \Trash;
+use \Banned;
 
 /**
 * Import a Twitter Feed into the DB
@@ -32,57 +33,82 @@ class TwitterImport {
 	}
 
 	/**
-	* Import the Tweets
+	* Import the Feed
 	*/
 	private function doImport()
 	{
-		foreach ( $this->feed as $key=>$tweet )
+		foreach ( $this->feed as $key=>$item )
 		{
-			if ( (!$tweet['is_retweet']) && (!$this->exists($tweet['id'])) && (!$this->trashed($tweet['id'])) )
+			if ( (!$item['is_retweet']) && ($this->validates($item)) )
 			{
-				$date = strtotime($tweet['date']);
+				$date = strtotime($item['date']);
 				$date = date('Y-m-d H:i:s');
-				$language = ( isset($tweet['language_code']) ) ? $tweet['language_code'] : null;
-				$location = ( isset($tweet['location']) ) ? $tweet['location'] : null;
-				$media = ( isset($tweet['media']) ) ? $tweet['media'] : null;
-				$image = ( $tweet['media'] ) ? $this->importImage($tweet['media'], $tweet['id']) : null;
+				$language = ( isset($item['language_code']) ) ? $item['language_code'] : null;
+				$location = ( isset($item['location']) ) ? $item['location'] : null;
+				$media = ( isset($item['media']) ) ? $item['media'] : null;
+				$image = ( $item['media'] ) ? $this->importImage($item['media'], $item['id']) : null;
 
 				Tweet::create([
-					'twitter_id' => $tweet['id'],
-					'text' => $tweet['text'],
+					'twitter_id' => $item['id'],
+					'text' => $item['text'],
 					'datetime' => $date,
 					'language' => $language,
-					'retweet_count' => $tweet['retweet_count'],
-					'favorite_count' => $tweet['favorite_count'],
-					'screen_name' => $tweet['screen_name'],
-					'profile_image' => $tweet['profile_image'],
+					'retweet_count' => $item['retweet_count'],
+					'favorite_count' => $item['favorite_count'],
+					'screen_name' => $item['screen_name'],
+					'profile_image' => $item['profile_image'],
 					'image' => $image
 				]);
 
 				$this->import_count++;
 			} elseif ( count($this->feed) == 1 ) {
-				if ( $this->exists($tweet['id']) ) throw new \Kickapoo\Exceptions\PostExistsException;
-				if ( $tweet['is_retweet'] ) throw new \Kickapoo\Exceptions\TweetRetweetException;
-				if ( $this->trashed($tweet['id']) ) throw new \Kickapoo\Exceptions\PostTrashedException;
+				if ( $this->exists($item['id']) ) throw new \Kickapoo\Exceptions\PostExistsException;
+				if ( $item['is_retweet'] ) throw new \Kickapoo\Exceptions\TweetRetweetException;
+				if ( $this->trashed($item['id']) ) throw new \Kickapoo\Exceptions\PostTrashedException;
+				if ( $this->banned($item['screen_name']) ) throw new \Kickapoo\Exceptions\BannedUserException;
 			}
 		}
 	}
 
 
 	/**
-	* Check if a Tweet is already imported
+	* Validate the Item
 	*/
-	private function exists($tweet)
+	private function validates($item)
 	{
-		return ( Tweet::where('twitter_id', $tweet)->count() ) ? true : false;		
+		if ( $this->exists($item['id']) ) return false;
+		if ( $this->trashed($item['id']) ) return false;
+		if ( $this->banned($item['screen_name']) ) return false;
+		return true;
 	}
 
+
 	/**
-	* Check if Tweet has been trashed
+	* Check if already imported
+	* @param int
 	*/
-	private function trashed($tweet)
+	private function exists($id)
 	{
-		return ( Trash::where('twitter_id', $tweet)->count() ) ? true : false;
+		return ( Tweet::where('twitter_id', $id)->count() ) ? true : false;		
+	}
+
+
+	/**
+	* Check if trashed
+	* @param int
+	*/
+	private function trashed($id)
+	{
+		return ( Trash::where('twitter_id', $id)->count() ) ? true : false;
+	}
+
+
+	/**
+	* Check if user has been banned
+	*/
+	private function banned($screen_name)
+	{
+		return ( Banned::where('screen_name', $screen_name)->count() ) ? true : false;
 	}
 
 
