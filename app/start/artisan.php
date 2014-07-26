@@ -14,3 +14,4 @@
 // cron command (local): */5 * * * * /home/vagrant/Sites/kickapoo/artisan kickapoo:importsocial
 Artisan::resolve('ImportSocialCommand');
 Artisan::resolve('EmptyTrashCommand');
+Artisan::resolve('CleanOldPostsCommand');

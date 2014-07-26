@@ -5,6 +5,7 @@ use \Post;
 use \Tweet;
 use \Gram;
 use \Paginator;
+use \Carbon\Carbon;
 
 class PostRepository {
 
@@ -99,6 +100,17 @@ class PostRepository {
 		$grams = Gram::with('post', 'banned')->whereRaw('approved IS NULL')->count();
 		$count = $tweets + $grams;
 		return $count;
+	}
+
+	/**
+	* Clean out old Posts
+	*/
+	public function cleanOldPosts()
+	{
+		$monthOld = Carbon::now()->subMonth();
+		$tweets = Tweet::where('created_at','<=',$monthOld)->whereRaw('approved IS NULL')->delete();
+		$tweets = Gram::where('created_at','<=',$monthOld)->whereRaw('approved IS NULL')->delete();
+		return 'cleaned';
 	}
 
 }
