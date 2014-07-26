@@ -30,6 +30,7 @@ class CreateGramsTable extends Migration {
 			$table->string('latitude')->nullable();
 			$table->string('longitude')->nullable();
 			$table->integer('approved')->nullable();
+			$table->timeStamps();
 		});
 	}
 
