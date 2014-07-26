@@ -2,7 +2,7 @@
 @section('content')
 	<div class="container small">
 		<h1>Social Posts</h1>
-
+		
 		{{Form::open(['url'=>URL::route('update_search'), 'class'=>'searchterm'])}}
 			@if(Session::has('errors'))
 				<div class="alert alert-danger">{{Session::get('errors')->first()}}</div>
@@ -106,6 +106,10 @@
 				</li>
 			</ul>
 		</div><!-- post-filters -->
+
+		@if(count($posts) < 1)
+		<div class="alert alert-danger">No Posts Found.</div>
+		@endif
 
 		<div class="scroll">
 
