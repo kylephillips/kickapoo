@@ -9,7 +9,7 @@
 	<div class="container-fluid">
 
 	<div class="navbar-header">
-		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainnav">
 		<span class="sr-only">Toggle navigation</span>
 		<span class="icon-bar"></span>
 		<span class="icon-bar"></span>
@@ -20,7 +20,7 @@
 		</a>
 	</div>
 
-	<div class="collapse navbar-collapse">
+	<div class="collapse navbar-collapse" id="mainnav">
 		<ul class="nav navbar-nav">
 			<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Social Posts<span class="caret"></span></a>
