@@ -39,6 +39,23 @@
 			{{Form::select('group', $groups,  $user->group_id, ['class'=>'form-control'])}}
 		</div>
 		<hr>
+		<h3>Notifications</h3>
+		<div class="form-group">
+			<label>
+				@if($user->notify_unmoderated)
+				{{Form::checkbox('notify_unmoderated', '1', true)}}
+				@else
+				{{Form::checkbox('notify_unmoderated', '1', false)}}
+				@endif
+				Send me an email when unmoderated posts reach a certain count
+			</label>
+		</div>
+		<div class="form-group">
+			{{$errors->first('notify_unmoderated_count', '<span class="text-danger"><strong>:message</strong></span><br>')}}
+			{{Form::label('notify_unmoderated_count', 'Number of maximum unmoderated posts:')}}
+			{{Form::text('notify_unmoderated_count', $user->notify_unmoderated_count, ['class'=>'form-control'])}}
+		</div>
+		<hr>
 		<h3>Change Password</h3>
 		<div class="form-group">
 			{{$errors->first('password', '<span class="text-danger"><strong>:message</strong></span><br>')}}

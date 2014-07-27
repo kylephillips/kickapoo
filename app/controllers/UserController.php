@@ -105,6 +105,9 @@ class UserController extends \BaseController {
 		$validation->sometimes('password', ['min:6', 'confirmed'], function($input){
 			return $input->password !== '';
 		});
+		$validation->sometimes('notify_unmoderated_count', ['integer', 'required'], function($input){
+			return $input->notify_unmoderated == '1';
+		});
 
 		if ( $validation->fails() ){
 			return Redirect::back()->withErrors($validation)->withInput();	

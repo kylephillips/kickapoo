@@ -20,7 +20,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	/**
 	* Mass Assignable Vars
 	*/
-	protected $fillable = ['email', 'password', 'group_id', 'first_name', 'last_name'];
+	protected $fillable = ['email', 'password', 'group_id', 'first_name', 'last_name', 'notify_unmoderated', 'notify_unmoderated_count'];
 
 	/**
 	 * The attributes excluded from the model's JSON form.
