@@ -25,6 +25,10 @@ img {
 
 .well {
 	box-shadow: none;
+	hr {
+		height: 3px;
+		background-color: darken($white, 15%);
+	}
 }
 
 h1 {

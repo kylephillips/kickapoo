@@ -28,6 +28,9 @@ img {
 .well {
   -webkit-box-shadow: none;
           box-shadow: none; }
+  .well hr {
+    height: 3px;
+    background-color: #d9d9d9; }
 
 h1 {
   color: #ffffff;
