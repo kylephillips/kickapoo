@@ -34,10 +34,12 @@
 			{{Form::label('email', 'Email')}}
 			{{Form::email('email', $user->email, ['class'=>'form-control'])}}
 		</div>
+		@if ( Auth::user()->group_id == 1 )
 		<div class="form-group">
 			{{Form::label('group', 'User Level')}}
 			{{Form::select('group', $groups,  $user->group_id, ['class'=>'form-control'])}}
 		</div>
+		@endif
 		<hr>
 		<h3>Notifications</h3>
 		<div class="form-group">
