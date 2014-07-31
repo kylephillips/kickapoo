@@ -44,9 +44,7 @@ body {
   color: #ffffff;
   height: 100%;
   overflow-x: hidden;
-  width: 100%;
-  -webkit-box-shadow: inset 0px 10px 100px 0px rgba(0, 0, 0, 0.3);
-          box-shadow: inset 0px 10px 100px 0px rgba(0, 0, 0, 0.3); }
+  width: 100%; }
 
 input, button, select, textarea {
   font-family: inherit;
@@ -204,6 +202,12 @@ img {
 .icon-twitter:before {
   content: "\e612"; }
 
+.bubble-pattern {
+  width: 100%;
+  height: 164px;
+  background: url('../images/pattern-bubbles.png') repeat-x;
+  border: 0; }
+
 .mobile-nav {
   position: fixed;
   z-index: 999;
@@ -351,28 +355,25 @@ body.nav-open .page-wrap {
     display: block;
     width: 42px;
     height: 42px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, 0.3);
     -webkit-border-radius: 20px;
             border-radius: 20px;
     text-align: center;
     font-size: 22px;
     margin-top: 10px;
     position: relative;
-    right: 0;
-    border: 1px solid rgba(0, 0, 0, 0.3);
-    -webkit-transition: all 200ms ease;
-         -o-transition: all 200ms ease;
-            transition: all 200ms ease; }
+    -webkit-transition: color 200ms ease, background-color 200ms ease;
+         -o-transition: color 200ms ease, background-color 200ms ease;
+            transition: color 200ms ease, background-color 200ms ease; }
     .social-links li a i {
       line-height: 42px; }
     .social-links li a:hover {
       background-color: #fff200;
       color: #006c23;
       border-color: #fff200;
-      right: 3px;
-      -webkit-transition: all 200ms ease;
-           -o-transition: all 200ms ease;
-              transition: all 200ms ease; }
+      -webkit-transition: color 200ms ease, background-color 200ms ease;
+           -o-transition: color 200ms ease, background-color 200ms ease;
+              transition: color 200ms ease, background-color 200ms ease; }
   .social-links li:first-child a {
     margin-top: 0; }
 
@@ -393,8 +394,7 @@ body.nav-open .page-wrap {
                 border-radius: 0;
         text-align: center;
         font-size: 20px;
-        margin: 0px 0px 0px 15px;
-        border: 0; }
+        margin: 0px 0px 0px 15px; }
         .social-links li a:hover {
           background: transparent;
           color: #ffffff;
@@ -479,3 +479,8 @@ header {
 @media (max-width: 767px) {
   header .buy-button {
     display: none; } }
+
+.home-hero {
+  -webkit-box-shadow: inset 0px 30px 100px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: inset 0px 30px 100px 0px rgba(0, 0, 0, 0.4);
+  background-color: #008d2c; }

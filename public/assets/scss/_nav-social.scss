@@ -10,15 +10,13 @@
 			display: block;
 			width: 42px;
 			height: 42px;
-			background-color: rgba(0,0,0,.2);
+			background-color: rgba(0,0,0,.3);
 			border-radius: 20px;
 			text-align: center;
 			font-size: 22px;
 			margin-top: 10px;
 			position: relative;
-			right: 0;
-			border: 1px solid rgba(0,0,0,.3);
-			transition: all 200ms ease;
+			transition: color 200ms ease, background-color 200ms ease;
 			i {
 				line-height: 42px;
 			}
@@ -26,8 +24,7 @@
 				background-color: $yellow;
 				color: $green-dark;
 				border-color: $yellow;
-				right: 3px;
-				transition: all 200ms ease;
+				transition: color 200ms ease, background-color 200ms ease;
 			}
 		}
 		&:first-child a {
@@ -54,7 +51,6 @@
 				text-align: center;
 				font-size: 20px;
 				margin: 0px 0px 0px 15px;
-				border: 0;
 				&:hover {
 					background: transparent;
 					color: $white;

@@ -1,4 +1,7 @@
 @extends('partials.master')
 @section('content')
-<p>{{App::environment()}}</p>
+
+<hr class="bubble-pattern">
+</section><!-- .home-hero -->
+
 @stop

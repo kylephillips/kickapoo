@@ -22,6 +22,7 @@ class PageController extends BaseController {
 	{	
 		$posts = $this->posts_repo->getPosts();
 		return View::make('home')
+			->with('page', 'home')
 			->with('posts', $posts);
 	}
 

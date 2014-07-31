@@ -35,7 +35,13 @@
 	</nav>
 
 	<div class="page-wrap">
+		
+		@if( $page == 'home' )
+		<section class="home-hero">
+		@endif
+
 		@include('partials.header')
+		
 		@yield('content')
 	</div><!-- .page-wrap -->
 
