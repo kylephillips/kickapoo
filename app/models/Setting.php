@@ -10,6 +10,11 @@ class Setting extends Eloquent {
 	];
 
 	public static $settings_required = [
+		'store_link' => 'url',
+		'twitter_link' => 'url',
+		'instagram_link' => 'url',
+		'vine_link' => 'url',
+		'youtube_link' => 'url',
 		'twitter_api_key' => 'required',
 		'twitter_api_secret' => 'required',
 		'twitter_access_token' => 'required',
