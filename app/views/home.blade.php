@@ -5,6 +5,7 @@
 </section><!-- .home-hero -->
 
 <section id="posts" class="social-posts loading">
+	@if( count($posts) > 0 )
 	<ul>
 		@foreach($posts as $i=>$post)
 			<li class="item @if($i % 3 == 0)white @elseif($i % 2 == 0)lime @elseif($i % 1 == 0)yellow @endif">
@@ -18,6 +19,9 @@
 			</li>
 		@endforeach
 	</ul>
+	@else
+		<p class="center">No Posts Yet!</p>
+	@endif
 </section>
 
 @stop
