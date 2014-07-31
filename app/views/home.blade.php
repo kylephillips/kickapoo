@@ -1,5 +1,4 @@
 @extends('partials.master')
 @section('content')
-{{App::environment()}}
-
+<p>{{App::environment()}}</p>
 @stop

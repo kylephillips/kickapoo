@@ -1,0 +1,90 @@
+//
+// Mobile Nav
+// --------------------------------------------------
+.nav-toggle {
+	display: none;
+	float: right;
+	margin-top: 18px;
+	background-color: $yellow;
+	color: $green-dark;
+	padding: 0px 50px 0px 10px;
+	border-radius: 3px;
+	position: relative;
+	height: 40px;
+	line-height: 40px;
+	i {
+		position: absolute;
+		right: 0;
+		top: 0;
+		font-size: 20px;
+		line-height: 36px;
+		width: 40px;
+		height: 40px;
+		text-align: center;
+		color: darken($yellow, 30%);
+		background-color: darken($yellow, 5%);
+		border-radius: 0px 3px 3px 0px;
+	}
+	&.active {
+		background-color: $white;
+		color: $green-dark;
+		i {
+			background-color: darken($white, 20%);
+			color: darken($white, 80%);
+		}
+	}
+}
+
+.mobile-nav {
+	text-align: center;
+	.logo {
+		max-width: 180px;
+		display: inline-block;
+		padding: 10px 0px;
+	}
+	.nav {
+		margin-bottom: 20px;
+		li {
+			a {
+				display: block;
+				padding: 10px 0;
+				border-top: 1px solid darken($green-dark, 15%);
+				border-bottom: 1px solid darken($green-dark, 8%);
+				color: $white;
+			}
+			&:first-child a {
+				border-top: 0;
+			}
+			&:last-child a {
+				border-bottom: 0;
+			}
+		}
+	}
+	.social {
+		display: inline-block;
+		li {
+			display: inline-block;
+			a {
+				display: inline-block;
+				width: 35px;
+				height: 35px;
+				background-color: $green-dark;
+				border-radius: 20px;
+				margin-left: 10px;
+				i {
+					line-height: 35px;
+				}
+			}
+			&:first-child a {
+				margin-left: 0;
+			}
+		}
+	}
+}
+
+@media (max-width: 767px)
+{
+	.nav-toggle {
+		display: block;
+	}
+}

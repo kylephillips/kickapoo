@@ -1,4 +1,68 @@
 header {
-	background-color: #fff;
-	color: #ffffff;
+	@include clearfix();
+	padding: 20px;
+	.logo {
+		float: left;
+		max-width: 200px;
+	}
+	.buy-button {
+		float: right;
+		margin-top: 30px;
+		display: inline-block;
+		background-color: $yellow;
+		background: linear-gradient(lighten($yellow, 4%), darken($yellow, 6%));
+		border: 1px solid darken($yellow, 6%);
+		padding: 8px 10px 8px 45px;
+		border-radius: 26px;
+		color: $green-dark;
+		font-weight: bold;
+		font-size: 15px;
+		position: relative;
+		box-shadow: inset 0px 1px 0px 0px rgba(255,255,255,.8), 2px 2px 8px 0px rgba(0,0,0,.3);
+		i {
+			font-size: 20px;
+			position: absolute;
+			left: 15px;
+			color: darken($green-dark, 4%);
+			transition: all 200ms ease;
+		}
+		&:hover i {
+			transition: all 200ms ease;
+			transform: rotate(-15deg);
+		}
+	}
+} // header
+
+@media (max-width: 930px)
+{
+	header {
+		padding: 15px;
+		.logo {
+			max-width: 150px;
+		}
+		.buy-button {
+			float: right;
+			clear: right;
+			margin: 5px 0px 0px 0px;
+			background: $yellow;
+			border: 0;
+			padding: 3px 15px;
+			border-radius: 20px;
+			color: $green-dark;
+			font-size: 15px;
+			box-shadow: none;
+			i {
+				display: none;
+			}
+		}
+	}
+}
+
+@media (max-width: 767px)
+{
+	header {
+		.buy-button {
+			display: none;
+		}
+	}
 }

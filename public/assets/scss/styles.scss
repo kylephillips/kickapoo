@@ -1,9 +1,19 @@
+// Variables & Mixins
 @import "_variables.scss";
+@import "_mixins.scss";
+
+// Base Styles
+@import "_reset.scss";
+@import "_scaffolding.scss";
+
+// Elements
+@import "_icons.scss";
+
+// Navigation
+@import "_nav-pagewrap.scss";
+@import "_nav-mobile.scss";
+@import "_nav-main.scss";
+@import "_nav-social.scss";
+
+// Partials/Modules
 @import "_header.scss";
-body {
-	overflow: hidden;
-}
-#big-video-wrap {
-	overflow-x: hidden;
-	width: 100%;
-}

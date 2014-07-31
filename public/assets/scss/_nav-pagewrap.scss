@@ -1,0 +1,32 @@
+//
+// Pag Wrap for Mobile Nav
+// --------------------------------------------------
+
+.mobile-nav {
+	position: fixed;
+	z-index: 999;
+	width: 70%;
+	height: 100%;
+	right: -70%;
+	background-color: darken($green-dark, 10%);
+	transition: right 200ms ease;
+}
+
+.page-wrap {
+	position: relative;
+	right: 0%;
+	width: 100%;
+	transition: right 200ms ease;
+}
+
+// Open State
+body.nav-open {
+	.mobile-nav {
+		right: 0;
+		transition: right 200ms ease;
+	}
+	.page-wrap {
+		right: 70%;
+		transition: right 200ms ease;	
+	}
+}

@@ -8,8 +8,7 @@
 	<link rel="icon" href="/favicon.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<link rel="stylesheet" href="{{URL::asset('css/styles.css')}}">
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="{{URL::asset('assets/css/styles.css')}}">
 
 	<!--[if IE 8]>
 		<link rel="stylesheet" type="text/css" href="/assets/css/ie8.css" />
@@ -24,16 +23,25 @@
 		<script>window.html5 || document.write('<script src="/assets/js/html5shiv.js"><\/script>')</script>
 	<![endif]-->
 
+	<script type="text/javascript" src="//use.typekit.net/yoo1qfa.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
 </head>
 
 <body>
 
-	@yield('content')
+	<nav class="mobile-nav">
+		@include('partials.mobilenav')
+	</nav>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+	<div class="page-wrap">
+		@include('partials.header')
+		@yield('content')
+	</div><!-- .page-wrap -->
 
-@yield('footercontent')
+	@include('partials.scripts')
+
+	@yield('footercontent')
 
 </body>
 </html>

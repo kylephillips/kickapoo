@@ -1,0 +1,55 @@
+//
+// Main Nav
+// --------------------------------------------------
+.main-nav {
+	float: left;
+	margin-top: 40px;
+	ul li {
+		float: left;
+		a {
+			display: block;
+			font-size: 20px;
+			padding: 0 30px;
+			font-weight: bold;
+			color: $white;
+			position: relative;
+			&:before {
+				font-family: 'icomoon';
+				content: '\e602';
+				position: absolute;
+				color: $yellow;
+				font-size: 14px;
+				left: -8px;
+			}
+			&:hover {
+				color: $yellow;
+			}
+		}
+		&:first-child a:before {
+			content: '';
+		}
+	}
+} // .main-nav
+
+
+@media (max-width: 930px)
+{
+	.main-nav {
+		margin-top: 25px;
+		ul li a {
+			font-size: 16px;
+			padding: 0 23px;
+			&:before {
+				font-size: 10px;
+				left: -5px;
+			}
+		}
+	}
+}
+
+@media (max-width: 767px)
+{
+	.main-nav {
+		display: none;
+	}
+}
