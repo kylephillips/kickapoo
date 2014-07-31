@@ -9,7 +9,7 @@ class Setting extends Eloquent {
 		'instagram_search' => 'required'
 	];
 
-	public static $api_required = [
+	public static $settings_required = [
 		'twitter_api_key' => 'required',
 		'twitter_api_secret' => 'required',
 		'twitter_access_token' => 'required',

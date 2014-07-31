@@ -20,9 +20,9 @@ class SettingFactory {
 
 
 	/**
-	* Update the Social API Creds
+	* Update the Settings
 	*/
-	public function updateSocialCreds($input)
+	public function updateSettings($input)
 	{
 		foreach( $input as $key=>$value ){
 			if ( $key != '_token' ){
@@ -32,5 +32,6 @@ class SettingFactory {
 			}
 		}
 	}
+
 
 }

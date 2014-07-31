@@ -31,7 +31,9 @@ class SettingController extends \BaseController {
 	public function index()
 	{
 		$settings = $this->settings_repo->socialCreds();
+		$links = $this->settings_repo->links();
 		return View::make('admin.settings.index')
+			->with('links', $links)
 			->with('settings', $settings);
 	}
 
@@ -43,13 +45,13 @@ class SettingController extends \BaseController {
 	 */
 	public function update()
 	{
-		$validation = Validator::make(Input::all(), Setting::$api_required);
+		$validation = Validator::make(Input::all(), Setting::$settings_required);
 		if ( $validation->fails() ){
 			return Redirect::back()
 				->withErrors($validation->messages())
 				->withInput();
 		}
-		$this->settings_factory->updateSocialCreds(Input::all());
+		$this->settings_factory->updateSettings(Input::all());
 		return Redirect::back()
 			->with('success', 'Settings successfully updated.');
 	}

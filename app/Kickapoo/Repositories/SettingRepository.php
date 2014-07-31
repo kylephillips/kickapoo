@@ -41,4 +41,24 @@ class SettingRepository {
 		return $settings;
 	}
 
+	/**
+	* Get Social Links
+	*/
+	public function links()
+	{
+		$settings_array = [
+			'store_link',
+			'twitter_link',
+			'instagram_link',
+			'vine_link',
+			'youtube_link'
+		];
+		$all_settings = DB::table('settings')->whereIn('key', $settings_array)->get();
+		foreach( $all_settings as $setting )
+		{
+			$settings[$setting->key] = $setting->value;
+		}
+		return $settings;
+	}
+
 }
