@@ -4,7 +4,7 @@
 <hr class="bubble-pattern">
 </section><!-- .home-hero -->
 
-<section id="posts" class="social-posts">
+<section id="posts" class="social-posts loading">
 	<ul>
 		@foreach($posts as $i=>$post)
 			<li class="item @if($i % 3 == 0)white @elseif($i % 2 == 0)lime @elseif($i % 1 == 0)yellow @endif">
@@ -25,12 +25,21 @@
 @section('footercontent')
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 <script>
-$(window).load(function(){
 
+function loadMasonry()
+{
 	var $container = $('#posts');
+
+	$container.imagesLoaded(function(){
 		$container.masonry({
 			itemSelector: '.item'
 		});
+	});
+}
+
+$(window).load(function(){
+	loadMasonry();
+	$('#posts').removeClass('loading');
 })
 </script>
 @stop

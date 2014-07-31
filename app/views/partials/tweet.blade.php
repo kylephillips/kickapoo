@@ -15,7 +15,7 @@
 	{{$post->tweet->text}}
 </section>
 @if($post->tweet->image)
-<section class="image">
+<section class="image-margin">
 	<img src="{{URL::asset('assets/uploads/twitter_images')}}/{{$post->tweet->image}}" />
 </section>
 @endif
