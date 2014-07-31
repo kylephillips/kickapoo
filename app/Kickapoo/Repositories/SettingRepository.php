@@ -21,6 +21,15 @@ class SettingRepository {
 	}
 
 	/**
+	* Get a Specified Setting
+	* @param string - key name in settings table
+	*/
+	public function getSetting($key)
+	{
+		return DB::table('settings')->where('key', $key)->pluck('value');
+	}
+
+	/**
 	* Get Social API Creds
 	*/
 	public function socialCreds()

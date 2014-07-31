@@ -21,7 +21,9 @@
 		</ul>
 	</nav>
 
-	<a href="#" class="buy-button"><i class="icon-cart"></i> Buy Kickapoo</a>
+	@if($store_link)
+	<a href="{{$store_link}}" class="buy-button"><i class="icon-cart"></i> Buy Kickapoo</a>
+	@endif
 
 	<a href="#" class="nav-toggle"><i class="icon-menu"></i> Menu</a>
 
