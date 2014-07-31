@@ -14,7 +14,7 @@ class Post extends Eloquent {
 	*/
 	public function tweet()
 	{
-		return $this->belongsTo('Tweet', 'id', 'tweet_id');
+		return $this->hasOne('Tweet', 'id', 'tweet_id');
 	}
 
 	/**
@@ -22,7 +22,7 @@ class Post extends Eloquent {
 	*/
 	public function gram()
 	{
-		return $this->belongsTo('Gram', 'id', 'gram_id');
+		return $this->hasOne('Gram', 'id', 'gram_id');
 	}
 
 	/**

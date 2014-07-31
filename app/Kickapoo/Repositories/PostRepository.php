@@ -13,7 +13,7 @@ class PostRepository {
 	/**
 	* Get all approved Posts
 	*/
-	public function getApprovedPosts()
+	public function getApproved()
 	{
 		$posts = Post::with('tweet', 'gram')->get();
 		return $posts;

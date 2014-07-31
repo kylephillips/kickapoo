@@ -20,7 +20,8 @@ class PageController extends BaseController {
 	*/
 	public function home()
 	{	
-		$posts = $this->posts_repo->getPosts();
+		$posts = $this->posts_repo->getApproved();
+		
 		return View::make('home')
 			->with('page', 'home')
 			->with('posts', $posts);

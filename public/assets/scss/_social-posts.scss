@@ -1,0 +1,118 @@
+//
+// Social Posts
+// --------------------------------------------------
+
+.social-posts {
+	max-width: 1300px;
+	margin: 0 auto;
+
+	li {
+		width: 25%;
+		margin-bottom: 20px;
+		color: $black;
+		padding: 0px 10px;
+
+		.post {
+			padding: 10px;
+			border-radius: 3px;
+		}
+
+		a {
+			color: darken($green-dark, 10%);
+		}
+
+		.user-info {
+			background-color: rgba(0,0,0,.15);
+			padding: 6px;
+			border-radius: 60px;
+			margin-bottom: 15px;
+			@include clearfix;
+			img {
+				float: left;
+				width: 20%;
+				border-radius: 40px;
+				margin-right: 5%;
+			}
+			p {
+				float: left;
+				width: 50%;
+				overflow-x: hidden;
+				margin-top: 16px;
+			}
+			span {
+				float: right;
+				width: 20%;
+				margin-top: 10px;
+				text-align: center;
+				i {
+					font-size: 30px;
+				}
+			}
+		} // .user-info
+
+		.content {
+			line-height: 20px;
+			margin-bottom: 15px;
+		}
+
+		.twitter-links {
+			@include clearfix;
+			width: 85%;
+			margin: 0 auto;
+			li {
+				float: left;
+				width: 33.333%;
+				padding: 0;
+				a {
+					display: block;
+					background-color: rgba(0,0,0,.15);
+					text-align: center;
+					height: 35px;
+					font-size: 20px;
+					box-shadow: inset 1px 0px 0px 0px rgba(0,0,0,.1);
+					i {
+						line-height: 35px;
+					}
+					&:hover {
+						background-color: $green-dark;
+						color: $yellow;
+					}
+				}
+				&:first-child a {
+					border-radius: 20px 0px 0px 20px;
+					box-shadow: none;
+				}
+				&:last-child a {
+					border-radius: 0px 20px 20px 0px;
+				}
+			}
+		} // .twitter-links
+
+		// Coloring
+		&.white .post {
+			background-color: $white;
+		}
+		&.yellow .post {
+			background-color: $yellow;
+		}
+		&.lime .post {
+			background-color: $lime;
+		}
+	} // li
+} // .social-posts
+
+
+
+@media (max-width: 1140px)
+{
+	.social-posts li {
+		width: 33.333%;
+	}
+}
+
+@media (max-width: 767px)
+{
+	.social-posts li {
+		width: 100%;
+	}
+}
