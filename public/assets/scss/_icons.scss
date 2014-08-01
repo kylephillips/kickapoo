@@ -3,11 +3,11 @@
 // --------------------------------------------------
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?-uv3mxr');
-	src:url('fonts/icomoon.eot?#iefix-uv3mxr') format('embedded-opentype'),
-		url('fonts/icomoon.woff?-uv3mxr') format('woff'),
-		url('fonts/icomoon.ttf?-uv3mxr') format('truetype'),
-		url('fonts/icomoon.svg?-uv3mxr#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?-lv5w6r');
+	src:url('fonts/icomoon.eot?#iefix-lv5w6r') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-lv5w6r') format('woff'),
+		url('fonts/icomoon.ttf?-lv5w6r') format('truetype'),
+		url('fonts/icomoon.svg?-lv5w6r#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -26,6 +26,9 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.icon-vine:before {
+	content: "\e618";
+}
 .icon-star:before {
 	content: "\e602";
 }
