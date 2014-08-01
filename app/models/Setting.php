@@ -2,7 +2,7 @@
 class Setting extends Eloquent {
 
 	protected $table = 'settings';
-	protected $fillable = ['key', 'value'];
+	protected $fillable = ['key', 'value', 'value_two', 'description'];
 
 	public static $search_required = [
 		'twitter_search' => 'required',

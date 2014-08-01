@@ -497,10 +497,12 @@ header {
     padding: 0px 10px; }
     .social-posts li .post {
       padding: 10px;
-      -webkit-border-radius: 3px;
-              border-radius: 3px; }
+      -webkit-border-radius: 4px;
+              border-radius: 4px; }
     .social-posts li a {
       color: #003912; }
+      .social-posts li a:hover {
+        color: #008d2c; }
     .social-posts li .user-info {
       background-color: rgba(0, 0, 0, 0.15);
       padding: 6px;

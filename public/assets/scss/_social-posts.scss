@@ -21,13 +21,17 @@
 		color: $black;
 		padding: 0px 10px;
 
+		// Inner items for masonry
 		.post {
 			padding: 10px;
-			border-radius: 3px;
+			border-radius: 4px;
 		}
 
 		a {
 			color: darken($green-dark, 10%);
+			&:hover {
+				color: $green;
+			}
 		}
 
 		.user-info {

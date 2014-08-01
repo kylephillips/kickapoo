@@ -18,68 +18,69 @@
 
 		{{Form::open(['url'=>URL::route('update_settings')])}}
 		
-		<h3>Links</h3>
+		<h3>Store Link</h3>
+
 		<div class="form-group">
 			{{$errors->first('store_link', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 			{{Form::label('store_link', 'Store Link')}}
-			{{Form::text('store_link', $links['store_link'], ['class'=>'form-control'])}}
+			{{Form::text('store_link', $store_link, ['class'=>'form-control'])}}
 		</div>
-		<div class="form-group">
-			{{$errors->first('twitter_link', '<span class="text-danger"><strong>:message</strong></span><br>')}}
-			{{Form::label('twitter_link', 'Twitter Link')}}
-			{{Form::text('twitter_link', $links['twitter_link'], ['class'=>'form-control'])}}
+
+		<hr>
+
+		<h3>Social Links</h3>
+		<div class="alert alert-info">
+			Both the link and icon class are required to display on the site. Leave either off to hide from the site.
 		</div>
-		<div class="form-group">
-			{{$errors->first('instagram_link', '<span class="text-danger"><strong>:message</strong></span><br>')}}
-			{{Form::label('instagram_link', 'Instagram Link')}}
-			{{Form::text('instagram_link', $links['instagram_link'], ['class'=>'form-control'])}}
+		@foreach($social_links as $link)
+		<div class="form-group half">
+			{{$errors->first($link->key, '<span class="text-danger"><strong>:message</strong></span><br>')}}
+			{{Form::label($link->key, $link->description)}}
+			{{Form::text($link->key, $link->value, ['class'=>'form-control'])}}
 		</div>
-		<div class="form-group">
-			{{$errors->first('vine_link', '<span class="text-danger"><strong>:message</strong></span><br>')}}
-			{{Form::label('vine_link', 'Vine Link')}}
-			{{Form::text('vine_link', $links['vine_link'], ['class'=>'form-control'])}}
+		<div class="form-group half right">
+			{{Form::label($link->key, 'Icon Class')}}
+			{{Form::text('icon_' . $link->key, $link->value_two, ['class'=>'form-control'])}}
 		</div>
-		<div class="form-group">
-			{{$errors->first('youtube_link', '<span class="text-danger"><strong>:message</strong></span><br>')}}
-			{{Form::label('youtube_link', 'Youtube Link')}}
-			{{Form::text('youtube_link', $links['youtube_link'], ['class'=>'form-control'])}}
-		</div>
+		@endforeach
 
 		<hr>
 
 		<h3>API Settings</h3>
+		<div class="alert alert-info">Twitter Keys</div>
 		<div class="form-group">
 			{{$errors->first('twitter_api_key', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 			{{Form::label('twitter_api_key', 'Twitter API Key')}}
-			{{Form::text('twitter_api_key', $settings['twitter_api_key'], ['class'=>'form-control'])}}
+			{{Form::text('twitter_api_key', $social_creds['twitter_api_key'], ['class'=>'form-control'])}}
 		</div>
 		<div class="form-group">
 			{{$errors->first('twitter_api_secret', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 			{{Form::label('twitter_api_secret', 'Twitter API Secret')}}
-			{{Form::text('twitter_api_secret', $settings['twitter_api_secret'], ['class'=>'form-control'])}}
+			{{Form::text('twitter_api_secret', $social_creds['twitter_api_secret'], ['class'=>'form-control'])}}
 		</div>
 		<div class="form-group">
 			{{$errors->first('twitter_access_token', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 			{{Form::label('twitter_access_token', 'Twitter Access Token')}}
-			{{Form::text('twitter_access_token', $settings['twitter_access_token'], ['class'=>'form-control'])}}
+			{{Form::text('twitter_access_token', $social_creds['twitter_access_token'], ['class'=>'form-control'])}}
 		</div>
 		<div class="form-group">
 			{{$errors->first('twitter_access_token_secret', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 			{{Form::label('twitter_access_token_secret', 'Twitter Access Token Secret')}}
-			{{Form::text('twitter_access_token_secret', $settings['twitter_access_token_secret'], ['class'=>'form-control'])}}
+			{{Form::text('twitter_access_token_secret', $social_creds['twitter_access_token_secret'], ['class'=>'form-control'])}}
 		</div>
 		
 		<hr>
 
+		<div class="alert alert-info">Instagram Keys</div>
 		<div class="form-group">
 			{{$errors->first('instagram_client_id', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 			{{Form::label('instagram_client_id', 'Instagram Client ID')}}
-			{{Form::text('instagram_client_id', $settings['instagram_client_id'], ['class'=>'form-control'])}}
+			{{Form::text('instagram_client_id', $social_creds['instagram_client_id'], ['class'=>'form-control'])}}
 		</div>
 		<div class="form-group">
 			{{$errors->first('instagram_client_secret', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 			{{Form::label('instagram_client_secret', 'Twitter API Secret')}}
-			{{Form::text('instagram_client_secret', $settings['instagram_client_secret'], ['class'=>'form-control'])}}
+			{{Form::text('instagram_client_secret', $social_creds['instagram_client_secret'], ['class'=>'form-control'])}}
 		</div>
 
 		{{Form::submit('Save Settings', ['class'=>'btn btn-block btn-primary'])}}

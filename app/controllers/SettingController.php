@@ -30,11 +30,14 @@ class SettingController extends \BaseController {
 	 */
 	public function index()
 	{
-		$settings = $this->settings_repo->socialCreds();
-		$links = $this->settings_repo->links();
+		$social_creds = $this->settings_repo->socialCreds();
+		$social_links = $this->settings_repo->socialLinks();
+		$store_link = $this->settings_repo->storeLink();
+
 		return View::make('admin.settings.index')
-			->with('links', $links)
-			->with('settings', $settings);
+			->with('store_link', $store_link)
+			->with('social_links', $social_links)
+			->with('social_creds', $social_creds);
 	}
 
 

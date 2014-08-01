@@ -25,9 +25,17 @@ class SettingFactory {
 	public function updateSettings($input)
 	{
 		foreach( $input as $key=>$value ){
-			if ( $key != '_token' ){
+			// Save the settings
+			if ( ($key != '_token') && ( substr($key, 0, 5) != 'icon_' ) ){
 				$setting = Setting::where('key', $key)->firstOrFail();
 				$setting->value = $value;
+				$setting->save();
+			}
+			// Save Icon Classes
+			if ( ($key != '_token') && ( substr($key, 0, 5) == 'icon_' ) ){
+				$column = str_replace('icon_', '', $key);
+				$setting = Setting::where('key', $column)->firstOrFail();
+				$setting->value_two = $value;
 				$setting->save();
 			}
 		}

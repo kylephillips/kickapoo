@@ -17,7 +17,9 @@ class CreateSettingsTable extends Migration {
 			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->string('key')->unique();
+			$table->string('description')->nullable();
 			$table->string('value');
+			$table->string('value_two')->nullable();
 			$table->timestamps();
 		});
 	}

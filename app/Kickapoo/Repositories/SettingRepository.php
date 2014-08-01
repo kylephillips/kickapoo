@@ -12,6 +12,7 @@ class SettingRepository {
 		return DB::table('settings')->where('key', 'twitter_search')->pluck('value');
 	}
 
+
 	/**
 	* Get the Instagram Search Term
 	*/
@@ -20,14 +21,16 @@ class SettingRepository {
 		return DB::table('settings')->where('key', 'instagram_search')->pluck('value');
 	}
 
+
 	/**
-	* Get a Specified Setting
+	* Get a Specified Setting by Key
 	* @param string - key name in settings table
 	*/
 	public function getSetting($key)
 	{
 		return DB::table('settings')->where('key', $key)->pluck('value');
 	}
+
 
 	/**
 	* Get Social API Creds
@@ -50,24 +53,22 @@ class SettingRepository {
 		return $settings;
 	}
 
+
+	/**
+	* Get the link to the online store
+	*/
+	public function storeLink()
+	{
+		return DB::table('settings')->where('key', 'store_link')->pluck('value');
+	}
+
+
 	/**
 	* Get Social Links
 	*/
-	public function links()
+	public function socialLinks()
 	{
-		$settings_array = [
-			'store_link',
-			'twitter_link',
-			'instagram_link',
-			'vine_link',
-			'youtube_link'
-		];
-		$all_settings = DB::table('settings')->whereIn('key', $settings_array)->get();
-		foreach( $all_settings as $setting )
-		{
-			$settings[$setting->key] = $setting->value;
-		}
-		return $settings;
+		return DB::table('settings')->where('key', 'LIKE', 'social_link%')->get();
 	}
 
 }

@@ -14,10 +14,13 @@
 
 	<nav class="social-links">
 		<ul>
-			<li><a href="#"><i class="icon-twitter"></i></a></li>
-			<li><a href="#"><i class="icon-instagram"></i></a></li>
-			<li><a href="#"><i class="icon-youtube"></i></a></li>
-			<li><a href="#"><i class="icon-facebook"></i></a></li>
+			@foreach($social_links as $link)
+			@if( ($link->value_two != "") && ($link->value != "") )
+			<li>
+				<a href="{{$link->value}}" target="_blank"><i class="{{$link->value_two}}"></i></a></li>
+			</li>
+			@endif
+			@endforeach
 		</ul>
 	</nav>
 
