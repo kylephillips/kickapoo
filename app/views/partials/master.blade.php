@@ -43,6 +43,8 @@
 		@include('partials.header')
 		
 		@yield('content')
+		
+		@include('partials.footer')
 	</div><!-- .page-wrap -->
 
 	@include('partials.scripts')
