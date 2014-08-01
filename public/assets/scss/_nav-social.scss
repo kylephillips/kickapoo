@@ -44,7 +44,11 @@
 			margin-left: 10px;
 			a {
 				margin: 0;
+				color: $lime;
 				background: transparent;
+				&:hover {
+					color: $white;
+				}
 			}
 		}
 	}

@@ -404,7 +404,10 @@ body.nav-open .page-wrap {
       margin-left: 10px; }
       .social-links.top li a {
         margin: 0;
+        color: #8ee031;
         background: transparent; }
+        .social-links.top li a:hover {
+          color: #ffffff; }
 
 @media (max-width: 930px) {
   .social-links {
@@ -790,7 +793,7 @@ footer {
 
 .home-callouts {
   background: url('../images/pattern-type.png');
-  padding: 40px 0;
+  padding: 50px 0;
   zoom: 1; }
   .home-callouts:before, .home-callouts:after {
     content: " ";
@@ -801,7 +804,7 @@ footer {
     clear: both; }
   .home-callouts .products {
     float: left;
-    width: 50%;
+    width: 55%;
     display: block;
     position: relative; }
     .home-callouts .products img {
@@ -846,16 +849,73 @@ footer {
               transition: all 200ms ease;
       border-color: #8ee031;
       -webkit-box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.5);
-              box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.5); }
+              box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.5);
+      -webkit-transform: rotate(-15deg);
+          -ms-transform: rotate(-15deg);
+           -o-transform: rotate(-15deg);
+              transform: rotate(-15deg); }
+  .home-callouts .history {
+    float: right;
+    width: 40%;
+    position: relative;
+    display: block;
+    margin-top: -20px; }
+    .home-callouts .history img {
+      -webkit-border-radius: 300px;
+              border-radius: 300px;
+      -webkit-transition: all 200ms ease;
+           -o-transition: all 200ms ease;
+              transition: all 200ms ease; }
+    .home-callouts .history span {
+      z-index: 1;
+      display: block;
+      position: absolute;
+      bottom: -30px;
+      right: 0;
+      width: 180px;
+      height: 180px;
+      line-height: 150px;
+      -webkit-border-radius: 100px;
+              border-radius: 100px;
+      background-color: #006c23;
+      border: 8px solid #008d2c;
+      text-align: center;
+      font-family: 'thirsty', 'proxima-nova', sans-serif;
+      font-size: 34px;
+      -webkit-transition: all 200ms ease;
+           -o-transition: all 200ms ease;
+              transition: all 200ms ease; }
+    .home-callouts .history:hover img {
+      -webkit-transition: all 200ms ease;
+           -o-transition: all 200ms ease;
+              transition: all 200ms ease;
+      -webkit-transform: rotate(-20deg);
+          -ms-transform: rotate(-20deg);
+           -o-transform: rotate(-20deg);
+              transform: rotate(-20deg); }
+    .home-callouts .history:hover span {
+      background-color: #ffffff;
+      color: #006c23;
+      bottom: -10px;
+      -webkit-transition: all 200ms ease;
+           -o-transition: all 200ms ease;
+              transition: all 200ms ease;
+      border-color: #8ee031;
+      -webkit-box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.5);
+              box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.5);
+      -webkit-transform: rotate(15deg);
+          -ms-transform: rotate(15deg);
+           -o-transform: rotate(15deg);
+              transform: rotate(15deg); }
 
 @media (max-width: 767px) {
-  .home-callouts .products {
+  .home-callouts .products, .home-callouts .history {
     float: none;
     width: 100%; }
-    .home-callouts .products img {
+    .home-callouts .products img, .home-callouts .history img {
       -webkit-border-radius: 0;
               border-radius: 0; }
-    .home-callouts .products span {
+    .home-callouts .products span, .home-callouts .history span {
       position: relative;
       width: auto;
       height: auto;
@@ -864,8 +924,14 @@ footer {
       line-height: 50px;
       border: 0;
       font-size: 28px; }
-    .home-callouts .products:hover img {
+    .home-callouts .products:hover img, .home-callouts .history:hover img {
       -webkit-transform: none;
           -ms-transform: none;
            -o-transform: none;
-              transform: none; } }
+              transform: none; }
+    .home-callouts .products:hover span, .home-callouts .history:hover span {
+      -webkit-transform: none;
+          -ms-transform: none;
+           -o-transform: none;
+              transform: none;
+      top: 0; } }

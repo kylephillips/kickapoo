@@ -3,11 +3,11 @@
 // --------------------------------------------------
 .home-callouts {
 	background: url('../images/pattern-type.png');
-	padding: 40px 0;
+	padding: 50px 0;
 	@include clearfix;
 	.products {
 		float: left;
-		width: 50%;
+		width: 55%;
 		display: block;
 		position: relative;
 		img {
@@ -43,16 +43,60 @@
 				transition: all 200ms ease;
 				border-color: $lime;
 				box-shadow: 8px 8px 10px 0px rgba(0,0,0,.5);
+				transform: rotate(-15deg);
 			}
 		}
-	}
+	} // .products
+	.history {
+		float: right;
+		width: 40%;
+		position: relative;
+		display: block;
+		margin-top: -20px;
+		img {
+			border-radius: 300px;
+			transition: all 200ms ease;
+		}
+		span {
+			z-index: 1;
+			display: block;
+			position: absolute;
+			bottom: -30px;
+			right: 0;
+			width: 180px;
+			height: 180px;
+			line-height: 150px;
+			border-radius: 100px;
+			background-color: $green-dark;
+			border: 8px solid $green;
+			text-align: center;
+			@include thirsty;
+			font-size: 34px;
+			transition: all 200ms ease;
+		}
+		&:hover {
+			img {
+				transition: all 200ms ease;
+				transform: rotate(-20deg);
+			}
+			span {
+				background-color: $white;
+				color: $green-dark;
+				bottom: -10px;
+				transition: all 200ms ease;
+				border-color: $lime;
+				box-shadow: 8px 8px 10px 0px rgba(0,0,0,.5);
+				transform: rotate(15deg);
+			}
+		}
+	} // .history
 } // .home-callouts
 
 
 @media (max-width: 767px)
 {
 	.home-callouts {
-		.products {
+		.products, .history {
 			float: none;
 			width: 100%;
 			img {
@@ -69,6 +113,10 @@
 			}
 			&:hover img {
 				transform: none;
+			}
+			&:hover span {
+				transform: none;
+				top: 0;
 			}
 		}
 	} // .home-callouts

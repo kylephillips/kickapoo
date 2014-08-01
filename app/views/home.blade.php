@@ -35,6 +35,10 @@
 			<span>Products</span>
 			<img src="{{URL::asset('assets/images/homepage-products.jpg')}}" alt="Product Image" />
 		</a>
+		<a href="#" class="history">
+			<span>History</span>
+			<img src="{{URL::asset('assets/images/homepage-history.jpg')}}" alt="History Image" />
+		</a>
 	</div>
 </section>
 
