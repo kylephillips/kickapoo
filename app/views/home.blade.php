@@ -22,12 +22,24 @@
 	@endif
 </section>
 
+
 @if(count($posts) > 0)
-<div class="pagination hidden">{{$posts->links()}}</div>
-<p class="center nextposts"><a href="#" class="load-more">Load More Joy! <i class="icon-loop2"></i></a></p>
+	<div class="pagination hidden">{{$posts->links()}}</div>
+	<p class="center nextposts"><a href="#" class="load-more">Load More Joy! <i class="icon-loop2"></i></a></p>
 @endif
 
+
+<section class="home-callouts">
+	<div class="container">
+		<a href="#" class="products">
+			<span>Products</span>
+			<img src="{{URL::asset('assets/images/homepage-products.jpg')}}" alt="Product Image" />
+		</a>
+	</div>
+</section>
+
 @stop
+
 
 @section('footercontent')
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
@@ -36,19 +48,12 @@
 function loadMasonry()
 {
 	var $container = $('#posts');
-
 	$container.imagesLoaded(function(){
 		$container.masonry({
 			itemSelector: '.item'
 		});
 	});
 }
-
-function noPosts()
-{
-	$('.load-more').remove();
-}
-
 
 $(window).load(function(){
 	loadMasonry();
@@ -62,7 +67,7 @@ $(window).load(function(){
 	  	itemSelector : '.item',
 		extraScrollPx: 0,
 		errorCallback: function(){
-			noPosts();
+			$('.load-more').remove();
 		},
 	  	loading: {
 			finishedMsg: undefined,
@@ -85,6 +90,9 @@ $(window).load(function(){
 
 });
 
+/**
+* Trigger Infinite Scroll load
+*/
 $(document).on('click', '.load-more', function(e){
 	$(this).addClass('loading').addClass('disabled');
 	$(this).html('Loading <i class="icon-loop2"></i>');
