@@ -359,7 +359,7 @@ body.nav-open .page-wrap {
     display: block;
     width: 42px;
     height: 42px;
-    background-color: rgba(0, 0, 0, 0.3);
+    background-color: rgba(0, 0, 0, 0.4);
     -webkit-border-radius: 20px;
             border-radius: 20px;
     text-align: center;
@@ -484,6 +484,9 @@ header {
   header .buy-button {
     display: none; } }
 
+#infscr-loading {
+  display: none !important; }
+
 .social-posts {
   max-width: 1300px;
   margin: 0 auto; }
@@ -491,74 +494,77 @@ header {
     height: 300px;
     background: url('../images/loading-yellow.gif') no-repeat;
     background-position: center; }
-    .social-posts.loading ul {
+    .social-posts.loading .item {
       display: none; }
-  .social-posts li {
+  .social-posts .item {
     width: 25%;
     margin-bottom: 20px;
     color: #000000;
     padding: 0px 10px; }
-    .social-posts li .post {
+    .social-posts .item .post {
       padding: 10px;
       -webkit-border-radius: 4px;
-              border-radius: 4px; }
-    .social-posts li a {
+              border-radius: 4px;
+      overflow-x: hidden; }
+    .social-posts .item a {
       color: #003912; }
-      .social-posts li a:hover {
+      .social-posts .item a:hover {
         color: #008d2c; }
-    .social-posts li .user-info {
+    .social-posts .item .user-info {
       background-color: rgba(0, 0, 0, 0.15);
       padding: 6px;
       -webkit-border-radius: 60px;
               border-radius: 60px;
       margin-bottom: 15px;
       zoom: 1; }
-      .social-posts li .user-info:before, .social-posts li .user-info:after {
+      .social-posts .item .user-info:before, .social-posts .item .user-info:after {
         content: " ";
         /* 1 */
         display: table;
         /* 2 */ }
-      .social-posts li .user-info:after {
+      .social-posts .item .user-info:after {
         clear: both; }
-      .social-posts li .user-info img {
+      .social-posts .item .user-info img {
         float: left;
         width: 20%;
         -webkit-border-radius: 40px;
                 border-radius: 40px;
         margin-right: 5%; }
-      .social-posts li .user-info p {
+      .social-posts .item .user-info p {
         float: left;
         width: 50%;
         overflow-x: hidden;
         margin-top: 16px; }
-      .social-posts li .user-info span {
+      .social-posts .item .user-info span {
         float: right;
         width: 20%;
         margin-top: 10px;
         text-align: center; }
-        .social-posts li .user-info span i {
+        .social-posts .item .user-info span i {
           font-size: 30px; }
-    .social-posts li .content {
+    .social-posts .item .content {
       line-height: 20px;
       margin-bottom: 15px; }
-    .social-posts li .image-margin {
+    .social-posts .item .image-margin {
       margin-bottom: 15px; }
-    .social-posts li .twitter-links {
+    .social-posts .item .twitter-links {
       zoom: 1;
       width: 85%;
       margin: 0 auto; }
-      .social-posts li .twitter-links:before, .social-posts li .twitter-links:after {
+      .social-posts .item .twitter-links:before, .social-posts .item .twitter-links:after {
         content: " ";
         /* 1 */
         display: table;
         /* 2 */ }
-      .social-posts li .twitter-links:after {
+      .social-posts .item .twitter-links:after {
         clear: both; }
-      .social-posts li .twitter-links li {
+      .social-posts .item .twitter-links li {
         float: left;
         width: 33.333%;
-        padding: 0; }
-        .social-posts li .twitter-links li a {
+        padding: 0;
+        -webkit-border-radius: 0;
+                border-radius: 0; }
+        .social-posts .item .twitter-links li a {
           display: block;
           background-color: rgba(0, 0, 0, 0.15);
           text-align: center;
@@ -566,25 +572,80 @@ header {
           font-size: 20px;
           -webkit-box-shadow: inset 1px 0px 0px 0px rgba(0, 0, 0, 0.1);
                   box-shadow: inset 1px 0px 0px 0px rgba(0, 0, 0, 0.1); }
-          .social-posts li .twitter-links li a i {
+          .social-posts .item .twitter-links li a i {
             line-height: 35px; }
-          .social-posts li .twitter-links li a:hover {
+          .social-posts .item .twitter-links li a:hover {
             background-color: #006c23;
             color: #fff200; }
-        .social-posts li .twitter-links li:first-child a {
+        .social-posts .item .twitter-links li:first-child a {
           -webkit-border-radius: 20px 0px 0px 20px;
                   border-radius: 20px 0px 0px 20px;
           -webkit-box-shadow: none;
                   box-shadow: none; }
-        .social-posts li .twitter-links li:last-child a {
+        .social-posts .item .twitter-links li:last-child a {
           -webkit-border-radius: 0px 20px 20px 0px;
                   border-radius: 0px 20px 20px 0px; }
-    .social-posts li.white .post {
+    .social-posts .item.white .post {
       background-color: #ffffff; }
-    .social-posts li.yellow .post {
+    .social-posts .item.yellow .post {
       background-color: #fff200; }
-    .social-posts li.lime .post {
+    .social-posts .item.lime .post {
       background-color: #8ee031; }
+
+.load-more {
+  display: inline-block;
+  margin-bottom: 40px;
+  background-color: #fff200;
+  width: 40%;
+  color: #006c23;
+  text-transform: uppercase;
+  font-size: 18px;
+  position: relative;
+  padding: 10px 0;
+  font-weight: bold;
+  -webkit-border-radius: 30px;
+          border-radius: 30px;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
+  -webkit-box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3);
+          box-shadow: 10px 10px 15px 0px rgba(0, 0, 0, 0.3); }
+  .load-more i {
+    position: absolute;
+    line-height: 45px;
+    width: 45px;
+    height: 45px;
+    right: 10px;
+    top: 0;
+    -webkit-transition-property: -webkit-transform;
+            transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+         -o-transition-duration: 1s;
+            transition-duration: 1s;
+    -moz-transition-duration: 1s; }
+  .load-more.loading i {
+    -webkit-animation-name: rotate;
+         -o-animation-name: rotate;
+            animation-name: rotate;
+    -webkit-animation-duration: 1s;
+         -o-animation-duration: 1s;
+            animation-duration: 1s;
+    -webkit-animation-iteration-count: infinite;
+         -o-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+         -o-animation-timing-function: linear;
+            animation-timing-function: linear; }
+
+@-webkit-keyframes rotate {
+  from {
+    -webkit-transform: rotate(0deg); }
+
+  to {
+    -webkit-transform: rotate(360deg); } }
+
+.pagination.hidden {
+  display: none; }
 
 @media (max-width: 1140px) {
   .social-posts li {
@@ -592,7 +653,9 @@ header {
 
 @media (max-width: 767px) {
   .social-posts li {
-    width: 100%; } }
+    width: 100%; }
+  .load-more {
+    width: 90%; } }
 
 .home-hero {
   -webkit-box-shadow: inset 0px 30px 100px 0px rgba(0, 0, 0, 0.4);

@@ -53,8 +53,6 @@ class PostController extends \BaseController {
 		$status = ( isset($_GET['status']) ) ? $_GET['status'] : 'all';
 		$posts = $this->post_repo->getPosts($type, $status);
 
-//dd($posts[0]->post->user->first_name);
-
 		$type_link = URL::route('admin.post.index');
 		$type_link .= ( $status !== 'all' ) ? '?status=' . $status : '?status=all';
 

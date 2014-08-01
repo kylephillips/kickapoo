@@ -2,6 +2,10 @@
 // Social Posts
 // --------------------------------------------------
 
+#infscr-loading{
+	display: none !important;
+}
+
 .social-posts {
 	max-width: 1300px;
 	margin: 0 auto;
@@ -10,12 +14,12 @@
 		height: 300px;
 		background: url('../images/loading-yellow.gif') no-repeat;
 		background-position: center;
-		ul {
+		.item {
 			display: none;
 		}
 	}
 
-	li {
+	.item {
 		width: 25%;
 		margin-bottom: 20px;
 		color: $black;
@@ -25,6 +29,7 @@
 		.post {
 			padding: 10px;
 			border-radius: 4px;
+			overflow-x: hidden;
 		}
 
 		a {
@@ -80,6 +85,7 @@
 				float: left;
 				width: 33.333%;
 				padding: 0;
+				border-radius: 0;
 				a {
 					display: block;
 					background-color: rgba(0,0,0,.15);
@@ -119,6 +125,57 @@
 } // .social-posts
 
 
+.load-more {
+	display: inline-block;
+	margin-bottom: 40px;
+	background-color: $yellow;
+	width: 40%;
+	color: $green-dark;
+	text-transform: uppercase;
+	font-size: 18px;
+	position: relative;
+	padding: 10px 0;
+	font-weight: bold;
+	border-radius: 30px;
+	text-align: center;
+	letter-spacing: 1px;
+	text-shadow: 0px 1px 0px rgba(255, 255, 255, .6);
+	box-shadow: 10px 10px 15px 0px rgba(0,0,0,.3);
+	i {
+		position: absolute;
+		line-height: 45px;
+		width: 45px;
+		height: 45px;
+		right: 10px;
+		top: 0;
+		transition-property: -webkit-transform;
+    	transition-duration: 1s;
+
+    	-moz-transition-property: -moz-transform;
+   		-moz-transition-duration: 1s;
+	}
+	&.loading i {
+		animation-name: rotate; 
+	    animation-duration: 1s; 
+	    animation-iteration-count: infinite;
+	    animation-timing-function: linear;
+	}
+}
+
+@-webkit-keyframes rotate {
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(360deg);}
+}
+
+@-moz-keyframes rotate {
+    from {-moz-transform: rotate(0deg);}
+    to {-moz-transform: rotate(360deg);}
+}
+
+.pagination.hidden {
+	display: none;
+}
+
 
 @media (max-width: 1140px)
 {
@@ -131,5 +188,9 @@
 {
 	.social-posts li {
 		width: 100%;
+	}
+
+	.load-more {
+		width: 90%;
 	}
 }
