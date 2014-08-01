@@ -15,7 +15,7 @@ class PostRepository {
 	*/
 	public function getApproved()
 	{
-		$posts = Post::with('tweet', 'gram')->paginate(8);
+		$posts = Post::with('tweet', 'gram')->orderBy('created_at', 'DESC')->paginate(8);
 		return $posts;
 	}
 
