@@ -8,7 +8,7 @@
 		</a>
 	</p>
 	<span>
-		<a href="{{$post->tweet->link}}"><i class="icon-twitter"></i></a>
+		<a href="http://twitter.com/{{$post->tweet->screen_name}}/status/{{$post->tweet->twitter_id}}" target="_blank"><i class="icon-twitter"></i></a>
 	</span>
 </section>
 <section class="content">
