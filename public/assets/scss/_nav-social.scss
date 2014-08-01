@@ -5,6 +5,7 @@
 	position: fixed;
 	right: 20px;
 	top: 120px;
+	transition: all 400ms ease;
 	z-index: 999;
 	li {
 		a {
@@ -30,6 +31,21 @@
 		}
 		&:first-child a {
 			margin-top: 0;
+		}
+	}
+	&.top {
+		top: 5px;
+		right: 5px;
+		transition: all 400ms ease;
+		background-color: rgba(0,0,0,.6);
+		border-radius: 3px;
+		li {
+			float: left;
+			margin-left: 10px;
+			a {
+				margin: 0;
+				background: transparent;
+			}
 		}
 	}
 }

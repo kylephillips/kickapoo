@@ -12,10 +12,13 @@
 		position: relative;
 		img {
 			border-radius: 400px;
+			transition: all 200ms ease;
 		}
 		span {
 			display: block;
 			position: absolute;
+			top: 0;
+			z-index: 1;
 			@include thirsty;
 			background-color: $yellow;
 			color: $green-dark;
@@ -28,10 +31,19 @@
 			border: 8px solid $green;
 			transition: all 200ms ease;
 		}
-		&:hover span {
-			background-color: $green-dark;
-			color: $white;
-			transition: all 200ms ease;
+		&:hover {
+			img {
+				transition: all 200ms ease;
+				transform: rotate(20deg);
+			}
+			span {
+				background-color: $green-dark;
+				color: $white;
+				top: -10px;
+				transition: all 200ms ease;
+				border-color: $lime;
+				box-shadow: 8px 8px 10px 0px rgba(0,0,0,.5);
+			}
 		}
 	}
 } // .home-callouts
@@ -54,6 +66,9 @@
 				line-height: 50px;
 				border: 0;
 				font-size: 28px;
+			}
+			&:hover img {
+				transform: none;
 			}
 		}
 	} // .home-callouts

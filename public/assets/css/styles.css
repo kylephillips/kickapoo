@@ -361,6 +361,9 @@ body.nav-open .page-wrap {
   position: fixed;
   right: 20px;
   top: 120px;
+  -webkit-transition: all 400ms ease;
+       -o-transition: all 400ms ease;
+          transition: all 400ms ease;
   z-index: 999; }
   .social-links li a {
     display: block;
@@ -387,6 +390,21 @@ body.nav-open .page-wrap {
               transition: color 200ms ease, background-color 200ms ease; }
   .social-links li:first-child a {
     margin-top: 0; }
+  .social-links.top {
+    top: 5px;
+    right: 5px;
+    -webkit-transition: all 400ms ease;
+         -o-transition: all 400ms ease;
+            transition: all 400ms ease;
+    background-color: rgba(0, 0, 0, 0.6);
+    -webkit-border-radius: 3px;
+            border-radius: 3px; }
+    .social-links.top li {
+      float: left;
+      margin-left: 10px; }
+      .social-links.top li a {
+        margin: 0;
+        background: transparent; }
 
 @media (max-width: 930px) {
   .social-links {
@@ -788,10 +806,15 @@ footer {
     position: relative; }
     .home-callouts .products img {
       -webkit-border-radius: 400px;
-              border-radius: 400px; }
+              border-radius: 400px;
+      -webkit-transition: all 200ms ease;
+           -o-transition: all 200ms ease;
+              transition: all 200ms ease; }
     .home-callouts .products span {
       display: block;
       position: absolute;
+      top: 0;
+      z-index: 1;
       font-family: 'thirsty', 'proxima-nova', sans-serif;
       background-color: #fff200;
       color: #006c23;
@@ -806,12 +829,24 @@ footer {
       -webkit-transition: all 200ms ease;
            -o-transition: all 200ms ease;
               transition: all 200ms ease; }
+    .home-callouts .products:hover img {
+      -webkit-transition: all 200ms ease;
+           -o-transition: all 200ms ease;
+              transition: all 200ms ease;
+      -webkit-transform: rotate(20deg);
+          -ms-transform: rotate(20deg);
+           -o-transform: rotate(20deg);
+              transform: rotate(20deg); }
     .home-callouts .products:hover span {
       background-color: #006c23;
       color: #ffffff;
+      top: -10px;
       -webkit-transition: all 200ms ease;
            -o-transition: all 200ms ease;
-              transition: all 200ms ease; }
+              transition: all 200ms ease;
+      border-color: #8ee031;
+      -webkit-box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.5);
+              box-shadow: 8px 8px 10px 0px rgba(0, 0, 0, 0.5); }
 
 @media (max-width: 767px) {
   .home-callouts .products {
@@ -828,4 +863,9 @@ footer {
               border-radius: 0;
       line-height: 50px;
       border: 0;
-      font-size: 28px; } }
+      font-size: 28px; }
+    .home-callouts .products:hover img {
+      -webkit-transform: none;
+          -ms-transform: none;
+           -o-transform: none;
+              transform: none; } }

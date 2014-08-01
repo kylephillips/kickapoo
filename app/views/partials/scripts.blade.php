@@ -2,4 +2,5 @@
 <script src="{{URL::asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
 <script src="{{URL::asset('assets/js/masonry.pkgd.min.js')}}"></script>
 <script src="{{URL::asset('assets/js/jquery.infinitescroll.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/waypoints.min.js')}}"></script>
 <script src="{{URL::asset('assets/js/scripts.js')}}"></script>

@@ -31,3 +31,4 @@
 	<a href="#" class="nav-toggle"><i class="icon-menu"></i> Menu</a>
 
 </header>
+<span class="header-bottom"></span>
