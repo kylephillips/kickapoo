@@ -636,6 +636,11 @@ header {
     -webkit-animation-timing-function: linear;
          -o-animation-timing-function: linear;
             animation-timing-function: linear; }
+  .load-more.disabled {
+    background-color: #001f0a;
+    cursor: not-allowed;
+    color: #ffffff;
+    text-shadow: none; }
 
 @-webkit-keyframes rotate {
   from {

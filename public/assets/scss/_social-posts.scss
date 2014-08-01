@@ -160,6 +160,12 @@
 	    animation-iteration-count: infinite;
 	    animation-timing-function: linear;
 	}
+	&.disabled {
+		background-color: darken($green-dark, 15%);
+		cursor: not-allowed;
+		color: $white;
+		text-shadow: none;
+	}
 }
 
 @-webkit-keyframes rotate {

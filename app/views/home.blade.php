@@ -71,7 +71,8 @@ $(window).load(function(){
 	},
 	// trigger Masonry as a callback
 	function( newElements ){
-		$('.load-more').removeClass('loading');
+		$('.load-more').removeClass('loading').removeClass('disabled');
+		$('.load-more').html('Load More Joy! <i class="icon-loop2"></i>');
 		var $newElems = $( newElements ).css({ opacity: 0 });
 		$newElems.imagesLoaded(function(){
 			$newElems.animate({ opacity: 1 });
@@ -85,7 +86,8 @@ $(window).load(function(){
 });
 
 $(document).on('click', '.load-more', function(e){
-	$(this).addClass('loading');
+	$(this).addClass('loading').addClass('disabled');
+	$(this).html('Loading <i class="icon-loop2"></i>');
 	$('#posts').infinitescroll('retrieve');
 	$('.nextposts').show();
 	return false;
