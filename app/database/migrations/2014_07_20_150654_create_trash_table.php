@@ -19,6 +19,7 @@ class CreateTrashTable extends Migration {
 			$table->string('type')->default('twitter');
 			$table->bigInteger('twitter_id')->nullable();
 			$table->bigInteger('instagram_id')->nullable();
+			$table->bigInteger('facebook_id')->nullable();
 			$table->timestamps();
 		});
 	}
