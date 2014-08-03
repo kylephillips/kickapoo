@@ -93,6 +93,7 @@ class FacebookFeed extends SocialFeed {
 			$this->feed_formatted[$key]['message'] = ( isset($item->message) ) ? $item->message : null;
 			$this->feed_formatted[$key]['story'] = ( isset($item->story) ) ? $item->story : null;
 			$this->feed_formatted[$key]['user_id'] = $this->getUserId($item->id);
+			$this->feed_formatted[$key]['profile_image'] = $this->getProfileImage($this->getUserId($item->id));
 			$this->feed_formatted[$key]['picture'] = ( $item->type == 'photo' ) ? $this->getPicture($item->object_id) : null;
 			$this->feed_formatted[$key]['caption'] = ( isset($item->caption) ) ? $item->caption : null;
 			$this->feed_formatted[$key]['caption_picture'] = ( isset($item->picture) ) ? $item->picture : null;
@@ -114,6 +115,24 @@ class FacebookFeed extends SocialFeed {
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 		$a = curl_exec($ch);
 		$url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+		curl_close($ch);
+		return $url;
+	}
+
+	/**
+	* Get user avatar from the API
+	*/
+	private function getProfileImage($id)
+	{
+		$url = 'https://graph.facebook.com/' . $id . '/picture';
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_HEADER, true);
+		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		$a = curl_exec($ch);
+		$url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
+		curl_close($ch);
 		return $url;
 	}
 
