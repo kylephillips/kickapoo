@@ -20,6 +20,7 @@ class CreateFbpostsTable extends Migration {
 			$table->datetime('datetime');
 			$table->text('message')->nullable();
 			$table->bigInteger('user_id')->nullable();
+			$table->string('profile_image')->nullable();
 			$table->string('type')->nullable();
 			$table->string('link')->nullable();
 			$table->string('image')->nullable();
