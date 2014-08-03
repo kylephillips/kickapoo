@@ -6,7 +6,7 @@ class FBPost extends Eloquent {
 	protected $primaryKey = 'facebook_id';
 	
 	protected $fillable = [
-		'facebook_id', 'datetime', 'message', 'user_id', 'profile_image', 'type', 'link', 'image', 'story', 'caption', 'caption_image', 'caption_description', 'approved'
+		'facebook_id', 'datetime', 'message', 'user_id', 'screen_name', 'profile_image', 'type', 'link', 'image', 'story', 'caption', 'caption_image', 'caption_description', 'approved'
 	];
 
 	/**
