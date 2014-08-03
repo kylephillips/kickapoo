@@ -34,6 +34,11 @@ class DatabaseSeeder extends Seeder {
 			if(is_file($file))
 			unlink($file);
 		}
+		$facebook_images = glob(public_path() . '/assets/uploads/facebook_images/*');
+		foreach($facebook_images as $file){
+			if(is_file($file))
+			unlink($file);
+		}
 	}
 
 }
