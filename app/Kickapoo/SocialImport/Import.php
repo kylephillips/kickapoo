@@ -3,6 +3,8 @@ use Kickapoo\SocialFeed\TwitterFeed;
 use Kickapoo\SocialImport\TwitterImport;
 use Kickapoo\SocialFeed\InstagramFeed;
 use Kickapoo\SocialImport\InstagramImport;
+use Kickapoo\SocialFeed\FacebookFeed;
+use Kickapoo\SocialImport\FacebookImport;
 use \AppLog;
 
 /**
@@ -32,13 +34,22 @@ class Import {
 	private $instagram_count;
 
 
+	/**
+	* Number of Facebook Items Imported
+	* @var int
+	*/
+	private $facebook_count;
+
+
 	public function __construct()
 	{
 		$this->import_count = 0;
 		$this->twitter_count = 0;
 		$this->instagram_count = 0;
+		$this->facebook_count = 0;
 		$this->twitterImport();
 		$this->instagramImport();
+		$this->facebookImport();
 		$this->setCount();
 		$this->log();
 	}
@@ -71,6 +82,21 @@ class Import {
 		}
 	}
 
+
+	/**
+	* Facebook Import
+	*/
+	public function facebookImport()
+	{
+		$feed = new FacebookFeed;
+		$feed = ( $feed ) ? $feed->formatted() : false;
+		if ( $feed ){
+			$import = new FacebookImport($feed);
+			$this->facebook_count = $import->getCount();
+		}
+	}
+	
+
 	/**
 	* Add a log of the Import
 	*/
@@ -87,7 +113,7 @@ class Import {
 	*/
 	private function setCount()
 	{
-		$this->import_count = $this->twitter_count + $this->instagram_count;
+		$this->import_count = $this->twitter_count + $this->instagram_count + $this->facebook_count;
 	}
 
 
