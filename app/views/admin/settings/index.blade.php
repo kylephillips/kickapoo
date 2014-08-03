@@ -79,9 +79,34 @@
 		</div>
 		<div class="form-group">
 			{{$errors->first('instagram_client_secret', '<span class="text-danger"><strong>:message</strong></span><br>')}}
-			{{Form::label('instagram_client_secret', 'Twitter API Secret')}}
+			{{Form::label('instagram_client_secret', 'Instagram Client Secret')}}
 			{{Form::text('instagram_client_secret', $social_creds['instagram_client_secret'], ['class'=>'form-control'])}}
 		</div>
+
+		<hr>
+
+		<div class="alert alert-info">Facebook Keys</div>
+		<div class="form-group">
+			{{$errors->first('facebook_page_id', '<span class="text-danger"><strong>:message</strong></span><br>')}}
+			{{Form::label('facebook_page_id', 'Facebook Page ID')}}
+			{{Form::text('facebook_page_id', $social_creds['facebook_page_id'], ['class'=>'form-control'])}}
+		</div>
+		<div class="form-group">
+			{{$errors->first('facebook_app_id', '<span class="text-danger"><strong>:message</strong></span><br>')}}
+			{{Form::label('facebook_app_id', 'Facebook App ID')}}
+			{{Form::text('facebook_app_id', $social_creds['facebook_app_id'], ['class'=>'form-control'])}}
+		</div>
+		<div class="form-group">
+			{{$errors->first('facebook_app_secret', '<span class="text-danger"><strong>:message</strong></span><br>')}}
+			{{Form::label('facebook_app_secret', 'Facebook App Secret')}}
+			{{Form::text('facebook_app_secret', $social_creds['facebook_app_secret'], ['class'=>'form-control'])}}
+		</div>
+		<div class="form-group">
+			{{$errors->first('facebook_app_token', '<span class="text-danger"><strong>:message</strong></span><br>')}}
+			{{Form::label('facebook_app_token', 'Facebook App Token')}}
+			{{Form::text('facebook_app_token', $social_creds['facebook_app_token'], ['class'=>'form-control'])}}
+		</div>
+
 
 		{{Form::submit('Save Settings', ['class'=>'btn btn-block btn-primary'])}}
 		{{Form::close()}}
