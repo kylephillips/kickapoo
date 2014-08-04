@@ -1021,9 +1021,11 @@ footer {
       text-transform: uppercase;
       letter-spacing: 1px;
       -webkit-box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.3);
-              box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.3); }
+              box-shadow: 4px 4px 20px 0px rgba(0, 0, 0, 0.3);
+      border-bottom: 5px solid #d6c800; }
       .home-hero .headline .button:hover {
-        background-color: #ffffff; }
+        background-color: #ffffff;
+        border-color: #d9d9d9; }
   .home-hero hr {
     position: absolute;
     width: 100%;
@@ -1052,7 +1054,10 @@ footer {
       width: 100%;
       margin-left: 0;
       padding-top: 0px;
-      margin-bottom: 100px; }
+      margin-bottom: 20px; }
+      .home-hero .headline p {
+        font-size: 18px;
+        margin-bottom: 30px; }
     .home-hero .right-bubbles, .home-hero .left-bubbles {
       display: none; } }
 
