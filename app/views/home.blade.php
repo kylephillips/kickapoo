@@ -1,6 +1,15 @@
 @extends('partials.master')
 @section('content')
 
+<section class="headline">
+	<img src="{{URL::asset('assets/images/home-headline.png')}}" />
+	<p>#<em>kickapoo</em> to share your joy face with the world!</p>
+	<a href="#" class="button">Or share it here</a>
+</section>
+
+<img src="{{URL::asset('assets/images/home-yellowbubbles-left.png')}}" class="left-bubbles" />
+<img src="{{URL::asset('assets/images/home-yellowbubbles-right.png')}}" class="right-bubbles" />
+
 <hr class="bubble-pattern">
 </section><!-- .home-hero -->
 
@@ -31,6 +40,11 @@
 
 <section class="home-callouts">
 	<div class="container">
+		<section class="joy-meter">
+			<div class="meter-interior">
+				<img src="{{URL::asset('assets/images/joy-meter-pointer.png')}}" alt="Gauge Needle" class="needle">
+			</div>
+		</section>
 		<a href="#" class="products">
 			<span>Products</span>
 			<img src="{{URL::asset('assets/images/homepage-products.jpg')}}" alt="Product Image" />

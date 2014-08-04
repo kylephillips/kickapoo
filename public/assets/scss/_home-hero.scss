@@ -4,4 +4,79 @@
 .home-hero {
 	box-shadow: inset 0px 30px 100px 0px rgba(0,0,0,.4);
 	background-color: $green;
+	position: relative;
+	@include clearfix;
+	.headline {
+		float: left;
+		width: 54%; //864/1600
+		margin-left: 9.375%; //150/1600
+		max-width: 840px;
+		padding-top: 20px;
+		margin-bottom: 130px;
+		text-align: center;
+		p {
+			font-size: 28px;
+			font-weight: bold;
+			margin-bottom: 40px;
+			em {
+				color: $yellow;
+				font-style: normal;
+			}
+		}
+		.button {
+			display: inline-block;
+			background-color: $yellow;
+			font-size: 18px;
+			font-weight: bold;
+			color: $green-dark;
+			padding: 0px 50px;
+			height: 50px;
+			line-height: 50px;
+			border-radius: 30px;
+			margin-bottom: 50px;
+			text-transform: uppercase;
+			letter-spacing: 1px;
+			box-shadow: 4px 4px 20px 0px rgba(0,0,0,.3);
+			&:hover {
+				background-color: $white;
+			}
+		}
+	}
+	hr {
+		position: absolute;
+		width: 100%;
+		z-index: 10;
+		bottom: 0;
+		margin: 0;
+	}
+	.right-bubbles {
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		width: 49.375%; //790/1600
+		max-width: 790px;
+	}
+	.left-bubbles {
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		width: 23.75%; //380/1600
+		max-width: 380px;
+	}
+}
+
+@media (max-width: 767px)
+{
+	.home-hero {
+		.headline {
+			float: none;
+			width: 100%;
+			margin-left: 0;
+			padding-top: 0px;
+			margin-bottom: 100px;
+		}
+		.right-bubbles, .left-bubbles {
+			display: none;
+		}
+	}
 }
