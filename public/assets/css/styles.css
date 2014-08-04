@@ -844,7 +844,9 @@ footer {
 .home-hero {
   -webkit-box-shadow: inset 0px 30px 100px 0px rgba(0, 0, 0, 0.4);
           box-shadow: inset 0px 30px 100px 0px rgba(0, 0, 0, 0.4);
-  background-color: #008d2c;
+  background: url('../images/home-headline-rays.jpg'), #008d2c;
+  background-repeat: no-repeat;
+  background-position: top left;
   position: relative;
   zoom: 1; }
   .home-hero:before, .home-hero:after {
@@ -907,14 +909,17 @@ footer {
     max-width: 380px; }
 
 @media (max-width: 767px) {
-  .home-hero .headline {
-    float: none;
-    width: 100%;
-    margin-left: 0;
-    padding-top: 0px;
-    margin-bottom: 100px; }
-  .home-hero .right-bubbles, .home-hero .left-bubbles {
-    display: none; } }
+  .home-hero {
+    background: transparent;
+    background-color: #008d2c; }
+    .home-hero .headline {
+      float: none;
+      width: 100%;
+      margin-left: 0;
+      padding-top: 0px;
+      margin-bottom: 100px; }
+    .home-hero .right-bubbles, .home-hero .left-bubbles {
+      display: none; } }
 
 .home-callouts {
   background: url('../images/pattern-type.png');

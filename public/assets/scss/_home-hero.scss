@@ -3,7 +3,9 @@
 // --------------------------------------------------
 .home-hero {
 	box-shadow: inset 0px 30px 100px 0px rgba(0,0,0,.4);
-	background-color: $green;
+	background: url('../images/home-headline-rays.jpg'), $green;
+	background-repeat: no-repeat;
+	background-position: top left;
 	position: relative;
 	@include clearfix;
 	.headline {
@@ -68,6 +70,8 @@
 @media (max-width: 767px)
 {
 	.home-hero {
+		background: transparent;
+		background-color: $green;
 		.headline {
 			float: none;
 			width: 100%;
