@@ -166,8 +166,8 @@ img {
 
 @font-face {
   font-family: 'icomoon';
-  src: url('fonts/icomoon.eot?-lv5w6r');
-  src: url('fonts/icomoon.eot?#iefix-lv5w6r') format('embedded-opentype'), url('fonts/icomoon.woff?-lv5w6r') format('woff'), url('fonts/icomoon.ttf?-lv5w6r') format('truetype'), url('fonts/icomoon.svg?-lv5w6r#icomoon') format('svg');
+  src: url('fonts/icomoon.eot?-vmsv2p');
+  src: url('fonts/icomoon.eot?#iefix-vmsv2p') format('embedded-opentype'), url('fonts/icomoon.woff?-vmsv2p') format('woff'), url('fonts/icomoon.ttf?-vmsv2p') format('truetype'), url('fonts/icomoon.svg?-vmsv2p#icomoon') format('svg');
   font-weight: normal;
   font-style: normal; }
 
@@ -188,6 +188,24 @@ img {
 
 .icon-star:before {
   content: "\e602"; }
+
+.icon-chevron-left:before {
+  content: "\f053"; }
+
+.icon-chevron-right:before {
+  content: "\f054"; }
+
+.icon-arrow-left:before {
+  content: "\f060"; }
+
+.icon-arrow-right:before {
+  content: "\f061"; }
+
+.icon-arrow-up:before {
+  content: "\f062"; }
+
+.icon-arrow-down:before {
+  content: "\f063"; }
 
 .icon-caret-down:before {
   content: "\f0d7"; }
@@ -668,8 +686,7 @@ footer {
 
 .post-area {
   position: relative;
-  z-index: 5;
-  background-color: #006c23; }
+  z-index: 20; }
 
 .social-posts {
   max-width: 1300px;
@@ -684,7 +701,8 @@ footer {
     width: 25%;
     margin-bottom: 20px;
     color: #000000;
-    padding: 0px 10px; }
+    padding: 0px 10px;
+    z-index: 9; }
     .social-posts .item .post {
       padding: 10px;
       -webkit-border-radius: 4px;
@@ -846,6 +864,117 @@ footer {
   .load-more {
     width: 90%; } }
 
+.bubbles {
+  width: 100%;
+  position: absolute;
+  top: 0; }
+  .bubbles.one {
+    z-index: 999; }
+  .bubbles.two {
+    z-index: 5; }
+  .bubbles.three {
+    z-index: 998; }
+
+.bubble {
+  position: absolute;
+  opacity: 0.8; }
+  .bubble.xlarge {
+    width: 250px;
+    height: 250px;
+    background: url('../images/bubble-xlarge.png') no-repeat; }
+  .bubble.large {
+    width: 200px;
+    height: 200px;
+    background: url('../images/bubble-large.png') no-repeat; }
+  .bubble.medium {
+    width: 165px;
+    height: 165px;
+    background: url('../images/bubble-medium.png') no-repeat; }
+  .bubble.small {
+    width: 120px;
+    height: 120px;
+    background: url('../images/bubble-small.png') no-repeat; }
+
+@media (max-width: 767px) {
+  .bubbles {
+    display: none; } }
+
+#b1-1 {
+  top: 650px;
+  right: 0px; }
+
+#b1-2 {
+  top: 500px;
+  left: 20px; }
+
+#b1-3 {
+  top: 1000px;
+  right: 28%; }
+
+#b1-4 {
+  top: 1800px;
+  left: 10%; }
+
+#b1-5 {
+  top: 1500px;
+  right: 35%; }
+
+#b1-6 {
+  top: 3000px;
+  right: 10%; }
+
+#b1-7 {
+  top: 3200px;
+  right: 32%; }
+
+#b2-1 {
+  top: 600px;
+  right: 35%; }
+
+#b2-2 {
+  top: 1200px;
+  left: 25%; }
+
+#b2-3 {
+  top: 550px;
+  right: 50%; }
+
+#b2-4 {
+  top: 140px;
+  right: 5%; }
+
+#b2-5 {
+  top: 800px;
+  right: 23%; }
+
+#b2-6 {
+  top: 1400px;
+  right: 20%; }
+
+#b2-7 {
+  top: 2300px;
+  right: 32%; }
+
+#b2-8 {
+  top: 2800px;
+  left: 20%; }
+
+#b3-1 {
+  top: 2000px;
+  right: 22%; }
+
+#b3-2 {
+  top: 2200px;
+  left: 22%; }
+
+#b3-3 {
+  top: 2800px;
+  left: 31%; }
+
+#b3-4 {
+  top: 3200px;
+  left: 58%; }
+
 .home-hero {
   -webkit-box-shadow: inset 0px 30px 100px 0px rgba(0, 0, 0, 0.4);
           box-shadow: inset 0px 30px 100px 0px rgba(0, 0, 0, 0.4);
@@ -867,7 +996,9 @@ footer {
     margin-left: 9.375%;
     max-width: 840px;
     margin-bottom: 130px;
-    text-align: center; }
+    text-align: center;
+    position: relative;
+    z-index: 9999; }
     .home-hero .headline p {
       font-size: 28px;
       font-weight: bold;
@@ -896,7 +1027,7 @@ footer {
   .home-hero hr {
     position: absolute;
     width: 100%;
-    z-index: 10;
+    z-index: 1;
     bottom: 0;
     margin: 0; }
   .home-hero .right-bubbles {
@@ -928,8 +1059,8 @@ footer {
 .home-red-can {
   position: absolute;
   right: 40px;
-  bottom: -60px;
-  z-index: 3;
+  bottom: -30px;
+  z-index: 19;
   width: 16.25%;
   max-width: 260px; }
 
@@ -939,7 +1070,7 @@ footer {
   width: 20.625%;
   max-width: 330px;
   z-index: 20;
-  top: 120px; }
+  top: 100px; }
 
 @media (max-width: 767px) {
   .home-red-can, .home-green-can {

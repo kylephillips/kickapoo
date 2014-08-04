@@ -4,7 +4,7 @@
 <section class="headline">
 	<img src="{{URL::asset('assets/images/home-headline.png')}}" />
 	<p>#<em>kickapoo</em> to share your joy face with the world!</p>
-	<a href="#" class="button">Or share it here</a>
+	<a href="#" class="button">Or share it here <i class="icon-arrow-right"></i></a>
 </section>
 
 <img src="{{URL::asset('assets/images/kickapoo-joy-juice-can.png')}}" class="home-green-can" />
@@ -60,6 +60,35 @@
 		</a>
 	</div>
 </section>
+
+<!-- Parallax Bubbles -->
+<div class="bubbles one" aria-hidden="true">
+	<div class="bubble xlarge" id="b1-1"></div>
+	<div class="bubble xlarge" id="b1-2"></div>
+	<div class="bubble large" id="b1-3"></div>
+	<div class="bubble large" id="b1-4"></div>
+	<div class="bubble medium" id="b1-5"></div>
+	<div class="bubble large" id="b1-6"></div>
+	<div class="bubble small" id="b1-7"></div>
+</div>
+
+<div class="bubbles two" aria-hidden="true">
+	<div class="bubble medium" id="b2-1"></div>
+	<div class="bubble xlarge" id="b2-2"></div>
+	<div class="bubble small" id="b2-3"></div>
+	<div class="bubble medium" id="b2-4"></div>
+	<div class="bubble large" id="b2-5"></div>
+	<div class="bubble xlarge" id="b2-6"></div>
+	<div class="bubble medium" id="b2-7"></div>
+	<div class="bubble xlarge" id="b2-8"></div>
+</div>
+
+<div class="bubbles three" aria-hidden="true">
+	<div class="bubble small" id="b3-1"></div>
+	<div class="bubble large" id="b3-2"></div>
+	<div class="bubble medium" id="b3-3"></div>
+	<div class="bubble xlarge" id="b3-4"></div>
+</div>
 
 @stop
 

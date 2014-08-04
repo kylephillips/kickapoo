@@ -8,8 +8,8 @@
 
 .post-area {
 	position: relative;
-	z-index: 5;
-	background-color: $green-dark;
+	z-index: 20;
+	//background-color: $green-dark;
 }
 
 .social-posts {
@@ -30,6 +30,7 @@
 		margin-bottom: 20px;
 		color: $black;
 		padding: 0px 10px;
+		z-index: 9;
 
 		// Inner items for masonry
 		.post {

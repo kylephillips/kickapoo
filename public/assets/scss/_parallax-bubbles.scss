@@ -1,0 +1,135 @@
+//
+// Parallax Bubbles
+// --------------------------------------------------
+.bubbles {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	&.one {
+		z-index: 999;
+	}
+	&.two {
+		z-index: 5;
+	}
+	&.three {
+		z-index: 998;
+	}
+}
+
+
+.bubble {
+	position: absolute;
+	opacity: .8;
+	&.xlarge {
+		width: 250px;
+		height: 250px;
+		background: url('../images/bubble-xlarge.png') no-repeat;
+	}
+	&.large {
+		width: 200px;
+		height: 200px;
+		background: url('../images/bubble-large.png') no-repeat;
+	}
+	&.medium {
+		width: 165px;
+		height: 165px;
+		background: url('../images/bubble-medium.png') no-repeat;	
+	}
+	&.small {
+		width: 120px;
+		height: 120px;
+		background: url('../images/bubble-small.png') no-repeat;
+	}
+}
+
+@media (max-width: 767px)
+{
+	.bubbles {
+		display: none;
+	}
+}
+
+
+//
+// Individual Bubbles
+// --------------------------------------------------
+#b1-1 {
+	top: 650px;
+	right: 0px;
+}
+#b1-2 {
+	top: 500px;
+	left: 20px;
+}
+#b1-3 {
+	top: 1000px;
+	right: 28%;
+}
+#b1-4 {
+	top: 1800px;
+	left: 10%;
+}
+#b1-5 {
+	top: 1500px;
+	right: 35%;
+}
+#b1-6 {
+	top: 3000px;
+	right: 10%;
+}
+#b1-7 {
+	top: 3200px;
+	right: 32%;
+}
+
+#b2-1 {
+	top: 600px;
+	right: 35%;
+}
+#b2-2 {
+	top: 1200px;
+	left: 25%;
+}
+#b2-3 {
+	top: 550px;
+	right: 50%;
+}
+#b2-4 {
+	top: 140px;
+	right: 5%;
+}
+#b2-5 {
+	top: 800px;
+	right: 23%;
+}
+#b2-6 {
+	top: 1400px;
+	right: 20%;
+}
+#b2-7 {
+	top: 2300px;
+	right: 32%;
+}
+#b2-8 {
+	top: 2800px;
+	left: 20%;
+}
+
+#b3-1 {
+	top: 2000px;
+	right: 22%;
+}
+#b3-2 {
+	top: 2200px;
+	left: 22%;
+}
+#b3-3 {
+	top: 2800px;
+	left: 31%;
+}
+#b3-4 {
+	top: 3200px;
+	left: 58%;
+}
+
+

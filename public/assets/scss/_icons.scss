@@ -3,11 +3,11 @@
 // --------------------------------------------------
 @font-face {
 	font-family: 'icomoon';
-	src:url('fonts/icomoon.eot?-lv5w6r');
-	src:url('fonts/icomoon.eot?#iefix-lv5w6r') format('embedded-opentype'),
-		url('fonts/icomoon.woff?-lv5w6r') format('woff'),
-		url('fonts/icomoon.ttf?-lv5w6r') format('truetype'),
-		url('fonts/icomoon.svg?-lv5w6r#icomoon') format('svg');
+	src:url('fonts/icomoon.eot?-vmsv2p');
+	src:url('fonts/icomoon.eot?#iefix-vmsv2p') format('embedded-opentype'),
+		url('fonts/icomoon.woff?-vmsv2p') format('woff'),
+		url('fonts/icomoon.ttf?-vmsv2p') format('truetype'),
+		url('fonts/icomoon.svg?-vmsv2p#icomoon') format('svg');
 	font-weight: normal;
 	font-style: normal;
 }
@@ -31,6 +31,24 @@
 }
 .icon-star:before {
 	content: "\e602";
+}
+.icon-chevron-left:before {
+	content: "\f053";
+}
+.icon-chevron-right:before {
+	content: "\f054";
+}
+.icon-arrow-left:before {
+	content: "\f060";
+}
+.icon-arrow-right:before {
+	content: "\f061";
+}
+.icon-arrow-up:before {
+	content: "\f062";
+}
+.icon-arrow-down:before {
+	content: "\f063";
 }
 .icon-caret-down:before {
 	content: "\f0d7";
