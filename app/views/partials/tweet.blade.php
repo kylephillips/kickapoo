@@ -1,6 +1,6 @@
 <section class="user-info">
 	<a href="http://twitter.com/{{$post->tweet->screen_name}}" target="_blank">
-		<img src="{{$post->tweet->profile_image}}" alt="{{$post->tweet->screen_name}}'s Profile Image" />
+		<img src="{{$post->tweet->profile_image}}" alt="{{$post->tweet->screen_name}}'s Profile Image" onerror="this.src='{{URL::asset('assets/images/avatar-default.png')}}'" />
 	</a>
 	<p>
 		<a href="http://twitter.com/{{$post->tweet->screen_name}}" target="_blank">

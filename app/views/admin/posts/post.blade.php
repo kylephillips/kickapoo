@@ -125,7 +125,7 @@
 			<li class="tweet post @if($post['approved'] == 1)approved @endif">
 				<div class="content">
 					<div class="avatar">
-						<img src="{{$post['profile_image']}}" alt="user icon">
+						<img src="{{$post['profile_image']}}" alt="user icon" onerror="this.src='{{URL::asset('assets/images/avatar-default.png')}}'">
 					</div>
 					<div class="main">
 						<ul class="info">
@@ -169,7 +169,7 @@
 			<li class="gram post @if($post['approved'] == 1)approved @endif">
 				<div class="content">
 					<div class="avatar">
-						<img src="{{$post['profile_image']}}" alt="user icon">
+						<img src="{{$post['profile_image']}}" alt="user icon" onerror="this.src='{{URL::asset('assets/images/avatar-default.png')}}'">
 					</div>
 					<div class="main">
 						<ul class="info">
