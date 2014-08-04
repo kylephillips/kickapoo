@@ -6,6 +6,7 @@
 // Base Styles
 @import "_reset.scss";
 @import "_scaffolding.scss";
+@import "_page-loading.scss";
 
 // Elements
 @import "_icons.scss";
@@ -25,3 +26,4 @@
 // Page Styles
 @import "_home-hero.scss";
 @import "_home-callouts.scss";
+@import "_home-joymeter.scss";

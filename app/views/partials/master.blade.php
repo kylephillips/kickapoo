@@ -29,6 +29,10 @@
 </head>
 
 <body>
+@if( $page == 'home' )
+<img src="{{URL::asset('assets/images/preloader.png')}}" class="preloader">
+<div class="page loading">
+@endif
 
 	<nav class="mobile-nav">
 		@include('partials.mobilenav')
@@ -50,6 +54,10 @@
 	@include('partials.scripts')
 
 	@yield('footercontent')
+
+@if( $page == 'home' )
+</div><!-- .page -->
+@endif
 
 </body>
 </html>
