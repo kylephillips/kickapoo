@@ -16,6 +16,22 @@ $(window).load(function(){
 });
 
 /**
+* Parallax
+*/
+$(window).bind('scroll',function(e){
+	parallaxScroll();
+});
+function parallaxScroll(){
+	var scrolled = $(window).scrollTop();
+	$('.home-green-can').css('top', (120-(scrolled*.35))+'px');
+	$('.home-red-can').css('bottom', (-60-(scrolled*.35))+'px');
+}
+function scrollGreenCan()
+{
+
+}
+
+/**
 * Mobile Navigation
 */
 $('.nav-toggle').on('click', function(e){

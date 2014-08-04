@@ -6,6 +6,12 @@
 	display: none !important;
 }
 
+.post-area {
+	position: relative;
+	z-index: 5;
+	background-color: $green-dark;
+}
+
 .social-posts {
 	max-width: 1300px;
 	margin: 0 auto;

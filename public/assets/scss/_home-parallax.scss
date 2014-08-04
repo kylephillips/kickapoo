@@ -1,0 +1,27 @@
+//
+// Homepage Parralax Elements
+// --------------------------------------------------
+.home-red-can {
+	position: absolute;
+	right: 40px;
+	bottom: -60px;
+	z-index: 3;
+	width: 16.25%; //260/1600
+	max-width: 260px;
+}
+
+.home-green-can {
+	position: absolute;
+	right: 11%;
+	width: 20.625%; //330/1600
+	max-width: 330px;
+	z-index: 20;
+	top: 120px;
+}
+
+@media (max-width: 767px)
+{
+	.home-red-can, .home-green-can {
+		display: none;
+	}
+}

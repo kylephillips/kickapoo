@@ -666,6 +666,11 @@ footer {
 #infscr-loading {
   display: none !important; }
 
+.post-area {
+  position: relative;
+  z-index: 5;
+  background-color: #006c23; }
+
 .social-posts {
   max-width: 1300px;
   margin: 0 auto; }
@@ -920,6 +925,26 @@ footer {
       margin-bottom: 100px; }
     .home-hero .right-bubbles, .home-hero .left-bubbles {
       display: none; } }
+
+.home-red-can {
+  position: absolute;
+  right: 40px;
+  bottom: -60px;
+  z-index: 3;
+  width: 16.25%;
+  max-width: 260px; }
+
+.home-green-can {
+  position: absolute;
+  right: 11%;
+  width: 20.625%;
+  max-width: 330px;
+  z-index: 20;
+  top: 120px; }
+
+@media (max-width: 767px) {
+  .home-red-can, .home-green-can {
+    display: none; } }
 
 .home-callouts {
   background: url('../images/pattern-type.png');

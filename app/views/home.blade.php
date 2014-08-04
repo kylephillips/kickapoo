@@ -7,28 +7,33 @@
 	<a href="#" class="button">Or share it here</a>
 </section>
 
+<img src="{{URL::asset('assets/images/kickapoo-joy-juice-can.png')}}" class="home-green-can" />
+<img src="{{URL::asset('assets/images/kickapoo-fruit-shine-can.png')}}" class="home-red-can" />
+
 <img src="{{URL::asset('assets/images/home-yellowbubbles-left.png')}}" class="left-bubbles" />
 <img src="{{URL::asset('assets/images/home-yellowbubbles-right.png')}}" class="right-bubbles" />
 
 <hr class="bubble-pattern">
 </section><!-- .home-hero -->
 
-<section id="posts" class="social-posts loading">
-	@if( count($posts) > 0 )
-		@foreach($posts as $i=>$post)
-			<div class="item @if($i % 3 == 0)white @elseif($i % 2 == 0)lime @elseif($i % 1 == 0)yellow @endif">
-				<section class="post">
-				@if($post->type == 'instagram')
-					@include('partials.gram')
-				@else
-					@include('partials.tweet')
-				@endif
-				</section>
-			</div>
-		@endforeach
-	@else
-		<p class="center">No Posts Yet!</p>
-	@endif
+<section class="post-area">
+	<section id="posts" class="social-posts loading">
+		@if( count($posts) > 0 )
+			@foreach($posts as $i=>$post)
+				<div class="item @if($i % 3 == 0)white @elseif($i % 2 == 0)lime @elseif($i % 1 == 0)yellow @endif">
+					<section class="post">
+					@if($post->type == 'instagram')
+						@include('partials.gram')
+					@else
+						@include('partials.tweet')
+					@endif
+					</section>
+				</div>
+			@endforeach
+		@else
+			<p class="center">No Posts Yet!</p>
+		@endif
+	</section>
 </section>
 
 
