@@ -96,7 +96,9 @@
 @section('footercontent')
 <script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 <script>
-
+/**
+* Initialize masonry on posts container
+*/
 function loadMasonry()
 {
 	var $container = $('#posts');
@@ -112,7 +114,9 @@ $(window).load(function(){
 	
 	$('#posts').removeClass('loading');
 
-	// Infinite Scroll
+	/**
+	* Infinite Scroll
+	*/
 	$('#posts').infinitescroll({
 		navSelector  : '.pagination',
 		nextSelector : '.pagination li:last-child a',
