@@ -36,10 +36,20 @@ $(window).bind('scroll',function(e){
 });
 function parallaxScroll(){
 	var scrolled = $(window).scrollTop();
+
+	// Headline
+	$('.home-headline').css('top', (0-(scrolled*.35))+'px');
 	
 	// Cans
 	$('.home-green-can').css('top', (100-(scrolled*.35))+'px');
+	$('.home-green-can').css('WebkitTransform', 'rotate(' + (0+(scrolled*.03))+'deg') + ')';
+	$('.home-green-can').css('-moz-transform', 'rotate(' + (0+(scrolled*.03))+'deg') + ')';
+
 	$('.home-red-can').css('bottom', (-30-(scrolled*.35))+'px');
+
+	// Big Bubbles
+	$('.right-bubbles').css('right', (0-(scrolled*.55))+'px');
+	$('.left-bubbles').css('left', (0-(scrolled*.55))+'px');
 	
 	// Bubbles
 	$('.bubbles.one').css('top', (0-(scrolled*.85))+'px');

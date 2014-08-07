@@ -992,6 +992,8 @@ footer {
     /* 2 */ }
   .home-hero:after {
     clear: both; }
+  .home-hero .home-headline {
+    position: relative; }
   .home-hero .headline {
     float: left;
     width: 54%;
@@ -1255,14 +1257,14 @@ footer {
         -ms-transform: rotate(-120deg);
          -o-transform: rotate(-120deg);
             transform: rotate(-120deg);
-    -webkit-transition: all 4s ease;
-         -o-transition: all 4s ease;
-            transition: all 4s ease; }
+    -webkit-transition: all 5s ease;
+         -o-transition: all 5s ease;
+            transition: all 5s ease; }
   .joy-meter.active .needle {
     -webkit-transform: rotate(120deg);
         -ms-transform: rotate(120deg);
          -o-transform: rotate(120deg);
             transform: rotate(120deg);
-    -webkit-transition: all 4s ease;
-         -o-transition: all 4s ease;
-            transition: all 4s ease; }
+    -webkit-transition: all 5s ease;
+         -o-transition: all 5s ease;
+            transition: all 5s ease; }

@@ -22,12 +22,12 @@
 		left: 50%;
 		margin-left: -19px;
 		transform: rotate(-120deg);
-		transition: all 4s ease;
+		transition: all 5s ease;
 	}
 	&.active {
 		.needle {
 			transform: rotate(120deg);
-			transition: all 4s ease;
+			transition: all 5s ease;
 		}
 	}
 }

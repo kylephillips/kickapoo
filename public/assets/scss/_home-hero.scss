@@ -8,6 +8,9 @@
 	background-position: top left;
 	position: relative;
 	@include clearfix;
+	.home-headline {
+		position: relative;
+	}
 	.headline {
 		float: left;
 		width: 54%; //864/1600

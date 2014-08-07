@@ -2,7 +2,7 @@
 @section('content')
 
 <section class="headline">
-	<img src="{{URL::asset('assets/images/home-headline.png')}}" />
+	<img src="{{URL::asset('assets/images/home-headline.png')}}" class="home-headline" />
 	<p>#<em>kickapoo</em> to share your joy face with the world!</p>
 	<a href="#" class="button">Or share it here <i class="icon-arrow-right"></i></a>
 </section>
