@@ -26,6 +26,8 @@
 	<script type="text/javascript" src="//use.typekit.net/yoo1qfa.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
+	<script src="{{URL::asset('assets/js/modernizr.js')}}"></script>
+
 </head>
 
 <body>

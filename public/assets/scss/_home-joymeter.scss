@@ -2,6 +2,7 @@
 // Joy Meter
 // --------------------------------------------------
 .joy-meter {
+	display: none;
 	width: 350px;
 	height: 350px;
 	position: absolute;
@@ -47,5 +48,15 @@
 			transform: rotate(180deg);
 			transition: all 3s ease;
 		}
+	}
+}
+.cssanimations.csstransforms .joy-meter {
+	display: block;
+}
+
+@media (max-width: 767px)
+{
+	.joy-meter {
+		display: none !important;
 	}
 }
