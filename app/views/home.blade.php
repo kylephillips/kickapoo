@@ -48,6 +48,8 @@
 		<section class="joy-meter">
 			<div class="meter-interior">
 				<img src="{{URL::asset('assets/images/joy-meter-pointer.png')}}" alt="Gauge Needle" class="needle">
+				<img src="{{URL::asset('assets/images/joy-meter-bg.png')}}" alt="Guage" class="background">
+				<img src="{{URL::asset('assets/images/joy-meter-gauge.png')}}" alt="Guage" class="gauge">
 			</div>
 		</section>
 		<a href="#" class="products">
