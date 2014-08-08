@@ -57,7 +57,7 @@ class PostRepository {
 		if ( $type == 'instagram' ) $query = Gram::with('post', 'post.user', 'banned');
 		
 		// Filter by status
-		if ( $status == null ){
+		if ( $status == 'all' ){
 			$query->whereRaw('approved IS NULL')->orWhere('approved', 1);
 		} elseif ( $status == 'approved' ){
 			$query->where('approved', 1);
