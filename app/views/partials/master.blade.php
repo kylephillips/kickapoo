@@ -8,6 +8,10 @@
 	<link rel="icon" href="/favicon.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
+	@if(Auth::check())
+	<link rel="stylesheet" href="{{URL::asset('assets/css/admin-styles.css')}}">
+	@endif
+	
 	<link rel="stylesheet" href="{{URL::asset('assets/css/styles.css')}}">
 
 	<!--[if IE 8]>
@@ -25,23 +29,26 @@
 
 	<script type="text/javascript" src="//use.typekit.net/yoo1qfa.js"></script>
 	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
-
 	<script src="{{URL::asset('assets/js/modernizr.js')}}"></script>
 
 </head>
 
 <body>
-@if( $page == 'home' )
-<img src="{{URL::asset('assets/images/preloader.png')}}" class="preloader">
-<div class="page loading">
-@endif
+
+	@if(Auth::check())
+		@include('admin.partials.nav')
+	@endif
+
+	@if( $page == 'home' )
+	<img src="{{URL::asset('assets/images/preloader.png')}}" class="preloader">
+	<div class="page loading">
+	@endif
 
 	<nav class="mobile-nav">
 		@include('partials.mobilenav')
 	</nav>
 
 	<div class="page-wrap">
-		
 		@if( $page == 'home' )
 		<section class="home-hero">
 		@endif
@@ -54,12 +61,16 @@
 	</div><!-- .page-wrap -->
 
 	@include('partials.scripts')
+	
+	@if(Auth::check())
+		<script src="{{URL::asset('assets/js/bootstrap.min.js')}}"></script>
+	@endif
 
 	@yield('footercontent')
 
-@if( $page == 'home' )
-</div><!-- .page -->
-@endif
+	@if( $page == 'home' )
+	</div><!-- .page -->
+	@endif
 
 </body>
 </html>

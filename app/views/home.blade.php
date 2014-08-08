@@ -14,6 +14,7 @@
 <img src="{{URL::asset('assets/images/home-yellowbubbles-right.png')}}" class="right-bubbles" />
 
 <hr class="bubble-pattern">
+
 </section><!-- .home-hero -->
 
 <section class="post-area">

@@ -43,7 +43,6 @@
 					<li><a href="/admin/user">Users</a></li>
 					<li><a href="{{URL::route('settings_form')}}">Site Settings</a></li>
 				@endif
-				<li class="divider"></li>
 				<li><a href="/logout">Log Out</a></li>
 			</ul>
 		</li>
