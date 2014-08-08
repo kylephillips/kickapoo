@@ -38,7 +38,7 @@ a {
   max-width: 800px; }
 
 img {
-  width: 100%; }
+  max-width: 100%; }
 
 .pull-right {
   float: right; }
