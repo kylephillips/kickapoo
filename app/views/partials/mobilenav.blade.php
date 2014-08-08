@@ -3,16 +3,18 @@
 </a>
 
 <ul class="nav">
-	<li><a href="#">History</a></li>
-	<li><a href="#">Products</a></li>
-	<li><a href="#">Locate</a></li>
-	<li><a href="#">Contact</a></li>
-	<li><a href="#">Buy Kickapoo</a></li>
+	@foreach($page_navigation as $page)
+	<li><a href="{{url('/')}}/{{$page->slug}}">{{$page->title}}</a></li>
+	@endforeach
+	@if($store_link)
+	<li><a href="{{$store_link}}">Buy Kickapoo</a></li>
+	@endif
 </ul>
 
 <ul class="social">
-	<li><a href="#"><i class="icon-twitter"></i></a></li>
-	<li><a href="#"><i class="icon-instagram"></i></a></li>
-	<li><a href="#"><i class="icon-youtube"></i></a></li>
-	<li><a href="#"><i class="icon-facebook"></i></a></li>
+	@foreach($social_links as $link)
+		@if( ($link->value_two != "") && ($link->value != "") )
+			<li><a href="{{$link->value}}" target="_blank"><i class="{{$link->value_two}}"></i></a></li>
+		@endif
+	@endforeach
 </ul>

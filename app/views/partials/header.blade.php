@@ -5,10 +5,9 @@
 	
 	<nav class="main-nav">
 		<ul>
-			<li><a href="#">History</a></li>
-			<li><a href="#">Products</a></li>
-			<li><a href="#">Locate</a></li>
-			<li><a href="#">Contact</a></li>
+			@foreach($page_navigation as $page)
+			<li><a href="{{url('/')}}/{{$page->slug}}">{{$page->title}}</a></li>
+			@endforeach
 		</ul>
 	</nav>
 

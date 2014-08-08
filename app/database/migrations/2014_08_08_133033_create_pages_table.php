@@ -19,7 +19,7 @@ class CreatePagesTable extends Migration {
 			$table->string('slug')->unique();
 			$table->text('content');
 			$table->integer('author')->unsigned();
-			$table->foreign('author')->references('id')->on('users');
+			$table->foreign('author')->references('id')->on('users')->onDelete('cascade');
 			$table->string('status')->default('draft');
 			$table->integer('menu_order');
 			$table->timestamps();

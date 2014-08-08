@@ -5,17 +5,18 @@
 	
 	<div class="login">
 
-		<img src="{{URL::asset('assets/images/kickapoo-admin-logo-full.png')}}" class="logo">
-
-		@if(Session::has('success'))
-			<div class="alert alert-success">{{Session::get('success')}}</div>
-		@endif
+		<a href="{{URL::route('home')}}">
+			<img src="{{URL::asset('assets/images/kickapoo-admin-logo-full.png')}}" class="logo">
+		</a>
 
 		@if(!Auth::check())
 		{{Form::open(['url'=>'/login', 'method'=>'post'])}}	
 			<h3><strong>Sign In</strong></h3>
-
 			<section>
+				@if(Session::has('success'))
+					<div class="alert alert-success">{{Session::get('success')}}</div>
+				@endif
+
 				@if(Session::has('error'))
 					<div class="alert alert-danger">{{Session::get('error')}}</div>
 				@endif

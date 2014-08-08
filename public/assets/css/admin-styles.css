@@ -710,7 +710,8 @@ footer .container {
   .login input[type='submit'] {
     display: block;
     width: 100%;
-    margin-top: 10px; }
+    margin-top: 10px;
+    padding: 10px 0; }
 
 .user-row {
   margin-top: 15px;
