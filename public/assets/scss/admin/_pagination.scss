@@ -1,0 +1,33 @@
+//
+// Pagination
+// --------------------------------------------------
+.pagination {
+	@include clearfix;
+	display: inline-block;
+	text-align: center;
+	li {
+		display: inline-block;
+		background-color: $white;
+		a {
+			display: block;
+			padding: 8px 10px;
+			border-left: 1px solid darken($white, 12%);
+			transition: all 200ms ease;
+			&:hover {
+				background-color: $green-dark;
+				color: $white;
+				transition: all 200ms ease;
+			}
+		}
+		&:first-child a {
+			border: 0;
+		}
+		&.disabled, &.active {
+			span {
+				display: block;
+				padding: 8px 10px;
+				background-color: darken($white, 10%) !important;
+			}
+		}
+	}
+}

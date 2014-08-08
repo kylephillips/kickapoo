@@ -2,12 +2,43 @@
 // Alerts
 // --------------------------------------------------
 .alert {
+	display: block;
+	background-color: $info-bg;
+	color: $info-text;
+	border: 1px solid $info-border;
+	padding: 8px;
+	margin-bottom: 15px;
+	border-radius: 3px;
+	font-size: 15px;
+	@include clearfix;
 	.btn {
-		margin-left: 10px;
+		margin-left: 8px;
 		float: left;
+		&.pull-right {
+			float: right;
+		}
+	}
+}
+
+.alert-import {
+	padding: 15px 8px 8px 8px;
+	.import-buttons {
 		margin-top: -7px;
 	}
 }
+
+.alert-danger {
+	background-color: $danger-bg;
+	color: $danger-text;
+	border-color: $danger-border;
+}
+
+.alert-success {
+	background-color: $success-bg;
+	color: $success-text;
+	border-color: $success-border;
+}
+
 @media (max-width: 767px)
 {
 	.alert {

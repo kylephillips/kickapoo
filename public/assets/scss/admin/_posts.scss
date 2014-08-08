@@ -26,8 +26,15 @@
 	.buttons {
 		float: left;
 		width: 20%;
+		select {
+			float: left;
+			width: 75%;
+			height: 35px;
+			-webkit-appearance: menulist-button;
+		}
 		.help-btn {
-			margin-left: 8px;
+			float: right;
+			width: 20%;
 		}
 	}
 	.inputs {
@@ -41,6 +48,7 @@
 			border: 0;
 			background-color: darken($white, 8%);
 			padding: 0 8px;
+			margin: 0;
 		}
 		button {
 			float: right;

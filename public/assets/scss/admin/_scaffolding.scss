@@ -10,10 +10,23 @@ body {
 	@include proxima;
 	font-size: 16px;
 }
+a {
+	color: $green;
+	text-decoration: none;
+	transition: all 200ms ease;
+	&:hover {
+		color: $green-dark;
+		transition: all 200ms ease;
+	}
+}
 .pagewrap {
 	box-sizing: border-box;
 	min-height: 100%;
 	background: url('../images/ray-bg.png') no-repeat center top fixed;
+}
+
+.container {
+	margin: 0 auto;
 }
 .container.small {
 	max-width: 800px;
@@ -21,6 +34,13 @@ body {
 
 img {
 	width: 100%;
+}
+
+.pull-right {
+	float: right;
+}
+.sr-only {
+	display: none;
 }
 
 .well {

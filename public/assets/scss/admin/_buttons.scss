@@ -11,5 +11,56 @@
 }
 
 .btn {
+	display: inline-block;
+	box-sizing: border-box;
 	border-radius: 2px;
+	background: $white;
+	border: 1px solid darken($white, 16%);
+	padding: 0px 10px;
+	height: 35px;
+	font-size: 15px;
+	cursor: pointer;
+	transition: all 200ms ease;
+	color: #000;
+	line-height: 33px;
+	&:hover {
+		background-color: darken($white, 12%);
+		transition: all 200ms ease;
+		border-color: darken($white, 25%);
+		color: #000;
+	}
+	&.btn-mini {
+		padding: 0px 6px;
+		font-size: 13px;
+	}
+	&:focus {
+		outline: none;
+	}
+	&.active {
+		box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,.3);
+		background-color: darken($white, 12%);
+		border-color: darken($white, 25%);
+	}
+}
+
+.btn-danger {
+	background-color: $danger-text;
+	color: $white;
+	border-color: darken($danger-text, 8%);
+	&:hover {
+		background-color: darken($danger-text, 8%);
+		color: $white;
+		border-color: darken($danger-text, 12%);
+	}
+}
+
+.btn-warning {
+	background-color: $info-text;
+	color: $white;
+	border-color: darken($info-text, 8%);
+	&:hover {
+		background-color: darken($info-text, 8%);
+		color: $white;
+		border-color: darken($info-text, 12%);
+	}
 }

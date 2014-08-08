@@ -23,7 +23,7 @@
 			{{Form::submit('Save', ['class'=>'btn btn-small btn-primary'])}}
 		{{Form::close()}}
 
-		<div class="alert alert-info">
+		<div class="alert alert-info alert-import">
 			Last Import: 
 			@if(isset($last_import['date']))
 				{{$last_import['count']}} items on {{$last_import['date']}}
@@ -55,16 +55,10 @@
 			
 			{{Form::open(['url'=>''])}}
 				<span class="buttons">
-					<div class="btn-group" data-toggle="buttons">
-						<label class="btn btn-default active">
-							<input type="radio" name="social-type" value="twitter" checked>
-							<i class="icon-twitter"></i>
-						</label>
-						<label class="btn btn-default">
-							<input type="radio" name="social-type" value="instagram">
-							<i class="icon-instagram"></i>
-						</label>
-					</div>
+					<select name="social-type">
+						<option value="twitter">Twitter</option>
+						<option value="instagram">Instagram</option>
+					</select>
 					<a href="#twitterhelp" class="btn btn-default help-btn" data-toggle="modal"><strong>?</strong></a>
 				</span>
 				<div class="inputs">
@@ -228,7 +222,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<button type="button" class="close btn btn-mini" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">Finding a Tweet's ID</h4>
 			</div>
 			<div class="modal-body">
@@ -252,7 +246,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<button type="button" class="close btn btn-mini" data-dismiss="modal">&times;</button>
 				<h4 class="modal-title">Finding an Instagram ID</h4>
 			</div>
 			<div class="modal-body">
@@ -265,7 +259,6 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
 			</div>
 		</div>
 	</div>
@@ -531,14 +524,14 @@ $(document).on('click', '.import-single', function(e){
 	e.preventDefault();
 	$(this).attr('disabled', 'disabled');
 	$('#single-error, #single-success').hide();
-	var type = $('input[name="social-type"]:checked').val();
+	var type = $('select[name="social-type"]').val();
 	var id = $('.social-id').val();
 	importSingle(type, id);
 });
 
 // Update single import label & help modal on change
-$(document).on('change', 'input[name="social-type"]', function(){
-	var text = ( $('input[name="social-type"]:checked').val() === 'twitter' ) ? 'Tweet ID' : 'Instagram ID';
+$(document).on('change', 'select[name="social-type"]', function(){
+	var text = ( $('select[name="social-type"]').val() === 'twitter' ) ? 'Tweet ID' : 'Instagram ID';
 	var modal = ( text === 'Tweet ID' ) ? '#twitterhelp' : '#instagramhelp';
 	var type = ( text === 'Tweet ID' ) ? 'twitter' : 'instagram';
 	$('.social-id').attr('placeholder', text);
