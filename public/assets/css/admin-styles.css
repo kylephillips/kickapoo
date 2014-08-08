@@ -190,6 +190,10 @@ h1 {
             box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
     background-color: #e0e0e0;
     border-color: #bfbfbf; }
+  .btn:disabled {
+    background-color: #cccccc;
+    border-color: #b3b3b3;
+    cursor: not-allowed; }
 
 .btn-danger {
   background-color: #a94442;
