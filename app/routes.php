@@ -28,6 +28,9 @@ Route::group(['before'=>'auth'], function()
 	Route::resource('admin/post', 'PostController');
 	Route::get('admin/pending-count', ['as'=>'pending_count', 'uses'=>'PostController@getPending']);
 
+	// Page Management
+	Route::get('admin/pages/edit/{slug}', ['as'=>'edit_page', 'uses'=>'PageController@edit']);
+
 	// Social Search Terms
 	Route::post('searchterms', ['as'=>'update_search', 'uses'=>'PostController@updateSearchTerms']);
 

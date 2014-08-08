@@ -56,4 +56,13 @@ class PageController extends BaseController {
 			->with('page', $page);
 	}
 
+	/**
+	* Edit Page
+	*/
+	public function edit($slug)
+	{
+		dd($slug);
+		return $slug;
+	}
+
 }

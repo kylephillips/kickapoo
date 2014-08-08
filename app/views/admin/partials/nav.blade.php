@@ -31,10 +31,9 @@
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
 			<ul class="dropdown-menu" role="menu">
-				<li><a href="#">Homepage</a></li>
-				<li><a href="#">History</a></li>
-				<li><a href="#">Products</a></li>
-				<li><a href="#">Contact</a></li>
+				@foreach($page_navigation as $page)
+				<li><a href="{{URL::route('edit_page', ['page'=>$page->slug])}}">{{$page->title}}</a></li>
+				@endforeach
 			</ul>
 		</li>
 		<li><a href="#">Forms</a></li>

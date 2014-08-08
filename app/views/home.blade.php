@@ -53,11 +53,11 @@
 				<img src="{{URL::asset('assets/images/joy-meter-gauge.png')}}" alt="Guage" class="gauge">
 			</div>
 		</section>
-		<a href="#" class="products">
+		<a href="{{URL::route('page', ['page'=>'products'])}}" class="products">
 			<span>Products</span>
 			<img src="{{URL::asset('assets/images/homepage-products.jpg')}}" alt="Product Image" />
 		</a>
-		<a href="#" class="history">
+		<a href="{{URL::route('page', ['page'=>'history'])}}" class="history">
 			<span>History</span>
 			<img src="{{URL::asset('assets/images/homepage-history.jpg')}}" alt="History Image" />
 		</a>

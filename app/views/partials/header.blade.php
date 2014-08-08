@@ -6,7 +6,7 @@
 	<nav class="main-nav">
 		<ul>
 			@foreach($page_navigation as $page)
-			<li><a href="{{url('/')}}/{{$page->slug}}">{{$page->title}}</a></li>
+			<li><a href="{{URL::route('page', ['page'=>$page->slug])}}">{{$page->title}}</a></li>
 			@endforeach
 		</ul>
 	</nav>

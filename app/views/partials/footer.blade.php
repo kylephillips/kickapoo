@@ -7,10 +7,9 @@
 
 	<nav>
 		<ul class="main">
-			<li><a href="#">History</a></li>
-			<li><a href="#">Products</a></li>
-			<li><a href="#">Locate</a></li>
-			<li><a href="#">Contact</a></li>
+			@foreach($page_navigation as $page)
+			<li><a href="{{URL::route('page', ['page'=>$page->slug])}}">{{$page->title}}</a></li>
+			@endforeach
 		</ul>
 
 		<br />
