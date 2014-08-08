@@ -15,6 +15,7 @@
 	padding: 10px;
 	@include clearfix;
 	ul.nav {
+		display: block;
 		float: left;
 		@include unstyled;
 		@include clearfix;
@@ -53,12 +54,79 @@
 	}
 }
 
-
 .navclear {
 	display: block;
 	height: 50px;
 }
 
-.navbar-inverse .navbar-toggle:hover {
-	background-color: $lime;
+.admin-nav-toggle {
+	display: none;
+	float: right;
+	background-color: $green-dark;
+	color: $white;
+	padding: 5px 10px;
+	border-radius: 3px;
+	margin: 8px 8px 0px 0px;
+	&.active {
+		background-color: $white;
+		color: $green-dark;
+	}
+}
+
+
+
+@media(max-width: 767px)
+{
+	.admin-nav-toggle {
+		display: block;
+	}
+
+	.navbar {
+		padding: 0;
+		ul.nav {
+			display: none;
+			float: none;
+			clear: both;
+			li {
+				float: none;
+				margin-right: 0px;
+				.caret {
+					float: right;
+					margin-top: 8px;
+				}
+				a {
+					color: $white;
+					display: block;
+					padding: 8px;
+					border-top: 1px solid $green-dark;
+				}
+				.dropdown-menu {
+					padding: 0;
+					border: 0;
+					border-radius: 0;
+					position: relative;
+					top: 0;
+					float: none;
+					width: 100%;
+					background-color: $green;
+					li a {
+						color: $white;
+						&:hover {
+							background-color: $green;
+						}
+					}
+				}
+			}
+		}
+		ul.navbar-right {
+			float: none;
+			.dropdown-menu {
+				right: 0;
+				left: auto;
+			}
+		}
+		.logo {
+			margin: 8px 0px 8px 8px;
+		}
+	}
 }

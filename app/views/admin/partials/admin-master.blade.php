@@ -52,6 +52,11 @@
 		}
 		window.setTimeout(hideFlash, 5000);
 	});
+
+	$('.admin-nav-toggle').on('click', function(e){
+		e.preventDefault();
+		$('.nav').toggle();
+	});
 	</script>
 </body>
 </html>

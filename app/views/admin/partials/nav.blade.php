@@ -6,9 +6,17 @@
 
 <nav class="navbar navbar-inverse">
 
+	@if(Request::is('admin/*'))
 	<a class="logo" href="{{URL::route('home')}}">
 		<img src="{{URL::asset('assets/images/kickapoo-admin-logo.png')}}" alt="Kickapoo Logo" />
 	</a>
+	@else
+	<a class="logo" href="{{URL::route('admin_index')}}">
+		<img src="{{URL::asset('assets/images/kickapoo-admin-logo.png')}}" alt="Kickapoo Logo" />
+	</a>
+	@endif
+
+	<a href="#" class="admin-nav-toggle">Admin Menu</a>
 	
 	<ul class="nav">
 		<li class="dropdown">
@@ -21,7 +29,7 @@
 		</li>
 		<li><a href="#">Products</a></li>
 		<li class="dropdown">
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
 			<ul class="dropdown-menu" role="menu">
 				<li><a href="#">Homepage</a></li>
 				<li><a href="#">History</a></li>

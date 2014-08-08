@@ -64,6 +64,12 @@
 	
 	@if(Auth::check())
 		<script src="{{URL::asset('assets/js/bootstrap.min.js')}}"></script>
+		<script>
+		$('.admin-nav-toggle').on('click', function(e){
+			e.preventDefault();
+			$('.nav').toggle();
+		});
+		</script>
 	@endif
 
 	@yield('footercontent')

@@ -103,6 +103,7 @@ h1 {
   .navbar:after {
     clear: both; }
   .navbar ul.nav {
+    display: block;
     float: left;
     list-style-type: none;
     margin: 0;
@@ -144,8 +145,60 @@ h1 {
   display: block;
   height: 50px; }
 
-.navbar-inverse .navbar-toggle:hover {
-  background-color: #58c632; }
+.admin-nav-toggle {
+  display: none;
+  float: right;
+  background-color: #00702c;
+  color: #ffffff;
+  padding: 5px 10px;
+  -webkit-border-radius: 3px;
+          border-radius: 3px;
+  margin: 8px 8px 0px 0px; }
+  .admin-nav-toggle.active {
+    background-color: #ffffff;
+    color: #00702c; }
+
+@media (max-width: 767px) {
+  .admin-nav-toggle {
+    display: block; }
+  .navbar {
+    padding: 0; }
+    .navbar ul.nav {
+      display: none;
+      float: none;
+      clear: both; }
+      .navbar ul.nav li {
+        float: none;
+        margin-right: 0px; }
+        .navbar ul.nav li .caret {
+          float: right;
+          margin-top: 8px; }
+        .navbar ul.nav li a {
+          color: #ffffff;
+          display: block;
+          padding: 8px;
+          border-top: 1px solid #00702c; }
+        .navbar ul.nav li .dropdown-menu {
+          padding: 0;
+          border: 0;
+          -webkit-border-radius: 0;
+                  border-radius: 0;
+          position: relative;
+          top: 0;
+          float: none;
+          width: 100%;
+          background-color: #00a950; }
+          .navbar ul.nav li .dropdown-menu li a {
+            color: #ffffff; }
+            .navbar ul.nav li .dropdown-menu li a:hover {
+              background-color: #00a950; }
+    .navbar ul.navbar-right {
+      float: none; }
+      .navbar ul.navbar-right .dropdown-menu {
+        right: 0;
+        left: auto; }
+    .navbar .logo {
+      margin: 8px 0px 8px 8px; } }
 
 .btn-primary {
   background-color: #00702c;
