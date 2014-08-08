@@ -12,4 +12,13 @@ class PageRepository {
 		return Page::where('status', 'publish')->orderBy('menu_order')->get();
 	}
 
+	/**
+	* Get a Single Page from a slug
+	*/
+	public function getPage($slug)
+	{
+		return Page::where('slug', $slug)->firstOrFail();
+	}
+	
+
 }

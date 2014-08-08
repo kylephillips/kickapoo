@@ -39,7 +39,7 @@
 		@include('admin.partials.nav')
 	@endif
 
-	@if( $page == 'home' )
+	@if( $page_slug == 'home' )
 	<img src="{{URL::asset('assets/images/preloader.png')}}" class="preloader">
 	<div class="page loading">
 	@endif
@@ -49,7 +49,7 @@
 	</nav>
 
 	<div class="page-wrap">
-		@if( $page == 'home' )
+		@if( $page_slug == 'home' )
 		<section class="home-hero">
 		@endif
 
@@ -68,7 +68,7 @@
 
 	@yield('footercontent')
 
-	@if( $page == 'home' )
+	@if( $page_slug == 'home' )
 	</div><!-- .page -->
 	@endif
 

@@ -5,7 +5,6 @@
 */
 Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
 
-
 /**
 * Admin Login
 */
@@ -51,6 +50,9 @@ Route::group(['before'=>'auth'], function()
 	Route::get('admin/ban/unban', ['as'=>'unban', 'uses'=>'BanController@unban']);
 	Route::resource('admin/ban', 'BanController', ['only'=>['index','store']]);
 });
+
+Route::get('/{page}', ['uses'=>'PageController@getPage']);
+
 
 /**
 * View Composers

@@ -1,5 +1,6 @@
 <?php
 use Kickapoo\Repositories\PostRepository;
+use Kickapoo\Repositories\PageRepository;
 
 class PageController extends BaseController {
 
@@ -8,10 +9,16 @@ class PageController extends BaseController {
 	*/
 	protected $posts_repo;
 
+	/**
+	* Page Repository
+	*/
+	protected $page_repo;
 
-	public function __construct(PostRepository $posts_repo)
+
+	public function __construct(PostRepository $posts_repo, PageRepository $page_repo)
 	{
 		$this->posts_repo = $posts_repo;
+		$this->page_repo = $page_repo;
 	}
 
 
@@ -23,7 +30,7 @@ class PageController extends BaseController {
 		$posts = $this->posts_repo->getApproved();
 		
 		return View::make('home')
-			->with('page', 'home')
+			->with('page_slug', 'home')
 			->with('posts', $posts);
 	}
 
@@ -33,6 +40,20 @@ class PageController extends BaseController {
 	public function getAdmin()
 	{
 		return Redirect::route('admin.post.index');
+	}
+
+	/**
+	* Get Page
+	*/
+	public function getPage($slug)
+	{
+
+		$page = $this->page_repo->getPage($slug);
+		$view = 'pages.' . $slug;
+
+		return View::make($view)
+			->with('page_slug', $slug)
+			->with('page', $page);
 	}
 
 }
