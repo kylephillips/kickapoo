@@ -51,7 +51,7 @@ Route::group(['before'=>'auth'], function()
 	Route::resource('admin/ban', 'BanController', ['only'=>['index','store']]);
 });
 
-Route::get('/{page}', ['uses'=>'PageController@getPage']);
+Route::get('/{page}', ['as'=>'page', 'uses'=>'PageController@getPage']);
 
 
 /**

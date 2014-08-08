@@ -4,7 +4,7 @@
 <section class="headline">
 	<img src="{{URL::asset('assets/images/home-headline.png')}}" class="home-headline" />
 	<p>#<em>kickapoo</em> to share your joy face with the world!</p>
-	<a href="#" class="button">Or share it here <i class="icon-arrow-right"></i></a>
+	<a href="{{URL::route('page', ['page'=>'contact'])}}" class="button">Or share it here <i class="icon-arrow-right"></i></a>
 </section>
 
 <img src="{{URL::asset('assets/images/kickapoo-joy-juice-can.png')}}" class="home-green-can" />
