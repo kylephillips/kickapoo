@@ -26,6 +26,14 @@ class Post extends Eloquent {
 	}
 
 	/**
+	* Facebook Post Relationship
+	*/
+	public function fbpost()
+	{
+		return $this->hasOne('FBPost', 'id', 'facebook_id');
+	}
+
+	/**
 	* User Relationship
 	*/
 	public function user()

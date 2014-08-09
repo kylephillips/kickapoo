@@ -20,7 +20,11 @@ class Setting extends Eloquent {
 		'twitter_access_token' => 'required',
 		'twitter_access_token_secret' => 'required',
 		'instagram_client_id' => 'required',
-		'instagram_client_secret' => 'required'
+		'instagram_client_secret' => 'required',
+		'facebook_page_id' => 'required',
+		'facebook_app_id' => 'required',
+		'facebook_app_secret' => 'required',
+		'facebook_app_token' => 'required'
 	];
 
 }

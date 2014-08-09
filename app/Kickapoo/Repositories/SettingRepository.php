@@ -43,7 +43,11 @@ class SettingRepository {
 			'twitter_access_token',
 			'twitter_access_token_secret',
 			'instagram_client_id',
-			'instagram_client_secret'
+			'instagram_client_secret',
+			'facebook_app_id',
+			'facebook_app_secret',
+			'facebook_app_token',
+			'facebook_page_id'
 		];
 		$all_settings = DB::table('settings')->whereIn('key', $settings_array)->get();
 		foreach( $all_settings as $setting )
