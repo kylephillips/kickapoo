@@ -39,14 +39,23 @@ class TrashFactory {
 	*/
 	public function deletePost($post)
 	{
-		$type = ( isset($post['twitter_id']) ) ? 'twitter' : 'instagram';
+		if ( isset($post['twitter_id']) ){
+			$type = 'twitter';
+		} elseif ( isset($post['instagram_id']) ){
+			$type = 'instagram';
+		} else {
+			$type = 'facebook';
+		}
+		
 		$twitter_id = ( $type == 'twitter' ) ? $post['twitter_id'] : null;
-		$instagram_id = ( $type != 'twitter' ) ? $post['instagram_id'] : null;
+		$instagram_id = ( $type == 'instagram' ) ? $post['instagram_id'] : null;
+		$facebook_id = ( $type == 'facebook' ) ? $post['facebook_id'] : null;
 		
 		Trash::create([
 			'type' => $type,
 			'twitter_id' => $twitter_id,
-			'instagram_id' => $instagram_id
+			'instagram_id' => $instagram_id,
+			'facebook_id' => $facebook_id
 		]);
 
 		if ( $post['image'] ) $this->removeImage($post['image'], $type);

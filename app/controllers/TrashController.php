@@ -52,7 +52,12 @@ class TrashController extends BaseController {
 	public function store()
 	{
 		if ( Request::ajax() ) {
-			$post = ( Input::get('type') == 'twitter' ) ? Tweet::findOrFail(Input::get('id')) : Gram::findOrFail(Input::get('id'));
+			$type = Input::get('type');
+
+			if ( $type == 'twitter' ) $post = Tweet::findOrFail(Input::get('id'));
+			if ( $type == 'instagram' ) $post = Gram::findOrFail(Input::get('id'));
+			if ( $type == 'facebook' ) $post = FBPost::findOrFail(Input::get('id'));
+
 			$post->approved = 0;
 			$post->save();
 			if ( Input::get('postid') ){
