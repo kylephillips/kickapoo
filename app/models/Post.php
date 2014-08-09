@@ -6,7 +6,7 @@ class Post extends Eloquent {
 
 	protected $table = 'posts';
 	
-	protected $fillable = ['type', 'tweet_id', 'gram_id', 'user_id'];
+	protected $fillable = ['type', 'tweet_id', 'gram_id', 'facebook_id', 'user_id'];
 
 
 	/**

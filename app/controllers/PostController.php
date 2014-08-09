@@ -4,6 +4,7 @@ use Kickapoo\Repositories\SettingRepository;
 use Kickapoo\Factories\SettingFactory;
 use Kickapoo\Repositories\PostRepository;
 use Kickapoo\Repositories\AppLogRepository;
+use Kickapoo\Factories\PostFactory;
 
 class PostController extends \BaseController {
 
@@ -82,25 +83,11 @@ class PostController extends \BaseController {
 
 	/**
 	 * Store an approved post
-	 *
 	 */
 	public function store()
 	{
-		$type = Input::get('type');
-		$id = Input::get('id');
-		$post = ( $type == 'twitter' ) ? Tweet::findOrFail($id) : Gram::findOrFail($id);
-
-		$tweet_id = ( $type == 'twitter' ) ? $post->id : null;
-		$gram_id = ( $type != 'twitter' ) ? $post->id : null;
-		$post->approved = 1;
-		$post->save();
-
-		$newpost = Post::create([
-			'type' => $type,
-			'tweet_id' => $tweet_id,
-			'gram_id' => $gram_id,
-			'user_id' => Auth::user()->id
-		]);
+		$newpost = new PostFactory;
+		$newpost = $newpost->savePost(Input::get('id'), Input::get('type'));
 
 		$approval_date = date('D, M jS y - g:i a', strtotime($newpost->created_at));
 		return Response::json([

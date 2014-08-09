@@ -17,5 +17,13 @@ class FBPost extends Eloquent {
 		return $this->hasOne('Post', 'facebook_id', 'id');
 	}
 
+	/**
+	* Banned Users Relationship
+	*/
+	public function banned()
+	{
+		return $this->belongsTo('Banned', 'screen_name', 'screen_name');
+	}
+
 
 }
