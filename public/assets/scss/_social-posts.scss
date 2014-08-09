@@ -119,6 +119,26 @@
 			}
 		} // .twitter-links
 
+		.facebook-caption {
+			background-color: rgba(0,0,0,.1);
+			font-size: 14px;
+			line-height: 18px;
+			padding: 10px;
+			margin-top: 10px;
+			@include clearfix;
+			strong {
+				font-weight: bold;
+			}
+			img {
+				float: left;
+				width: 20%;
+			}
+			.caption-text {
+				float: right;
+				width: 74%;
+			}
+		}
+
 		// Coloring
 		&.white .post {
 			background-color: $white;

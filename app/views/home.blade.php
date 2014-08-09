@@ -25,8 +25,10 @@
 					<section class="post">
 					@if($post->type == 'instagram')
 						@include('partials.gram')
-					@else
+					@elseif($post->type == 'twitter')
 						@include('partials.tweet')
+					@else
+						@include('partials.fbpost')
 					@endif
 					</section>
 				</div>

@@ -789,6 +789,28 @@ footer {
         .social-posts .item .twitter-links li:last-child a {
           -webkit-border-radius: 0px 20px 20px 0px;
                   border-radius: 0px 20px 20px 0px; }
+    .social-posts .item .facebook-caption {
+      background-color: rgba(0, 0, 0, 0.1);
+      font-size: 14px;
+      line-height: 18px;
+      padding: 10px;
+      margin-top: 10px;
+      zoom: 1; }
+      .social-posts .item .facebook-caption:before, .social-posts .item .facebook-caption:after {
+        content: " ";
+        /* 1 */
+        display: table;
+        /* 2 */ }
+      .social-posts .item .facebook-caption:after {
+        clear: both; }
+      .social-posts .item .facebook-caption strong {
+        font-weight: bold; }
+      .social-posts .item .facebook-caption img {
+        float: left;
+        width: 20%; }
+      .social-posts .item .facebook-caption .caption-text {
+        float: right;
+        width: 74%; }
     .social-posts .item.white .post {
       background-color: #ffffff; }
     .social-posts .item.yellow .post {
