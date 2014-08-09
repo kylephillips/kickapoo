@@ -6,10 +6,6 @@
 	</span>
 </section>
 <section class="content">
-	
-	@if($post->fbpost->type == 'link')
-		{{$post->fbpost->screen_name}} shared a <a href="{{$post->fbpost->link}}" target="_blank">link</a>
-	@endif
 
 	@if($post->fbpost->message)
 		<p>{{$post->fbpost->message}}</p>
