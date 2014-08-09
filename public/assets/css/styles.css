@@ -901,7 +901,7 @@ footer {
 
 .bubble {
   position: absolute;
-  opacity: 0.6; }
+  opacity: 0.4; }
   .bubble.xlarge {
     width: 250px;
     height: 250px;
