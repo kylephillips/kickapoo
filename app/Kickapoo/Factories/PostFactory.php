@@ -8,6 +8,9 @@ use \Auth;
 
 class PostFactory {
 
+	/**
+	* Save a new post
+	*/
 	public function savePost($id, $type)
 	{
 		if ( $type == 'twitter' ){
@@ -21,7 +24,6 @@ class PostFactory {
 		$tweet_id = ( $type == 'twitter' ) ? $post->id : null;
 		$gram_id = ( $type == 'instagram' ) ? $post->id : null;
 		$facebook_id = ( $type == 'facebook' ) ? $post->id : null;
-
 		$post->approved = 1;
 		$post->save();
 

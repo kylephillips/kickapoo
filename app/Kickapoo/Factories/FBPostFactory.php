@@ -21,6 +21,7 @@ class FBPostFactory {
 			'link' => ( isset($item['link']) ) ? $item['link'] : null,
 			'story' => ( isset($item['story']) ) ? $item['story'] : null,
 			'caption' => ( isset($item['caption']) ) ? $item['caption'] : null,
+			'caption_title' => ( isset($item['caption_title']) ) ? $item['caption_title'] : null,
 			'caption_description' => ( isset($item['caption_description']) ) ? $item['caption_description'] : null,
 			'type' => $item['type'],
 			'message' => ( isset($item['message']) ) ? $item['message'] : null,

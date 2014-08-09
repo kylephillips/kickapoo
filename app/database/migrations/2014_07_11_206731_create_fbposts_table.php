@@ -27,6 +27,7 @@ class CreateFbpostsTable extends Migration {
 			$table->string('image')->nullable();
 			$table->text('story')->nullable();
 			$table->text('caption')->nullable();
+			$table->text('caption_title')->nullable();
 			$table->string('caption_image')->nullable();
 			$table->text('caption_description')->nullable();
 			$table->integer('approved')->nullable();
