@@ -110,6 +110,7 @@
 
 		<ul id="postfeed" class="postfeed">
 		@foreach($posts as $post)
+			
 			<?php 
 				$date = date('D, M jS Y - g:i a', strtotime($post['datetime'])); 
 				$postdate = date('D, M jS y - g:i a', strtotime($post['post']['created_at']));
@@ -127,7 +128,7 @@
 		@endforeach
 		</ul>
 
-		<?php echo $posts->links(); ?>
+		{{$posts->links()}}
 
 		</div><!-- .scroll -->
 

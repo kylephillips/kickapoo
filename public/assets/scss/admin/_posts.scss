@@ -224,6 +224,26 @@
 	} // ul
 } // .admin-posts
 
+// Facebook Captions
+.fb-caption {
+	background-color: darken($white, 8%);
+	@include clearfix;
+	padding: 15px;
+	border-radius: 3px;
+	.caption-text {
+		float: right;
+		width: 77%;
+		font-size: 15px;
+	}
+	img {
+		float: left;
+		width: 20%;
+	}
+	span {
+		color: darken($white, 50%);
+	}
+}
+
 
 // Status Switch
 .admin-posts .status {

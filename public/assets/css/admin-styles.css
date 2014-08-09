@@ -1087,6 +1087,29 @@ footer .container {
         -webkit-border-radius: 3px;
                 border-radius: 3px; }
 
+.fb-caption {
+  background-color: #ebebeb;
+  zoom: 1;
+  padding: 15px;
+  -webkit-border-radius: 3px;
+          border-radius: 3px; }
+  .fb-caption:before, .fb-caption:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+  .fb-caption:after {
+    clear: both; }
+  .fb-caption .caption-text {
+    float: right;
+    width: 77%;
+    font-size: 15px; }
+  .fb-caption img {
+    float: left;
+    width: 20%; }
+  .fb-caption span {
+    color: #808080; }
+
 .admin-posts .status {
   clear: both; }
   .admin-posts .status ul {
