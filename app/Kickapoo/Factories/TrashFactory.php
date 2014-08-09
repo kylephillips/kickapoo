@@ -28,7 +28,10 @@ class TrashFactory {
 		$posts = $this->post_repo->getTrash();
 		foreach($posts as $post)
 		{
-			$this->deletePost($post);
+			if ( isset($post['twitter_id']) ) $type = 'twitter';
+			if ( isset($post['instagram_id']) ) $type = 'instagram';
+			if ( isset($post['facebook_id']) ) $type = 'facebook';
+			$this->deletePost($post, $type);
 		}
 		$this->log();
 	}
