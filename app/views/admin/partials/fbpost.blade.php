@@ -57,18 +57,32 @@
 			@endif
 		</div>
 	</div><!-- .content -->
-	@if($post['approved'] == 1)
-	<div class="status-approved">
-		<p><i class="icon-checkmark"></i> Approved {{$postdate}} by {{$postdate}} by {{$post['post']['user']['first_name']}} {{$post['post']['user']['last_name']}}
-</p>
-		<a href="#" class="remove-approved" data-id="{{$post['facebook_id']}}" data-type="facebook" data-postid="{{$post['post']['id']}}">Unapprove and Trash</a>
-	</div>
+
+	@if(isset($trash))
+
+		<div class="status">
+			<ul>
+				<li><a href="#" class="remove" data-id="{{$post['facebook_id']}}" data-type="facebook"><i class="icon-remove"></i> Remove Permanently</a></li>
+				<li><a href="#" class="restore" data-id="{{$post['facebook_id']}}" data-type="facebook"><i class="icon-checkmark"></i> Restore</a></li>
+			</ul>
+		</div>
+
 	@else
-	<div class="status">
-		<ul>
-			<li><a href="#" class="remove" data-id="{{$post['facebook_id']}}" data-type="facebook"><i class="icon-remove"></i> Trash</a></li>
-			<li><a href="#" class="approve" data-id="{{$post['facebook_id']}}" data-type="facebook"><i class="icon-checkmark"></i> Approve</a></li>
-		</ul>
-	</div>
+
+		@if($post['approved'] == 1)
+		<div class="status-approved">
+			<p><i class="icon-checkmark"></i> Approved {{$postdate}} by {{$postdate}} by {{$post['post']['user']['first_name']}} {{$post['post']['user']['last_name']}}
+	</p>
+			<a href="#" class="remove-approved" data-id="{{$post['facebook_id']}}" data-type="facebook" data-postid="{{$post['post']['id']}}">Unapprove and Trash</a>
+		</div>
+		@else
+		<div class="status">
+			<ul>
+				<li><a href="#" class="remove" data-id="{{$post['facebook_id']}}" data-type="facebook"><i class="icon-remove"></i> Trash</a></li>
+				<li><a href="#" class="approve" data-id="{{$post['facebook_id']}}" data-type="facebook"><i class="icon-checkmark"></i> Approve</a></li>
+			</ul>
+		</div>
+		@endif
+
 	@endif
 </li>

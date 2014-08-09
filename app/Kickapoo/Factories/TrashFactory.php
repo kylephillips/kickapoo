@@ -37,16 +37,8 @@ class TrashFactory {
 	/**
 	* Delete a Post
 	*/
-	public function deletePost($post)
+	public function deletePost($post, $type = null)
 	{
-		if ( isset($post['twitter_id']) ){
-			$type = 'twitter';
-		} elseif ( isset($post['instagram_id']) ){
-			$type = 'instagram';
-		} else {
-			$type = 'facebook';
-		}
-		
 		$twitter_id = ( $type == 'twitter' ) ? $post['twitter_id'] : null;
 		$instagram_id = ( $type == 'instagram' ) ? $post['instagram_id'] : null;
 		$facebook_id = ( $type == 'facebook' ) ? $post['facebook_id'] : null;
@@ -68,7 +60,7 @@ class TrashFactory {
 	*/
 	private function removeImage($image, $type)
 	{
-		$directory = ( $type == 'twitter' ) ? public_path() . '/assets/uploads/twitter_images/' : public_path() . '/assets/uploads/instagram_images';
+		$directory = public_path() . '/assets/uploads/' . $type . '_images/';
 		$file = $directory . '/' . $image;
 		unlink($file);
 	}

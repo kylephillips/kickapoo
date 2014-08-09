@@ -26,7 +26,20 @@ class PostRepository {
 	*/
 	public function getSingle($id, $type)
 	{
-		$post = ( $type == 'twitter' ) ? Tweet::where('id', $id)->first() : Gram::where('id', $id)->first();
+		if ( $type == 'twitter' ) $post = Tweet::where('id', $id)->first();
+		if ( $type == 'instagram' ) $post = Gram::where('id', $id)->first();
+		if ( $type == 'facebook' ) $post = FBPost::where('id', $id)->first();
+		return $post;
+	}
+
+	/**
+	* Get a single Post by it's social id
+	*/
+	public function getSingleBySocialId($id, $type)
+	{
+		if ( $type == 'twitter' ) $post = Tweet::findOrFail($id);
+		if ( $type == 'instagram' ) $post = Gram::findOrFail($id);
+		if ( $type == 'facebook' ) $post = FBPost::findOrFail($id);
 		return $post;
 	}
 
@@ -82,7 +95,8 @@ class PostRepository {
 	{
 		$tweets = Tweet::with('post')->where('approved', 0)->get();
 		$grams = Gram::with('post')->where('approved', 0)->get();
-		$posts = $tweets->merge($grams)->sortByDesc('datetime');
+		$fbposts = FBPost::with('post')->where('approved', 0)->get();
+		$posts = $tweets->merge($grams)->merge($fbposts)->sortByDesc('datetime');
 		return $posts;
 	}
 

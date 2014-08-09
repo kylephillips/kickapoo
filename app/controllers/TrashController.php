@@ -31,7 +31,6 @@ class TrashController extends BaseController {
 
 	/**
 	 * Get a list of Posts in the trash
-	 *
 	 */
 	public function index()
 	{
@@ -45,19 +44,11 @@ class TrashController extends BaseController {
 
 	/**
 	 * Add an item to the trash
-	 *
-	 * @param  int  $id
-	 * @return Response
 	 */
 	public function store()
 	{
 		if ( Request::ajax() ) {
-			$type = Input::get('type');
-
-			if ( $type == 'twitter' ) $post = Tweet::findOrFail(Input::get('id'));
-			if ( $type == 'instagram' ) $post = Gram::findOrFail(Input::get('id'));
-			if ( $type == 'facebook' ) $post = FBPost::findOrFail(Input::get('id'));
-
+			$post = $this->post_repo->getSingleBySocialId(Input::get('id'), Input::get('type'));
 			$post->approved = 0;
 			$post->save();
 			if ( Input::get('postid') ){
@@ -75,7 +66,7 @@ class TrashController extends BaseController {
 	public function restore()
 	{
 		if ( Request::ajax() ){
-			$post = ( Input::get('type') == 'twitter' ) ? Tweet::findOrFail(Input::get('id')) : Gram::findOrFail(Input::get('id'));
+			$post = $this->post_repo->getSingleBySocialId(Input::get('id'), Input::get('type'));
 			$post->approved = null;
 			$post->save();
 			return Response::json(['success'=>'Post Restored.']);
@@ -118,8 +109,8 @@ class TrashController extends BaseController {
 	public function deletePost()
 	{
 		if ( Request::ajax() ){
-			$post = ( Input::get('type') == 'twitter' ) ? Tweet::findOrFail(Input::get('id')) : Gram::findOrFail(Input::get('id'));
-			$this->trash_factory->deletePost($post);
+			$post = $this->post_repo->getSingleBySocialId(Input::get('id'), Input::get('type'));
+			$this->trash_factory->deletePost($post, Input::get('type'));
 			return Response::json(['status'=>'success']);
 		}
 	}

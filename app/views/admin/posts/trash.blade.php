@@ -23,63 +23,18 @@
 	<div class="container small admin-posts">	
 		<ul class="trash">
 		@foreach($posts as $post)
-		<?php 
-			$date = date('D, M jS Y - g:i a', strtotime($post['datetime'])); 
-			$postdate = date('D, M jS y - g:i a', strtotime($post['post']['created_at']));
-			$post_type = ( isset($post['twitter_id']) ) ? 'twitter' : 'instagram';
-		?>
-		@if(isset($post['twitter_id']))
-			<li class="tweet post @if($post['approved'] == 1)approved @endif">
-				<div class="content">
-					<div class="avatar">
-						<img src="{{$post['profile_image']}}" alt="user icon">
-					</div>
-					<div class="main">
-						<strong><a href="http://twitter.com/{{$post['screen_name']}}" target="_blank">{{$post['screen_name']}}</a></strong>
-						<span class="date">{{$date}}</span>
-						<p>{{$post['text']}}</p>
-						@if($post['image'])
-						<div class="image">
-							<img src="/assets/uploads/twitter_images/{{$post['image']}}" />
-						</div>
-						@endif
-					</div><!-- .main -->
-				</div><!-- .content -->
-				<div class="status">
-					<ul>
-						<li><a href="#" class="remove" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}"><i class="icon-remove"></i> Remove Permanently</a></li>
-						<li><a href="#" class="restore" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Restore</a></li>
-					</ul>
-				</div>
-			</li>
-			
+			<?php 
+				$date = date('D, M jS Y - g:i a', strtotime($post['datetime'])); 
+				$postdate = date('D, M jS y - g:i a', strtotime($post['post']['created_at']));
+				$post_type = ( isset($post['twitter_id']) ) ? 'twitter' : 'instagram';
+			?>
+			@if(isset($post['twitter_id']))
+				@include('admin.partials.tweet', array('trash'=>true))			
+			@elseif(isset($post['instagram_id']))
+				@include('admin.partials.gram', array('trash'=>true))
 			@else
-			<li class="gram post @if($post['approved'] == 1)approved @endif">
-				<div class="content">
-					<div class="avatar">
-						<img src="{{$post['profile_image']}}" alt="user icon">
-					</div>
-					<div class="main">
-						<strong><a href="http://instagram.com/{{$post['screen_name']}}" target="_blank">{{$post['screen_name']}}</a></strong>
-						<span class="date">{{$date}}</span>
-						@if($post['type'] == 'image')
-						<div class="image">
-							<img src="/assets/uploads/instagram_images/{{$post['image']}}" />
-						</div>
-						@else
-						<video width="480" height="480" controls>
-							<source src="{{$post['video_url']}}" type="video/mp4"/>
-						</video>
-						@endif
-						@if($post['text'])<p>{{$post['text']}}</p>@endif
-					</div>
-					<div class="status">
-						<ul>
-							<li><a href="#" class="remove" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-remove"></i> Remove Permanently</a></li>
-							<li><a href="#" class="restore" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Restore</a></li>
-						</ul>
-					</div>
-				@endif
+				@include('admin.partials.fbpost', array('trash'=>true))
+			@endif		
 		@endforeach
 		</ul>
 	</div><!-- .container -->
@@ -135,6 +90,7 @@ function deletePost(id, type, item)
 			type: type
 		},
 		success: function(data){
+			console.log(data);
 			$(item).fadeOut('fast', function(){
 				$(item).remove();
 			});
