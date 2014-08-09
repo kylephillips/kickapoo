@@ -16,6 +16,8 @@ class FBPostFactory {
 			'facebook_id' => $item['id'],
 			'datetime' => $date,
 			'user_id' => $item['user_id'],
+			'screen_name' => ( isset($item['screen_name']) ) ? $item['screen_name'] : null,
+			'profile_image' => ( isset($item['profile_image']) ) ? $item['profile_image'] : null,
 			'link' => ( isset($item['link']) ) ? $item['link'] : null,
 			'story' => ( isset($item['story']) ) ? $item['story'] : null,
 			'caption' => ( isset($item['caption']) ) ? $item['caption'] : null,

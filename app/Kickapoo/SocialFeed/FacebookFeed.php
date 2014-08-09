@@ -93,6 +93,7 @@ class FacebookFeed extends SocialFeed {
 			$this->feed_formatted[$key]['message'] = ( isset($item->message) ) ? $item->message : null;
 			$this->feed_formatted[$key]['story'] = ( isset($item->story) ) ? $item->story : null;
 			$this->feed_formatted[$key]['user_id'] = $this->getUserId($item->id);
+			$this->feed_formatted[$key]['screen_name'] = ( isset($item->from->name) ) ? $item->from->name : null;
 			$this->feed_formatted[$key]['profile_image'] = $this->getProfileImage($this->getUserId($item->id));
 			$this->feed_formatted[$key]['picture'] = ( $item->type == 'photo' ) ? $this->getPicture($item->object_id) : null;
 			$this->feed_formatted[$key]['caption'] = ( isset($item->caption) ) ? $item->caption : null;

@@ -4,6 +4,7 @@ use \DB;
 use \Post;
 use \Tweet;
 use \Gram;
+use \FBPost;
 use \Paginator;
 use \Carbon\Carbon;
 
@@ -39,10 +40,14 @@ class PostRepository {
 			$posts = $this->getPostType($status, $type = 'twitter');
 		} elseif ( $type == 'instagram' ){
 			$posts = $this->getPostType($status, $type = 'instagram');
+		} elseif ( $type == 'facebook' ) {
+			$posts = $this->getPostType($status, $type = 'facebook');
 		} else {
 			$tweets = $this->getPostType($status, $type = 'twitter');
 			$grams = $this->getPostType($status, $type = 'instagram');
-			$posts = $tweets->merge($grams)->sortByDesc('datetime');
+			$fbposts = $this->getPostType($status, $type = 'facebook');
+
+			$posts = $tweets->merge($grams)->merge($fbposts)->sortByDesc('datetime');
 		}
 		return $posts;
 	}
@@ -55,6 +60,7 @@ class PostRepository {
 	{
 		if ( $type == 'twitter' ) $query = Tweet::with('post', 'post.user', 'banned');
 		if ( $type == 'instagram' ) $query = Gram::with('post', 'post.user', 'banned');
+		if ( $type == 'facebook' ) $query = FBPost::with('post', 'post.user');
 		
 		// Filter by status
 		if ( $status == null ){
@@ -87,7 +93,8 @@ class PostRepository {
 	{
 		$tweets = Tweet::with('post')->where('approved', 0)->count();
 		$grams = Gram::with('post')->where('approved', 0)->count();
-		$count = $tweets + $grams;		
+		$fbposts = FBPost::with('post')->where('approved', 0)->count();
+		$count = $tweets + $grams + $fbposts;		
 		return $count;
 	}
 
@@ -96,9 +103,10 @@ class PostRepository {
 	*/
 	public function getPendingCount()
 	{
-		$tweets = Tweet::with('post', 'banned')->whereRaw('approved IS NULL')->count();
-		$grams = Gram::with('post', 'banned')->whereRaw('approved IS NULL')->count();
-		$count = $tweets + $grams;
+		$fbposts = FBPost::with('post')->whereRaw('approved IS NULL')->count();
+		$tweets = Tweet::with('post')->whereRaw('approved IS NULL')->count();
+		$grams = Gram::with('post')->whereRaw('approved IS NULL')->count();
+		$count = $tweets + $grams + $fbposts;
 		return $count;
 	}
 
@@ -109,7 +117,8 @@ class PostRepository {
 	{
 		$monthOld = Carbon::now()->subMonth();
 		$tweets = Tweet::where('created_at','<=',$monthOld)->whereRaw('approved IS NULL')->delete();
-		$tweets = Gram::where('created_at','<=',$monthOld)->whereRaw('approved IS NULL')->delete();
+		$grams = Gram::where('created_at','<=',$monthOld)->whereRaw('approved IS NULL')->delete();
+		$fbposts = FBPost::where('created_at','<=',$monthOld)->whereRaw('approved IS NULL')->delete();
 		return 'cleaned';
 	}
 
