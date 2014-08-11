@@ -67,12 +67,18 @@
 
 @section('footercontent')
 <script src="{{URL::asset('assets/js/redactor.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/fullpage.js')}}"></script>
 <script>
 $(document).ready(function(){
 	$('.page-content').redactor({
-		iframe: true,
 		css: '{{URL::asset("assets/css/admin/editor-styles.css")}}',
-		imageUpload : '/uploads'
+		imageUpload : '{{URL::route("editor_upload")}}',
+		imageUploadCallback: function(image, json){
+			console.log(json);
+		},
+		imageUploadErrorCallback: function(json){
+			console.log(json.error);
+		}
 	});
 });
 </script>

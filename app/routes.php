@@ -32,6 +32,9 @@ Route::group(['before'=>'auth'], function()
 	Route::get('admin/pages/edit/{slug}', ['as'=>'edit_page', 'uses'=>'PageController@edit']);
 	Route::post('admin/pages/edit/{id}', ['as'=>'update_page', 'uses'=>'PageController@update']);
 
+	// Media Management
+	Route::post('admin/media/editor-upload', ['as'=>'editor_upload', 'uses'=>'UploadController@editorUpload']);
+
 	// Social Search Terms
 	Route::post('searchterms', ['as'=>'update_search', 'uses'=>'PostController@updateSearchTerms']);
 
