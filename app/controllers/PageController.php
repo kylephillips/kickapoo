@@ -27,11 +27,13 @@ class PageController extends BaseController {
 	*/
 	public function home()
 	{	
+		$page = $this->page_repo->getPage('home');
 		$posts = $this->posts_repo->getApproved();
 		
 		return View::make('home')
 			->with('page_slug', 'home')
-			->with('posts', $posts);
+			->with('posts', $posts)
+			->with('page', $page);
 	}
 
 	/**
@@ -61,8 +63,9 @@ class PageController extends BaseController {
 	*/
 	public function edit($slug)
 	{
-		dd($slug);
-		return $slug;
+		$page = $this->page_repo->getPage($slug);
+		return View::make('admin.pages.edit')
+			->with('page', $page);
 	}
 
 }
