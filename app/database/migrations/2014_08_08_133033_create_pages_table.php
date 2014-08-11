@@ -21,6 +21,7 @@ class CreatePagesTable extends Migration {
 			$table->integer('author')->unsigned();
 			$table->foreign('author')->references('id')->on('users')->onDelete('cascade');
 			$table->string('status')->default('draft');
+			$table->string('template')->nullable();
 			$table->integer('menu_order');
 			$table->timestamps();
 		});

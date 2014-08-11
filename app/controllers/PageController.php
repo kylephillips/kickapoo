@@ -37,7 +37,7 @@ class PageController extends BaseController {
 		$page = $this->page_repo->getPage('home');
 		$posts = $this->posts_repo->getApproved();
 		
-		return View::make('home')
+		return View::make('pages.home')
 			->with('page_slug', 'home')
 			->with('posts', $posts)
 			->with('page', $page);
@@ -60,7 +60,7 @@ class PageController extends BaseController {
 	{
 
 		$page = $this->page_repo->getPage($slug);
-		$view = 'pages.' . $slug;
+		$view = 'pages.' . $page->template;
 
 		return View::make($view)
 			->with('page_slug', $slug)
@@ -74,9 +74,11 @@ class PageController extends BaseController {
 	*/
 	public function edit($slug)
 	{
+		$templates = $this->page_repo->getPageTemplates();
 		$page = $this->page_repo->getPage($slug);
 		return View::make('admin.pages.edit')
-			->with('page', $page);
+			->with('page', $page)
+			->with('templates', $templates);
 	}
 
 
@@ -90,6 +92,7 @@ class PageController extends BaseController {
 			'title' => 'required',
 			'slug' => 'required',
 			'status' => 'required',
+			'template' => 'required',
 			'content' => 'required'
 		]);
 		$validation->sometimes('slug', 'unique:pages,slug', function($input) use ($page) {

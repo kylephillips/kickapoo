@@ -42,6 +42,11 @@
 			{{Form::select('status', ['publish'=>'Published', 'draft'=>'Draft'], $page['status'])}}
 		</p>
 
+		<p>
+			{{Form::label('template', 'Page Template')}}
+			{{Form::select('template', $templates, $page['template'])}}
+		</p>
+
 		<hr>
 
 		<p>

@@ -11,6 +11,7 @@ class PageFactory {
 		$page->slug = $input['slug'];
 		$page->status = $input['status'];
 		$page->content = $input['content'];
+		$page->template = $input['template'];
 		$page->save();
 		return $page;
 	}

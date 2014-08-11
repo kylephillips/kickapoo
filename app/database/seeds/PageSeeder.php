@@ -10,6 +10,7 @@ class PageSeeder extends Seeder {
 			'content' => '<p>#<em>kickapoo</em> to share your joy face with the world!</p>',
 			'author' => 1,
 			'status' => 'publish',
+			'template' => 'home',
 			'menu_order' => 0
 		]);
 		Page::create([
@@ -18,6 +19,7 @@ class PageSeeder extends Seeder {
 			'content' => '<p>History Lorem Ipsum</p>',
 			'author' => 1,
 			'status' => 'publish',
+			'template' => 'history',
 			'menu_order' => 1
 		]);
 		Page::create([
@@ -26,6 +28,7 @@ class PageSeeder extends Seeder {
 			'content' => '<p>Products Lorem Ipsum</p>',
 			'author' => 1,
 			'status' => 'publish',
+			'template' => 'products',
 			'menu_order' => 2
 		]);
 		Page::create([
@@ -34,6 +37,7 @@ class PageSeeder extends Seeder {
 			'content' => '<p>Locate Lorem Ipsum</p>',
 			'author' => 1,
 			'status' => 'publish',
+			'template' => 'locate',
 			'menu_order' => 3
 		]);
 		Page::create([
@@ -42,6 +46,7 @@ class PageSeeder extends Seeder {
 			'content' => '<p>Contact Lorem Ipsum</p>',
 			'author' => 1,
 			'status' => 'publish',
+			'template' => 'contact',
 			'menu_order' => 4
 		]);
 	}

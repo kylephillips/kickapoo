@@ -17,7 +17,7 @@ class PageRepository {
 	*/
 	public function getAllPages()
 	{
-		return Page::where('status', 'publish')->orderBy('menu_order')->get();
+		return Page::orderBy('menu_order')->get();
 	}
 
 	/**
@@ -26,6 +26,24 @@ class PageRepository {
 	public function getPage($slug)
 	{
 		return Page::where('slug', $slug)->firstOrFail();
+	}
+
+	/**
+	* Get an array of all page templates
+	*/
+	public function getPageTemplates()
+	{
+		$path = app_path() . '/views/pages';
+		$files = scandir($path);
+		foreach($files as $file)
+		{
+			if ( strlen($file) > 2 ) 
+			{
+				$file = str_replace('.blade.php', '', $file);
+				$templates[$file] = ucfirst($file);
+			}
+		}
+		return $templates;
 	}
 	
 
