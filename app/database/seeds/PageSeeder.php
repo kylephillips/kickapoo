@@ -5,6 +5,14 @@ class PageSeeder extends Seeder {
 	{
 		DB::table('pages')->delete();
 		Page::create([
+			'title' => 'Home',
+			'slug' => 'home',
+			'content' => '<p>#<em>kickapoo</em> to share your joy face with the world!</p>',
+			'author' => 1,
+			'status' => 'publish',
+			'menu_order' => 0
+		]);
+		Page::create([
 			'title' => 'History',
 			'slug' => 'history',
 			'content' => '<p>History Lorem Ipsum</p>',

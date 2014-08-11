@@ -31,7 +31,7 @@
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
 			<ul class="dropdown-menu" role="menu">
-				@foreach($page_navigation as $page)
+				@foreach($allpages as $page)
 				<li><a href="{{URL::route('edit_page', ['page'=>$page->slug])}}">{{$page->title}}</a></li>
 				@endforeach
 			</ul>
@@ -47,10 +47,10 @@
 			<ul class="dropdown-menu" role="menu">
 				<li><a href="{{URL::route('admin.user.edit', ['id'=>Auth::user()->id])}}">Update Profile</a></li>
 				@if(Auth::user()->group_id == 1)
-					<li><a href="/admin/user">Users</a></li>
+					<li><a href="{{URL::route('admin.user.index')}}">Users</a></li>
 					<li><a href="{{URL::route('settings_form')}}">Site Settings</a></li>
 				@endif
-				<li><a href="/logout">Log Out</a></li>
+				<li><a href="{{URL::route('logout')}}">Log Out</a></li>
 			</ul>
 		</li>
 	</ul>
