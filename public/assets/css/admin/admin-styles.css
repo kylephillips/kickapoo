@@ -304,6 +304,9 @@ h1 {
   color: #3c763d;
   border-color: #d6e9c6; }
 
+.text-danger {
+  color: #a94442; }
+
 @media (max-width: 767px) {
   .alert {
     zoom: 1; }
