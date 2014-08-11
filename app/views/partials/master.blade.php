@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
 	@if(Auth::check())
-	<link rel="stylesheet" href="{{URL::asset('assets/css/admin-styles.css')}}">
+	<link rel="stylesheet" href="{{URL::asset('assets/css/admin/admin-styles.css')}}">
 	@endif
 	
 	<link rel="stylesheet" href="{{URL::asset('assets/css/styles.css')}}">
