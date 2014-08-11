@@ -459,14 +459,15 @@ label {
 
 select {
   width: 100%;
-  height: 35px; }
+  height: 35px;
+  margin-bottom: 15px; }
 
 input[type='text'], input[type='password'], input[type='email'] {
   width: 100%;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
           box-sizing: border-box;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   height: 35px;
   font-size: 16px;
   -webkit-box-shadow: none;
@@ -488,6 +489,26 @@ input[type='submit'] {
   color: #ffffff;
   -webkit-border-radius: 3px;
           border-radius: 3px; }
+
+form .well {
+  background-color: #ededed;
+  zoom: 1;
+  padding-bottom: 0; }
+  form .well:before, form .well:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+  form .well:after {
+    clear: both; }
+form p {
+  clear: both; }
+form p.half {
+  float: left;
+  width: 48%; }
+  form p.half.right {
+    float: right;
+    clear: none; }
 
 .well {
   background-color: #ffffff;

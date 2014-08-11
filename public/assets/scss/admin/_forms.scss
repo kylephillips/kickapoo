@@ -20,6 +20,7 @@ label {
 select {
 	width: 100%;
 	height: 35px;
+	margin-bottom: 15px;
 }
 
 input[type='text'],
@@ -27,7 +28,7 @@ input[type='password'],
 input[type='email']{
 	width: 100%;
 	box-sizing: border-box;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 	height: 35px;
 	font-size: 16px;
 	box-shadow: none;
@@ -49,4 +50,24 @@ input[type='submit']{
 	font-size: 16px;
 	color: $white;
 	border-radius: 3px;
+}
+
+
+form {
+	.well {
+		background-color: darken($white, 7%);
+		@include clearfix;
+		padding-bottom: 0;
+	}
+	p {
+		clear: both;
+	}
+	p.half {
+		float: left;
+		width: 48%;
+		&.right {
+			float: right;
+			clear: none;
+		}
+	}
 }

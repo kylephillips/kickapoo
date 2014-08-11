@@ -37,15 +37,17 @@
 			@endif
 		</p>
 
-		<p>
+		<div class="well">
+		<p class="half">
 			{{Form::label('status', 'Status')}}
 			{{Form::select('status', ['publish'=>'Published', 'draft'=>'Draft'], $page['status'])}}
 		</p>
 
-		<p>
+		<p class="half right">
 			{{Form::label('template', 'Page Template')}}
 			{{Form::select('template', $templates, $page['template'])}}
 		</p>
+		</div>
 
 		<hr>
 
