@@ -69,7 +69,11 @@
 <script src="{{URL::asset('assets/js/redactor.min.js')}}"></script>
 <script>
 $(document).ready(function(){
-	$('.page-content').redactor();
+	$('.page-content').redactor({
+		iframe: true,
+		css: '{{URL::asset("assets/css/admin/editor-styles.css")}}',
+		imageUpload : '/uploads'
+	});
 });
 </script>
 @stop
