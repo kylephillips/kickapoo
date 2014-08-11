@@ -9,7 +9,7 @@ var plumber = require('gulp-plumber');
 
 // Paths
 var adminScss = 'public/assets/scss/admin/**/*';
-var adminCss = 'public/assets/css/';
+var adminCss = 'public/assets/css/admin/';
 var scss = 'public/assets/scss/*';
 var css = 'public/assets/css/';
 

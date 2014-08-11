@@ -29,7 +29,7 @@ a {
      -moz-box-sizing: border-box;
           box-sizing: border-box;
   min-height: 100%;
-  background: url('../images/ray-bg.png') no-repeat center top fixed; }
+  background: url('../../images/ray-bg.png') no-repeat center top fixed; }
 
 .container {
   margin: 0 auto; }
