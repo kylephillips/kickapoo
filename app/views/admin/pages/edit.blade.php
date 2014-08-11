@@ -28,10 +28,11 @@
 
 		<p>
 			{{$errors->first('slug', '<span class="text-danger"><strong>:message</strong></span><br>')}}
-			{{Form::label('slug', 'Page Slug')}}
 			@if($page['slug'] == 'home')
-			{{Form::text('slug', $page['slug'], ['class'=>'form-control', 'readonly'])}}
+			{{Form::label('slug', 'Page Slug (Home slug cannot be changed)')}}
+			{{Form::text('slug', $page['slug'], ['class'=>'form-control readonly', 'readonly'])}}
 			@else
+			{{Form::label('slug', 'Page Slug')}}
 			{{Form::text('slug', $page['slug'], ['class'=>'form-control'])}}
 			@endif
 		</p>

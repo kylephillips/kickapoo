@@ -37,6 +37,10 @@ input[type='email']{
 	&:focus {
 		outline: none;
 	}
+	&.readonly {
+		background-color: rgba(0,0,0,.08);
+		cursor: not-allowed;
+	}
 }
 
 input[type='submit']{
