@@ -16,7 +16,7 @@
 		<div class="alert alert-success">{{Session::get('success')}}</div>
 		@endif
 
-		{{Form::open(['url'=>URL::route('update_settings')])}}
+		{{Form::open(['url'=>URL::route('update_page', ['id'=>$page['id']])])}}
 		
 		<h3>{{$page['title']}}</h3>
 
@@ -25,11 +25,17 @@
 			{{Form::label('title', 'Page Title')}}
 			{{Form::text('title', $page['title'], ['class'=>'form-control'])}}
 		</p>
+
 		<p>
 			{{$errors->first('slug', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 			{{Form::label('slug', 'Page Slug')}}
+			@if($page['slug'] == 'home')
+			{{Form::text('slug', $page['slug'], ['class'=>'form-control', 'readonly'])}}
+			@else
 			{{Form::text('slug', $page['slug'], ['class'=>'form-control'])}}
+			@endif
 		</p>
+
 		<p>
 			{{Form::label('status', 'Status')}}
 			{{Form::select('status', ['publish'=>'Published', 'draft'=>'Draft'], $page['status'])}}

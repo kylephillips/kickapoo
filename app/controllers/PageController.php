@@ -1,6 +1,7 @@
 <?php
 use Kickapoo\Repositories\PostRepository;
 use Kickapoo\Repositories\PageRepository;
+use Kickapoo\Factories\PageFactory;
 
 class PageController extends BaseController {
 
@@ -14,11 +15,17 @@ class PageController extends BaseController {
 	*/
 	protected $page_repo;
 
+	/**
+	* Page Factory
+	*/
+	protected $page_factory;
 
-	public function __construct(PostRepository $posts_repo, PageRepository $page_repo)
+
+	public function __construct(PostRepository $posts_repo, PageRepository $page_repo, PageFactory $page_factory)
 	{
 		$this->posts_repo = $posts_repo;
 		$this->page_repo = $page_repo;
+		$this->page_factory = $page_factory;
 	}
 
 
@@ -36,6 +43,7 @@ class PageController extends BaseController {
 			->with('page', $page);
 	}
 
+
 	/**
 	* Admin Homepage
 	*/
@@ -43,6 +51,7 @@ class PageController extends BaseController {
 	{
 		return Redirect::route('admin.post.index');
 	}
+
 
 	/**
 	* Get Page
@@ -58,14 +67,39 @@ class PageController extends BaseController {
 			->with('page', $page);
 	}
 
+
 	/**
 	* Edit Page
+	* @todo include custom fields as needed
 	*/
 	public function edit($slug)
 	{
 		$page = $this->page_repo->getPage($slug);
 		return View::make('admin.pages.edit')
 			->with('page', $page);
+	}
+
+
+	/**
+	* Update Page
+	*/
+	public function update($id)
+	{
+		$page = Page::findOrFail($id);
+		$validation = Validator::make(Input::all(), [
+			'title' => 'required',
+			'slug' => 'required',
+			'status' => 'required',
+			'content' => 'required'
+		]);
+		$validation->sometimes('slug', 'unique:pages,slug', function($input) use ($page) {
+			return $input->slug !== $page->slug;
+		});
+		if ( $validation->fails() ){
+			return Redirect::back()->withErrors($validation)->withInput();	
+		}
+		$this->page_factory->updatePage($id, Input::all());
+		return Redirect::back()->with('success', 'Page successfully updated!');
 	}
 
 }
