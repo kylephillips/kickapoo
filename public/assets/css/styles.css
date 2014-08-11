@@ -918,6 +918,10 @@ footer {
     width: 120px;
     height: 120px;
     background: url('../images/bubble-small.png') no-repeat; }
+  .bubble.xsmall {
+    width: 105px;
+    height: 105px;
+    background: url('../images/bubble-xsmall.png') no-repeat; }
 
 @media (max-width: 767px) {
   .bubbles {
@@ -998,6 +1002,14 @@ footer {
 #b3-4 {
   top: 3200px;
   left: 58%; }
+
+#b3-5 {
+  top: 150px;
+  left: 53%; }
+
+#b3-6 {
+  top: 170px;
+  left: 16%; }
 
 .home-hero {
   -webkit-box-shadow: inset 0px 30px 100px 0px rgba(0, 0, 0, 0.4);

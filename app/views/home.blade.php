@@ -93,6 +93,8 @@
 	<div class="bubble large" id="b3-2"></div>
 	<div class="bubble medium" id="b3-3"></div>
 	<div class="bubble xlarge" id="b3-4"></div>
+	<div class="bubble xsmall" id="b3-5"></div>
+	<div class="bubble xsmall" id="b3-6"></div>
 </div>
 
 @stop
