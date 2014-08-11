@@ -12,6 +12,7 @@ class PageFactory {
 		$page->status = $input['status'];
 		$page->content = $input['content'];
 		$page->save();
+		return $page;
 	}
 
 }

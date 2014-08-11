@@ -98,8 +98,8 @@ class PageController extends BaseController {
 		if ( $validation->fails() ){
 			return Redirect::back()->withErrors($validation)->withInput();	
 		}
-		$this->page_factory->updatePage($id, Input::all());
-		return Redirect::back()->with('success', 'Page successfully updated!');
+		$updated = $this->page_factory->updatePage($id, Input::all());
+		return Redirect::route('edit_page', ['slug'=>$updated->slug])->with('success', 'Page successfully updated!');
 	}
 
 }
