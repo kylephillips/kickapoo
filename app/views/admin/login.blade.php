@@ -45,3 +45,13 @@
 </div><!-- .container -->
 
 @stop
+
+@section('footercontent')
+@if(!Auth::check())
+<script>
+$(document).ready(function(){
+	$('#email').focus();
+});
+</script>
+@endif
+@stop
