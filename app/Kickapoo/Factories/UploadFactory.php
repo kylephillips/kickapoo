@@ -33,10 +33,13 @@ class UploadFactory {
 	*/
 	public function uploadFile($file)
 	{
-		$this->setFilename(time() . '_' . $file->getClientOriginalName());
-		$full_path = public_path() . $this->destination;
-		$upload_success = $file->move($full_path, $this->filename);
-		if ( !$upload_success ) return false;
+		try {
+			$this->setFilename(time() . '_' . $file->getClientOriginalName());
+			$full_path = public_path() . $this->destination;
+			$upload_success = $file->move($full_path, $this->filename);
+		} catch (\Exception $e){
+			return false;
+		}
 
 		$this->createUpload();
 		return $this->destination . $this->filename;

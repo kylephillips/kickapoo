@@ -56,7 +56,6 @@
 			{{Form::textarea('content', $page['content'], ['class'=>'page-content'])}}
 		</p>
 
-
 		{{Form::submit('Save Page', ['class'=>'btn btn-block btn-primary'])}}
 		{{Form::close()}}
 
@@ -67,11 +66,9 @@
 
 @section('footercontent')
 <script src="{{URL::asset('assets/js/redactor.min.js')}}"></script>
-<script src="{{URL::asset('assets/js/fullpage.js')}}"></script>
 <script>
 $(document).ready(function(){
 	$('.page-content').redactor({
-		css: '{{URL::asset("assets/css/admin/editor-styles.css")}}',
 		imageUpload : '{{URL::route("editor_upload")}}',
 		imageUploadCallback: function(image, json){
 			console.log(json);
