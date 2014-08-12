@@ -37,6 +37,9 @@ Route::group(['before'=>'auth'], function()
 	Route::get('admin/pages/edit/{slug}', ['as'=>'edit_page', 'uses'=>'PageController@edit']);
 	Route::post('admin/pages/edit/{id}', ['as'=>'update_page', 'uses'=>'PageController@update']);
 
+	// Form Entry Management
+	Route::get('admin/forms', ['as'=>'form_entries', 'uses'=>'ContactFormController@index']);
+
 	// Media Management
 	Route::post('admin/media/editor-upload', ['as'=>'editor_upload', 'uses'=>'UploadController@editorUpload']);
 

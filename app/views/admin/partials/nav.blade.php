@@ -36,7 +36,7 @@
 				@endforeach
 			</ul>
 		</li>
-		<li><a href="#">Forms</a></li>
+		<li><a href="{{URL::route('form_entries')}}">Forms</a></li>
 	</ul>
 
 	<ul class="nav navbar-right">

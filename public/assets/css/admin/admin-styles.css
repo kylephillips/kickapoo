@@ -557,6 +557,9 @@ form p.half {
       padding: 8px 10px;
       background-color: #e6e6e6 !important; }
 
+.pagination-cont {
+  text-align: center; }
+
 .caret {
   display: inline-block;
   width: 0;
@@ -762,6 +765,25 @@ footer .container {
     -webkit-transition: all 0.5s ease;
          -o-transition: all 0.5s ease;
             transition: all 0.5s ease; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px; }
+  table thead th {
+    background-color: #00471b;
+    color: #ffffff;
+    text-align: left;
+    padding: 15px 10px; }
+  table tbody tr:nth-child(even) {
+    background-color: #ebebeb; }
+  table tbody td {
+    padding: 5px 10px;
+    border-left: 1px solid #e0e0e0; }
+    table tbody td:last-child {
+      padding-right: 0; }
+    table tbody td:first-child {
+      border: 0; }
 
 .login {
   padding-top: 50px;

@@ -1,0 +1,29 @@
+//
+// Tables
+// --------------------------------------------------
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 15px;
+	thead th {
+		background-color: darken($green-dark, 8%);
+		color: $white;
+		text-align: left;
+		padding: 15px 10px;
+	}
+	tbody {
+		tr:nth-child(even){
+			background-color: darken($white, 8%);
+		}
+		td {
+			padding: 5px 10px;
+			border-left: 1px solid darken($white, 12%);
+			&:last-child {
+				padding-right: 0;
+			}
+			&:first-child {
+				border: 0;
+			}
+		}
+	} // tbody
+} // table
