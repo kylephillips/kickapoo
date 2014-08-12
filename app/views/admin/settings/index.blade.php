@@ -17,6 +17,13 @@
 		@endif
 
 		{{Form::open(['url'=>URL::route('update_settings')])}}
+
+		<h3>Notification Emails</h3>
+		<div class="form-group">
+			{{$errors->first('contact_emails', '<span class="text-danger"><strong>:message</strong></span><br>')}}
+			{{Form::label('contact_emails', 'Emails for contact form notifications (comma separated list)')}}
+			{{Form::text('contact_emails', $contact_emails, ['class'=>'form-control'])}}
+		</div>
 		
 		<h3>Store Link</h3>
 

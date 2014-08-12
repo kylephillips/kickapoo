@@ -33,11 +33,13 @@ class SettingController extends \BaseController {
 		$social_creds = $this->settings_repo->socialCreds();
 		$social_links = $this->settings_repo->socialLinks();
 		$store_link = $this->settings_repo->storeLink();
+		$contact_emails = $this->settings_repo->getSetting('contact_emails');
 
 		return View::make('admin.settings.index')
 			->with('store_link', $store_link)
 			->with('social_links', $social_links)
-			->with('social_creds', $social_creds);
+			->with('social_creds', $social_creds)
+			->with('contact_emails', $contact_emails);
 	}
 
 
