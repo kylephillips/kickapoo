@@ -38,15 +38,16 @@
 		</p>
 
 		<div class="well">
-		<p class="half">
-			{{Form::label('status', 'Status')}}
-			{{Form::select('status', ['publish'=>'Published', 'draft'=>'Draft'], $page['status'])}}
-		</p>
+			<h4>General Settings</h4>
+			<p class="half">
+				{{Form::label('status', 'Status')}}
+				{{Form::select('status', ['publish'=>'Published', 'draft'=>'Draft'], $page['status'])}}
+			</p>
 
-		<p class="half right">
-			{{Form::label('template', 'Page Template')}}
-			{{Form::select('template', $templates, $page['template'])}}
-		</p>
+			<p class="half right">
+				{{Form::label('template', 'Page Template')}}
+				{{Form::select('template', $templates, $page['template'])}}
+			</p>
 		</div>
 
 		<hr>
@@ -55,6 +56,20 @@
 			{{Form::label('content', 'Content')}}
 			{{Form::textarea('content', $page['content'], ['class'=>'page-content'])}}
 		</p>
+
+		<hr>
+
+		<div class="well">
+			<h4>SEO Settings</h4>
+			<p>
+				{{Form::label('seo_title', 'SEO Title')}}
+				{{Form::text('seo_title', $page['seo_title'])}}
+			</p>
+			<p>
+				{{Form::label('seo_description', 'SEO Description')}}
+				{{Form::textarea('seo_description', $page['seo_description'])}}
+			</p>
+		</div>
 
 		{{Form::submit('Save Page', ['class'=>'btn btn-block btn-primary'])}}
 		{{Form::close()}}

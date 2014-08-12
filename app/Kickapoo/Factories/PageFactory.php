@@ -12,6 +12,8 @@ class PageFactory {
 		$page->status = $input['status'];
 		$page->content = $input['content'];
 		$page->template = $input['template'];
+		$page->seo_title = ( isset($input['seo_title']) ) ? $input['seo_title'] : null;
+		$page->seo_description = ( isset($input['seo_description']) ) ? $input['seo_description'] : null;
 		$page->save();
 		return $page;
 	}

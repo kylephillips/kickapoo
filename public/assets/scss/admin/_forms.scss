@@ -56,6 +56,18 @@ input[type='submit']{
 	}
 }
 
+textarea {
+	width: 100%;
+	border: 1px solid darken($white, 15%);
+	font-size: 15px;
+	padding: 8px;
+	box-sizing: border-box;
+	resize: none;
+	&:focus {
+		outline: none;
+	}
+}
+
 
 form {
 	.well {
