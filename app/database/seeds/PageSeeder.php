@@ -20,6 +20,8 @@ class PageSeeder extends Seeder {
 			'author' => 1,
 			'status' => 'publish',
 			'template' => 'history',
+			'seo_title' => 'History',
+			'seo_description' => 'The history of Kickapoo Joy Juice',
 			'menu_order' => 1
 		]);
 		Page::create([
@@ -29,6 +31,8 @@ class PageSeeder extends Seeder {
 			'author' => 1,
 			'status' => 'publish',
 			'template' => 'products',
+			'seo_title' => 'Products',
+			'seo_description' => 'Kickapoo Joy Juice products',
 			'menu_order' => 2
 		]);
 		Page::create([
@@ -38,6 +42,8 @@ class PageSeeder extends Seeder {
 			'author' => 1,
 			'status' => 'publish',
 			'template' => 'locate',
+			'seo_title' => 'Locate',
+			'seo_description' => 'Find Kickapoo Joy Juice near you',
 			'menu_order' => 3
 		]);
 		Page::create([
@@ -47,6 +53,8 @@ class PageSeeder extends Seeder {
 			'author' => 1,
 			'status' => 'publish',
 			'template' => 'contact',
+			'seo_title' => 'Contact',
+			'seo_description' => 'Contact Kickapoo Joy Juice',
 			'menu_order' => 4
 		]);
 	}

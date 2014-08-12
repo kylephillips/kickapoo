@@ -22,6 +22,8 @@ class CreatePagesTable extends Migration {
 			$table->foreign('author')->references('id')->on('users')->onDelete('cascade');
 			$table->string('status')->default('draft');
 			$table->string('template')->nullable();
+			$table->string('seo_title')->nullable();
+			$table->text('seo_description')->nullable();
 			$table->integer('menu_order');
 			$table->timestamps();
 		});
