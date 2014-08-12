@@ -6,7 +6,7 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"guzzle/guzzle": "3.8.*@dev",
-		"webmil/text-language-detect": "dev-master",
+		"mohsen/captcha": "dev-master",
 		"intervention/image": "dev-master"
 	},
 	"autoload": {
