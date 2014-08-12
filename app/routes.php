@@ -6,6 +6,11 @@
 Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
 
 /**
+* Forms
+*/
+Route::post('/form-submit', ['as'=>'process_form', 'uses'=>'ContactFormController@process']);
+
+/**
 * Admin Login
 */
 Route::get('login', ['as'=>'login_form', 'uses'=>'SessionController@getLogin']);
