@@ -9,4 +9,9 @@ class ContactFormRepository {
 		return ContactForm::paginate(20);
 	}
 
+	public function get($id)
+	{
+		return ContactForm::findOrFail($id);
+	}
+
 }

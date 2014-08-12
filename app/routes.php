@@ -18,6 +18,7 @@ Route::post('login', ['as'=>'login', 'uses'=>'SessionController@postLogin']);
 Route::get('logout', ['as'=>'logout', 'uses'=>'SessionController@logout']);
 Route::controller('password', 'RemindersController');
 
+
 /**
 * Admin Authorized
 */
@@ -39,6 +40,7 @@ Route::group(['before'=>'auth'], function()
 
 	// Form Entry Management
 	Route::get('admin/forms', ['as'=>'form_entries', 'uses'=>'ContactFormController@index']);
+	Route::get('admin/forms/delete', ['as'=>'delete_form_entry', 'uses'=>'ContactFormController@destroy']);
 
 	// Media Management
 	Route::post('admin/media/editor-upload', ['as'=>'editor_upload', 'uses'=>'UploadController@editorUpload']);
@@ -66,6 +68,9 @@ Route::group(['before'=>'auth'], function()
 	Route::resource('admin/ban', 'BanController', ['only'=>['index','store']]);
 });
 
+/**
+* Front end pages
+*/
 Route::get('/{page}', ['as'=>'page', 'uses'=>'PageController@getPage']);
 
 

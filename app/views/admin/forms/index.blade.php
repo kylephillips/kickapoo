@@ -29,7 +29,7 @@
 						<td>{{$date}}</td>
 						<td><a href="mailto:{{$entry['email']}}">{{$entry['name']}}</a></td>
 						<td>{{$entry['message']}}</td>
-						<td><a href="" class="btn btn-mini btn-danger">Delete</a></td>
+						<td><a href="{{$entry['id']}}" class="btn btn-mini btn-danger delete-entry">Delete</a></td>
 					</tr>
 					@endforeach
 				</tbody>
@@ -47,5 +47,25 @@
 
 @stop
 @section('footercontent')
+<script>
+$('.delete-entry').on('click', function(e){
+	e.preventDefault();
+	var entry_id = $(this).attr('href');
+	var item = $(this).parents('tr');
 
+	$.ajax({
+		url: "{{URL::route('delete_form_entry')}}",
+		data: {
+			id: entry_id
+		},
+		method: 'GET',
+		success: function(data){
+			$(item).fadeOut('slow', function(){
+				$(this).remove();
+			});
+		}
+	});
+
+});
+</script>
 @stop

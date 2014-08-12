@@ -56,5 +56,15 @@ class ContactFormController extends BaseController {
 			->with('entries', $entries);
 	}
 
+	/**
+	* Delete a form Entry
+	*/
+	public function destroy()
+	{
+		$entry = $this->form_repo->get(Input::get('id'));
+		$entry->delete();
+		return Response::json(['status'=>'success']);
+	}
+
 
 }
