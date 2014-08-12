@@ -4,7 +4,7 @@
 
 <div class="container small">
 
-	<h1>Edit Page</h1>
+	<h1>Edit Page <a href="{{URL::route('page', ['page'=>$page['slug']])}}" class="btn pull-right">View Page</a></h1>
 
 	<div class="well">
 

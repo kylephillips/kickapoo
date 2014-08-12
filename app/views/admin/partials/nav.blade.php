@@ -40,6 +40,11 @@
 	</ul>
 
 	<ul class="nav navbar-right">
+		@if(Route::currentRouteName() == 'page')
+		<li><a href="{{URL::route('edit_page', ['slug'=>$page_slug])}}">Edit Page</a></li>
+		@endif
+
+		
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				{{Auth::user()->first_name}} {{Auth::user()->last_name}} <span class="caret"></span>
