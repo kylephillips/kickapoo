@@ -68,6 +68,7 @@
 			<p>
 				{{Form::label('seo_description', 'SEO Description')}}
 				{{Form::textarea('seo_description', $page['seo_description'])}}
+				<div id="description_count" class="alert alert-info"><span><strong>150</strong></span> Characters Remaining</div>
 			</p>
 		</div>
 
@@ -82,7 +83,29 @@
 @section('footercontent')
 <script src="{{URL::asset('assets/js/redactor.min.js')}}"></script>
 <script>
+function seo_characters_remaining(count)
+{
+	var remaining = 160 - count;
+	var info = $('#description_count');
+
+	$('#description_count span').text(remaining);
+	if ( remaining < 0 ){
+		$(info).addClass('alert-danger');
+	} else {
+		$(info).removeClass('alert-danger');
+	}
+}
+
+$('#seo_description').on('keyup', function(){
+	var count = $(this).val().length;
+	seo_characters_remaining(count);
+});
+
 $(document).ready(function(){
+
+	var desc_count = $('#seo_description').val().length;
+	seo_characters_remaining(desc_count);
+
 	$('.page-content').redactor({
 		imageUpload : '{{URL::route("editor_upload")}}',
 		imageUploadCallback: function(image, json){
