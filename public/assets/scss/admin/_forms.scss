@@ -50,6 +50,10 @@ input[type='submit']{
 	font-size: 16px;
 	color: $white;
 	border-radius: 3px;
+	&.btn-danger {
+		background-color: #8c3837;
+		margin-top: 20px;
+	}
 }
 
 

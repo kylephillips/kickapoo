@@ -3,14 +3,18 @@
 
 <div class="container small">
 
-	
 	<h1>Contact Form Entries</h1>
-	
 
 	<div class="well">
 
+		@if(Session::has('success'))
+			<div class="alert alert-success">{{Session::get('success')}}</div>
+		@endif
+
 		<div class="alert alert-success remove-success" style="display:none;">Entry successfully removed.</div>
+		
 		@if(count($entries) > 0)
+		{{Form::open(['url'=>URL::route('bulk_delete_form_entries')])}}
 			<table class="form-entries">
 				<thead>
 					<tr>
@@ -26,7 +30,10 @@
 					$date = date('M jS, Y', strtotime($entry['created_at']));
 					?>
 					<tr>
-						<td>{{$date}}</td>
+						<td>
+							{{Form::checkbox('id[]', $entry['id'])}}
+							{{$date}}
+						</td>
 						<td><a href="mailto:{{$entry['email']}}">{{$entry['name']}}</a></td>
 						<td>{{$entry['message']}}</td>
 						<td><a href="{{$entry['id']}}" class="btn btn-mini btn-danger delete-entry">Delete</a></td>
@@ -34,6 +41,8 @@
 					@endforeach
 				</tbody>
 			</table>
+			{{Form::submit('Delete Selected', ['class'=>'btn btn-danger'])}}
+			{{Form::close()}}
 		@else
 			No contact form entries at this time.
 		@endif
@@ -62,6 +71,7 @@ $('.delete-entry').on('click', function(e){
 		success: function(data){
 			$(item).fadeOut('slow', function(){
 				$(this).remove();
+				$('.remove-success').show().delay(5000).fadeOut();
 			});
 		}
 	});

@@ -66,5 +66,18 @@ class ContactFormController extends BaseController {
 		return Response::json(['status'=>'success']);
 	}
 
+	/**
+	* Bulk Delete form entries
+	*/
+	public function bulkDelete()
+	{
+		$ids = Input::get('id');
+		foreach($ids as $id){
+			$entry = $this->form_repo->get($id);
+			$entry->delete();
+		}
+		return Redirect::back()->with('success', 'Entries successfully deleted.');
+	}
+
 
 }

@@ -41,6 +41,7 @@ Route::group(['before'=>'auth'], function()
 	// Form Entry Management
 	Route::get('admin/forms', ['as'=>'form_entries', 'uses'=>'ContactFormController@index']);
 	Route::get('admin/forms/delete', ['as'=>'delete_form_entry', 'uses'=>'ContactFormController@destroy']);
+	Route::post('admin/forms/bulk-delete', ['as'=>'bulk_delete_form_entries', 'uses'=>'ContactFormController@bulkDelete']);
 
 	// Media Management
 	Route::post('admin/media/editor-upload', ['as'=>'editor_upload', 'uses'=>'UploadController@editorUpload']);

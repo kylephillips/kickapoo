@@ -489,6 +489,9 @@ input[type='submit'] {
   color: #ffffff;
   -webkit-border-radius: 3px;
           border-radius: 3px; }
+  input[type='submit'].btn-danger {
+    background-color: #8c3837;
+    margin-top: 20px; }
 
 form .well {
   background-color: #ededed;
