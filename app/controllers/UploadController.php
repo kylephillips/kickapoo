@@ -1,27 +1,31 @@
 <?php
+use Kickapoo\Factories\UploadFactory;
+
 class UploadController extends BaseController {
+
+	/**
+	* Upload Factory
+	*/
+	protected $upload_factory;
+
+
+	public function __construct(UploadFactory $upload_factory)
+	{
+		$this->upload_factory = $upload_factory;
+	}
+
 
 	/**
 	* Upload a file through editor
 	*/
 	public function editorUpload()
 	{
-		$file = Input::file('file');
-		$filename = time() . '_' . $file->getClientOriginalName();
-		$destination = public_path() . '/assets/uploads/page_images/';
-		$uploadSuccess = Input::file('file')->move($destination, $filename);
-		$newfile = '/assets/uploads/page_images/' . $filename;
-
-		if ( $uploadSuccess ){
-			Upload::create([
-				'file' => $filename,
-				'folder' => '/assets/uploads/page_images'
-			]);
-			return Response::json(['filelink' => $newfile]);
+		$upload = $this->upload_factory->uploadPageImage(Input::file('file'));
+		if ( $upload ){
+			return Response::json(['filelink' => $upload]);
 		} else {
 			return Response::json(['error'=>'There was an error uploading this file.']);
 		}
-
 	}
 
 }
