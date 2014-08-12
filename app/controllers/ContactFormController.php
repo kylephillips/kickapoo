@@ -1,7 +1,7 @@
 <?php
 
-
 use Kickapoo\Factories\ContactFormFactory;
+use Kickapoo\Mailers\ContactFormMailer;
 
 class ContactFormController extends BaseController {
 
@@ -11,9 +11,16 @@ class ContactFormController extends BaseController {
 	*/
 	private $form_factory;
 
-	public function __construct(ContactFormFactory $form_factory)
+	/**
+	* Mailer
+	*/
+	private $form_mailer;
+
+
+	public function __construct(ContactFormFactory $form_factory, ContactFormMailer $form_mailer)
 	{
 		$this->form_factory = $form_factory;
+		$this->form_mailer = $form_mailer;
 	}
 
 
@@ -28,18 +35,7 @@ class ContactFormController extends BaseController {
 			return Redirect::back()->withErrors($validation)->withInput();
 		}
 		$this->form_factory->store(Input::all());
-
-		$mail_data = [
-			'name' => Input::get('name'),
-			'email' => Input::get('email'),
-			'user_message' => Input::get('message')
-		];
-		Mail::send('emails.contact-notification', $mail_data, function($message){
-			$message->from('donotreply@drinkkickapoo.com', 'Kickapoo Website');
-			$message->subject('Contact form submitted on Kickapoo Website');
-			$message->to(['kyle@object9.com', 'kylephillipsdesign@gmail.com']);
-		});
-
+		$this->form_mailer->adminNotification(Input::all());
 		return Redirect::back()->with('success', 'Thank you for contacting us!');
 	}
 
