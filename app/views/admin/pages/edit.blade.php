@@ -4,7 +4,7 @@
 
 <div class="container small">
 
-	<h1>Edit Page <a href="{{URL::route('page', ['page'=>$page['slug']])}}" class="btn pull-right">View Page</a></h1>
+	<h1>Edit {{$page['title']}} Page <a href="{{URL::route('page', ['page'=>$page['slug']])}}" class="btn pull-right">View Page</a></h1>
 
 	<div class="well">
 
@@ -63,6 +63,17 @@
 
 		<div class="well">
 			<h4>SEO Settings</h4>
+			<div class="seo-preview">
+				@if($page['seo_title'])
+				<h4>Kickapoo Joy Juice - <span class="seo-title">{{$page['seo_title']}}</span></h4>
+				@else
+				<h4>Kickapoo Joy Juice</h4>
+				@endif
+				<p>
+					<em>www.kickapoo.com/<span class="slug-seo">{{$page['slug']}}</span></em>
+					<span class="seo-description">{{$page['seo_description']}}</span>
+				</p>
+			</div>
 			<p>
 				{{Form::label('seo_title', 'SEO Title')}}
 				{{Form::text('seo_title', $page['seo_title'])}}
@@ -92,21 +103,43 @@ function seo_characters_remaining(count)
 
 	$('#description_count span').text(remaining);
 	if ( remaining < 0 ){
+		var over = 'true';
+		truncate_seo_description(over);
 		$(info).addClass('alert-danger');
 	} else {
+		truncate_seo_description();
 		$(info).removeClass('alert-danger');
 	}
 }
 
+function truncate_seo_description(over)
+{
+	var text = $('#seo_description').val();
+	truncated = text.substring(0, 160);
+	if (over === 'true'){ truncated = truncated + '...'; }
+	$('.seo-description').text(truncated);
+}
+
+/**
+* SEO preview update
+*/
 $('#seo_description').on('keyup', function(){
 	var count = $(this).val().length;
 	seo_characters_remaining(count);
 });
 
+$('#seo_title').on('keyup', function(){
+	var title = $(this).val();
+	$('.seo-title').text(title);
+});
+
+
+
 function update_slug()
 {
 	var slug = $('#slug').val();
 	$('.slug em').text(slug);
+	$('.slug-seo').text(slug);
 }
 
 /**

@@ -120,3 +120,29 @@ form {
 		}
 	} // .slug
 } // form
+
+
+.seo-preview {
+	margin-top: 15px;
+	background-color: $white;
+	padding: 10px;
+	font-family: arial, sans-serif;
+	h4 {
+		font-weight: normal;
+		color: #1a0dab;
+		font-size: 18px;
+	}
+	p {
+		margin: 0;
+		color: #222;
+		font-size: 15px;
+		line-height: 1.4em;
+	}
+	em {
+		display: block;
+		color: #006621;
+		font-weight: normal;
+		font-style: normal;
+	}
+}
+

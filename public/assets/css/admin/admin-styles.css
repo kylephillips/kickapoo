@@ -555,6 +555,26 @@ form .slug {
     height: 26px;
     line-height: 24px; }
 
+.seo-preview {
+  margin-top: 15px;
+  background-color: #ffffff;
+  padding: 10px;
+  font-family: arial, sans-serif; }
+  .seo-preview h4 {
+    font-weight: normal;
+    color: #1a0dab;
+    font-size: 18px; }
+  .seo-preview p {
+    margin: 0;
+    color: #222;
+    font-size: 15px;
+    line-height: 1.4em; }
+  .seo-preview em {
+    display: block;
+    color: #006621;
+    font-weight: normal;
+    font-style: normal; }
+
 .well {
   background-color: #ffffff;
   padding: 20px;
