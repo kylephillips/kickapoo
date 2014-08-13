@@ -86,4 +86,37 @@ form {
 			clear: none;
 		}
 	}
-}
+	.slug {
+		position: relative;
+		padding: 5px;
+		margin-top: -15px;
+		background-color: darken($white, 6%);
+		border-radius: 4px;
+		label {
+			display: inline-block;
+			margin-right: 5px;
+			font-weight: bold;
+		}
+		em {
+			font-style: normal;
+			font-weight: bold;
+		}
+		p {
+			display: inline;
+			cursor: pointer;
+		}
+		input[type='text']{
+			display: none;
+			height: 24px;
+			font-size: 15px;
+			width: 150px;
+			margin: 0;
+		}
+		button {
+			display: none;
+			font-size: 14px;
+			height: 26px;
+			line-height: 24px;
+		}
+	} // .slug
+} // form

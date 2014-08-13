@@ -526,6 +526,34 @@ form p.half {
   form p.half.right {
     float: right;
     clear: none; }
+form .slug {
+  position: relative;
+  padding: 5px;
+  margin-top: -15px;
+  background-color: #f0f0f0;
+  -webkit-border-radius: 4px;
+          border-radius: 4px; }
+  form .slug label {
+    display: inline-block;
+    margin-right: 5px;
+    font-weight: bold; }
+  form .slug em {
+    font-style: normal;
+    font-weight: bold; }
+  form .slug p {
+    display: inline;
+    cursor: pointer; }
+  form .slug input[type='text'] {
+    display: none;
+    height: 24px;
+    font-size: 15px;
+    width: 150px;
+    margin: 0; }
+  form .slug button {
+    display: none;
+    font-size: 14px;
+    height: 26px;
+    line-height: 24px; }
 
 .well {
   background-color: #ffffff;

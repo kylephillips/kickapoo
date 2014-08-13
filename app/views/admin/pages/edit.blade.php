@@ -27,14 +27,16 @@
 		</p>
 
 		<p>
-			{{$errors->first('slug', '<span class="text-danger"><strong>:message</strong></span><br>')}}
-			@if($page['slug'] == 'home')
-			{{Form::label('slug', 'Page Slug (Home slug cannot be changed)')}}
-			{{Form::text('slug', $page['slug'], ['class'=>'form-control readonly', 'readonly'])}}
-			@else
-			{{Form::label('slug', 'Page Slug')}}
-			{{Form::text('slug', $page['slug'], ['class'=>'form-control'])}}
-			@endif
+			<div class="slug">
+				{{$errors->first('slug', '<span class="text-danger"><strong>:message</strong></span><br>')}}
+				{{Form::label('slug', 'Page Link:')}}
+				<p>
+					{{URL::route('home')}}/
+					<em>{{$page['slug']}}</em>
+				</p>
+				{{Form::text('slug', $page['slug'], ['class'=>'form-control hidden'])}}
+				<button class="slug-ok btn hidden">Ok</button>
+			</div>
 		</p>
 
 		<div class="well">
@@ -101,10 +103,33 @@ $('#seo_description').on('keyup', function(){
 	seo_characters_remaining(count);
 });
 
+function update_slug()
+{
+	var slug = $('#slug').val();
+	$('.slug em').text(slug);
+}
+
+/**
+* Page Slug Switch Edit
+*/
+$('#slug').on('keyup', function(){
+	update_slug();
+});
+$('.slug p').on('click', function(){
+	$('.slug').find('em').hide();
+	$('.slug').find('.hidden').show();
+});
+$('.slug-ok').on('click', function(e){
+	$('.slug').find('.hidden').hide();
+	$('.slug em').show();
+	e.preventDefault();
+});
+
 $(document).ready(function(){
 
 	var desc_count = $('#seo_description').val().length;
 	seo_characters_remaining(desc_count);
+	update_slug();
 
 	$('.page-content').redactor({
 		imageUpload : '{{URL::route("editor_upload")}}',
