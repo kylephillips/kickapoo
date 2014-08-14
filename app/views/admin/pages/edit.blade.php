@@ -39,6 +39,8 @@
 				<button class="slug-ok btn hidden">Ok</button>
 			</div>
 		</p>
+		@else
+		{{Form::hidden('slug', $page['slug'])}}
 		@endif
 
 		<div class="well">

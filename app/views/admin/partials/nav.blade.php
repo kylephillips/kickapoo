@@ -40,7 +40,7 @@
 	</ul>
 
 	<ul class="nav navbar-right">
-		@if(Route::currentRouteName() == 'page')
+		@if(Route::currentRouteName() == 'page' || Route::currentRouteName() == 'products')
 		<li><a href="{{URL::route('edit_page', ['slug'=>$page_slug])}}">Edit Page</a></li>
 		@endif
 
