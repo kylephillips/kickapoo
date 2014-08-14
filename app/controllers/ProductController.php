@@ -11,6 +11,7 @@ class ProductController extends \BaseController {
 
 	public function __construct(PageRepository $page_repo)
 	{
+		$this->beforeFilter('auth', ['except'=>'index']);
 		$this->page_repo = $page_repo;
 	}
 
@@ -29,10 +30,6 @@ class ProductController extends \BaseController {
 			->with('page', $page)
 			->with('page_slug', $page['slug'])
 			->with('flavors', $flavors);
-
-		
-		$kjj = $products[0];
-		dd($kjj->products[0]->size);
 	}
 
 
