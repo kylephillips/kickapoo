@@ -14,7 +14,7 @@ class Product extends Eloquent {
 
 	public function size()
 	{
-		return $this->hasOne('ProductSize');
+		return $this->belongsTo('ProductSize');
 	}
 
 }

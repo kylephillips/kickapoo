@@ -7,4 +7,9 @@ class Flavor extends Eloquent {
 		'title', 'slug', 'content', 'image'
 	];
 
+	public function products()
+	{
+		return $this->hasMany('Product');
+	}
+
 }

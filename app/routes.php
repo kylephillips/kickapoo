@@ -1,9 +1,9 @@
 <?php
-
 /**
-* Pages
+* Pages (Catch-all below other routes)
 */
 Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
+Route::get('products', ['as'=>'products', 'uses'=>'ProductController@index']);
 
 /**
 * Forms

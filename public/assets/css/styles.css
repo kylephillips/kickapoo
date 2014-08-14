@@ -109,6 +109,31 @@ img {
   background: #8ee031;
   color: #ffffff; }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold; }
+
+h1 {
+  font-size: 36px;
+  line-height: 38px;
+  margin: 0px 0px 10px 0px; }
+
+h2 {
+  font-size: 28px;
+  line-height: 30px;
+  margin: 0px 0px 10px 0px;
+  color: #fff200; }
+
+h3 {
+  font-size: 24px;
+  line-height: 26px;
+  margin: 0px 0px 8px 0px; }
+
+p {
+  margin: 0px 0px 20px 0px; }
+
+strong {
+  font-weight: bold; }
+
 .page.loading {
   display: none;
   width: 100%;

@@ -26,6 +26,7 @@
 			{{Form::text('title', $page['title'], ['class'=>'form-control'])}}
 		</p>
 
+		@if($page['slug'] !== 'home' && $page['slug'] !== 'products')
 		<p>
 			<div class="slug">
 				{{$errors->first('slug', '<span class="text-danger"><strong>:message</strong></span><br>')}}
@@ -38,6 +39,7 @@
 				<button class="slug-ok btn hidden">Ok</button>
 			</div>
 		</p>
+		@endif
 
 		<div class="well">
 			<h4>General Settings</h4>
