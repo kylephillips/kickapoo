@@ -3,12 +3,12 @@
 * Pages (Catch-all below other routes)
 */
 Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
-Route::get('products', ['as'=>'products', 'uses'=>'ProductController@index']);
+Route::resource('products', 'ProductController@index');
 
 /**
 * Forms
 */
-Route::post('/form-submit', ['as'=>'process_form', 'uses'=>'ContactFormController@process']);
+Route::post('/form-submit', ['before'=>'csrf', 'as'=>'process_form', 'uses'=>'ContactFormController@process']);
 
 /**
 * Admin Login
