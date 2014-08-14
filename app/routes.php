@@ -3,7 +3,7 @@
 * Pages (Catch-all below other routes)
 */
 Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
-Route::resource('products', 'ProductController@index');
+Route::get('products', ['as'=>'products', 'uses'=>'ProductController@index']);
 
 /**
 * Forms
@@ -37,6 +37,10 @@ Route::group(['before'=>'auth'], function()
 	// Page Management
 	Route::get('admin/pages/edit/{slug}', ['as'=>'edit_page', 'uses'=>'PageController@edit']);
 	Route::post('admin/pages/edit/{id}', ['as'=>'update_page', 'uses'=>'PageController@update']);
+
+	// Product/Flavor Management
+	Route::get('admin/products', ['as'=>'edit_products', 'uses'=>'ProductController@adminIndex']);
+	Route::get('admin/products/edit/{id}', ['as'=>'edit_flavor', 'uses'=>'ProductController@edit']);
 
 	// Form Entry Management
 	Route::get('admin/forms', ['as'=>'form_entries', 'uses'=>'ContactFormController@index']);

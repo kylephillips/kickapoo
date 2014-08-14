@@ -1,6 +1,7 @@
 <?php
 
 use Kickapoo\Repositories\PageRepository;
+use Kickapoo\Repositories\ProductRepository;
 
 class ProductController extends \BaseController {
 
@@ -9,26 +10,41 @@ class ProductController extends \BaseController {
 	*/
 	protected $page_repo;
 
-	public function __construct(PageRepository $page_repo)
+	/**
+	* Product Repository
+	*/
+	protected $product_repo;
+
+	public function __construct(PageRepository $page_repo, ProductRepository $product_repo)
 	{
 		$this->beforeFilter('auth', ['except'=>'index']);
 		$this->page_repo = $page_repo;
+		$this->product_repo = $product_repo;
 	}
 
 
 	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
+	 * Front end product listing
 	 */
 	public function index()
 	{
 		$page = $this->page_repo->getPage('products');
-		$flavors = Flavor::with('products', 'products.size')->get();
+		$flavors = $this->product_repo->getAll();
 
 		return View::make('pages.products')
 			->with('page', $page)
 			->with('page_slug', $page['slug'])
+			->with('flavors', $flavors);
+	}
+
+
+	/**
+	 * Admin product listing
+	 */
+	public function adminIndex()
+	{
+		$flavors = $this->product_repo->getAll();
+		return View::make('admin.products.index')
 			->with('flavors', $flavors);
 	}
 
@@ -75,7 +91,12 @@ class ProductController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$flavor = $this->product_repo->getFlavor($id);
+		$sizes = $this->product_repo->getSizes();
+
+		return View::make('admin.products.edit')
+			->with('flavor', $flavor)
+			->with('sizes', $sizes);
 	}
 
 

@@ -27,7 +27,7 @@
 				<li><a href="{{URL::route('admin.ban.index')}}">Banned Users</a></li>
 			</ul>
 		</li>
-		<li><a href="#">Products</a></li>
+		<li><a href="{{URL::route('edit_products')}}">Products</a></li>
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
 			<ul class="dropdown-menu" role="menu">
