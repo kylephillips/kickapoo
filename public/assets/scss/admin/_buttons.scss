@@ -57,6 +57,9 @@
 		color: $white;
 		border-color: darken($danger-text, 12%);
 	}
+	&:disabled {
+		opacity: .5;
+	}
 }
 
 .btn-warning {

@@ -257,6 +257,8 @@ h1 {
     background-color: #8c3837;
     color: #ffffff;
     border-color: #7d3231; }
+  .btn-danger:disabled {
+    opacity: 0.5; }
 
 .btn-warning {
   background-color: #31708f;

@@ -41,7 +41,7 @@
 					@endforeach
 				</tbody>
 			</table>
-			{{Form::submit('Delete Selected', ['class'=>'btn btn-danger'])}}
+			{{Form::submit('Delete Selected', ['class'=>'btn btn-danger bulk-delete', 'disabled'=>'disabled'])}}
 			{{Form::close()}}
 		@else
 			No contact form entries at this time.
@@ -57,6 +57,20 @@
 @stop
 @section('footercontent')
 <script>
+function delete_button()
+{
+	var checked = $('input[name="id[]"]:checked').length;
+	if ( checked > 0 ){
+		$('.bulk-delete').removeAttr('disabled');
+	} else {
+		$('.bulk-delete').attr('disabled', 'disabled');
+	}
+}
+
+$('input[name="id[]"]').on('click', function(){
+	delete_button();
+});
+
 $('.delete-entry').on('click', function(e){
 	e.preventDefault();
 	var entry_id = $(this).attr('href');
