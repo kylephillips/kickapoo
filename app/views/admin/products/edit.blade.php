@@ -36,7 +36,7 @@
 					<p class="size">
 						{{Form::label('size[' . $i . ']', 'Size')}}
 						{{Form::select('size[' . $i . ']', $sizes, $product->size->id, ['class'=>'size'])}}
-						<a href="#" class="btn btn-mini">+ Size</a>
+						<a href="{{URL::route('admin.size.index')}}" class="btn btn-mini">Edit Sizes</a>
 					</p>
 					<p>
 						{{Form::label('description[' . $i . ']', 'Description')}}
@@ -55,7 +55,7 @@
 		@endforeach
 		</div><!-- .products -->
 
-		<a href="#" class="btn btn-primary add-product">Add a Product</a>
+		<a href="#" class="btn btn-success add-product">Add a Product</a>
 		{{Form::close()}}
 
 	</div><!-- .well -->

@@ -1,6 +1,8 @@
 //
 // Edit Products
 // --------------------------------------------------
+
+// List of products for each flavor (edit flavor)
 .products {
 	margin-bottom: 30px;
 	textarea {
@@ -35,3 +37,69 @@
 		}
 	}
 }
+
+// List of all flavors (main product listing)
+.product-list {
+	@include unstyled;
+	margin-bottom: 20px;
+	li {
+		@include clearfix;
+		margin-top: 20px;
+		padding-top: 20px;
+		border-top: 3px solid darken($white, 8%);
+		img {
+			float: left;
+			width: 20%;
+		}
+		section  {
+			float: right;
+			width: 75%;
+		}
+		ul {
+			@include unstyled;
+			margin: -10px 0px 20px 0px;
+			li {
+				border: 0;
+				margin: 5px 0 0 0;
+				padding: 0;
+				position: relative;
+				padding-left: 20px;
+				&:first-child {
+					margin-top: 0;
+					padding-left: 20px;
+				}
+				&:before {
+					position: absolute;
+					left: 0;
+					top: 0;
+					font-family: 'icomoon';
+					content: '\e607';
+					color: $green;
+					font-size: 15px;
+				}
+			}
+		} // ul 2
+		&:first-child {
+			margin: 0;
+			padding: 0;
+			border: 0;
+		}
+	} // li 1
+} // .product-list
+
+
+// Sizes table
+.sizes {
+	margin-bottom: 20px;
+	td.buttons {
+		width: 130px;
+	}
+}
+
+// Form for adding new size
+.add-size-form {
+	display: none;
+	background-color: darken($white, 6%);
+	padding: 10px;
+	margin-bottom: 20px;
+} // .add-size-form

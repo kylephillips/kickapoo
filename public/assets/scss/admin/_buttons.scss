@@ -72,3 +72,15 @@
 		border-color: darken($info-text, 12%);
 	}
 }
+
+.btn-success {
+	background-color: $green-dark;
+	border-color: darken($green-dark, 5%);
+	color: $white;
+	&:hover {
+		background-color: darken($green-dark, 5%);
+		border-color: darken($green-dark, 8%);
+		color: $white;
+	}
+}
+

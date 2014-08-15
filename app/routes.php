@@ -41,6 +41,9 @@ Route::group(['before'=>'auth'], function()
 	// Product/Flavor Management
 	Route::get('admin/products', ['as'=>'edit_products', 'uses'=>'ProductController@adminIndex']);
 	Route::get('admin/products/edit/{id}', ['as'=>'edit_flavor', 'uses'=>'ProductController@edit']);
+	Route::resource('admin/size', 'ProductSizeController', ['only'=>['index','store']]);
+	Route::get('admin/size/delete', ['as'=>'delete_size', 'uses'=>'ProductSizeController@delete']);
+	Route::post('admin/size/update', ['as'=>'update_size', 'uses'=>'ProductSizeController@update']);
 
 	// Form Entry Management
 	Route::get('admin/forms', ['as'=>'form_entries', 'uses'=>'ContactFormController@index']);

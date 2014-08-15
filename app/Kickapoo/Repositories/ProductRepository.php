@@ -25,13 +25,29 @@ class ProductRepository {
 	/**
 	* Get all sizes and return as array
 	*/
-	public function getSizes()
+	public function getSizesArray()
 	{
 		$all_sizes = ProductSize::get()->toArray();
 		foreach ($all_sizes as $size){
 			$sizes[$size['id']] = $size['title'];
 		}
 		return $sizes;
+	}
+
+	/**
+	* Get Sizes Eloquent Object
+	*/
+	public function getSizes()
+	{
+		return ProductSize::get();
+	}
+
+	/**
+	* Get a single size with an ID
+	*/
+	public function getSize($id)
+	{
+		return ProductSize::findOrFail($id);
 	}
 
 }

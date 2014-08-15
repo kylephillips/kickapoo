@@ -7,4 +7,8 @@ class ProductSize extends Eloquent {
 		'title', 'slug'
 	];
 
+	public static $required = [
+		'title' => 'required|unique:productsizes,title'
+	];
+
 }

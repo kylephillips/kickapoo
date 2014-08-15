@@ -269,6 +269,15 @@ h1 {
     color: #ffffff;
     border-color: #214d61; }
 
+.btn-success {
+  background-color: #00702c;
+  border-color: #005721;
+  color: #ffffff; }
+  .btn-success:hover {
+    background-color: #005721;
+    border-color: #00471b;
+    color: #ffffff; }
+
 .alert {
   display: block;
   background-color: #d9edf7;
@@ -442,7 +451,7 @@ h1 {
 @media (min-width: 768px) {
   .modal-dialog {
     width: 500px;
-    margin: 30px auto; }
+    margin: 70px auto 30px auto; }
   .modal-content {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); } }
@@ -1447,3 +1456,64 @@ table {
       float: right;
       width: 15%;
       text-align: center; }
+
+.product-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px; }
+  .product-list li {
+    zoom: 1;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 3px solid #ebebeb; }
+    .product-list li:before, .product-list li:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */ }
+    .product-list li:after {
+      clear: both; }
+    .product-list li img {
+      float: left;
+      width: 20%; }
+    .product-list li section {
+      float: right;
+      width: 75%; }
+    .product-list li ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      margin: -10px 0px 20px 0px; }
+      .product-list li ul li {
+        border: 0;
+        margin: 5px 0 0 0;
+        padding: 0;
+        position: relative;
+        padding-left: 20px; }
+        .product-list li ul li:first-child {
+          margin-top: 0;
+          padding-left: 20px; }
+        .product-list li ul li:before {
+          position: absolute;
+          left: 0;
+          top: 0;
+          font-family: 'icomoon';
+          content: '\e607';
+          color: #00a950;
+          font-size: 15px; }
+    .product-list li:first-child {
+      margin: 0;
+      padding: 0;
+      border: 0; }
+
+.sizes {
+  margin-bottom: 20px; }
+  .sizes td.buttons {
+    width: 130px; }
+
+.add-size-form {
+  display: none;
+  background-color: #f0f0f0;
+  padding: 10px;
+  margin-bottom: 20px; }

@@ -3,8 +3,7 @@
 
 <div class="container small">
 
-	<h1>Flavors <span class="pull-right"><a href="{{URL::route('admin.user.create')}}" class="btn btn-large btn-primary">+ Add Flavor</a></span></h1>
-	
+	<h1>Products</h1>	
 
 	<div class="well">
 
@@ -19,6 +18,8 @@
 			<li>
 				@if($flavor->image)
 					<img src="{{URL::asset('assets/uploads/product_images')}}/{{$flavor->image}}" alt="{{$flavor->title}}" class="flavor-image" />
+				@else
+					<img src="{{URL::asset('assets/images/product-fpo.png')}}" alt="{{$flavor->title}}" class="flavor-image" />
 				@endif
 				<section>
 					<h3>{{$flavor->title}}</h3>
@@ -29,11 +30,13 @@
 							<li>{{$product->size->title}}</li>
 						@endforeach
 					</ul>
-					<a href="{{URL::route('edit_flavor', ['id'=>$flavor->id])}}" class="btn">Edit Flavor</a>
+					<a href="{{URL::route('edit_flavor', ['id'=>$flavor->id])}}" class="btn btn-warning">Edit Flavor</a>
 				</section>
 			</li>
 			@endforeach
 		</ul>
+
+		<a href="{{URL::route('admin.user.create')}}" class="btn btn-large btn-success">+ Add Flavor</a>
 
 	</div><!-- .well -->
 </div><!-- .container -->

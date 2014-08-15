@@ -92,7 +92,7 @@ class ProductController extends \BaseController {
 	public function edit($id)
 	{
 		$flavor = $this->product_repo->getFlavor($id);
-		$sizes = $this->product_repo->getSizes();
+		$sizes = $this->product_repo->getSizesArray();
 
 		return View::make('admin.products.edit')
 			->with('flavor', $flavor)
