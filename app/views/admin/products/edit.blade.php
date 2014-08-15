@@ -11,7 +11,7 @@
 			<div class="alert alert-success">{{Session::get('success')}}</div>
 		@endif
 
-		{{Form::open(['url'=>URL::route('update_flavor', ['id'=>$flavor->id])])}}
+		{{Form::open(['url'=>URL::route('update_flavor', ['id'=>$flavor->id]), 'files'=>true])}}
 		<div class="flavor-fields">
 			@if($flavor->image)
 				<img src="{{URL::asset('assets/uploads/product_images')}}/{{$flavor->image}}" alt="{{$flavor->title}}" />
@@ -31,8 +31,8 @@
 					{{Form::label('flavor_image', 'Image (365px &times; 690px)')}}
 					{{Form::file('flavor_image')}}
 				</p>
-			</div>
-		</div>
+			</div><!-- .fields -->
+		</div><!-- .flavor-fields -->
 
 		<div class="products">
 		<?php $i = 1; ?>
@@ -47,27 +47,27 @@
 					@endif
 					<div class="product-fields">
 						<p class="size">
-							{{Form::select('size[' . $i . ']', $sizes, $product->size->id, ['class'=>'size'])}}
+							{{Form::select('size[]', $sizes, $product->size->id, ['class'=>'size'])}}
 							<a href="{{URL::route('admin.size.index')}}" class="btn btn-mini">Edit Types</a>
 						</p>
 						<p>
-							{{Form::label('description[' . $i . ']', 'Description')}}
-							{{Form::textarea('description[' . $i . ']', $product->content, ['class'=>'redactor'])}}
+							{{Form::label('description[]', 'Description')}}
+							{{Form::textarea('description[]', $product->content, ['class'=>'redactor'])}}
 						</p>
 						<p>
-							{{Form::label('ingredients[' . $i . ']', 'Ingredients')}}
-							{{Form::textarea('ingredients[' . $i . ']', $product->ingredients)}}
+							{{Form::label('ingredients[]', 'Ingredients')}}
+							{{Form::textarea('ingredients[]', $product->ingredients)}}
 						</p>
 						<p>
-							{{Form::label('image[' . $i . ']', 'Image')}}
-							{{Form::file('image[' . $i . ']')}}
+							{{Form::label('image[]', 'Image')}}
+							{{Form::file('image[]')}}
 						</p>
 						<p>
 							<a href="#" class="btn btn-danger"><i class="icon-remove"></i> Delete</a>
 						</p>
-					</div>
+					</div><!-- .product-fields -->
 				</section>
-			</div>
+			</div><!-- .field -->
 		<?php $i++; ?>
 		@endforeach
 		</div><!-- .products -->
