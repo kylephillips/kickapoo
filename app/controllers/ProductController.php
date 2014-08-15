@@ -115,7 +115,7 @@ class ProductController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		dd(Input::all());
+		$this->product_factory->updateProduct($id, Input::all());
 		return 'updating';
 	}
 
