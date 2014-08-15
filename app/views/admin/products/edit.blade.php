@@ -32,20 +32,25 @@
 		@foreach($flavor->products as $product)
 			<div class="flavor_{{$i}} flavor">
 				<h4>{{$product->size->title}}</h4>
-				<p>
-					{{Form::label('size[' . $i . ']', 'Size')}}
-					{{Form::select('size[' . $i . ']', $sizes, $product->size->id, ['class'=>'size'])}}
-				</p>
-				<p>
-					{{Form::label('description[' . $i . ']', 'Description')}}
-					{{Form::textarea('description[' . $i . ']', $product->content, ['class'=>'redactor'])}}
-				</p>
-				<p>
-					{{Form::label('ingredients[' . $i . ']', 'Ingredients')}}
-					{{Form::textarea('ingredients[' . $i . ']', $product->ingredients)}}
-				</p>
+				<section>
+					<p class="size">
+						{{Form::label('size[' . $i . ']', 'Size')}}
+						{{Form::select('size[' . $i . ']', $sizes, $product->size->id, ['class'=>'size'])}}
+						<a href="#" class="btn btn-mini">+ Size</a>
+					</p>
+					<p>
+						{{Form::label('description[' . $i . ']', 'Description')}}
+						{{Form::textarea('description[' . $i . ']', $product->content, ['class'=>'redactor'])}}
+					</p>
+					<p>
+						{{Form::label('ingredients[' . $i . ']', 'Ingredients')}}
+						{{Form::textarea('ingredients[' . $i . ']', $product->ingredients)}}
+					</p>
+					<p>
+						<a href="#" class="btn btn-danger">Delete Product</a>
+					</p>
+				</section>
 			</div>
-			<hr>
 		<?php $i++; ?>
 		@endforeach
 		</div><!-- .products -->
@@ -66,11 +71,12 @@ function add_product_field()
 	var count = flavor_count + 1;
 	var select = '{{Form::select('size[]', $sizes, null, ['class'=>'size'])}}';
 
-	var html = '<div class="flavor_' + count + ' flavor"><h4>New Product</h4><p><label>Size</label>' + select + '</p>';
+	var html = '<div class="flavor_' + count + ' flavor"><h4>New Product</h4><section><p><label>Size</label>' + select + '</p>';
 	html += '<p><label>Description</label><textarea name="description[]" class="redactor"></textarea></p>';
-	html += '<p><label>Ingredients</label><textarea name="ingredients[]"></textarea></p></div>';
+	html += '<p><label>Ingredients</label><textarea name="ingredients[]"></textarea></p></section></div>';
 
 	$('.products').append(html);
+	$('.flavor:last-child section').show();
 	apply_redactor();
 }
 
@@ -89,6 +95,9 @@ $(document).on('change', '.size', function(){
 	$(this).parents('.flavor').find('h4').text(size);
 });
 
+$(document).on('click', '.flavor h4', function(){
+	$(this).parent('.flavor').children('section').slideToggle();
+});
 
 function apply_redactor()
 {

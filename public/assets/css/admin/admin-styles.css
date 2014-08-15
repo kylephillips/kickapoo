@@ -1414,3 +1414,36 @@ table {
       margin-right: 10px; }
     .banned-users li .screenname {
       color: #00702c; }
+
+.products {
+  margin-bottom: 30px; }
+  .products textarea {
+    height: 80px; }
+  .products .flavor {
+    border: 1px solid #ebebeb; }
+    .products .flavor section {
+      display: none;
+      padding: 15px; }
+    .products .flavor h4 {
+      cursor: pointer;
+      padding: 8px 5px; }
+    .products .flavor:nth-child(even) {
+      background-color: #ededed; }
+  .products .size {
+    zoom: 1; }
+    .products .size:before, .products .size:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */ }
+    .products .size:after {
+      clear: both; }
+    .products .size select {
+      float: left;
+      width: 80%;
+      height: 35px;
+      -webkit-appearance: menulist-button; }
+    .products .size .btn {
+      float: right;
+      width: 15%;
+      text-align: center; }
