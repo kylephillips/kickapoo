@@ -30,6 +30,7 @@
 			float: left;
 			width: 75%;
 			height: 35px;
+			margin: 0;
 			-webkit-appearance: menulist-button;
 		}
 		.help-btn {
@@ -62,6 +63,7 @@
 // Filter Menus
 .post-filters {
 	background-color: darken($white, 8%);
+	margin-bottom: 20px;
 	ul {
 		@include unstyled();
 		@include clearfix();

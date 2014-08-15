@@ -4,7 +4,7 @@
 
 // List of products for each flavor (edit flavor)
 .products {
-	margin-bottom: 30px;
+	margin-bottom: 10px;
 	textarea {
 		height: 80px;
 	}
@@ -13,10 +13,24 @@
 		section {
 			display: none;
 			padding: 15px;
+			@include clearfix;
+			img {
+				float: left;
+				width: 20%;
+			}
+			.product-fields {
+				float: right;
+				width: 77%;
+				margin-top: -10px;
+			}
 		}
 		h4 {
 			cursor: pointer;
 			padding: 8px 5px;
+			i {
+				float: right;
+				margin-top: 8px;
+			}
 		}
 		&:nth-child(even){
 			background-color: darken($white, 7%);
@@ -37,6 +51,7 @@
 		}
 	}
 }
+
 
 // List of all flavors (main product listing)
 .product-list {
@@ -103,3 +118,31 @@
 	padding: 10px;
 	margin-bottom: 20px;
 } // .add-size-form
+
+
+// Edit flavor – primary fields
+.flavor-fields {
+	@include clearfix;
+	background-color: darken($white, 6%);
+	padding: 8px;
+	margin-bottom: 20px;
+	img {
+		float: left;
+		width: 20%;
+	}
+	label {
+		font-weight: bold;
+	}
+	.fields {
+		margin-top: -10px;
+		float: right;
+		width: 78%;
+	}
+}
+.flavor-save {
+	margin-top: 20px;
+	text-align: center;
+	.btn {
+		width: 60%;
+	}
+}

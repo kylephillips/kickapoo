@@ -9,6 +9,7 @@ class ProductSizeController extends \BaseController {
 	*/
 	protected $product_repo;
 
+
 	public function __construct(ProductRepository $product_repo)
 	{
 		$this->product_repo = $product_repo;

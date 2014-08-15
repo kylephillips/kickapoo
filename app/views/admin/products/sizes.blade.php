@@ -3,7 +3,7 @@
 
 <div class="container small">
 
-	<h1>Product Sizes <span class="pull-right"><a href="{{URL::route('edit_products')}}"> Back to Products</a></span></h1>
+	<h1>Product Types <span class="pull-right"><a href="{{URL::route('edit_products')}}"> Back to Products</a></span></h1>
 
 	<div class="well">
 
@@ -40,7 +40,7 @@
 			{{Form::close()}}
 		</div>
 
-		<a href="#" class="btn btn-success add-size">Add New Size</a>
+		<a href="#" class="btn btn-success add-size">Add New Type</a>
 
 	</div><!-- .well -->
 </div><!-- .container -->
@@ -50,7 +50,7 @@
 		<div class="modal-content">
 			{{Form::open(['url'=>URL::route('update_size'), 'id'=>'edit-form'])}}
 			<div class="modal-header">
-				<h4 class="modal-title">Edit Size</h4>
+				<h4 class="modal-title">Edit Type</h4>
 			</div>
 			<div class="modal-body">
 
@@ -147,7 +147,7 @@ $('.add-cancel').on('click', function(e){
 */
 $('.delete-size').on('click', function(e){
 	e.preventDefault();
-	if (confirm('Are you sure you want to delete this size?')){
+	if (confirm('Are you sure you want to delete this type? This will remove all instances of this type from current products.')){
 		var row = $(this).parents('tr');
 		var id = $(this).attr('href');
 		delete_size(id, row);

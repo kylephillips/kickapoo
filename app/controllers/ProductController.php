@@ -2,6 +2,7 @@
 
 use Kickapoo\Repositories\PageRepository;
 use Kickapoo\Repositories\ProductRepository;
+use Kickapoo\Factories\ProductFactory;
 
 class ProductController extends \BaseController {
 
@@ -15,11 +16,17 @@ class ProductController extends \BaseController {
 	*/
 	protected $product_repo;
 
-	public function __construct(PageRepository $page_repo, ProductRepository $product_repo)
+	/**
+	* Product Factory
+	*/
+	protected $product_factory;
+
+	public function __construct(PageRepository $page_repo, ProductRepository $product_repo, ProductFactory $product_factory)
 	{
 		$this->beforeFilter('auth', ['except'=>'index']);
 		$this->page_repo = $page_repo;
 		$this->product_repo = $product_repo;
+		$this->product_factory = $product_factory;
 	}
 
 
@@ -101,14 +108,15 @@ class ProductController extends \BaseController {
 
 
 	/**
-	 * Update the specified resource in storage.
+	 * Update the Product.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
-		//
+		dd(Input::all());
+		return 'updating';
 	}
 
 

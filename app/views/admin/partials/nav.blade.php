@@ -31,7 +31,7 @@
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <span class="caret"></span></a>
 			<ul class="dropdown-menu">
 				<li><a href="{{URL::route('edit_products')}}">Edit Products</a></li>
-				<li><a href="{{URL::route('admin.size.index')}}">Edit Sizes</a></li>
+				<li><a href="{{URL::route('admin.size.index')}}">Edit Product Types</a></li>
 			</ul>
 		</li>
 		<li class="dropdown">
