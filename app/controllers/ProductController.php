@@ -108,15 +108,32 @@ class ProductController extends \BaseController {
 
 
 	/**
-	 * Update the Product.
+	 * Update the Flavor.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
 	public function update($id)
 	{
+		$validation = Validator::make(Input::all(), ['flavor_title'=>'required|unique:flavors,title,' . $id]);
+		if ( $validation->fails() ) return Redirect::back()->withErrors($validation);
+
 		$this->product_factory->updateProduct($id, Input::all());
-		return 'updating';
+
+		return Redirect::route('edit_flavor', ['id'=>$id])
+			->with('success', 'Product successfully updated.');
+	}
+
+
+	/**
+	* Delete an individual product (ajax)
+	*/
+	public function deleteProduct()
+	{
+		if ( Request::ajax() ){
+			$this->product_factory->deleteProduct(Input::get('id'));
+			return Response::json(['status'=>'success']);
+		}
 	}
 
 

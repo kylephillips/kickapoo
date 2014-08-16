@@ -1438,10 +1438,42 @@ table {
     .banned-users li .screenname {
       color: #00702c; }
 
+.image-thumb {
+  position: relative;
+  width: 100px; }
+  .image-thumb img {
+    float: none !important;
+    width: auto !important;
+    -webkit-border-radius: 4px;
+            border-radius: 4px;
+    border: 1px solid #e0e0e0; }
+  .image-thumb button {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 20px;
+            border-radius: 20px;
+    background-color: #ffffff;
+    border: 1px solid #d9d9d9;
+    right: -15px;
+    top: -10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #808080; }
+
 .products {
   margin-bottom: 10px; }
   .products textarea {
     height: 80px; }
+  .products label {
+    font-weight: bold; }
+  .products .half {
+    float: left;
+    clear: both;
+    width: 46%; }
+    .products .half.right {
+      float: right;
+      clear: none; }
   .products .flavor {
     border: 1px solid #ebebeb; }
     .products .flavor section {
@@ -1455,7 +1487,7 @@ table {
         /* 2 */ }
       .products .flavor section:after {
         clear: both; }
-      .products .flavor section img {
+      .products .flavor section .image {
         float: left;
         width: 20%; }
       .products .flavor section .product-fields {

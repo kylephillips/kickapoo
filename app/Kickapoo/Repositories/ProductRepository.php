@@ -50,4 +50,12 @@ class ProductRepository {
 		return ProductSize::findOrFail($id);
 	}
 
+	/**
+	* Get an individual product
+	*/
+	public function getProduct($id)
+	{
+		return Product::findOrFail($id);
+	}
+
 }

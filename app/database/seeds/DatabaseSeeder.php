@@ -48,6 +48,11 @@ class DatabaseSeeder extends Seeder {
 			if(is_file($file))
 			unlink($file);
 		}
+		$product_images = glob(public_path() . '/assets/uploads/product_images/*');
+		foreach($product_images as $file){
+			if(is_file($file))
+			unlink($file);
+		}
 	}
 
 }
