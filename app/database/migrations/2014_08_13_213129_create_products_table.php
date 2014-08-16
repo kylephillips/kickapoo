@@ -23,6 +23,7 @@ class CreateProductsTable extends Migration {
 			$table->string('nutrition_label')->nullable();
 			$table->text('content')->nullable();
 			$table->string('image')->nullable();
+			$table->integer('order')->default(0)->nullable();
 			$table->timestamps();
 		});
 	}

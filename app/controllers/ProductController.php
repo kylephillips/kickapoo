@@ -138,6 +138,16 @@ class ProductController extends \BaseController {
 
 
 	/**
+	* Set the order of products for a given flavor
+	*/
+	public function setOrder()
+	{
+		$products = explode(',', Input::get('order'));
+		$this->product_factory->updateOrder($products);
+		return Response::json(['status'=>'success']);
+	}
+
+	/**
 	 * Remove the specified resource from storage.
 	 *
 	 * @param  int  $id

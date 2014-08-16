@@ -47,10 +47,10 @@
 			</div><!-- .fields -->
 		</div><!-- .flavor-fields -->
 
-		<div class="products">
+		<ul class="products">
 		<?php $i = 1; ?>
 		@foreach($flavor->products as $product)
-			<div class="flavor_{{$i}} flavor">
+			<li class="flavor_{{$i}} flavor" id="{{$product->id}}">
 				<h4>{{$product->size->title}}<i class="icon-caret-down"></i></h4>
 				<section>
 					<div class="image">
@@ -107,10 +107,10 @@
 						</p>
 					</div><!-- .product-fields -->
 				</section>
-			</div><!-- .field -->
+			</li><!-- .field -->
 		<?php $i++; ?>
 		@endforeach
-		</div><!-- .products -->
+		</ul><!-- .products -->
 
 		<a href="#" class="btn add-product">+ Add a Product Type</a>
 
@@ -128,6 +128,27 @@
 <script src="{{URL::asset('assets/js/redactor.min.js')}}"></script>
 <script>
 /**
+* Sortable ordering
+*/
+$(document).ready(function(){
+	$('.products').sortable({
+		stop : function(event, ui){
+			var order = $(this).sortable('toArray');
+			var url = "{{URL::route('product_order')}}?order=" + order;
+			console.log(order);
+			$.ajax({
+				type:"GET",
+				url: url,
+				success:function(data){
+					console.log(data);
+				}
+			});
+		}
+	});
+});
+
+
+/**
 * Add a new product type
 */
 function add_product_field()
@@ -140,7 +161,7 @@ function add_product_field()
 	html += '<p><label>Description</label><textarea name="new_product[' + count + '][description]" class="redactor"></textarea></p>';
 	html += '<p><label>Ingredients</label><textarea name="new_product[' + count + '][ingredients]"></textarea></p>';
 	html += '<p><label>Image</label><input type="file" name="new_product[' + count + '][image]"></p>';
-	html += '<p><label>nutrition Label</label><input type="file" name="new_product[' + count + '][nutitional_label]"></p>';
+	html += '<p><label>Nutrition Label</label><input type="file" name="new_product[' + count + '][nutrition_label]"></p>';
 	html += '<input type="hidden" name="add_new" value="true">';
 	html += '<a href="#" class="btn btn-danger remove-new-product">Cancel</a></section></div>';
 

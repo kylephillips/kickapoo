@@ -27,6 +27,7 @@
 	}
 }
 .products {
+	@include unstyled();
 	margin-bottom: 10px;
 	textarea {
 		height: 80px;
@@ -45,6 +46,7 @@
 	}
 	.flavor {
 		border: 1px solid darken($white, 8%);
+		background-color: $white;
 		section {
 			display: none;
 			padding: 15px;

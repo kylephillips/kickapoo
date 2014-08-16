@@ -43,6 +43,7 @@ Route::group(['before'=>'auth'], function()
 	Route::get('admin/products/edit/{id}', ['as'=>'edit_flavor', 'uses'=>'ProductController@edit']);
 	Route::post('admin/products/edit/{id}', ['as'=>'update_flavor', 'uses'=>'ProductController@update']);
 	Route::get('admin/product/delete', ['as'=>'delete_product', 'uses'=>'ProductController@deleteProduct']);
+	Route::get('admin/products/order', ['as'=>'product_order', 'uses'=>'ProductController@setOrder']);
 	Route::resource('admin/size', 'ProductSizeController', ['only'=>['index','store']]);
 	Route::get('admin/size/delete', ['as'=>'delete_size', 'uses'=>'ProductSizeController@delete']);
 	Route::post('admin/size/update', ['as'=>'update_size', 'uses'=>'ProductSizeController@update']);

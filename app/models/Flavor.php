@@ -9,7 +9,8 @@ class Flavor extends Eloquent {
 
 	public function products()
 	{
-		return $this->hasMany('Product');
+		return $this->hasMany('Product')
+			->orderBy('products.order', 'asc');;
 	}
 
 }

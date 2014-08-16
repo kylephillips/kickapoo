@@ -1462,6 +1462,9 @@ table {
     color: #808080; }
 
 .products {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   margin-bottom: 10px; }
   .products textarea {
     height: 80px; }
@@ -1475,7 +1478,8 @@ table {
       float: right;
       clear: none; }
   .products .flavor {
-    border: 1px solid #ebebeb; }
+    border: 1px solid #ebebeb;
+    background-color: #ffffff; }
     .products .flavor section {
       display: none;
       padding: 15px;

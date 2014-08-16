@@ -107,4 +107,17 @@ class ProductFactory {
 		}
 	}
 
+	/**
+	* Update the order of product
+	*/
+	public function updateOrder($products)
+	{
+		foreach($products as $key=>$product)
+		{
+			$product = $this->product_repo->getProduct($product);
+			$product->order = $key;
+			$product->save();
+		}
+	}
+
 }
