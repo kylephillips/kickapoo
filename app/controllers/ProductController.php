@@ -148,14 +148,15 @@ class ProductController extends \BaseController {
 	}
 
 	/**
-	 * Remove the specified resource from storage.
+	 * Remove the flavor/products
 	 *
 	 * @param  int  $id
-	 * @return Response
 	 */
 	public function destroy($id)
 	{
-		//
+		$flavor = $this->product_repo->getFlavor($id);
+		$flavor->delete();
+		return Response::json(['status'=>'success']);
 	}
 
 

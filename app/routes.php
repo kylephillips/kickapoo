@@ -42,6 +42,7 @@ Route::group(['before'=>'auth'], function()
 	Route::get('admin/products', ['as'=>'edit_products', 'uses'=>'ProductController@adminIndex']);
 	Route::get('admin/products/edit/{id}', ['as'=>'edit_flavor', 'uses'=>'ProductController@edit']);
 	Route::post('admin/products/edit/{id}', ['as'=>'update_flavor', 'uses'=>'ProductController@update']);
+	Route::get('admin/flavor/delete/{id}', ['as'=>'delete_flavor', 'uses'=>'ProductController@destroy']);
 	Route::get('admin/product/delete', ['as'=>'delete_product', 'uses'=>'ProductController@deleteProduct']);
 	Route::get('admin/products/order', ['as'=>'product_order', 'uses'=>'ProductController@setOrder']);
 	Route::resource('admin/size', 'ProductSizeController', ['only'=>['index','store']]);

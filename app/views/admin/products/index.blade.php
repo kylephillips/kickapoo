@@ -31,6 +31,7 @@
 						@endforeach
 					</ul>
 					<a href="{{URL::route('edit_flavor', ['id'=>$flavor->id])}}" class="btn btn-warning">Edit Product</a>
+					<a href="{{URL::route('delete_flavor', ['id'=>$flavor->id])}}" class="btn btn-danger delete-product">Delete Product</a>
 				</section>
 			</li>
 			@endforeach
@@ -43,4 +44,24 @@
 
 @stop
 @section('footercontent')
+<script>
+$('.delete-product').on('click', function(e){
+	e.preventDefault();
+	if ( confirm('Are you sure you want to delete this product?') ) {
+		var item = $(this).parents('li');
+		var url = $(this).attr('href');
+
+		$.ajax({
+			url: url,
+			type: 'GET',
+			success: function(data){
+				console.log(data);
+				$(item).fadeOut('slow', function(){
+					$(item).remove();
+				});
+			}
+		});
+	}
+});
+</script>
 @stop

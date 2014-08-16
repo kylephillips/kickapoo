@@ -16,9 +16,9 @@ class CreateProductsTable extends Migration {
 		{
 			$table->increments('id')->unsigned();
 			$table->integer('flavor_id')->unsigned()->nullable();
-			$table->foreign('flavor_id')->references('id')->on('flavors');
+			$table->foreign('flavor_id')->references('id')->on('flavors')->onDelete('cascade');
 			$table->integer('size_id')->unsigned()->nullable();
-			$table->foreign('size_id')->references('id')->on('productsizes');
+			$table->foreign('size_id')->references('id')->on('productsizes')->onDelete('cascade');
 			$table->text('ingredients')->nullable();
 			$table->string('nutrition_label')->nullable();
 			$table->text('content')->nullable();
