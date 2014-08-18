@@ -25,7 +25,7 @@ class PageRepository {
 	*/
 	public function getPage($slug)
 	{
-		return Page::where('slug', $slug)->firstOrFail();
+		return Page::where('slug', $slug)->with('customfields')->firstOrFail();
 	}
 
 	/**

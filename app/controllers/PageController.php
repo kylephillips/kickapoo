@@ -58,7 +58,6 @@ class PageController extends BaseController {
 	*/
 	public function getPage($slug)
 	{
-
 		$page = $this->page_repo->getPage($slug);
 		$view = 'pages.' . $page->template;
 

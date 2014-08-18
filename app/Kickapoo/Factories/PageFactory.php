@@ -1,6 +1,9 @@
 <?php namespace Kickapoo\Factories;
 
 use \Page;
+use \CustomField;
+use \Str;
+use \Image;
 
 class PageFactory {
 
@@ -15,7 +18,44 @@ class PageFactory {
 		$page->seo_title = ( isset($input['seo_title']) ) ? $input['seo_title'] : null;
 		$page->seo_description = ( isset($input['seo_description']) ) ? $input['seo_description'] : null;
 		$page->save();
+		if( isset($input['newcustomfield']) ) $this->addCustomFields($input['newcustomfield']);
 		return $page;
+	}
+
+	/**
+	* Add new custom fields
+	* @param array
+	*/
+	public function addCustomFields($fields)
+	{
+		foreach($fields as $field){
+			$value = ( $field['fieldtype'] == 'image' ) ? $this->attachImage($field['fieldvalue']) : $field['fieldvalue'];
+			CustomField::create([
+				'name' => $field['fieldname'],
+				'key' => Str::slug($field['fieldname']),
+				'type' => $field['fieldtype'],
+				'page_id' => $field['page_id'],
+				'value' => $value
+			]);
+		}
+	}
+
+	/**
+	* Upload an image for use in custom field
+	* @return string
+	*/
+	private function attachImage($file)
+	{
+		$destination = public_path() . '/assets/uploads/page_images/';
+		$thumbnail_destination = public_path() . '/assets/uploads/page_images/_thumbs/';
+		$filename = time() . '_' . $file->getClientOriginalName();
+		try {
+			$thumb = Image::make($file)->crop(100,100)->save($thumbnail_destination . $filename, 80);
+			$uploadSuccess = $file->move($destination, $filename);
+			return $filename;
+		} catch (\Exception $e) {
+			return null;
+		}
 	}
 
 }

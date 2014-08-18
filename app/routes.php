@@ -38,6 +38,10 @@ Route::group(['before'=>'auth'], function()
 	Route::get('admin/pages/edit/{slug}', ['as'=>'edit_page', 'uses'=>'PageController@edit']);
 	Route::post('admin/pages/edit/{id}', ['as'=>'update_page', 'uses'=>'PageController@update']);
 
+	// Custom Field Management
+	Route::post('admin/customfield/validate', ['as'=>'validate_custom_fields', 'uses'=>'CustomFieldController@validate']);
+	Route::get('admin/customfield/destroy/{id}', ['as'=>'destroy_custom_field', 'uses'=>'CustomFieldController@destroy']);
+
 	// Product/Flavor Management
 	Route::get('admin/products', ['as'=>'edit_products', 'uses'=>'ProductController@adminIndex']);
 	Route::get('admin/products/edit/{id}', ['as'=>'edit_flavor', 'uses'=>'ProductController@edit']);

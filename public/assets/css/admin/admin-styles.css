@@ -586,6 +586,11 @@ form .slug {
     font-weight: normal;
     font-style: normal; }
 
+.newfield {
+  background-color: #f0f0f0;
+  padding: 8px;
+  margin-bottom: 20px; }
+
 .well {
   background-color: #ffffff;
   padding: 20px;

@@ -15,6 +15,7 @@ class CreateCustomfieldsTable extends Migration {
 		Schema::create('customfields', function(Blueprint $table)
 		{
 			$table->increments('id')->unsigned();
+			$table->string('name');
 			$table->string('key');
 			$table->text('value');
 			$table->string('field_type')->default('text');
