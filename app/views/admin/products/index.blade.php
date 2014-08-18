@@ -37,7 +37,7 @@
 			@endforeach
 		</ul>
 
-		<a href="{{URL::route('admin.user.create')}}" class="btn btn-large btn-success">+ Add Product</a>
+		<a href="{{URL::route('create_flavor')}}" class="btn btn-large btn-success">+ Add Product</a>
 
 	</div><!-- .well -->
 </div><!-- .container -->

@@ -32,6 +32,7 @@
 			<ul class="dropdown-menu">
 				<li><a href="{{URL::route('edit_products')}}">Edit Products</a></li>
 				<li><a href="{{URL::route('admin.size.index')}}">Edit Product Types</a></li>
+				<li><a href="{{URL::route('create_flavor')}}">Add a Product</a></li>
 			</ul>
 		</li>
 		<li class="dropdown">

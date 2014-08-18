@@ -2,6 +2,7 @@
 
 use \Product;
 use \Image;
+use \Flavor;
 use Kickapoo\Repositories\ProductRepository;
 
 class ProductFactory {
@@ -15,6 +16,22 @@ class ProductFactory {
 	public function __construct(ProductRepository $product_repo)
 	{
 		$this->product_repo = $product_repo;
+	}
+
+	/**
+	* Create a new Product
+	*/
+	public function createProduct($input)
+	{
+		$image = ( isset($input['image']) ) ? $this->attachImage($input['image']) : null;
+		$content = ( isset($input['content']) ) ? $input['content'] : null;
+		$flavor = Flavor::create([
+			'title' => $input['title'],
+			'slug' => \Str::slug($input['title']),
+			'image' => $image,
+			'content' => $content
+		]);
+		if ( isset($input['new_product']) ) $this->addTypes($input['new_product'], $flavor->id);
 	}
 
 

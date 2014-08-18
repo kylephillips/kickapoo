@@ -3,7 +3,7 @@
 
 <div class="container small">
 
-	<h1>Edit {{$flavor->title}} <span class="pull-right"><a href="{{URL::route('edit_products')}}">Back to Flavors</a></span></h1>
+	<h1>Edit {{$flavor->title}} <span class="pull-right"><a href="{{URL::route('edit_products')}}">Back to Products</a></span></h1>
 
 	<div class="well flavor-form">
 

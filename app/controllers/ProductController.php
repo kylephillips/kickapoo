@@ -57,36 +57,28 @@ class ProductController extends \BaseController {
 
 
 	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
+	 * Show the form for creating a new flavor.
 	 */
 	public function create()
 	{
-		//
+		$sizes = $this->product_repo->getSizesArray();
+		return View::make('admin.products.create')
+			->with('sizes', $sizes);
 	}
 
 
 	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
+	 * Store a new flavor
 	 */
 	public function store()
 	{
-		//
-	}
+		$validation = Validator::make(Input::all(), ['title'=>'required|unique:flavors,title']);
+		if ( $validation->fails() ) return Redirect::back()->withErrors($validation);
 
+		$this->product_factory->createProduct(Input::all());
 
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
+		return Redirect::route('edit_products')
+			->with('success', 'Product successfully added.');
 	}
 
 
