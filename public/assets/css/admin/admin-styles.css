@@ -1014,7 +1014,6 @@ table {
 .import-buttons #import-loading {
   display: none; }
   .import-buttons #import-loading img {
-    margin-top: -6px;
     float: left;
     width: auto; }
 
