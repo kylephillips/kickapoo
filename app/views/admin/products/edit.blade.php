@@ -51,7 +51,7 @@
 		<?php $i = 1; ?>
 		@foreach($flavor->products as $product)
 			<li class="flavor_{{$i}} flavor" id="{{$product->id}}">
-				<h4>{{$product->size->title}}<i class="icon-caret-down"></i></h4>
+				<h4><span class="sort-handle">{{$i}}</span> {{$product->size->title}}<i class="icon-caret-down"></i></h4>
 				<section>
 					<div class="image">
 						@if($product->image)
@@ -132,10 +132,11 @@
 */
 $(document).ready(function(){
 	$('.products').sortable({
+		handle: '.sort-handle',
 		stop : function(event, ui){
 			var order = $(this).sortable('toArray');
 			var url = "{{URL::route('product_order')}}?order=" + order;
-			console.log(order);
+			change_sort_numbers();
 			$.ajax({
 				type:"GET",
 				url: url,
@@ -147,6 +148,16 @@ $(document).ready(function(){
 	});
 });
 
+/**
+* Change the numbers after sorting
+*/
+function change_sort_numbers()
+{
+	var numbers = $('.sort-handle');
+	$.each(numbers, function(index, value){
+		$(this).text(index + 1);
+	});
+}
 
 /**
 * Add a new product type
@@ -157,7 +168,7 @@ function add_product_field()
 	var count = flavor_count + 1;
 	var options = '<?php foreach ($sizes as $id=>$size){	echo '<option value="' . $id . '">' . $size . '</option>'; } ?>';
 
-	var html = '<div class="flavor_' + count + ' flavor new-flavor"><h4>New Product Type</h4><section><p class="size"><select name="new_product[' + count + '][size]">' + options + '</select><a href="{{URL::route('admin.size.index')}}" class="btn btn-mini">Edit Types</a></p>';
+	var html = '<div class="flavor_' + count + ' flavor new-flavor"><h4><span class="sort-handle">' + count + '</span> New Product Type</h4><section><p class="size"><select name="new_product[' + count + '][size]">' + options + '</select><a href="{{URL::route('admin.size.index')}}" class="btn btn-mini">Edit Types</a></p>';
 	html += '<p><label>Description</label><textarea name="new_product[' + count + '][description]" class="redactor"></textarea></p>';
 	html += '<p><label>Ingredients</label><textarea name="new_product[' + count + '][ingredients]"></textarea></p>';
 	html += '<p><label>Image</label><input type="file" name="new_product[' + count + '][image]"></p>';

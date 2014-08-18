@@ -1500,10 +1500,23 @@ table {
         margin-top: -10px; }
     .products .flavor h4 {
       cursor: pointer;
-      padding: 8px 5px; }
+      padding: 0px 5px;
+      height: 35px;
+      line-height: 35px; }
+      .products .flavor h4 span {
+        background-color: rgba(0, 0, 0, 0.07);
+        font-weight: normal;
+        float: left;
+        display: block;
+        margin-left: -5px;
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        margin-right: 10px;
+        cursor: move; }
       .products .flavor h4 i {
         float: right;
-        margin-top: 8px; }
+        margin-top: 15px; }
     .products .flavor:nth-child(even) {
       background-color: #ededed; }
   .products .size {
