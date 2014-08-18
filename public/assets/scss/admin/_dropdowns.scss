@@ -61,6 +61,11 @@
 	}
 }
 
+.dropdown-menu li.divider {
+	height: 1px;
+	background-color: darken($white, 15%);
+}
+
 // Hover/Focus state
 .dropdown-menu > li > a {
 	&:hover,

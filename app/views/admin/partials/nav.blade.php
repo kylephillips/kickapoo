@@ -30,8 +30,12 @@
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <span class="caret"></span></a>
 			<ul class="dropdown-menu">
-				<li><a href="{{URL::route('edit_products')}}">Edit Products</a></li>
-				<li><a href="{{URL::route('admin.size.index')}}">Edit Product Types</a></li>
+				@foreach($products as $product)
+				<li><a href="{{URL::route('edit_flavor', ['id'=>$product->id])}}">{{$product->title}}</a></li>
+				@endforeach
+				<li class="divider"></li>
+				<li><a href="{{URL::route('edit_products')}}">All Products</a></li>
+				<li><a href="{{URL::route('admin.size.index')}}">Product Types</a></li>
 				<li><a href="{{URL::route('create_flavor')}}">Add a Product</a></li>
 			</ul>
 		</li>
@@ -62,6 +66,7 @@
 					<li><a href="{{URL::route('admin.user.index')}}">Users</a></li>
 					<li><a href="{{URL::route('settings_form')}}">Site Settings</a></li>
 				@endif
+				<li class="divider"></li>
 				<li><a href="{{URL::route('logout')}}">Log Out</a></li>
 			</ul>
 		</li>
