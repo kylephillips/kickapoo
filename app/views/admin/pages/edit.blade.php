@@ -65,19 +65,55 @@
 
 		<hr>
 
-		<h4>Custom Fields</h4>
+		<h3>Custom Fields</h3>
+		
+		<div class="alert alert-danger" id="customfielderrors" style="display:none;"></div>
+
 		@if(count($page->customfields) > 0 )
+		<ul class="customfields-existing">
+			<?php $c = 0; ?>
 			@foreach($page->customfields as $field)
-			<div class="customfield-existing">
-				{{$field->key}}<br />
-				<a href="{{URL::route('destroy_custom_field', ['id'=>$field->id])}}" class="btn btn-danger delete-field">Delete Field</a>
-			</div>
+			<li class="customfield-existing">
+				<h4>{{$field->name}} <i class="icon-caret-down"></i></h4>
+				<section>
+					
+					<p>
+						<label>Name</label>
+						{{Form::text('customfield[' . $c . '][name]', $field->name)}}
+					</p>
+					
+					@if($field->field_type == 'text')
+						<p>
+							<label>Content</label>
+							{{Form::text('customfield[' . $c . '][value]', $field->value)}}
+						</p>
+
+					@elseif($field->field_type == 'textarea')
+						<p>
+							<label>Content</label>
+							{{Form::textarea('customfield[' . $c . '][value]', $field->value)}}
+						</p>
+
+					@elseif($field->field_type == 'editor')
+						<p>
+							<label>Content</label>
+							{{Form::textarea('customfield[' . $c . '][value]', $field->value, ['class'=>'redactor'])}}
+						</p>
+
+					@else
+						image
+					@endif
+					{{Form::hidden('customfield[' . $c . '][id]', $field->id)}}
+					<a href="{{URL::route('destroy_custom_field', ['id'=>$field->id])}}" class="btn btn-danger delete-field">Delete Field</a>
+				</section>
+			</li>
+			<?php $c++; ?>
 			@endforeach
+		</ul>
 		@else
 			<p>No custom fields.</p>
 		@endif
 
-		<div class="alert alert-danger" id="customfielderrors" style="display:none;"></div>
 		<div id="newfields"></div>
 		<a href="#" class="btn btn-success add-custom">Add Custom Field</a>
 
@@ -157,7 +193,7 @@ $(document).on('change', '.fieldtype', function(){
 	var type = $(this).val();
 	var item = $(this).parents('.newfield');
 	var count = $(item).find('.field_count').text();
-	$('#fieldvalue').val('');
+	$(item).find('.fieldvalue').val('');
 	$('#newfieldcont').empty();
 	custom_field_type(type, item, count);
 });
@@ -197,7 +233,7 @@ function add_custom_field()
 	var html = '<div class="newfield"><span class="field_count" style="display:none;">' + count + '</span><p class="half"><label>Field Name</label><input type="text" name="newcustomfield[' + count + '][fieldname]" ></p>';
 	html += '<p class="half right"><label for="fieldtype">Type of Field</label><select class="fieldtype" name="newcustomfield[' + count + '][fieldtype]"><option value="text">Text</option><option value="textarea">Textarea</option><option value="editor">Editor</option><option value="image">Image</option></select></p>';
 	html += '<input type="hidden" name="newcustomfield[' + count + '][page_id]" id="page_id" value="{{$page["id"]}}">';
-	html += '<p><label for="fieldvalue">Content</label><span class="newfieldcont"><input type="text" id="fieldvalue" name="newcustomfield[' + count + '][fieldvalue]" /></p></span><p><button class="btn cancel-new-field">Cancel</button></div>';
+	html += '<p><label>Content</label><span class="newfieldcont"><input type="text" class="fieldvalue" name="newcustomfield[' + count + '][fieldvalue]" /></p></span><p><button class="btn cancel-new-field">Cancel</button></div>';
 	$('#newfields').append(html);
 }
 function custom_field_type(type, item, count)
@@ -285,6 +321,21 @@ $('.slug-ok').on('click', function(e){
 	$('.slug').find('.hidden').hide();
 	$('.slug em').show();
 	e.preventDefault();
+});
+
+/**
+* Toggle custom fields
+*/
+$('.customfield-existing h4').on('click', function(){
+	var item = $(this).parent('li').children('section');
+	var caret = $(this).find('i');
+	if ( $(item).is(':visible') ){
+		$(item).slideUp();
+		$(caret).removeClass('icon-caret-up').addClass('icon-caret-down');
+	} else {
+		$(item).slideDown();
+		$(caret).removeClass('icon-caret-down').addClass('icon-caret-up');
+	}
 });
 
 function apply_redactor()

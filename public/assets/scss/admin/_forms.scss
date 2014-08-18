@@ -152,3 +152,42 @@ form {
 	padding: 8px;
 	margin-bottom: 20px;
 }
+
+// Existing custom fields
+.customfields-existing {
+	@include unstyled;
+	margin-bottom: 20px;
+	h4 {
+		padding: 8px;
+		cursor: pointer;
+		i {
+			float: right;
+			margin-top: 8px;
+		}
+	}
+	li {
+		background-color: $white;
+		border-top: 1px solid darken($white, 12%);
+		&:first-child {
+			border: 0;
+		}
+		&:nth-child(odd){
+			background-color: darken($white, 8%);
+		}
+		.redactor_toolbar li:nth-child(odd) {
+			background-color: inherit;
+		}
+		section {
+			display: none;
+			padding: 10px;
+			@include clearfix;
+		}
+	}
+	.btn-danger {
+		font-size: 14px;
+		padding: 4px 10px;
+		height: auto;
+		line-height: 20px;
+		float: right;
+	}
+}

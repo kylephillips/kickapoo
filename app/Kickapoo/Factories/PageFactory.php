@@ -19,8 +19,22 @@ class PageFactory {
 		$page->seo_description = ( isset($input['seo_description']) ) ? $input['seo_description'] : null;
 		$page->save();
 		if( isset($input['newcustomfield']) ) $this->addCustomFields($input['newcustomfield']);
+		if( isset($input['customfield']) ) $this->updateCustomFields($input['customfield']);
 		return $page;
 	}
+
+	
+	/**
+	* Update existing custom fields
+	*/
+	public function updateCustomFields($fields)
+	{
+		dd($fields);
+		foreach($fields as $field){
+
+		}
+	}
+
 
 	/**
 	* Add new custom fields
@@ -33,7 +47,7 @@ class PageFactory {
 			CustomField::create([
 				'name' => $field['fieldname'],
 				'key' => Str::slug($field['fieldname']),
-				'type' => $field['fieldtype'],
+				'field_type' => $field['fieldtype'],
 				'page_id' => $field['page_id'],
 				'value' => $value
 			]);

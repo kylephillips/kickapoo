@@ -591,6 +591,44 @@ form .slug {
   padding: 8px;
   margin-bottom: 20px; }
 
+.customfields-existing {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px; }
+  .customfields-existing h4 {
+    padding: 8px;
+    cursor: pointer; }
+    .customfields-existing h4 i {
+      float: right;
+      margin-top: 8px; }
+  .customfields-existing li {
+    background-color: #ffffff;
+    border-top: 1px solid #e0e0e0; }
+    .customfields-existing li:first-child {
+      border: 0; }
+    .customfields-existing li:nth-child(odd) {
+      background-color: #ebebeb; }
+    .customfields-existing li .redactor_toolbar li:nth-child(odd) {
+      background-color: inherit; }
+    .customfields-existing li section {
+      display: none;
+      padding: 10px;
+      zoom: 1; }
+      .customfields-existing li section:before, .customfields-existing li section:after {
+        content: " ";
+        /* 1 */
+        display: table;
+        /* 2 */ }
+      .customfields-existing li section:after {
+        clear: both; }
+  .customfields-existing .btn-danger {
+    font-size: 14px;
+    padding: 4px 10px;
+    height: auto;
+    line-height: 20px;
+    float: right; }
+
 .well {
   background-color: #ffffff;
   padding: 20px;
