@@ -139,6 +139,17 @@ class ProductController extends \BaseController {
 		return Response::json(['status'=>'success']);
 	}
 
+
+	/**
+	* Set the order of flavors
+	*/
+	public function flavorOrder()
+	{
+		$flavors = explode(',', Input::get('order'));
+		$this->product_factory->updateFlavorOrder($flavors);
+		return Response::json(['status'=>'success']);
+	}
+
 	/**
 	 * Remove the flavor/products
 	 *

@@ -137,4 +137,18 @@ class ProductFactory {
 		}
 	}
 
+
+	/**
+	* Update the order of flavors
+	*/
+	public function updateFlavorOrder($flavors)
+	{
+		foreach($flavors as $key=>$flavor)
+		{
+			$flavor = $this->product_repo->getFlavor($flavor);
+			$flavor->order = $key;
+			$flavor->save();
+		}
+	}
+
 }

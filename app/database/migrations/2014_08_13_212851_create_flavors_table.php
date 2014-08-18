@@ -16,6 +16,7 @@ class CreateFlavorsTable extends Migration {
 		{
 			$table->increments('id')->unsigned();
 			$table->string('title');
+			$table->integer('order')->default(0);
 			$table->string('slug')->unique();
 			$table->text('content')->nullable();
 			$table->string('image')->nullable();

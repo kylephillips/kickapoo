@@ -11,7 +11,7 @@ class ProductRepository {
 	*/
 	public function getAll()
 	{
-		return Flavor::with('products', 'products.size')->get();
+		return Flavor::with('products', 'products.size')->orderBy('flavors.order')->get();
 	}
 
 	/**

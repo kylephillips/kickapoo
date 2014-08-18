@@ -15,7 +15,7 @@
 
 		<ul class="product-list">
 			@foreach($flavors as $flavor)
-			<li>
+			<li id="{{$flavor->id}}">
 				@if($flavor->image)
 					<img src="{{URL::asset('assets/uploads/product_images')}}/{{$flavor->image}}" alt="{{$flavor->title}}" class="flavor-image" />
 				@else
@@ -45,6 +45,23 @@
 @stop
 @section('footercontent')
 <script>
+
+$(document).ready(function(){
+	$('.product-list').sortable({
+		stop : function(event, ui){
+			var order = $(this).sortable('toArray');
+			var url = "{{URL::route('flavor_order')}}?order=" + order;
+			$.ajax({
+				type:"GET",
+				url: url,
+				success:function(data){
+					console.log(data);
+				}
+			});
+		}
+	});
+});
+
 $('.delete-product').on('click', function(e){
 	e.preventDefault();
 	if ( confirm('Are you sure you want to delete this product?') ) {
