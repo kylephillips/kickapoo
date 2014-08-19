@@ -55,7 +55,7 @@
 				<section>
 					<div class="image">
 						@if($product->image)
-							<img src="{{URL::asset('assets/uploads/product_images')}}/{{$flavor->image}}" alt="{{$flavor->title}}" />
+							<img src="{{URL::asset('assets/uploads/product_images')}}/{{$product->image}}" alt="{{$flavor->title}}" />
 						@else
 							<img src="{{URL::asset('assets/images/product-fpo.png')}}" alt="{{$flavor->title}}" />
 						@endif
@@ -237,17 +237,6 @@ $(document).on('click', '.flavor h4', function(){
 		$(section).slideDown();
 		$(this).find('i').removeClass('icon-caret-down').addClass('icon-caret-up');
 	}
-});
-
-/**
-* Remove an Image Thumbnail
-*/
-$('.remove-thumb').on('click', function(e){
-	e.preventDefault();
-	var thumb = $(this).parents('.image-thumb');
-	var input = $(thumb).siblings('.image-file');
-	$(thumb).hide();
-	$(input).show();
 });
 
 

@@ -45,6 +45,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 	<script src="{{URL::asset('assets/js/bootstrap.min.js')}}"></script>
 	<script src="{{URL::asset('assets/js/jquery.jscroll.min.js')}}"></script>
+	<script src="{{URL::asset('assets/js/admin-scripts.js')}}"></script>
 
 	@yield('footercontent')
 	<script>

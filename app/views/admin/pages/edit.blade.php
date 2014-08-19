@@ -101,8 +101,18 @@
 						</p>
 
 					@else
-						image
+						<div>
+							<label>Image</label>
+							<div class="image-thumb">
+								<button class="remove-thumb">&times;</button>
+								<img src="{{URL::asset('assets/uploads/page_images/_thumbs')}}/{{$field->value}}">
+							</div>
+							<div class="image-file" style="display:none;">
+								{{Form::file('customfield[' . $c . '][value]')}}
+							</div>
+						</div>
 					@endif
+					{{Form::hidden('customfield[' . $c . '][field_type]', $field->field_type)}}
 					{{Form::hidden('customfield[' . $c . '][id]', $field->id)}}
 					<a href="{{URL::route('destroy_custom_field', ['id'=>$field->id])}}" class="btn btn-danger delete-field">Delete Field</a>
 				</section>

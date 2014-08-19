@@ -29,9 +29,19 @@ class PageFactory {
 	*/
 	public function updateCustomFields($fields)
 	{
-		dd($fields);
 		foreach($fields as $field){
+			$cfield = CustomField::findOrFail($field['id']);
+			$cfield->name = $field['name'];
+			$cfield->key = Str::slug($field['name']);
+			
+			if ( ($field['field_type'] == 'image') && (isset($field['value']) ) ){
+				$cfield->value = $this->attachImage($field['value']);
+			}
+			elseif ( $field['field_type'] != 'image' ){
+				$cfield->value = $field['value'];
+			}
 
+			$cfield->save();
 		}
 	}
 
