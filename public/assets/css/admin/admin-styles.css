@@ -48,7 +48,8 @@ img {
 
 .well {
   -webkit-box-shadow: none;
-          box-shadow: none; }
+          box-shadow: none;
+  margin-bottom: 20px; }
   .well hr {
     height: 3px;
     background-color: #d9d9d9;
@@ -567,7 +568,7 @@ form .slug {
     line-height: 24px; }
 
 .seo-preview {
-  margin-top: 15px;
+  margin: 15px 0px 0px 0px;
   background-color: #ffffff;
   padding: 10px;
   font-family: arial, sans-serif; }

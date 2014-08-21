@@ -45,6 +45,8 @@
 				@foreach($allpages as $page)
 				<li><a href="{{URL::route('edit_page', ['page'=>$page->slug])}}">{{$page->title}}</a></li>
 				@endforeach
+				<li class="divider"></li>
+				<li><a href="{{URL::route('create_page')}}">New Page</a></li>
 			</ul>
 		</li>
 		<li><a href="{{URL::route('form_entries')}}">Forms</a></li>

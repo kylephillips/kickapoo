@@ -66,6 +66,24 @@ class PageController extends BaseController {
 			->with('page', $page);
 	}
 
+	/**
+	* Show the form to add a new page
+	*/
+	public function create()
+	{
+		$templates = $this->page_repo->getPageTemplates();
+		return View::make('admin.pages.create')
+			->with('templates', $templates);
+	}
+
+	/**
+	* Store the new page
+	*/
+	public function store()
+	{
+		return 'storing';
+	}
+
 
 	/**
 	* Edit Page

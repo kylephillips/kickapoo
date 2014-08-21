@@ -41,12 +41,19 @@
 	@include('admin.partials.footer')
 	</div><!-- .pagewrap -->
 
+	<script>
+		var urls = {
+			'editor_upload' : "{{URL::route('editor_upload')}}"
+		}
+	</script>
+
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 	<script src="{{URL::asset('assets/js/bootstrap.min.js')}}"></script>
 	<script src="{{URL::asset('assets/js/jquery.jscroll.min.js')}}"></script>
 	<script src="{{URL::asset('assets/js/admin-scripts.js')}}"></script>
-
+	<script src="{{URL::asset('assets/js/redactor.min.js')}}"></script>
+	
 	@yield('footercontent')
 	<script>
 	$(window).load(function(){

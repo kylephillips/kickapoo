@@ -37,6 +37,8 @@ Route::group(['before'=>'auth'], function()
 	// Page Management
 	Route::get('admin/pages/edit/{slug}', ['as'=>'edit_page', 'uses'=>'PageController@edit']);
 	Route::post('admin/pages/edit/{id}', ['as'=>'update_page', 'uses'=>'PageController@update']);
+	Route::get('admin/pages/create', ['as'=>'create_page', 'uses'=>'PageController@create']);
+	Route::post('admin/pages/create', ['as'=>'store_page', 'uses'=>'PageController@store']);
 
 	// Custom Field Management
 	Route::post('admin/customfield/validate', ['as'=>'validate_custom_fields', 'uses'=>'CustomFieldController@validate']);
