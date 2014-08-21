@@ -40,7 +40,8 @@ class PageRepository {
 			if ( strlen($file) > 2 ) 
 			{
 				$file = str_replace('.blade.php', '', $file);
-				$templates[$file] = ucfirst($file);
+				$name = str_replace('_', ' ', $file);
+				$templates[$file] = ucwords($name);
 			}
 		}
 		return $templates;
