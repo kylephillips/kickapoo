@@ -1,6 +1,5 @@
 @extends('admin.partials.admin-master')
 @section('content')
-<?php print_r($errors); ?>
 <div class="container small">
 
 	<h1>Add a New Page </h1>
