@@ -81,7 +81,23 @@ class PageController extends BaseController {
 	*/
 	public function store()
 	{
-		return 'storing';
+		//dd(Input::all());
+		if ( Input::get('newcustomfield') ){
+			$cfields = Input::get('newcustomfield');
+			foreach($cfields as $field){
+				if ( $field['fieldname'] == "" ) return Redirect::back()->withInput()->withErrors('custom_field', 'All Custom Fields require titles');
+			}
+		}
+		$validation = Validator::make(Input::all(), [
+			'title' => 'required|unique:pages,title',
+			'status' => 'required',
+			'template' => 'required',
+			'content' => 'required'
+		]);
+		if ( $validation->fails() ) return Redirect::back()->withInput()->withErrors($validation);
+		$page = $this->page_factory->createPage(Input::all());
+		return Redirect::route('edit_page', ['slug'=>$page->slug])
+			->with('success', 'Page created successfully!');
 	}
 
 

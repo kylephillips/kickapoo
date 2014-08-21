@@ -1,6 +1,6 @@
 @extends('admin.partials.admin-master')
 @section('content')
-
+<?php print_r($errors); ?>
 <div class="container small">
 
 	<h1>Add a New Page </h1>
@@ -52,6 +52,7 @@
 		<hr>
 
 		<p>
+			{{$errors->first('content', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 			{{Form::label('content', 'Content')}}
 			{{Form::textarea('content', null, ['class'=>'redactor'])}}
 		</p>
@@ -59,6 +60,51 @@
 		<hr>
 
 		<h3>Custom Fields</h3>
+
+		@if(Input::old('newcustomfield'))
+			<ul class="customfields-existing">
+				<?php $c = 0; ?>
+				@foreach(Input::old('newcustomfield') as $field)
+				<div class="newfield">
+					<span class="field_count" style="display:none;">{{$c}}</span>
+					<p class="half">
+						@if($field['fieldname'] == '')
+							<span class="text-danger"><strong>The Field Name is Required</strong></span>
+						@endif
+						<label>Field Name</label>
+						<input type="text" name="newcustomfield[{{$c}}][fieldname]" value="{{$field['fieldname']}}">
+					</p>
+					<p class="half right">
+						<label for="fieldtype">Type of Field</label>
+						<select class="fieldtype" name="newcustomfield[{{$c}}][fieldtype]">
+							<option value="text" <?php if ($field['fieldtype'] == 'text') echo 'selected'; ?>>Text</option>
+							<option value="textarea" <?php if ($field['fieldtype'] == 'textarea') echo 'selected'; ?>>Textarea</option>
+							<option value="editor" <?php if ($field['fieldtype'] == 'editor') echo 'selected'; ?>>Editor</option>
+							<option value="image" <?php if ($field['fieldtype'] == 'image') echo 'selected'; ?>>Image</option>
+						</select>
+					</p>
+					<p>
+						<label>Content</label>
+						<span class="newfieldcont">
+							@if($field['fieldtype'] == 'text')
+							<input type="text" class="fieldvalue" name="newcustomfield[{{$c}}][fieldvalue]" value="{{$field['fieldvalue']}}" />
+							@elseif($field['fieldtype'] == 'textarea')
+							<textarea name="newcustomfield[{{$c}}][fieldvalue]">{{$field['fieldvalue']}}</textarea>
+							@elseif($field['fieldtype'] == 'editor')
+							<textarea name="newcustomfield[{{$c}}][fieldvalue]" class="redactor">{{$field['fieldvalue']}}</textarea>
+							@else
+							<input type="file" name="newcustomfield[{{$c}}][fieldvalue]" >
+							@endif
+						</span>
+					</p>
+					{{Form::hidden("has-custom", 'true')}}
+					<p><button class="btn cancel-new-field">Remove Field</button></div>
+				<?php $c++; ?>
+				@endforeach
+			</ul>
+		@endif
+
+
 		<div id="newfields"></div>
 		<a href="#" class="btn btn-success add-custom">Add Custom Field</a>
 
@@ -93,7 +139,9 @@
 
 @section('footercontent')
 <script>
-
+/**
+* Update the slug & title in various locations
+*/
 $('#title').on('keyup', function(){
 	var title = $(this).val();
 	$('.seo-title').text(title);
@@ -102,16 +150,15 @@ $('#title').on('keyup', function(){
 	$('.slug em').text(convert_to_slug(title));
 	$('.slug-seo').text(convert_to_slug(title));
 });
-
 function convert_to_slug(text)
 {
-	return text
-        .toLowerCase()
-        .replace(/ /g,'-')
-        .replace(/[^\w-]+/g,'');
+	return text.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
 }
 
 
+/**
+* Add new custom fields
+*/
 $('.add-custom').on('click', function(e){
 	e.preventDefault();
 	add_custom_field();
@@ -123,6 +170,7 @@ function add_custom_field()
 	var html = '<div class="newfield"><span class="field_count" style="display:none;">' + count + '</span><p class="half"><label>Field Name</label><input type="text" name="newcustomfield[' + count + '][fieldname]" ></p>';
 	html += '<p class="half right"><label for="fieldtype">Type of Field</label><select class="fieldtype" name="newcustomfield[' + count + '][fieldtype]"><option value="text">Text</option><option value="textarea">Textarea</option><option value="editor">Editor</option><option value="image">Image</option></select></p>';
 	html += '<p><label>Content</label><span class="newfieldcont"><input type="text" class="fieldvalue" name="newcustomfield[' + count + '][fieldvalue]" /></p></span><p><button class="btn cancel-new-field">Cancel</button></div>';
+	html += '<input type="hidden" name="has-custom" value="true">';
 	$('#newfields').append(html);
 }
 
