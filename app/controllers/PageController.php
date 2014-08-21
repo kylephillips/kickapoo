@@ -73,6 +73,18 @@ class PageController extends BaseController {
 			->with('page', $page);
 	}
 
+
+	/**
+	* List all pages
+	*/
+	public function index()
+	{
+		$pages = $this->page_repo->getAllPages();
+		return View::make('admin.pages.index')
+			->with('pages', $pages);
+	}
+
+
 	/**
 	* Show the form to add a new page
 	*/
@@ -154,8 +166,19 @@ class PageController extends BaseController {
 		$page = $this->page_repo->getPage($slug);
 		$this->field_factory->deleteFields($page->customfields);
 		$page->delete();
-		return Redirect::route('admin_index')
+		return Redirect::route('page_index')
 			->with('success', $page->title . ' Page Successfully Deleted');
+	}
+
+
+	/**
+	* Set the menu order of pages
+	*/
+	public function setOrder()
+	{
+		$pages = explode(',', Input::get('order'));
+		$this->page_factory->updateOrder($pages);
+		return Response::json(['status'=>'success']);
 	}
 
 }

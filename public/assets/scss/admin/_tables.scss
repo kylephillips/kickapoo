@@ -27,3 +27,20 @@ table {
 		}
 	} // tbody
 } // table
+
+.page-list {
+	@include unstyled;
+	li {
+		@include clearfix;
+		padding: 5px 10px;
+		background-color: $white;
+		cursor: move;
+		&:nth-child(even){
+			background-color: darken($white, 8%);
+		}
+		strong {
+			margin-top: 8px;
+			display: inline-block;
+		}
+	}
+}

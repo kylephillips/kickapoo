@@ -35,11 +35,13 @@ Route::group(['before'=>'auth'], function()
 	Route::get('admin/pending-count', ['as'=>'pending_count', 'uses'=>'PostController@getPending']);
 
 	// Page Management
+	Route::get('admin/pages', ['as'=>'page_index', 'uses'=>'PageController@index']);
 	Route::get('admin/pages/edit/{slug}', ['as'=>'edit_page', 'uses'=>'PageController@edit']);
 	Route::post('admin/pages/edit/{id}', ['as'=>'update_page', 'uses'=>'PageController@update']);
 	Route::get('admin/pages/create', ['as'=>'create_page', 'uses'=>'PageController@create']);
 	Route::post('admin/pages/create', ['as'=>'store_page', 'uses'=>'PageController@store']);
 	Route::get('admin/pages/destroy/{slug}', ['as'=>'destroy_page', 'uses'=>'PageController@destroy']);
+	Route::get('admin/pages/order', ['as'=>'order_pages', 'uses'=>'PageController@setOrder']);
 
 	// Custom Field Management
 	Route::post('admin/customfield/validate', ['as'=>'validate_custom_fields', 'uses'=>'CustomFieldController@validate']);

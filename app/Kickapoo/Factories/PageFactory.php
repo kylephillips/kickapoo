@@ -115,4 +115,18 @@ class PageFactory {
 		}
 	}
 
+
+	/**
+	* Update the order of pages
+	*/
+	public function updateOrder($pages)
+	{
+		foreach($pages as $key=>$page)
+		{
+			$page = Page::findOrFail($page);
+			$page->menu_order = $key;
+			$page->save();
+		}
+	}
+
 }

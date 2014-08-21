@@ -921,6 +921,28 @@ table {
     table tbody td:first-child {
       border: 0; }
 
+.page-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  .page-list li {
+    zoom: 1;
+    padding: 5px 10px;
+    background-color: #ffffff;
+    cursor: move; }
+    .page-list li:before, .page-list li:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */ }
+    .page-list li:after {
+      clear: both; }
+    .page-list li:nth-child(even) {
+      background-color: #ebebeb; }
+    .page-list li strong {
+      margin-top: 8px;
+      display: inline-block; }
+
 .login {
   padding-top: 50px;
   text-align: center; }
