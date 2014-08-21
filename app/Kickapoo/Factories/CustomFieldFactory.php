@@ -12,4 +12,17 @@ class CustomFieldFactory {
 		dd($input);
 	}
 
+	/**
+	* Delete a series of fields
+	* @param eloquent object
+	*/
+	public function deleteFields($fields)
+	{
+		foreach($fields as $field)
+		{
+			$field = CustomField::findOrFail($field['id']);
+			$field->delete();
+		}
+	}
+
 }

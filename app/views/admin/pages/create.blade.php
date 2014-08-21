@@ -129,8 +129,9 @@
 			</p>
 		</div>
 
-		{{Form::submit('Save Page')}}
+		{{Form::submit('Save Page', ['class'=>'btn btn-block btn-primary'])}}
 		{{Form::close()}}
+
 	</div>
 
 </div>

@@ -39,6 +39,7 @@ Route::group(['before'=>'auth'], function()
 	Route::post('admin/pages/edit/{id}', ['as'=>'update_page', 'uses'=>'PageController@update']);
 	Route::get('admin/pages/create', ['as'=>'create_page', 'uses'=>'PageController@create']);
 	Route::post('admin/pages/create', ['as'=>'store_page', 'uses'=>'PageController@store']);
+	Route::get('admin/pages/destroy/{slug}', ['as'=>'destroy_page', 'uses'=>'PageController@destroy']);
 
 	// Custom Field Management
 	Route::post('admin/customfield/validate', ['as'=>'validate_custom_fields', 'uses'=>'CustomFieldController@validate']);

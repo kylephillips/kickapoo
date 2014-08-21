@@ -2,6 +2,7 @@
 use Kickapoo\Repositories\PostRepository;
 use Kickapoo\Repositories\PageRepository;
 use Kickapoo\Factories\PageFactory;
+use Kickapoo\Factories\CustomFieldFactory as CFFactory;
 
 class PageController extends BaseController {
 
@@ -20,12 +21,18 @@ class PageController extends BaseController {
 	*/
 	protected $page_factory;
 
+	/**
+	* Custom Field Factory
+	*/
+	protected $field_factory;
 
-	public function __construct(PostRepository $posts_repo, PageRepository $page_repo, PageFactory $page_factory)
+
+	public function __construct(PostRepository $posts_repo, PageRepository $page_repo, PageFactory $page_factory, CFFactory $field_factory)
 	{
 		$this->posts_repo = $posts_repo;
 		$this->page_repo = $page_repo;
 		$this->page_factory = $page_factory;
+		$this->field_factory = $field_factory;
 	}
 
 
@@ -136,6 +143,19 @@ class PageController extends BaseController {
 		}
 		$updated = $this->page_factory->updatePage($id, Input::all());
 		return Redirect::route('edit_page', ['slug'=>$updated->slug])->with('success', 'Page successfully updated!');
+	}
+
+
+	/**
+	* Delete a Page
+	*/
+	public function destroy($slug)
+	{
+		$page = $this->page_repo->getPage($slug);
+		$this->field_factory->deleteFields($page->customfields);
+		$page->delete();
+		return Redirect::route('admin_index')
+			->with('success', $page->title . ' Page Successfully Deleted');
 	}
 
 }
