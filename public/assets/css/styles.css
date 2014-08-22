@@ -1539,6 +1539,29 @@ footer {
       background-color: #ffffff;
       color: #008d2c; }
 
+@media (max-width: 1100px) {
+  .flavor {
+    padding: 20px 0px 20px 0px; }
+    .flavor .container {
+      width: 95%; }
+    .flavor h2 {
+      font-size: 46px;
+      line-height: 40px; }
+    .flavor p {
+      font-size: 16px;
+      line-height: 28px; }
+    .flavor .products {
+      padding-top: 10px; }
+      .flavor .products .heading {
+        position: relative;
+        margin-bottom: 20px; }
+        .flavor .products .heading span {
+          width: 31%; }
+        .flavor .products .heading h3 {
+          font-size: 26px; }
+      .flavor .products ul {
+        width: 100%; } }
+
 @media (max-width: 767px) {
   .flavor {
     padding: 20px 0px 20px 0px; }
