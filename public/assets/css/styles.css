@@ -346,7 +346,7 @@ strong {
 
 .modal-content {
   position: relative;
-  background-color: #ffffff;
+  background-color: #006c23;
   -webkit-border-radius: 6px;
           border-radius: 6px;
   -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
@@ -376,7 +376,7 @@ strong {
 
 .modal-header {
   padding: 15px 6px 6px 6px;
-  border-bottom: 1px solid #ebebeb;
+  border-bottom: 1px solid #004315;
   zoom: 1; }
   .modal-header:before, .modal-header:after {
     content: " ";
@@ -391,14 +391,22 @@ strong {
   float: right;
   height: auto;
   padding: 0 10px;
-  font-weight: bold; }
+  font-weight: bold;
+  background: transparent;
+  border: 0;
+  font-size: 28px;
+  color: #fff200; }
 
 .modal-title {
-  margin: 0; }
+  margin: -6px 0px 0px 0px; }
 
 .modal-body {
   position: relative;
-  padding: 10px; }
+  padding: 10px;
+  min-height: 200px; }
+  .modal-body.loading {
+    background: url('../images/loading-yellow.gif') no-repeat;
+    background-position: center; }
 
 .modal-footer {
   padding: 10px;

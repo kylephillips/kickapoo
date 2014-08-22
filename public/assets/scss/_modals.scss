@@ -38,7 +38,7 @@
 // Actual modal
 .modal-content {
 	position: relative;
-	background-color: $white;
+	background-color: $green-dark;
 	border-radius: 6px;
 	box-shadow: 0 3px 9px rgba(0,0,0,.5);
 	background-clip: padding-box;
@@ -67,7 +67,7 @@
 
 .modal-header {
 	padding: 15px 6px 6px 6px;
-	border-bottom: 1px solid darken($white, 8%);
+	border-bottom: 1px solid darken($green-dark, 8%);
 	@include clearfix;
 }
 // Close icon
@@ -77,16 +77,25 @@
 	height: auto;
 	padding: 0 10px;
 	font-weight: bold;
+	background: transparent;
+	border: 0;
+	font-size: 28px;
+	color: $yellow;
 }
 
 // Title text within header
 .modal-title {
-	margin: 0;
+	margin: -6px 0px 0px 0px;
 }
 
 .modal-body {
 	position: relative;
 	padding: 10px;
+	min-height: 200px;
+	&.loading {
+		background: url('../images/loading-yellow.gif') no-repeat;
+		background-position: center;
+	}
 }
 
 // Footer (for actions)

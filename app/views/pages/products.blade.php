@@ -55,8 +55,8 @@
 							<img src="{{URL::asset('assets/images/product-size-fpo.png')}}" alt="{{$flavor['title']}} in {{$product->size->title}}" />
 						@endif
 						<p>
-							<a href="#productmodal" data-toggle="modal">Ingredients</a>
-							<a href="#productmodal" data-toggle="modal">Nutrition</a>
+							<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$product->size->title}} Ingredients" data-id="{{$product->id}}" data-type="ingredients">Ingredients</a>
+							<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$product->size->title}} Nutrition" data-id="{{$product->id}}" data-type="nutrition">Nutrition</a>
 						</p>
 					</li>
 				@endforeach
@@ -75,9 +75,9 @@
 		<div class="modal-content">
 			<div class="modal-header">
 				<button type="button" class="close btn btn-mini" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">test</h4>
+				<h4 class="modal-title"></h4>
 			</div>
-			<div class="modal-body loading">test</div>
+			<div class="modal-body"></div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
@@ -94,6 +94,57 @@
 @endif
 
 <script>
+
+/**
+* Load in modal info
+*/
+$('.open-modal').on('click', function(e){
+	e.preventDefault();
+	
+	var modal = $(this).attr('href');
+	var title = $(this).data('title');
+	var content = $(this).data('type');
+	var id = $(this).data('id');
+	
+	$(modal).find('.modal-body').addClass('loading').empty();
+	$(modal).find('.modal-title').text(title);
+
+	$(modal).modal('show');
+
+	load_modal_content(modal, content, id);
+
+});
+function load_modal_content(modal, content, id)
+{
+	$.ajax({
+		url : "{{URL::route('modal_info')}}",
+		type: 'GET',
+		data : {
+			content: content,
+			id: id
+		},
+		success: function(data){
+			if ( content === 'ingredients' ){
+				load_ingredients(data, modal);
+			} else {
+				load_nutrition(data, modal);
+			}
+		}
+	});
+}
+function load_ingredients(data, modal)
+{
+	var html = "";
+	if ( data.content ) html += data.content;
+	html += data.ingredients;
+	$(modal).find('.modal-body').html(html).removeClass('loading');
+}
+function load_nutrition(data, modal)
+{
+	var html = '<img src="{{URL::asset('assets/uploads/product_images')}}/' + data.nutrition + '">';
+	$(modal).find('.modal-body').html(html).removeClass('loading');
+}
+
 /**
 * Only load large flavor images 
 */
