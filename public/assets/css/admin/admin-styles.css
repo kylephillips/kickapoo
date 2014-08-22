@@ -942,6 +942,10 @@ table {
     .page-list li strong {
       margin-top: 8px;
       display: inline-block; }
+    .page-list li label {
+      display: inline;
+      float: right;
+      margin: 5px 30px 0px 0px; }
 
 .login {
   padding-top: 50px;

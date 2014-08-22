@@ -9,7 +9,7 @@ class PageRepository {
 	*/
 	public function getNavigation()
 	{
-		return Page::where('status', 'publish')->where('menu_order', '!=', 0)->orderBy('menu_order')->get();
+		return Page::where('status', 'publish')->where('show_in_menu', '=', 1)->orderBy('menu_order')->get();
 	}
 
 	/**

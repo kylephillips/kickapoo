@@ -25,6 +25,7 @@ class CreatePagesTable extends Migration {
 			$table->string('seo_title')->nullable();
 			$table->text('seo_description')->nullable();
 			$table->integer('menu_order');
+			$table->integer('show_in_menu')->default(1);
 			$table->timestamps();
 		});
 	}

@@ -181,4 +181,17 @@ class PageController extends BaseController {
 		return Response::json(['status'=>'success']);
 	}
 
+
+	/**
+	* Toggle the Page's menu visibility
+	*/
+	public function menuToggle()
+	{
+		$page = $this->page_repo->getPage(Input::get('slug'));
+		$page->show_in_menu = ( Input::get('show') == '1' ) ? 1 : 0;
+		$page->save();
+		return Response::json(['status'=>'success']);
+	}
+
+
 }
