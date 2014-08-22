@@ -150,6 +150,7 @@ class ProductController extends \BaseController {
 		return Response::json(['status'=>'success']);
 	}
 
+
 	/**
 	 * Remove the flavor/products
 	 *
@@ -160,6 +161,24 @@ class ProductController extends \BaseController {
 		$flavor = $this->product_repo->getFlavor($id);
 		$flavor->delete();
 		return Response::json(['status'=>'success']);
+	}
+
+
+	/**
+	* Get Info for display in modal window
+	*/
+	public function modalInfo()
+	{
+		$product = $this->product_repo->getProduct(Input::get('id'));
+		$nutrition = $product->nutrition_label;
+		$ingredients = $product->ingredients;
+		$content = $product->content;
+		return Response::json([
+			'status'=>'success', 
+			'nutrition'=>$nutrition, 
+			'ingredients'=>$ingredients,
+			'content'=>$content
+		]);
 	}
 
 

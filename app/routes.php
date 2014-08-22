@@ -4,6 +4,7 @@
 */
 Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
 Route::get('products', ['as'=>'products', 'uses'=>'ProductController@index']);
+Route::get('modal-info', ['as'=>'modal_info', 'uses'=>'ProductController@modalInfo']);
 
 /**
 * Forms
