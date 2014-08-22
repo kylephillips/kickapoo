@@ -107,6 +107,18 @@ function load_large_images()
 	}
 }
 
+/**
+* Parallax Cans
+*/
+$(window).bind('scroll',function(e){
+	parallaxScroll();
+});
+function parallaxScroll(){
+	var scrolled = $(window).scrollTop();
+	$('.joy-juice .large-image').css('top', (-30+(scrolled * .15))+'px');
+	$('.fruit-shine .large-image').css('top', (200-(scrolled * .15))+'px');
+}
+
 </script>
 @stop
 

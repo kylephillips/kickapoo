@@ -1395,7 +1395,7 @@ footer {
   .flavor .large-image {
     position: absolute;
     left: 0;
-    top: 0px;
+    top: -30px;
     width: 31%;
     max-width: 350px; }
   .flavor .content {
@@ -1519,7 +1519,8 @@ footer {
   padding-top: 50px; }
   .fruit-shine .large-image {
     left: auto;
-    right: 0; }
+    right: 0;
+    top: -200px; }
   .fruit-shine .content {
     float: left;
     width: 67.44186%; }
@@ -1531,6 +1532,8 @@ footer {
     background: url('../images/red-bullet-hr.png') repeat-x; }
   .fruit-shine .products .heading h3 {
     color: #c50d17; }
+  .fruit-shine .products ul li img {
+    border-color: #510102; }
   .fruit-shine .products ul li strong {
     color: #510102; }
   .fruit-shine .products ul li p a {

@@ -12,7 +12,7 @@
 	.large-image {
 		position: absolute;
 		left: 0;
-		top: 0px;
+		top: -30px;
 		width: 31%; //364/1290
 		max-width: 350px;
 	}
@@ -135,6 +135,7 @@
 	.large-image {
 		left: auto;
 		right: 0;
+		top: -200px;
 	}
 	.content {
 		float: left;
@@ -156,6 +157,9 @@
 			}
 		}
 		ul li {
+			img {
+				border-color: $red-dark;
+			}
 			strong {
 				color: $red-dark;
 			}
