@@ -1,0 +1,230 @@
+//
+// Products Page
+// --------------------------------------------------
+.flavor {
+	overflow: hidden;
+	padding: 20px 0px 20px 0px;
+	.container {
+		max-width: none;
+		width: 85%;
+		position: relative;
+	}
+	.large-image {
+		position: absolute;
+		left: 0;
+		top: 0px;
+		width: 31%; //364/1290
+		max-width: 350px;
+	}
+	.content {
+		float: right;
+		width: 67.4418604651%; //870/1290
+		@include clearfix;
+		.description {
+			float: left;
+			width: 66.6666666667%; //560/840
+		}
+		.description-image {
+			float: right;
+			width: 27.1428571429%; //228/840
+			max-width: 225px;
+		}
+	}
+	h2 {
+		@include altGothic;
+		-webkit-font-smoothing: antialiased;
+		text-transform: uppercase;
+		font-size: 72px;
+		line-height: 60px;
+		margin: 0;
+	}
+	p {
+		font-size: 18px;
+		line-height: 34px;
+	}
+	.products {
+		clear: both;
+		padding-top: 20px;
+		text-align: center;
+		.heading {
+			position: relative;
+			margin-bottom: 30px;
+			@include clearfix;
+			span {
+				position: absolute;
+				width: 33.33%;
+				display: block;
+				background: url('../images/green-bullet-hr.png') repeat-x;
+				height: 8px;
+				left: 0;
+				top: 8px;
+				&.right {
+					left: auto;
+					right: 0;
+				}
+			}
+			h3 {
+				@include thirsty;
+				color: $yellow;
+				-webkit-font-smoothing: antialiased;
+				font-size: 36px;
+			}
+		} // .headling
+		ul {
+			display: inline-block;
+			width: 90%;
+			@include clearfix;
+			li {
+				float: left;
+				&:first-child {
+					margin-left: 0;
+				}
+				strong {
+					display: block;
+					@include altGothic;
+					font-size: 24px;
+					margin-bottom: 8px;
+				}
+				img {
+					margin-bottom: 10px;
+					width: 80%;
+					max-width: 215px;
+				}
+				p {
+					color: $yellow;
+					font-size: 15px;
+					a {
+						display: inline-block;
+						background-color: rgba(0,0,0,.15);
+						padding: 6px 10px;
+						border-radius: 3px;
+						line-height: 15px;
+						transition: all 200ms ease;
+						&:hover {
+							background-color: $white;
+							color: $green;
+						}
+					}
+				} // p
+			} // li 
+			&.four li {
+				width: 25%;
+			}
+			&.three li {
+				width: 33.33%;
+			}
+			&.two li {
+				width: 50%;
+			}
+		} // ul
+	} // .products
+} // .flavor
+
+
+.joy-juice {
+	background-image: url('../images/kickapoo-giant.png');
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+
+.fruit-shine {
+	background-image: url('../images/pattern-type-yellow.png');
+	padding-top: 50px;
+	.large-image {
+		left: auto;
+		right: 0;
+	}
+	.content {
+		float: left;
+		width: 67.4418604651%; //870/1290
+	}
+	h2 {
+		color: $red-dark;
+	}
+	p {
+		color: $black;
+	}
+	.products {
+		.heading {
+			span {
+				background: url('../images/red-bullet-hr.png') repeat-x;
+			}
+			h3 {
+				color: $red;
+			}
+		}
+		ul li {
+			strong {
+				color: $red-dark;
+			}
+			p a {
+				color: $red-dark;
+				background-color: rgba(0,0,0,.15);
+				&:hover {
+					background-color: $white;
+					color: $green;
+				}
+			} // p
+		} // ul
+	}
+} // .fruit-shine
+
+
+@media(max-width: 767px)
+{
+	.flavor {
+		padding: 20px 0px 20px 0px;
+		.container {
+			max-width: none;
+			width: 100%;
+		}
+		.large-image {
+			display: none;
+		}
+		.content {
+			float: none;
+			width: 100%;
+			.description {
+				float: none;
+				width: 100%;
+			}
+			.description-image {
+				display: none;
+			}
+		}
+		h2 {
+			font-size: 45px;
+			line-height: 50px;
+			text-align: center;
+		}
+		p {
+			text-align: center;
+			font-size: 16px;
+			line-height: 28px;
+		}
+		.products {
+			.heading {
+				span {
+					display: none;
+				}
+				h3 {
+					font-size: 28px;
+				}
+			}
+			ul {
+				display: block;
+				width: 100%;
+				li {
+					float: none;
+					img {
+						max-width: none;
+					}
+				} // li 
+				&.four li, &.three li, &.two li {
+					width: 100%;
+				}
+			} // ul
+		} // .products
+	} // .flavor
+}

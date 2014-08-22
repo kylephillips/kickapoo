@@ -25,11 +25,13 @@ class ProductFactory {
 	{
 		$image = ( isset($input['image']) ) ? $this->attachImage($input['image']) : null;
 		$content = ( isset($input['content']) ) ? $input['content'] : null;
+		$css_class = ( isset($input['css_class']) ) ? $input['css_class'] : null;
 		$flavor = Flavor::create([
 			'title' => $input['title'],
 			'slug' => \Str::slug($input['title']),
 			'image' => $image,
-			'content' => $content
+			'content' => $content,
+			'css_class' => $css_class
 		]);
 		if ( isset($input['new_product']) ) $this->addTypes($input['new_product'], $flavor->id);
 	}
@@ -47,6 +49,7 @@ class ProductFactory {
 		$flavor->slug = \Str::slug($input['flavor_title']);
 		$flavor->content = ( isset($input['flavor_content']) ) ? $input['flavor_content'] : null;
 		if ( isset($input['flavor_image']) ) $flavor->image = $this->attachImage($input['flavor_image']);
+		$flavor->css_class = ( isset($input['css_class']) ) ? $input['css_class'] : null;
 		$flavor->save();
 		if ( isset($input['product']) ) $this->updateTypes($input['product'], $id);
 		if ( isset($input['add_new']) ) $this->addTypes($input['new_product'], $id);

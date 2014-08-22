@@ -31,6 +31,16 @@ a {
   min-height: 100%;
   background: url('../../images/ray-bg.png') no-repeat center top fixed; }
 
+.clearfix {
+  zoom: 1; }
+  .clearfix:before, .clearfix:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+  .clearfix:after {
+    clear: both; }
+
 .container {
   margin: 0 auto; }
 
@@ -498,7 +508,7 @@ input[type='text'], input[type='password'], input[type='email'] {
 
 input[type='submit'] {
   border: 0;
-  background-color: #00702c;
+  background-color: #31708f;
   font-size: 16px;
   color: #ffffff;
   -webkit-border-radius: 3px;
@@ -642,6 +652,16 @@ form .slug {
     border: 0;
     margin: 20px 0;
     height: 5px; }
+
+.delete-well {
+  background-color: #fce4e5;
+  padding: 8px;
+  margin: 20px 0;
+  clear: both;
+  -webkit-border-radius: 3px;
+          border-radius: 3px; }
+  .delete-well .btn {
+    font-size: 14px; }
 
 .pagination {
   zoom: 1;

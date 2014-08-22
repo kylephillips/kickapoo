@@ -48,6 +48,7 @@
 	<div class="page loading">
 	@endif
 
+
 	<nav class="mobile-nav">
 		@include('partials.mobilenav')
 	</nav>
@@ -55,7 +56,10 @@
 	<div class="page-wrap">
 		@if( $page_slug == 'home' )
 		<section class="home-hero">
+		@else
+		<section class="page-hero">
 		@endif
+
 
 		@include('partials.header')
 		

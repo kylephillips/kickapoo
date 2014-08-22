@@ -1,0 +1,32 @@
+//
+// Global Page Styles
+// --------------------------------------------------
+.page-hero {
+	text-align: center;
+	background: url('../images/page-hero-rays.jpg'), #019d38;
+	background-repeat: no-repeat;
+	background-position: top center;
+	box-shadow: inset 0px 30px 100px 0px rgba(0,0,0,.4);
+	padding-bottom: 50px;
+	p {
+		font-size: 18px;
+		font-weight: bold;
+		line-height: 30px;
+	}
+	.header-image {
+		margin-bottom: 20px;
+	}
+	.bubble-pattern {
+		margin-bottom: -50px;
+	}
+}
+
+@media(max-width: 767px)
+{
+	.page-hero {
+		padding-bottom: 20px;
+		.bubble-pattern {
+			display: none;
+		}
+	}
+}

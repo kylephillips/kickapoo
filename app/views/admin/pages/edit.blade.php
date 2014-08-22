@@ -156,7 +156,9 @@
 		{{Form::submit('Save Page', ['class'=>'btn btn-primary'])}}
 		
 		@if($page['slug'] !== 'home')
-			<a href="{{URL::route('destroy_page', ['slug'=>$page['slug']])}}" class="btn btn-danger pull-right">Delete Page</a>
+		<div class="delete-well">
+			<a href="{{URL::route('destroy_page', ['slug'=>$page['slug']])}}" class="btn btn-danger">Delete Page</a>
+		</div>
 		@endif
 
 		{{Form::close()}}

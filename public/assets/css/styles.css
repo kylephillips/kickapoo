@@ -1361,3 +1361,218 @@ footer {
 @media (max-width: 767px) {
   .joy-meter {
     display: none !important; } }
+
+.page-hero {
+  text-align: center;
+  background: url('../images/page-hero-rays.jpg'), #019d38;
+  background-repeat: no-repeat;
+  background-position: top center;
+  -webkit-box-shadow: inset 0px 30px 100px 0px rgba(0, 0, 0, 0.4);
+          box-shadow: inset 0px 30px 100px 0px rgba(0, 0, 0, 0.4);
+  padding-bottom: 50px; }
+  .page-hero p {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 30px; }
+  .page-hero .header-image {
+    margin-bottom: 20px; }
+  .page-hero .bubble-pattern {
+    margin-bottom: -50px; }
+
+@media (max-width: 767px) {
+  .page-hero {
+    padding-bottom: 20px; }
+    .page-hero .bubble-pattern {
+      display: none; } }
+
+.flavor {
+  overflow: hidden;
+  padding: 20px 0px 20px 0px; }
+  .flavor .container {
+    max-width: none;
+    width: 85%;
+    position: relative; }
+  .flavor .large-image {
+    position: absolute;
+    left: 0;
+    top: 0px;
+    width: 31%;
+    max-width: 350px; }
+  .flavor .content {
+    float: right;
+    width: 67.44186%;
+    zoom: 1; }
+    .flavor .content:before, .flavor .content:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */ }
+    .flavor .content:after {
+      clear: both; }
+    .flavor .content .description {
+      float: left;
+      width: 66.66667%; }
+    .flavor .content .description-image {
+      float: right;
+      width: 27.14286%;
+      max-width: 225px; }
+  .flavor h2 {
+    font-family: "alternate-gothic-no-2-d", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    text-transform: uppercase;
+    font-size: 72px;
+    line-height: 60px;
+    margin: 0; }
+  .flavor p {
+    font-size: 18px;
+    line-height: 34px; }
+  .flavor .products {
+    clear: both;
+    padding-top: 20px;
+    text-align: center; }
+    .flavor .products .heading {
+      position: relative;
+      margin-bottom: 30px;
+      zoom: 1; }
+      .flavor .products .heading:before, .flavor .products .heading:after {
+        content: " ";
+        /* 1 */
+        display: table;
+        /* 2 */ }
+      .flavor .products .heading:after {
+        clear: both; }
+      .flavor .products .heading span {
+        position: absolute;
+        width: 33.33%;
+        display: block;
+        background: url('../images/green-bullet-hr.png') repeat-x;
+        height: 8px;
+        left: 0;
+        top: 8px; }
+        .flavor .products .heading span.right {
+          left: auto;
+          right: 0; }
+      .flavor .products .heading h3 {
+        font-family: 'thirsty', 'proxima-nova', sans-serif;
+        color: #fff200;
+        -webkit-font-smoothing: antialiased;
+        font-size: 36px; }
+    .flavor .products ul {
+      display: inline-block;
+      width: 90%;
+      zoom: 1; }
+      .flavor .products ul:before, .flavor .products ul:after {
+        content: " ";
+        /* 1 */
+        display: table;
+        /* 2 */ }
+      .flavor .products ul:after {
+        clear: both; }
+      .flavor .products ul li {
+        float: left; }
+        .flavor .products ul li:first-child {
+          margin-left: 0; }
+        .flavor .products ul li strong {
+          display: block;
+          font-family: "alternate-gothic-no-2-d", sans-serif;
+          font-style: normal;
+          font-weight: 400;
+          font-size: 24px;
+          margin-bottom: 8px; }
+        .flavor .products ul li img {
+          margin-bottom: 10px;
+          width: 80%;
+          max-width: 215px; }
+        .flavor .products ul li p {
+          color: #fff200;
+          font-size: 15px; }
+          .flavor .products ul li p a {
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0.15);
+            padding: 6px 10px;
+            -webkit-border-radius: 3px;
+                    border-radius: 3px;
+            line-height: 15px;
+            -webkit-transition: all 200ms ease;
+                 -o-transition: all 200ms ease;
+                    transition: all 200ms ease; }
+            .flavor .products ul li p a:hover {
+              background-color: #ffffff;
+              color: #008d2c; }
+      .flavor .products ul.four li {
+        width: 25%; }
+      .flavor .products ul.three li {
+        width: 33.33%; }
+      .flavor .products ul.two li {
+        width: 50%; }
+
+.joy-juice {
+  background-image: url('../images/kickapoo-giant.png');
+  background-repeat: no-repeat;
+  background-position: center; }
+
+.fruit-shine {
+  background-image: url('../images/pattern-type-yellow.png');
+  padding-top: 50px; }
+  .fruit-shine .large-image {
+    left: auto;
+    right: 0; }
+  .fruit-shine .content {
+    float: left;
+    width: 67.44186%; }
+  .fruit-shine h2 {
+    color: #510102; }
+  .fruit-shine p {
+    color: #000000; }
+  .fruit-shine .products .heading span {
+    background: url('../images/red-bullet-hr.png') repeat-x; }
+  .fruit-shine .products .heading h3 {
+    color: #c50d17; }
+  .fruit-shine .products ul li strong {
+    color: #510102; }
+  .fruit-shine .products ul li p a {
+    color: #510102;
+    background-color: rgba(0, 0, 0, 0.15); }
+    .fruit-shine .products ul li p a:hover {
+      background-color: #ffffff;
+      color: #008d2c; }
+
+@media (max-width: 767px) {
+  .flavor {
+    padding: 20px 0px 20px 0px; }
+    .flavor .container {
+      max-width: none;
+      width: 100%; }
+    .flavor .large-image {
+      display: none; }
+    .flavor .content {
+      float: none;
+      width: 100%; }
+      .flavor .content .description {
+        float: none;
+        width: 100%; }
+      .flavor .content .description-image {
+        display: none; }
+    .flavor h2 {
+      font-size: 45px;
+      line-height: 50px;
+      text-align: center; }
+    .flavor p {
+      text-align: center;
+      font-size: 16px;
+      line-height: 28px; }
+    .flavor .products .heading span {
+      display: none; }
+    .flavor .products .heading h3 {
+      font-size: 28px; }
+    .flavor .products ul {
+      display: block;
+      width: 100%; }
+      .flavor .products ul li {
+        float: none; }
+        .flavor .products ul li img {
+          max-width: none; }
+      .flavor .products ul.four li, .flavor .products ul.three li, .flavor .products ul.two li {
+        width: 100%; } }
