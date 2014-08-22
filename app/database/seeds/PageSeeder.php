@@ -11,7 +11,8 @@ class PageSeeder extends Seeder {
 			'author' => 1,
 			'status' => 'publish',
 			'template' => 'home',
-			'menu_order' => 0
+			'menu_order' => 0,
+			'show_in_menu' => 0
 		]);
 		Page::create([
 			'title' => 'History',
@@ -22,18 +23,20 @@ class PageSeeder extends Seeder {
 			'template' => 'history',
 			'seo_title' => 'History',
 			'seo_description' => 'The history of Kickapoo Joy Juice',
-			'menu_order' => 1
+			'menu_order' => 1,
+			'show_in_menu' => 1
 		]);
 		Page::create([
 			'title' => 'Products',
 			'slug' => 'products',
-			'content' => '<p>Products Lorem Ipsum</p>',
+			'content' => '<p>Kickapoo Joy Juice and Kickapoo Fruit Shine sodas offer unique flavors such as heavy citrus and sangria that will have your taste buds exploding. Delighting soft drink customers since 1934, Kickapoo has the superior flavor and the caffeine to give you the kick you crave.</p>',
 			'author' => 1,
 			'status' => 'publish',
 			'template' => 'products',
 			'seo_title' => 'Products',
 			'seo_description' => 'Kickapoo Joy Juice products',
-			'menu_order' => 2
+			'menu_order' => 2,
+			'show_in_menu' => 1
 		]);
 		Page::create([
 			'title' => 'Locate',
@@ -44,7 +47,8 @@ class PageSeeder extends Seeder {
 			'template' => 'locate',
 			'seo_title' => 'Locate',
 			'seo_description' => 'Find Kickapoo Joy Juice near you',
-			'menu_order' => 3
+			'menu_order' => 3,
+			'show_in_menu' => 1
 		]);
 		Page::create([
 			'title' => 'Contact',
@@ -55,7 +59,8 @@ class PageSeeder extends Seeder {
 			'template' => 'contact',
 			'seo_title' => 'Contact',
 			'seo_description' => 'Contact Kickapoo Joy Juice',
-			'menu_order' => 4
+			'menu_order' => 4,
+			'show_in_menu' => 1
 		]);
 	}
 

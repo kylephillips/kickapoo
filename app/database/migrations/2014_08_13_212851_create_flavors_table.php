@@ -20,6 +20,7 @@ class CreateFlavorsTable extends Migration {
 			$table->string('slug')->unique();
 			$table->text('content')->nullable();
 			$table->string('image')->nullable();
+			$table->string('css_class')->nullable();
 			$table->timestamps();
 		});
 	}

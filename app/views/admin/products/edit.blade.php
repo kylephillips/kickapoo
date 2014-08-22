@@ -31,6 +31,10 @@
 					{{Form::textarea('flavor_content', $flavor->content, ['class'=>'redactor'])}}
 				</p>
 				<p>
+					{{Form::label('css_class', 'CSS Class (for display)')}}
+					{{Form::text('css_class', $flavor->css_class)}}
+				</p>
+				<p>
 					{{Form::label('flavor_image', 'Image (365px &times; 690px)')}}
 					@if($flavor->image)
 						<div class="image-thumb">
@@ -46,6 +50,10 @@
 				</p>
 			</div><!-- .fields -->
 		</div><!-- .flavor-fields -->
+
+		@if($flavor->products)
+			<div class="alert alert-info">Click a row to edit the product, or click and drag the number to reorder products.</div>
+		@endif
 
 		<ul class="products">
 		<?php $i = 1; ?>
@@ -73,38 +81,44 @@
 							{{Form::label('product[' . $i . '][ingredients]', 'Ingredients')}}
 							{{Form::textarea('product[' . $i . '][ingredients]', $product->ingredients)}}
 						</p>
-						<div class="half">
-							{{Form::label('product[' . $i . '][image]', 'Image')}}
-							@if($product->image)
-								<div class="image-thumb">
-									<button class="remove-thumb">&times;</button>
-									<img src="{{URL::asset('assets/uploads/product_images/_thumbs')}}/{{$product->image}}">
-								</div>
-								<div class="image-file" style="display:none;">
+						<div class="clearfix">
+							<div class="half">
+								{{Form::label('product[' . $i . '][image]', 'Image')}}
+								@if($product->image)
+									<div class="image-thumb">
+										<button class="remove-thumb">&times;</button>
+										<img src="{{URL::asset('assets/uploads/product_images/_thumbs')}}/{{$product->image}}">
+									</div>
+									<div class="image-file" style="display:none;">
+										{{Form::file('product[' . $i . '][image]')}}
+									</div>
+								@else
 									{{Form::file('product[' . $i . '][image]')}}
-								</div>
-							@else
-								{{Form::file('product[' . $i . '][image]')}}
-							@endif
-						</div>
-						<div class="half right">
-							{{Form::label('product[' . $i . '][nutrition_label]', 'Nutrition Label')}}
-							@if($product->nutrition_label)
-								<div class="image-thumb">
-									<button class="remove-thumb">&times;</button>
-									<img src="{{URL::asset('assets/uploads/product_images/_thumbs')}}/{{$product->nutrition_label}}">
-								</div>
-								<div class="image-file" style="display:none;">
+								@endif
+							</div>
+							<div class="half right">
+								{{Form::label('product[' . $i . '][nutrition_label]', 'Nutrition Label')}}
+								@if($product->nutrition_label)
+									<div class="image-thumb">
+										<button class="remove-thumb">&times;</button>
+										<img src="{{URL::asset('assets/uploads/product_images/_thumbs')}}/{{$product->nutrition_label}}">
+									</div>
+									<div class="image-file" style="display:none;">
+										{{Form::file('product[' . $i . '][nutrition_label]')}}
+									</div>
+								@else
 									{{Form::file('product[' . $i . '][nutrition_label]')}}
-								</div>
-							@else
-								{{Form::file('product[' . $i . '][nutrition_label]')}}
-							@endif
+								@endif
+							</div>
 						</div>
 						<p>
 							{{Form::hidden('product[' . $i . '][product_id]', $product->id)}}
-							<a href="#" class="btn btn-danger delete-product" data-id="{{$product->id}}"><i class="icon-remove"></i> Delete Product</a>
 						</p>
+
+						<div class="delete-well">
+							<a href="#" class="btn btn-danger delete-product" data-id="{{$product->id}}"><i class="icon-remove"></i> Delete Product</a>
+						</div>
+
 					</div><!-- .product-fields -->
 				</section>
 			</li><!-- .field -->

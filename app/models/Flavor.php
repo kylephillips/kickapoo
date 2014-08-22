@@ -4,7 +4,7 @@ class Flavor extends Eloquent {
 	protected $table = 'flavors';
 
 	protected $fillable = [
-		'title', 'slug', 'content', 'image'
+		'title', 'slug', 'content', 'image', 'css_class', 'order'
 	];
 
 	public function products()

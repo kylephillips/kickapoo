@@ -11,13 +11,15 @@ class FlavorSeeder extends Seeder {
 			'title' => 'Kickapoo Joy Juice',
 			'slug' => 'kickapoo-joy-juice',
 			'order' => 0,
-			'content' => 'Test Kickapoo Joy Juice content lorem ipsum'
+			'css_class' => 'joy-juice',
+			'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium rutrum massa, vel vulputate velit eleifend eu. Aliquam semper quam et magna egestas, vitae scelerisque urna vulputate. In sem velit, molestie sed consectetur nec, luctus sed mi.'
 		]);
 		Flavor::create([
 			'title' => 'Kickapoo Fruit Shine',
 			'slug' => 'kickapoo-fruit-shine',
 			'order' => 1,
-			'content' => 'Test Kickapoo Fruit Shine content lorem ipsum'
+			'css_class' => 'fruit-shine',
+			'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque pretium rutrum massa, vel vulputate velit eleifend eu. Aliquam semper quam et magna egestas, vitae scelerisque urna vulputate. In sem velit, molestie sed consectetur nec, luctus sed mi.'
 		]);
 	}
 
