@@ -1484,7 +1484,8 @@ footer {
         .flavor .products ul li img {
           margin-bottom: 10px;
           width: 80%;
-          max-width: 215px; }
+          max-width: 215px;
+          border: 2px solid #008d2c; }
         .flavor .products ul li p {
           color: #fff200;
           font-size: 15px; }
@@ -1538,6 +1539,10 @@ footer {
     .fruit-shine .products ul li p a:hover {
       background-color: #ffffff;
       color: #008d2c; }
+
+@media (max-width: 1350px) {
+  .flavor h2 {
+    font-size: 65px; } }
 
 @media (max-width: 1100px) {
   .flavor {

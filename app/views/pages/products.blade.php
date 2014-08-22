@@ -20,7 +20,7 @@
 <section class="flavor {{$flavor->css_class}}">
 	<div class="container">
 	
-		<img src="{{URL::asset('assets/uploads/product_images')}}/{{$flavor->image}}" alt="{{$flavor->title}}" class="large-image" />
+		<div class="large-image" data-image="{{$flavor->image}}" data-title="{{$flavor->title}}"></div>
 
 		<section class="content">
 
@@ -48,8 +48,9 @@
 				@foreach($flavor->products as $product)
 					<li>
 						<strong>{{$product->size->title}}</strong>
-						@if($product->size->image)
-							<img src="{{URL::asset('assets/uploads/product_images')}}/{{$product->size->image}}" alt="{{$flavor['title']}} in {{$product->size->title}}" />
+						@if($product->image)
+						{{$product->size->ingredients}}
+							<img src="{{URL::asset('assets/uploads/product_images')}}/{{$product->image}}" alt="{{$flavor['title']}} in {{$product->size->title}}" />
 						@else
 							<img src="{{URL::asset('assets/images/product-size-fpo.png')}}" alt="{{$flavor['title']}} in {{$product->size->title}}" />
 						@endif
@@ -69,3 +70,46 @@
 @endforeach
 
 @stop
+
+@section('footercontent')
+<script>
+/**
+* Only load large flavor images 
+*/
+$(document).ready(function(){
+	load_large_images();
+});
+
+$(window).resize(function(){
+	delay(function(){
+		load_large_images();
+	}, 100);
+});
+
+var delay = (function(){
+	var timer = 0;
+	return function(callback, ms){
+		clearTimeout (timer);
+		timer = setTimeout(callback, ms);
+	};
+})();
+
+function load_large_images()
+{
+	if ( $(window).width() > 767 ){
+		var images = $('.large-image');
+		$.each(images, function(i, v){
+			var image = $(this).data('image');
+			var title = $(this).data('title');
+			var html = '<img src="{{URL::asset('assets/uploads/product_images')}}/' + image + '" alt="' + title + '" />';
+			$(this).html(html);
+		});
+	}
+}
+
+</script>
+@stop
+
+
+
+

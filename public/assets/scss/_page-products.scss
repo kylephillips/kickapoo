@@ -89,6 +89,7 @@
 					margin-bottom: 10px;
 					width: 80%;
 					max-width: 215px;
+					border: 2px solid $green;
 				}
 				p {
 					color: $yellow;
@@ -169,6 +170,13 @@
 		} // ul
 	}
 } // .fruit-shine
+
+@media(max-width: 1350px)
+{
+	.flavor h2 {
+		font-size: 65px;
+	}
+}
 
 
 @media(max-width: 1100px)
