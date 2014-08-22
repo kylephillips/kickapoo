@@ -55,8 +55,8 @@
 							<img src="{{URL::asset('assets/images/product-size-fpo.png')}}" alt="{{$flavor['title']}} in {{$product->size->title}}" />
 						@endif
 						<p>
-							<a href="#">Ingredients</a>
-							<a href="#">Nutrition</a>
+							<a href="#productmodal" data-toggle="modal">Ingredients</a>
+							<a href="#productmodal" data-toggle="modal">Nutrition</a>
 						</p>
 					</li>
 				@endforeach
@@ -69,9 +69,30 @@
 </section><!-- .flavor -->
 @endforeach
 
+<!-- Product Info Modal -->
+<div class="modal fade" id="productmodal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close btn btn-mini" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">test</h4>
+			</div>
+			<div class="modal-body loading">test</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div><!-- /.modal -->
+
 @stop
 
 @section('footercontent')
+
+@if(!Auth::check())
+<script src="{{URL::asset('assets/js/modal.js')}}"></script>
+@endif
+
 <script>
 /**
 * Only load large flavor images 
