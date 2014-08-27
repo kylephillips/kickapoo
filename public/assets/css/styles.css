@@ -808,6 +808,8 @@ footer {
   footer section, footer nav {
     float: none;
     width: 100%; }
+  footer section {
+    text-align: center; }
   footer nav {
     text-align: center; }
     footer nav ul {
@@ -815,7 +817,7 @@ footer {
       footer nav ul li {
         display: inline-block; }
   footer .logo {
-    display: block;
+    display: inline-block;
     float: none;
     margin-bottom: 20px; }
   footer p {

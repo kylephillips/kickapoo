@@ -90,6 +90,9 @@ footer {
 			float: none;
 			width: 100%;
 		}
+		section {
+			text-align: center;
+		}
 		nav {
 			text-align: center;
 			ul {
@@ -100,7 +103,7 @@ footer {
 			}
 		}
 		.logo {
-			display: block;
+			display: inline-block;
 			float: none;
 			margin-bottom: 20px;
 		}
