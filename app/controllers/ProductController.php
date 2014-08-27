@@ -23,7 +23,7 @@ class ProductController extends \BaseController {
 
 	public function __construct(PageRepository $page_repo, ProductRepository $product_repo, ProductFactory $product_factory)
 	{
-		$this->beforeFilter('auth', ['except'=>'index']);
+		$this->beforeFilter('auth', ['except'=>['index','modalInfo']]);
 		$this->page_repo = $page_repo;
 		$this->product_repo = $product_repo;
 		$this->product_factory = $product_factory;
