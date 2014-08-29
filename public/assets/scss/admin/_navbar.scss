@@ -66,6 +66,18 @@
 			position: relative;
 		}
 	}
+	.dropdown-menu {
+		top: 45px;
+		left: 0;
+		background-color: darken(#333333, 8%);
+		border: 0;
+		li a {
+			color: $white !important;
+			&:hover {
+				background-color: lighten(#333333, 8%);
+			}
+		}
+	}
 }
 
 .navclear {
