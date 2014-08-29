@@ -9,6 +9,7 @@ body {
 	height: 100%;
 	@include proxima;
 	font-size: 16px;
+	margin: 0;
 }
 a {
 	color: $info-text;

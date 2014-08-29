@@ -10,7 +10,8 @@ body {
   font-family: "proxima-nova", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px; }
+  font-size: 16px;
+  margin: 0; }
 
 a {
   color: #31708f;
@@ -93,8 +94,8 @@ h1 {
   z-index: 99999;
   top: 0;
   left: 0;
-  background-color: #262626;
-  height: 50px;
+  background-color: #333333;
+  height: 45px;
   color: #000000;
   border: 0;
   -webkit-border-radius: 0;
@@ -113,12 +114,12 @@ h1 {
     clear: both; }
   .navbar ul.nav {
     display: block;
-    float: left;
+    float: right;
     list-style-type: none;
     margin: 0;
     padding: 0;
     zoom: 1;
-    margin: 8px 0px 0px 0px; }
+    margin: -5px 0px 0px 0px; }
     .navbar ul.nav:before, .navbar ul.nav:after {
       content: " ";
       /* 1 */
@@ -128,12 +129,24 @@ h1 {
       clear: both; }
     .navbar ul.nav li {
       float: left;
-      margin-right: 20px; }
+      margin-right: 20px;
+      height: 45px;
+      line-height: 45px;
+      border-left: 1px solid #474747;
+      padding-left: 10px; }
+      .navbar ul.nav li:first-child {
+        border: 0; }
       .navbar ul.nav li a {
-        color: #ffffff; }
+        color: #ffffff;
+        font-size: 15px; }
+        .navbar ul.nav li a i {
+          color: #bfbfbf; }
       .navbar ul.nav li ul li {
         float: none;
-        margin: 0; }
+        padding-left: 0px;
+        margin: 0;
+        height: auto;
+        border: none; }
         .navbar ul.nav li ul li a {
           color: #000000; }
   .navbar ul.navbar-right {
@@ -146,7 +159,7 @@ h1 {
     margin-right: 30px;
     color: #00a950; }
     .navbar .logo img {
-      width: 100px;
+      width: 90px;
       position: relative; }
 
 .navclear {

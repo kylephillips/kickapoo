@@ -50,20 +50,12 @@
 				<li><a href="{{URL::route('create_page')}}">New Page</a></li>
 			</ul>
 		</li>
-		<li><a href="{{URL::route('form_entries')}}">Forms</a></li>
-	</ul>
-
-	<ul class="nav navbar-right">
-		@if(Route::currentRouteName() == 'page' || Route::currentRouteName() == 'products')
-		<li><a href="{{URL::route('edit_page', ['slug'=>$page_slug])}}">Edit Page</a></li>
-		@endif
-
-		
+		<li><a href="{{URL::route('form_entries')}}">Forms</a></li>		
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				{{Auth::user()->first_name}} {{Auth::user()->last_name}} <span class="caret"></span>
 			</a>
-			<ul class="dropdown-menu" role="menu">
+			<ul class="dropdown-menu pull-right" role="menu">
 				<li><a href="{{URL::route('admin.user.edit', ['id'=>Auth::user()->id])}}">Update Profile</a></li>
 				@if(Auth::user()->group_id == 1)
 					<li><a href="{{URL::route('admin.user.index')}}">Users</a></li>
@@ -74,6 +66,5 @@
 			</ul>
 		</li>
 	</ul>
-
 </nav>
 <div class="navclear"></div>

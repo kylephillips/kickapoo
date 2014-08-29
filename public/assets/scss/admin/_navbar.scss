@@ -7,8 +7,8 @@
 	z-index: 99999;
 	top: 0;
 	left: 0;
-	background-color: darken($white, 85%);
-	height: 50px;
+	background-color: #333333;
+	height: 45px;
 	color: $black;
 	border: 0;
 	border-radius: 0;
@@ -17,19 +17,33 @@
 	box-sizing: border-box;
 	ul.nav {
 		display: block;
-		float: left;
+		float: right;
 		@include unstyled;
 		@include clearfix;
-		margin: 8px 0px 0px 0px;
+		margin: -5px 0px 0px 0px;
 		li {
 			float: left;
 			margin-right: 20px;
+			height: 45px;
+			line-height: 45px;
+			border-left: 1px solid darken($white, 72%);
+			padding-left: 10px;
+			&:first-child {
+				border: 0;
+			}
 			a {
 				color: $white;
+				font-size: 15px;
+				i {
+					color: darken($white, 25%);
+				}
 			}
 			ul li {
 				float: none;
+				padding-left: 0px;
 				margin: 0;
+				height: auto;
+				border: none;
 				a {
 					color: $black;
 				}
@@ -48,7 +62,7 @@
 		margin-right: 30px;
 		color: $green;
 		img {
-			width: 100px;
+			width: 90px;
 			position: relative;
 		}
 	}
