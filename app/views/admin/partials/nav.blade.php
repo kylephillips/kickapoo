@@ -8,11 +8,11 @@
 
 	@if(Request::is('admin/*'))
 	<a class="logo" href="{{URL::route('home')}}">
-		<img src="{{URL::asset('assets/images/kickapoo-admin-logo.png')}}" alt="Kickapoo Logo" />
+		<img src="{{URL::asset('assets/images/Kickapoo-logo-rev.svg')}}" alt="Kickapoo Logo" />
 	</a>
 	@else
 	<a class="logo" href="{{URL::route('admin_index')}}">
-		<img src="{{URL::asset('assets/images/kickapoo-admin-logo.png')}}" alt="Kickapoo Logo" />
+		<img src="{{URL::asset('assets/images/Kickapoo-logo-rev.svg')}}" alt="Kickapoo Logo" />
 	</a>
 	@endif
 

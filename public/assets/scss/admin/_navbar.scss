@@ -7,19 +7,20 @@
 	z-index: 99999;
 	top: 0;
 	left: 0;
-	background-color: darken($green-dark, 8%);
-	background: linear-gradient(darken($green-dark, 5%), darken($green-dark, 8%));
-	color: $white;
+	background-color: darken($white, 85%);
+	height: 50px;
+	color: $black;
 	border: 0;
 	border-radius: 0;
-	padding: 10px;
+	padding: 5px 10px;
 	@include clearfix;
+	box-sizing: border-box;
 	ul.nav {
 		display: block;
 		float: left;
 		@include unstyled;
 		@include clearfix;
-		margin: 3px 0px 0px 0px;
+		margin: 8px 0px 0px 0px;
 		li {
 			float: left;
 			margin-right: 20px;
@@ -47,8 +48,7 @@
 		margin-right: 30px;
 		color: $green;
 		img {
-			width: auto;
-			max-height: 30px;
+			width: 100px;
 			position: relative;
 		}
 	}
@@ -56,7 +56,7 @@
 
 .navclear {
 	display: block;
-	height: 50px;
+	height: 45px;
 }
 
 .admin-nav-toggle {

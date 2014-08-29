@@ -5,24 +5,24 @@ html {
 	height: 100%;
 }
 body {
-	background-color: #009e39;
+	background-color: darken($white, 9%);
 	height: 100%;
 	@include proxima;
 	font-size: 16px;
 }
 a {
-	color: $green;
+	color: $info-text;
 	text-decoration: none;
 	transition: all 200ms ease;
 	&:hover {
-		color: $green-dark;
+		color: darken($info-text, 20%);
 		transition: all 200ms ease;
 	}
 }
 .pagewrap {
 	box-sizing: border-box;
 	min-height: 100%;
-	background: url('../../images/ray-bg.png') no-repeat center top fixed;
+	background: url('../../images/pattern-type-gray.png');
 }
 .clearfix {
 	@include clearfix;
@@ -32,7 +32,7 @@ a {
 	margin: 0 auto;
 }
 .container.small {
-	max-width: 800px;
+	max-width: 850px;
 }
 
 img {
@@ -47,7 +47,7 @@ img {
 }
 
 .well {
-	box-shadow: none;
+	box-shadow: 0px 0px 3px 0px rgba(0,0,0,.15);
 	margin-bottom: 20px;
 	hr {
 		height: 3px;
@@ -60,7 +60,7 @@ img {
 }
 
 h1 {
-	color: $white;
+	color: darken($white, 70%);
 	font-size: 30px;
 	font-weight:bold;
 	-webkit-font-smoothing: antialiased;
@@ -71,12 +71,6 @@ h1 {
 		font-size: 16px;
 		font-weight: normal;
 		margin-top: 15px;
-		a {
-			color: $white;
-			&:hover {
-				color: $yellow;
-			}
-		}
 		.btn {
 			margin-top: -20px;
 		}
