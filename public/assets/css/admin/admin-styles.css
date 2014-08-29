@@ -170,6 +170,11 @@ h1 {
       color: #ffffff !important; }
       .navbar .dropdown-menu li a:hover {
         background-color: #474747; }
+    .navbar .dropdown-menu li.light a {
+      background-color: #424242;
+      border-top: 1px solid #4d4d4d; }
+      .navbar .dropdown-menu li.light a:hover {
+        background-color: #525252; }
 
 .navclear {
   display: block;

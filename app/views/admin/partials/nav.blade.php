@@ -33,10 +33,9 @@
 				@foreach($products as $product)
 				<li><a href="{{URL::route('edit_flavor', ['id'=>$product->id])}}">{{$product->title}}</a></li>
 				@endforeach
-				<li class="divider"></li>
-				<li><a href="{{URL::route('edit_products')}}">All Products</a></li>
-				<li><a href="{{URL::route('admin.size.index')}}">Product Types</a></li>
-				<li><a href="{{URL::route('create_flavor')}}">Add a Product</a></li>
+				<li class="light"><a href="{{URL::route('edit_products')}}">All Products</a></li>
+				<li class="light"><a href="{{URL::route('admin.size.index')}}">Product Types</a></li>
+				<li class="light"><a href="{{URL::route('create_flavor')}}">Add a Product</a></li>
 			</ul>
 		</li>
 		<li class="dropdown">
@@ -45,9 +44,8 @@
 				@foreach($allpages as $page)
 				<li><a href="{{URL::route('edit_page', ['page'=>$page->slug])}}">{{$page->title}}</a></li>
 				@endforeach
-				<li class="divider"></li>
-				<li><a href="{{URL::route('page_index')}}">All Pages</a></li>
-				<li><a href="{{URL::route('create_page')}}">New Page</a></li>
+				<li class="light"><a href="{{URL::route('page_index')}}">All Pages</a></li>
+				<li class="light"><a href="{{URL::route('create_page')}}">New Page</a></li>
 			</ul>
 		</li>
 		<li><a href="{{URL::route('form_entries')}}">Forms</a></li>		
@@ -61,8 +59,7 @@
 					<li><a href="{{URL::route('admin.user.index')}}">Users</a></li>
 					<li><a href="{{URL::route('settings_form')}}">Site Settings</a></li>
 				@endif
-				<li class="divider"></li>
-				<li><a href="{{URL::route('logout')}}">Log Out</a></li>
+				<li class="light"><a href="{{URL::route('logout')}}">Log Out</a></li>
 			</ul>
 		</li>
 	</ul>
