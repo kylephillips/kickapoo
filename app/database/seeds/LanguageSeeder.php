@@ -6,7 +6,7 @@ class LanguageSeeder extends Seeder {
 		DB::table('languages')->delete();
 		Language::create([
 			'title' => 'English',
-			'slug' => 'en-US'
+			'slug' => 'en'
 		]);
 	}
 
