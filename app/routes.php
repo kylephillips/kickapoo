@@ -2,8 +2,13 @@
 /**
 * Pages (Catch-all below other routes)
 */
-Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
-Route::get('products', ['as'=>'products', 'uses'=>'ProductController@index']);
+Route::group(array(
+	'prefix' => LaravelLocalization::setLocale(),
+	'before' => 'LaravelLocalizationRedirectFilter'
+	), function(){
+	Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
+	Route::get('products', ['as'=>'products', 'uses'=>'ProductController@index']);
+});
 Route::get('modal-info', ['as'=>'modal_info', 'uses'=>'ProductController@modalInfo']);
 
 /**
@@ -97,7 +102,12 @@ Route::group(['before'=>'auth'], function()
 /**
 * Front end pages
 */
-Route::get('/{page}', ['as'=>'page', 'uses'=>'PageController@getPage']);
+Route::group(array(
+	'prefix' => LaravelLocalization::setLocale(),
+	'before' => 'LaravelLocalizationRedirectFilter'
+	), function(){
+	Route::get('/{page}', ['as'=>'page', 'uses'=>'PageController@getPage']);
+});
 
 
 /**
