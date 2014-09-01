@@ -11,6 +11,21 @@
 		</ul>
 	</nav>
 
+	<nav class="language-select dropdown">
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ LaravelLocalization::getCurrentLocale() }} 
+			<span class="caret"></span>
+		</a>
+		<ul class="dropdown-menu pull-right" role="menu">
+			@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+			<li>
+				<a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
+					{{{ $properties['native'] }}}
+				</a>
+			</li>
+			@endforeach
+		</ul>
+	</nav>
+
 	<nav class="social-links">
 		<ul>
 			@foreach($social_links as $link)
