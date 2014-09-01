@@ -39,7 +39,7 @@
 	</nav>
 
 	@if($store_link)
-	<a href="{{$store_link}}" class="buy-button" target="_blank"><i class="icon-cart"></i> Buy Kickapoo</a>
+	<a href="{{$store_link}}" class="buy-button" target="_blank"><i class="icon-cart"></i> {{Lang::get('messages.buy_kickapoo')}}</a>
 	@endif
 
 	<a href="#" class="nav-toggle"><i class="icon-menu"></i> Menu</a>

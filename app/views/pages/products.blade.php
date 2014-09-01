@@ -35,7 +35,7 @@
 			<section class="products">
 				<div class="heading">
 					<span></span>
-						<h3><strong>Available in</strong></h3>
+						<h3><strong>{{Lang::get('messages.Available in')}}</strong></h3>
 					<span class="right"></span>
 				</div>
 				
@@ -55,8 +55,8 @@
 							<img src="{{URL::asset('assets/images/product-size-fpo.png')}}" alt="{{$flavor['title']}} in {{$product->size->title}}" />
 						@endif
 						<p>
-							<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$product->size->title}} Ingredients" data-id="{{$product->id}}" data-type="ingredients">Ingredients</a>
-							<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$product->size->title}} Nutrition" data-id="{{$product->id}}" data-type="nutrition">Nutrition</a>
+							<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$product->size->title}} Ingredients" data-id="{{$product->id}}" data-type="ingredients">{{Lang::get('messages.Ingredients')}}</a>
+							<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$product->size->title}} Nutrition" data-id="{{$product->id}}" data-type="nutrition">{{Lang::get('messages.Nutrition')}}</a>
 						</p>
 					</li>
 				@endforeach

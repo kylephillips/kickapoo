@@ -4,7 +4,7 @@
 <section class="headline">
 	<img src="{{URL::asset('assets/images/home-headline.png')}}" class="home-headline" />
 	{{$page['content']}}
-	<a href="{{URL::route('page', ['page'=>'contact'])}}" class="button">Or share it here <i class="icon-arrow-right"></i></a>
+	<a href="{{URL::route('page', ['page'=>'contact'])}}" class="button">{{Lang::get('messages.share')}} <i class="icon-arrow-right"></i></a>
 </section>
 
 <img src="{{URL::asset('assets/images/kickapoo-joy-juice-can.png')}}" class="home-green-can" />
@@ -42,7 +42,7 @@
 
 @if(count($posts) > 0)
 	<div class="pagination hidden">{{$posts->links()}}</div>
-	<p class="center nextposts"><a href="#" class="load-more">Load More Joy! <i class="icon-loop2"></i></a></p>
+	<p class="center nextposts"><a href="#" class="load-more">{{Lang::get('messages.load_more')}}! <i class="icon-loop2"></i></a></p>
 @endif
 
 
@@ -55,14 +55,16 @@
 				<img src="{{URL::asset('assets/images/joy-meter-gauge.png')}}" alt="Guage" class="gauge">
 			</div>
 		</section>
-		<a href="{{URL::route('page', ['page'=>'products'])}}" class="products">
-			<span>Products</span>
+		
+		<a href="{{URL::route('page', ['page'=>$products_page->slug])}}" class="products">
+			<span>{{$products_page->title}}</span>
 			<img src="{{URL::asset('assets/images/homepage-products.jpg')}}" alt="Product Image" />
 		</a>
-		<a href="{{URL::route('page', ['page'=>'history'])}}" class="history">
-			<span>History</span>
+		<a href="{{URL::route('page', ['page'=>$history_page->slug])}}" class="history">
+			<span>{{$history_page->title}}</span>
 			<img src="{{URL::asset('assets/images/homepage-history.jpg')}}" alt="History Image" />
 		</a>
+		
 	</div>
 </section>
 
