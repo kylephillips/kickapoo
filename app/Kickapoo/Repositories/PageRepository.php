@@ -1,6 +1,7 @@
 <?php namespace Kickapoo\Repositories;
 
 use \Page;
+use \LaravelLocalization;
 
 class PageRepository {
 
@@ -9,7 +10,8 @@ class PageRepository {
 	*/
 	public function getNavigation()
 	{
-		return Page::where('status', 'publish')->where('show_in_menu', '=', 1)->orderBy('menu_order')->get();
+		$lang = LaravelLocalization::getCurrentLocale();
+		return Page::where('status', 'publish')->where('show_in_menu', '=', 1)->where('language',$lang)->orderBy('menu_order')->get();
 	}
 
 	/**
@@ -17,16 +19,27 @@ class PageRepository {
 	*/
 	public function getAllPages()
 	{
-		return Page::orderBy('menu_order')->get();
+		$lang = LaravelLocalization::getCurrentLocale();
+		return Page::where('language',$lang)->orderBy('menu_order')->get();
 	}
+
 
 	/**
 	* Get a Single Page from a slug
 	*/
-	public function getPage($slug)
+	public function getPage($slug, $lang = 'en')
 	{
-		return Page::where('slug', $slug)->with('customfields')->firstOrFail();
+		$page = Page::where('slug', $slug)->with('customfields','translations','translation_of')->firstOrFail();
+		if ( $lang == 'en' ) return $page;
+		
+		// Return translated page if not english
+		foreach($page->translations as $translation)
+		{
+			if ( $translation->language == $lang )
+			return $translation;
+		}
 	}
+
 
 	/**
 	* Get an array of all page templates

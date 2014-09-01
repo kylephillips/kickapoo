@@ -5,10 +5,12 @@
 Route::group(array(
 	'prefix' => LaravelLocalization::setLocale(),
 	'before' => 'LaravelLocalizationRedirectFilter'
-	), function(){
-	Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
-	Route::get('products', ['as'=>'products', 'uses'=>'ProductController@index']);
-});
+	), 
+	function(){
+		Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
+		Route::get(LaravelLocalization::transRoute('routes.products'), ['as'=>'products', 'uses'=>'ProductController@index']);
+	}
+);
 Route::get('modal-info', ['as'=>'modal_info', 'uses'=>'ProductController@modalInfo']);
 
 /**

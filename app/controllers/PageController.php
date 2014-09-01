@@ -41,13 +41,17 @@ class PageController extends BaseController {
 	*/
 	public function home()
 	{	
-		$page = $this->page_repo->getPage('home');
+		$page = $this->page_repo->getPage('home', LaravelLocalization::getCurrentLocale());
+		$history_page = $this->page_repo->getPage('history', LaravelLocalization::getCurrentLocale());
+		$products_page = $this->page_repo->getPage('products', LaravelLocalization::getCurrentLocale());
 		$posts = $this->posts_repo->getApproved();
 		
 		return View::make('pages.home')
 			->with('page_slug', 'home')
 			->with('posts', $posts)
-			->with('page', $page);
+			->with('page', $page)
+			->with('history_page', $history_page)
+			->with('products_page', $products_page);
 	}
 
 
