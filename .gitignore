@@ -7,6 +7,7 @@
 /public/assets/videos/*
 /app/config/staging/*
 /app/config/local/*
+/.idea/*
 composer.phar
 composer.lock
 .env.*.php
