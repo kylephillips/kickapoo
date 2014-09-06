@@ -14,9 +14,10 @@ class CreatePageTranslationsTable extends Migration {
 	{
 		Schema::create('page_translations', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id');
-			$table->integer('parent_page');
-			$table->integer('translated_page');
+			$table->integer('parent_page')->unsigned();
+			$table->integer('translated_page')->unsigned();
 			$table->timestamps();
 			$table->foreign('parent_page')->references('id')->on('pages')->onDelete('cascade');
 			$table->foreign('translated_page')->references('id')->on('pages')->onDelete('cascade');
