@@ -35,7 +35,7 @@ return array(
 		//'cy'          => array('name' => 'Welsh',                  'script' => 'Latn', 'dir' => 'ltr', 'native' => 'Cymraeg'),
 		//'da'          => array('name' => 'Danish',                 'script' => 'Latn', 'dir' => 'ltr', 'native' => 'dansk'),
 		//'se'          => array('name' => 'Northern Sami',          'script' => 'Latn', 'dir' => 'ltr', 'native' => 'davvisámegiella'),
-		//'de'          => array('name' => 'German',                 'script' => 'Latn', 'dir' => 'ltr', 'native' => 'Deutsch'),
+		'de'          => array('name' => 'German',                 'script' => 'Latn', 'dir' => 'ltr', 'native' => 'Deutsch'),
 		//'luo'         => array('name' => 'Luo',                    'script' => 'Latn', 'dir' => 'ltr', 'native' => 'Dholuo'),
 		//'nv'          => array('name' => 'Navajo',                 'script' => 'Latn', 'dir' => 'ltr', 'native' => 'Diné bizaad'),
 		//'dua'         => array('name' => 'Duala',                  'script' => 'Latn', 'dir' => 'ltr', 'native' => 'duálá'),
