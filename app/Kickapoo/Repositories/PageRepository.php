@@ -30,14 +30,43 @@ class PageRepository {
 	public function getPage($slug, $lang = 'en')
 	{
 		$page = Page::where('slug', $slug)->with('customfields','translations','translation_of')->firstOrFail();
-		if ( $lang == 'en' ) return $page;
+		if ( $lang == $page->language ) return $page;
 		
 		// Return translated page if not english
 		foreach($page->translations as $translation)
 		{
 			if ( $translation->language == $lang )
-			return $translation;
+			return $this->getTranslatedPage($translation->id);
 		}
+	}
+
+
+	public function getTranslatedPage($id)
+	{
+		return Page::where('id', $id)->with('customfields','translations','translation_of')->firstOrFail();
+	}
+
+
+	/**
+	* Get an array of all the translations for a page
+	* @return array
+	*/
+	public function getTranslationsArray($id)
+	{
+		$parent_page = $this->getTranslatedPage($id);
+		$locales = LaravelLocalization::getSupportedLocales();
+		$locale = array_get($locales, $parent_page['language']);
+
+		$translations['en']['slug'] = $parent_page->slug;
+		$translations['en']['native'] = $locale['native'];
+		
+		foreach ($parent_page->translations as $translation){
+			$locale = array_get($locales, $translation['language']);
+			$translations[$translation['language']]['slug'] = $translation->slug;
+			$translations[$translation['language']]['native'] = $locale['native'];
+		}
+		
+		return $translations;
 	}
 
 
@@ -59,6 +88,7 @@ class PageRepository {
 		}
 		return $templates;
 	}
+
 	
 
 }

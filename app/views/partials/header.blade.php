@@ -12,14 +12,19 @@
 	</nav>
 
 	<nav class="language-select dropdown">
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ LaravelLocalization::getCurrentLocale() }} 
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ LaravelLocalization::getCurrentLocaleName() }} 
 			<span class="caret"></span>
 		</a>
+		
 		<ul class="dropdown-menu pull-right" role="menu">
-			@foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+			@foreach($translations as $localeCode => $data)
 			<li>
-				<a rel="alternate" hreflang="{{$localeCode}}" href="{{LaravelLocalization::getLocalizedURL($localeCode) }}">
-					{{{ $properties['native'] }}}
+				<?php 
+					$route = ( Route::currentRouteName() == 'home' ) ? URL::route('home') : URL::route('page', ['page'=>$data['slug']]); 
+					$link = LaravelLocalization::getLocalizedURL($localeCode, $route);
+				?>
+				<a rel="alternate" hreflang="{{$localeCode}}" href="{{$link}}">
+					{{$data['native']}}
 				</a>
 			</li>
 			@endforeach
