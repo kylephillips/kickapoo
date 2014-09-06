@@ -1,6 +1,6 @@
 @extends('partials.master')
 @section('content')
-<h1>Contact Page</h1>
+<h1>{{$page['title']}}</h1>
 
 @if(Session::has('success'))
 <div class="alert alert-success">{{Session::get('success')}}</div>
