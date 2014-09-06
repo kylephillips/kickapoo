@@ -44,14 +44,17 @@ class PageController extends BaseController {
 		$page = $this->page_repo->getPage('home', LaravelLocalization::getCurrentLocale());
 		$history_page = $this->page_repo->getPage('history', LaravelLocalization::getCurrentLocale());
 		$products_page = $this->page_repo->getPage('products', LaravelLocalization::getCurrentLocale());
+		$contact_page = $this->page_repo->getPage('contact', LaravelLocalization::getCurrentLocale());
+
 		$posts = $this->posts_repo->getApproved();
-		
+
 		return View::make('pages.home')
 			->with('page_slug', 'home')
 			->with('posts', $posts)
 			->with('page', $page)
 			->with('history_page', $history_page)
-			->with('products_page', $products_page);
+			->with('products_page', $products_page)
+			->with('contact_page', $contact_page);
 	}
 
 
@@ -69,9 +72,8 @@ class PageController extends BaseController {
 	*/
 	public function getPage($slug)
 	{
-		$page = $this->page_repo->getPage($slug);
+		$page = $this->page_repo->getPage($slug, LaravelLocalization::getCurrentLocale());
 		$view = 'pages.' . $page->template;
-
 		return View::make($view)
 			->with('page_slug', $slug)
 			->with('page', $page);

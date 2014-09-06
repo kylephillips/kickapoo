@@ -4,7 +4,9 @@
 <section class="headline">
 	<img src="{{URL::asset('assets/images/home-headline.png')}}" class="home-headline" />
 	{{$page['content']}}
-	<a href="{{URL::route('page', ['page'=>'contact'])}}" class="button">{{Lang::get('messages.share')}} <i class="icon-arrow-right"></i></a>
+	@if($contact_page)
+	<a href="{{URL::route('page', ['page'=>$contact_page->slug])}}" class="button">{{Lang::get('messages.share')}} <i class="icon-arrow-right"></i></a>
+	@endif
 </section>
 
 <img src="{{URL::asset('assets/images/kickapoo-joy-juice-can.png')}}" class="home-green-can" />
@@ -56,15 +58,20 @@
 			</div>
 		</section>
 		
+		@if($products_page)
 		<a href="{{URL::route('page', ['page'=>$products_page->slug])}}" class="products">
 			<span>{{$products_page->title}}</span>
 			<img src="{{URL::asset('assets/images/homepage-products.jpg')}}" alt="Product Image" />
 		</a>
+		@endif
+
+		@if($history_page)
 		<a href="{{URL::route('page', ['page'=>$history_page->slug])}}" class="history">
 			<span>{{$history_page->title}}</span>
 			<img src="{{URL::asset('assets/images/homepage-history.jpg')}}" alt="History Image" />
 		</a>
-		
+		@endif
+
 	</div>
 </section>
 
