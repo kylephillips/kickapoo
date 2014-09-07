@@ -19,7 +19,7 @@ class PageFactory {
 		$language = ( isset($input['language']) ) ? $input['language'] : 'en';
 
 		$menu_order = Page::where('language', $language)->orderBy('menu_order', 'DESC')->first();
-		$menu_order = $menu_order->menu_order + 1;
+		$menu_order = ( $menu_order ) ? $menu_order->menu_order + 1 : 0;
 
 		$page = Page::create([
 			'title' => $input['title'],
