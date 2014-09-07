@@ -16,8 +16,9 @@ class PageFactory {
 		$slug = ( $input['slug'] ) ? Str::slug($input['slug']) : Str::slug($input['title']);
 		$seo_title = ( $input['seo_title'] ) ? $input['seo_title'] : null;
 		$seo_description = ( $input['seo_description'] ) ? $input['seo_description'] : null;
+		$language = ( $input['language'] ) ? $input['language'] : 'en';
 
-		$menu_order = Page::orderBy('menu_order', 'DESC')->first();
+		$menu_order = Page::where('language', $language)->orderBy('menu_order', 'DESC')->first();
 		$menu_order = $menu_order->menu_order + 1;
 
 		$page = Page::create([
@@ -29,10 +30,14 @@ class PageFactory {
 			'seo_title' => $seo_title,
 			'seo_description' => $seo_description,
 			'author' => Auth::user()->id,
-			'menu_order' => $menu_order
+			'menu_order' => $menu_order,
+			'language' => $language
 		]);
 		if ( isset($input['newcustomfield']) ) {
 			$this->addCustomFields($input['newcustomfield'], $page->id);
+		}
+		if ( isset($input['language']) ){
+			$this->addTranslation($input['parent_page'], $page->id);
 		}
 		return $page;
 	}
@@ -127,6 +132,15 @@ class PageFactory {
 			$page->menu_order = $key;
 			$page->save();
 		}
+	}
+
+	/**
+	* Add Translation Record
+	*/
+	private function addTranslation($parent_page, $translated_page)
+	{
+		$parent = Page::find($parent_page);
+		$parent->translations()->attach($translated_page);
 	}
 
 }

@@ -101,6 +101,25 @@ class PageController extends BaseController {
 			->with('templates', $templates);
 	}
 
+
+	/**
+	* Add a translation of a current page
+	*/
+	public function addTranslation()
+	{
+		$templates = $this->page_repo->getPageTemplates();
+		$language = Input::get('language');
+		$language_name = Input::get('language_name');
+		$parent_page = $this->page_repo->getTranslatedPage(Input::get('parent_page'));
+
+		return View::make('admin.pages.create')
+			->with('templates', $templates)
+			->with('parent_page', $parent_page)
+			->with('language', $language)
+			->with('language_name', $language_name);
+	}
+
+
 	/**
 	* Store the new page
 	*/
@@ -133,10 +152,12 @@ class PageController extends BaseController {
 	public function edit($slug)
 	{
 		$templates = $this->page_repo->getPageTemplates();
-		$page = $this->page_repo->getPage($slug);
+		$page = $this->page_repo->getPageWithoutLanguage($slug);
+		$translations = $this->page_repo->getTranslationsArray($page->id);
 		return View::make('admin.pages.edit')
 			->with('page', $page)
-			->with('templates', $templates);
+			->with('templates', $templates)
+			->with('translations', $translations);
 	}
 
 
@@ -169,7 +190,7 @@ class PageController extends BaseController {
 	*/
 	public function destroy($slug)
 	{
-		$page = $this->page_repo->getPage($slug);
+		$page = $this->page_repo->getPageWithoutLanguage($slug);
 		$this->field_factory->deleteFields($page->customfields);
 		$page->delete();
 		return Redirect::route('page_index')
