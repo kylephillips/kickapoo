@@ -20,7 +20,7 @@ class PageRepository {
 	public function getAllPages()
 	{
 		$lang = LaravelLocalization::getCurrentLocale();
-		return Page::where('language',$lang)->orderBy('menu_order')->get();
+		return Page::where('language', 'en')->orderBy('menu_order')->get();
 	}
 
 
@@ -40,6 +40,14 @@ class PageRepository {
 		}
 	}
 
+	/**
+	* Get a Single Page by slug, language not needed
+	*/
+	public function getPageWithoutLanguage($slug)
+	{
+		return Page::where('slug', $slug)->with('customfields','translations','translation_of')->firstOrFail();
+	}
+
 
 	public function getTranslatedPage($id)
 	{
@@ -54,16 +62,19 @@ class PageRepository {
 	public function getTranslationsArray($id)
 	{
 		$parent_page = $this->getTranslatedPage($id);
+
 		$locales = LaravelLocalization::getSupportedLocales();
 		$locale = array_get($locales, $parent_page['language']);
 
 		$translations['en']['slug'] = $parent_page->slug;
 		$translations['en']['native'] = $locale['native'];
+		$translations['en']['name'] = $locale['name'];
 		
 		foreach ($parent_page->translations as $translation){
 			$locale = array_get($locales, $translation['language']);
 			$translations[$translation['language']]['slug'] = $translation->slug;
 			$translations[$translation['language']]['native'] = $locale['native'];
+			$translations[$translation['language']]['name'] = $locale['name'];
 		}
 		
 		return $translations;
@@ -89,6 +100,15 @@ class PageRepository {
 		return $templates;
 	}
 
+
+	/**
+	* Get Products Route
+	*/
+	public function getProductsRoute()
+	{
+		$products_page = $this->getPage('products', LaravelLocalization::getCurrentLocale());
+		return $products_page->slug;
+	}
 	
 
 }

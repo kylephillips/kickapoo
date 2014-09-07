@@ -1,6 +1,7 @@
 <?php
 /**
 * Pages (Catch-all below other routes)
+* 
 */
 Route::group(array(
 	'prefix' => LaravelLocalization::setLocale(),
@@ -8,15 +9,21 @@ Route::group(array(
 	), 
 	function(){
 		Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
-		Route::get(LaravelLocalization::transRoute('routes.products'), ['as'=>'products', 'uses'=>'ProductController@index']);
+		
+		// Products requires translated slug
+		$pagerepo = new Kickapoo\Repositories\PageRepository;
+		Route::get($pagerepo->getProductsRoute(), ['as'=>'products', 'uses'=>'ProductController@index']);
 	}
 );
+// Product ingredients & nutrition
 Route::get('modal-info', ['as'=>'modal_info', 'uses'=>'ProductController@modalInfo']);
+
 
 /**
 * Forms
 */
 Route::post('/form-submit', ['before'=>'csrf', 'as'=>'process_form', 'uses'=>'ContactFormController@process']);
+
 
 /**
 * Admin Login
@@ -51,6 +58,7 @@ Route::group(['before'=>'auth'], function()
 	Route::get('admin/pages/destroy/{slug}', ['as'=>'destroy_page', 'uses'=>'PageController@destroy']);
 	Route::get('admin/pages/order', ['as'=>'order_pages', 'uses'=>'PageController@setOrder']);
 	Route::post('admin/pages/menutoggle', ['as'=>'menu_toggle', 'uses'=>'PageController@menuToggle']);
+	Route::get('admin/pages/translation', ['as'=>'add_translation', 'uses'=>'PageController@addTranslation']);
 
 	// Custom Field Management
 	Route::post('admin/customfield/validate', ['as'=>'validate_custom_fields', 'uses'=>'CustomFieldController@validate']);
