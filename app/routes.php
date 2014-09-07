@@ -1,12 +1,12 @@
 <?php
 /**
 * Pages (Catch-all below other routes)
-* 
+* Localized
 */
-Route::group(array(
+Route::group([
 	'prefix' => LaravelLocalization::setLocale(),
 	'before' => 'LaravelLocalizationRedirectFilter'
-	), 
+	], 
 	function(){
 		Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
 		
@@ -111,11 +111,12 @@ Route::group(['before'=>'auth'], function()
 
 /**
 * Front end pages
+* Localized
 */
-Route::group(array(
+Route::group([
 	'prefix' => LaravelLocalization::setLocale(),
 	'before' => 'LaravelLocalizationRedirectFilter'
-	), function(){
+	], function(){
 	Route::get('/{page}', ['as'=>'page', 'uses'=>'PageController@getPage']);
 });
 
