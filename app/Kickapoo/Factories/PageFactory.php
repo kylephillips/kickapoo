@@ -16,7 +16,7 @@ class PageFactory {
 		$slug = ( $input['slug'] ) ? Str::slug($input['slug']) : Str::slug($input['title']);
 		$seo_title = ( $input['seo_title'] ) ? $input['seo_title'] : null;
 		$seo_description = ( $input['seo_description'] ) ? $input['seo_description'] : null;
-		$language = ( $input['language'] ) ? $input['language'] : 'en';
+		$language = ( isset($input['language']) ) ? $input['language'] : 'en';
 
 		$menu_order = Page::where('language', $language)->orderBy('menu_order', 'DESC')->first();
 		$menu_order = $menu_order->menu_order + 1;
@@ -33,12 +33,8 @@ class PageFactory {
 			'menu_order' => $menu_order,
 			'language' => $language
 		]);
-		if ( isset($input['newcustomfield']) ) {
-			$this->addCustomFields($input['newcustomfield'], $page->id);
-		}
-		if ( isset($input['language']) ){
-			$this->addTranslation($input['parent_page'], $page->id);
-		}
+		if ( isset($input['newcustomfield']) ) $this->addCustomFields($input['newcustomfield'], $page->id);
+		if ( isset($input['language']) ) $this->addTranslation($input['parent_page'], $page->id);
 		return $page;
 	}
 
