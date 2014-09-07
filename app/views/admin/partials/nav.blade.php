@@ -48,7 +48,7 @@
 				<li class="light"><a href="{{URL::route('create_page')}}">New Page</a></li>
 			</ul>
 		</li>
-		<li><a href="{{URL::route('form_entries')}}">Forms</a></li>		
+		<li><a href="{{URL::route('form_entries')}}">Forms</a></li>
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 				{{Auth::user()->first_name}} {{Auth::user()->last_name}} <span class="caret"></span>

@@ -570,6 +570,14 @@ form p.half {
   form p.half.right {
     float: right;
     clear: none; }
+form p.third {
+  float: left;
+  width: 30%;
+  margin-right: 5%;
+  clear: none; }
+  form p.third.last {
+    float: right;
+    margin-right: 0; }
 form .slug {
   position: relative;
   padding: 5px;
