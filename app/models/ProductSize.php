@@ -4,7 +4,7 @@ class ProductSize extends Eloquent {
 	protected $table = 'productsizes';
 
 	protected $fillable = [
-		'title', 'slug'
+		'title', 'slug', 'language'
 	];
 
 	public static $required = [
