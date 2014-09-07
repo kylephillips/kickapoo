@@ -11,7 +11,6 @@ class DatabaseSeeder extends Seeder {
 	{
 		Eloquent::unguard();
 		$this->call('GroupSeeder');
-		$this->call('LanguageSeeder');
 		if ( (App::environment() == 'local') || (App::environment() == 'staging' ) ){
 			$this->deleteImages();
 			$this->call('SettingsSeeder');
