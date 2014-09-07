@@ -106,7 +106,11 @@ class PageRepository {
 	public function getProductsRoute()
 	{
 		$products_page = $this->getPage('products', LaravelLocalization::getCurrentLocale());
-		return $products_page->slug;
+		if ( $products_page ){
+			return $products_page->slug;
+		} else {
+			return 'products';
+		}
 	}
 	
 
