@@ -38,7 +38,7 @@ class HeaderViewComposer {
 
 	private function getTranslations()
 	{
-		if ( count($this->view_data['page']->translations) > 0 ){
+		if ( count($this->view_data['page']->translation_of) == 0 ){
 			// Its english
 			return $this->page_repo->getTranslationsArray($this->view_data['page']->id);
 		} else {
