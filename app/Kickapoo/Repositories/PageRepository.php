@@ -17,10 +17,9 @@ class PageRepository {
 	/**
 	* Get All Pages
 	*/
-	public function getAllPages()
+	public function getAllPages($lang = 'en')
 	{
-		$lang = LaravelLocalization::getCurrentLocale();
-		return Page::where('language', 'en')->orderBy('menu_order')->get();
+		return Page::where('language', $lang)->orderBy('menu_order')->get();
 	}
 
 

@@ -5,6 +5,13 @@
 
 	<h1>All Pages</h1>
 
+	<select id="language-select">
+		<option>Select Language</option>
+		@foreach( LaravelLocalization::getSupportedLocales() as $code => $properties )
+		<option value="{{URL::route('page_index', ['lang'=>$code])}}">{{$properties['name']}}</option>
+		@endforeach
+	</select>
+
 	<div class="well">
 
 		@if(Session::has('success'))
@@ -68,5 +75,12 @@ function toggle_show(slug, show)
 		}
 	});
 }
+
+$('#language-select').on('change', function(){
+	var href = $(this).val();
+	if ( href !== '' ){
+		window.location = href;
+	}
+});
 </script>
 @stop

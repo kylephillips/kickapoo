@@ -85,7 +85,8 @@ class PageController extends BaseController {
 	*/
 	public function index()
 	{
-		$pages = $this->page_repo->getAllPages();
+		$lang = ( Input::get('lang') ) ? Input::get('lang') : 'en';
+		$pages = $this->page_repo->getAllPages($lang);
 		return View::make('admin.pages.index')
 			->with('pages', $pages);
 	}
@@ -214,7 +215,7 @@ class PageController extends BaseController {
 	*/
 	public function menuToggle()
 	{
-		$page = $this->page_repo->getPage(Input::get('slug'));
+		$page = $this->page_repo->getPageWithoutLanguage(Input::get('slug'));
 		$page->show_in_menu = ( Input::get('show') == '1' ) ? 1 : 0;
 		$page->save();
 		return Response::json(['status'=>'success']);
