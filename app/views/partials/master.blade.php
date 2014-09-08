@@ -57,7 +57,7 @@
 		@if( $page_slug == 'home' )
 		<section class="home-hero">
 		@else
-		<section class="page-hero">
+		<section class="page-hero" data-stellar-background-ratio="0.5">
 		@endif
 
 

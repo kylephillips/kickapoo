@@ -27,6 +27,10 @@ $(window).load(function(){
 	
 });
 
+$(document).ready(function(){
+	$(window).stellar({ horizontalScrolling: false });
+});
+
 
 /**
 * Parallax
