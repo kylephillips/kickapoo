@@ -66,10 +66,15 @@ img {
 
 .container.full {
 	max-width: 900px;
+	padding-top: 30px;
 }
 
 .center {
 	text-align: center;
+}
+
+.page-content {
+	background-color: $green-dark;
 }
 
 

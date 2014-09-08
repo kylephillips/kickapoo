@@ -1,0 +1,18 @@
+//
+// Contact Form
+// --------------------------------------------------
+.contact-page {
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	margin-top: -30px;
+}
+
+.contact-form {
+	background-color: $green;
+	padding: 20px;
+	border-radius: 4px;
+	border: 1px solid darken($green-dark, 7%);
+	text-align: left;
+	margin-bottom: 30px;
+}
