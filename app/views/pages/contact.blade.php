@@ -13,7 +13,7 @@
 		@endif
 	</div>
 
-	<hr class="bubble-pattern">
+	<hr class="bubble-pattern-small">
 
 	</section><!-- page-hero -->
 
