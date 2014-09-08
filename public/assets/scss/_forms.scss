@@ -85,3 +85,32 @@ form {
 		}
 	}
 }
+
+@media (max-width: 767px)
+{
+	form {
+		.left, .right {
+			float: none;
+			width: 100%;
+		}
+		input[type='submit']{
+			padding: 15px 0px;
+			width: 100%;
+		}
+		.captcha {
+			width: 100%;
+			img {
+				float: none;
+				margin: 0 auto;
+				display: block;
+				width: 50%;
+			}
+			input {
+				float: none;
+				width: 100%;
+				margin: 0;
+			}
+		}
+	}
+}
+

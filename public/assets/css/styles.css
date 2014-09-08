@@ -45,7 +45,7 @@ html {
 
 body {
   font-family: "proxima-nova", sans-serif;
-  background-color: #006c23;
+  background-color: #00581c;
   font-size: 16px;
   line-height: 24px;
   color: #ffffff;
@@ -281,6 +281,25 @@ form .captcha {
   form .captcha label {
     color: #006c23;
     margin-bottom: 5px; }
+
+@media (max-width: 767px) {
+  form .left, form .right {
+    float: none;
+    width: 100%; }
+  form input[type='submit'] {
+    padding: 15px 0px;
+    width: 100%; }
+  form .captcha {
+    width: 100%; }
+    form .captcha img {
+      float: none;
+      margin: 0 auto;
+      display: block;
+      width: 50%; }
+    form .captcha input {
+      float: none;
+      width: 100%;
+      margin: 0; } }
 
 @font-face {
   font-family: 'icomoon';
@@ -831,7 +850,6 @@ header {
 
 footer {
   zoom: 1;
-  border-top: 1px solid #008d2c;
   padding: 30px 20px 80px 20px; }
   footer:before, footer:after {
     content: " ";
