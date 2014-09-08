@@ -4,6 +4,7 @@
 .flavor {
 	overflow: hidden;
 	padding: 20px 0px 20px 0px;
+	background-color: $green-dark;
 	.container {
 		max-width: none;
 		width: 85%;
@@ -20,10 +21,10 @@
 		float: right;
 		width: 67.4418604651%; //870/1290
 		@include clearfix;
-		.description {
-			float: left;
-			width: 66.6666666667%; //560/840
-		}
+		// .description {
+		// 	float: left;
+		// 	width: 66.6666666667%; //560/840
+		// }
 		.description-image {
 			float: right;
 			width: 27.1428571429%; //228/840

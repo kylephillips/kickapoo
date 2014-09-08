@@ -28,9 +28,6 @@
 				<h2>{{$flavor['title']}}</h2>
 				{{$flavor['content']}}
 			</section>
-			@if($flavor->css_class == 'joy-juice')
-				<img src="{{URL::asset('assets/images/superior-flavor-green.png')}}" alt="Superior Flavor" class="description-image right" />
-			@endif
 
 			<section class="products">
 				<div class="heading">

@@ -1626,7 +1626,8 @@ footer {
 
 .flavor {
   overflow: hidden;
-  padding: 20px 0px 20px 0px; }
+  padding: 20px 0px 20px 0px;
+  background-color: #006c23; }
   .flavor .container {
     max-width: none;
     width: 85%;
@@ -1648,9 +1649,6 @@ footer {
       /* 2 */ }
     .flavor .content:after {
       clear: both; }
-    .flavor .content .description {
-      float: left;
-      width: 66.66667%; }
     .flavor .content .description-image {
       float: right;
       width: 27.14286%;
