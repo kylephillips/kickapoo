@@ -7,6 +7,10 @@
 		@else
 			<h1>{{$page['title']}}</h1>
 		@endif
+
+		@if($page->content)
+			{{$page->content}}
+		@endif
 	</div>
 
 	<hr class="bubble-pattern">
@@ -23,10 +27,6 @@
 				<div class="alert alert-success">{{Session::get('success')}}</div>
 				@endif
 			@else
-
-			@if($page->content)
-			{{$page->content}}
-			@endif
 
 			{{Form::open(['url'=>URL::route('process_form'), 'class'=>'contact-form'])}}
 
