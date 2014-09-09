@@ -38,11 +38,12 @@
 // Actual modal
 .modal-content {
 	position: relative;
-	background-color: $green-dark;
+	background-color: $white;
 	border-radius: 6px;
 	box-shadow: 0 3px 9px rgba(0,0,0,.5);
 	background-clip: padding-box;
 	outline: 0;
+	color: $black;
 }
 
 // Modal background
@@ -67,7 +68,8 @@
 
 .modal-header {
 	padding: 15px 6px 6px 6px;
-	border-bottom: 1px solid darken($green-dark, 8%);
+	border-bottom: 1px solid darken($white, 8%);
+	color: $black;
 	@include clearfix;
 }
 // Close icon
@@ -80,7 +82,7 @@
 	background: transparent;
 	border: 0;
 	font-size: 28px;
-	color: $yellow;
+	color: $black;
 }
 
 // Title text within header

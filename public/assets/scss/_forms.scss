@@ -7,13 +7,6 @@ textarea {
 	width: 100%;
 	height: 45px;
 	border-radius: 2px;
-	box-shadow: inset 0px 2px 4px 0px rgba(0,0,0,.4);
-	border: 1px solid $green-dark;
-	transition: all 200ms ease;
-	&:focus {
-		transition: all 200ms ease;
-		box-shadow: inset 0px 2px 4px 0px rgba(0,0,0,.4), 0px 0px 4px 1px $yellow;
-	}
 }
 label {
 	font-size: 18px;

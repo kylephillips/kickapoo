@@ -16,8 +16,9 @@
 
 </section><!-- page-hero -->
 
+<?php $i = 1; ?>
 @foreach($flavors as $flavor)
-<section class="flavor {{$flavor->css_class}}">
+<section class="flavor {{$flavor->css_class}} <?php if ( $i % 2 == 0 ) echo 'even'; ?>">
 	<div class="container">
 	
 		<div class="large-image" data-image="{{$flavor->image}}" data-title="{{$flavor->title}}"></div>
@@ -64,6 +65,7 @@
 
 	</div><!-- .container -->
 </section><!-- .flavor -->
+<?php $i++; ?>
 @endforeach
 
 <!-- Product Info Modal -->
@@ -186,6 +188,7 @@ function parallaxScroll(){
 	var scrolled = $(window).scrollTop();
 	$('.joy-juice .large-image').css('top', (-30+(scrolled * .15))+'px');
 	$('.fruit-shine .large-image').css('top', (200-(scrolled * .15))+'px');
+	$('.fuzzy-navel .large-image').css('top', (200-(scrolled * .15))+'px');
 }
 
 </script>

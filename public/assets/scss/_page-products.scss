@@ -3,8 +3,9 @@
 // --------------------------------------------------
 .flavor {
 	overflow: hidden;
-	padding: 20px 0px 20px 0px;
+	padding: 50px 0px 20px 0px;
 	background-color: $green-dark;
+	box-shadow: inset 0px 0px 100px 0px rgba(0,0,0,.4);
 	.container {
 		max-width: none;
 		width: 85%;
@@ -55,10 +56,11 @@
 				position: absolute;
 				width: 33.33%;
 				display: block;
-				background: url('../images/green-bullet-hr.png') repeat-x;
-				height: 8px;
-				left: 0;
+				height: 6px;
+				left: 4px;
 				top: 8px;
+				border-top: 1px solid $green;
+				border-bottom: 1px solid $green;
 				&.right {
 					left: auto;
 					right: 0;
@@ -68,7 +70,7 @@
 				@include thirsty;
 				color: $yellow;
 				-webkit-font-smoothing: antialiased;
-				font-size: 36px;
+				font-size: 32px;
 			}
 		} // .headling
 		ul {
@@ -120,28 +122,27 @@
 			}
 		} // ul
 	} // .products
+	&.even {
+		.large-image {
+			left: auto;
+			right: 0;
+		}
+		.content {
+			float: left;
+			width: 67.4418604651%; //870/1290
+		}
+	}
 } // .flavor
 
 
 .joy-juice {
-	background-image: url('../images/kickapoo-giant.png');
-	background-repeat: no-repeat;
-	background-position: center;
+	padding-top: 20px;
+	box-shadow: none;
 }
 
 
 .fruit-shine {
 	background-image: url('../images/pattern-type-yellow.png');
-	padding-top: 50px;
-	.large-image {
-		left: auto;
-		right: 0;
-		top: -200px;
-	}
-	.content {
-		float: left;
-		width: 67.4418604651%; //870/1290
-	}
 	h2 {
 		color: $red-dark;
 	}
@@ -151,7 +152,7 @@
 	.products {
 		.heading {
 			span {
-				background: url('../images/red-bullet-hr.png') repeat-x;
+				border-color: rgba(0,0,0,.15);
 			}
 			h3 {
 				color: $red;
@@ -175,6 +176,57 @@
 		} // ul
 	}
 } // .fruit-shine
+
+
+.fuzzy-navel {
+	background-color: #a12f25;
+	h2 {
+		color: $white;
+	}
+	.products {
+		.heading {
+			span {
+				border-color: darken(#a12f25, 10%);
+			}
+			h3 {
+				color: $white;
+			}
+		}
+		ul li {
+			img {
+				border-color: darken(#a12f25, 10%);
+			}
+		}
+	}
+} // .fuzzy-navel
+
+
+.maliblu {
+	background-color: #003e7b;
+	background-image: url('../images/pattern-type-blue.png');
+	.large-image {
+		top: -30px;
+	}
+	h2 {
+		color: $orange;
+	}
+	.products {
+		.heading {
+			span {
+				border-color: darken($cyan, 10%);
+			}
+			h3 {
+				color: $orange;
+			}
+		}
+		ul li {
+			img {
+				border-color: darken($cyan, 10%);
+			}
+		}
+	}
+} // .maliblu
+
 
 @media(max-width: 1350px)
 {
