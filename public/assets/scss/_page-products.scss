@@ -145,6 +145,7 @@
 */
 .fruit-shine {
 	background-image: url('../images/pattern-type-yellow.png');
+	box-shadow: none;
 	h2 {
 		color: $red-dark;
 	}
@@ -231,6 +232,12 @@
 			img {
 				border-color: darken($cyan, 10%);
 			}
+			p a {
+				color: $orange;
+				&:hover {
+					color: $black;
+				}
+			} // p
 		}
 	}
 } // .maliblu

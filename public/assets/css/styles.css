@@ -440,6 +440,8 @@ form .captcha {
     -webkit-transition: all 0.3s ease-out;
          -o-transition: all 0.3s ease-out;
             transition: all 0.3s ease-out; }
+  .modal.nutrition .modal-body {
+    text-align: center; }
 
 .modal-open .modal {
   overflow-x: hidden;
@@ -1762,7 +1764,9 @@ footer {
 * Fruit Shine
 */
 .fruit-shine {
-  background-image: url('../images/pattern-type-yellow.png'); }
+  background-image: url('../images/pattern-type-yellow.png');
+  -webkit-box-shadow: none;
+          box-shadow: none; }
   .fruit-shine h2 {
     color: #510102; }
   .fruit-shine p {
@@ -1812,6 +1816,10 @@ footer {
     color: #ffa110; }
   .maliblu .products ul li img {
     border-color: #10afff; }
+  .maliblu .products ul li p a {
+    color: #ffa110; }
+    .maliblu .products ul li p a:hover {
+      color: #000000; }
 
 @media (max-width: 1350px) {
   .flavor h2 {

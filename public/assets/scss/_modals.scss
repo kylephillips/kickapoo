@@ -22,6 +22,10 @@
 		transition: all 0.3s ease-out;
 	}
 
+	&.nutrition .modal-body {
+		text-align: center;
+	}
+
 }
 .modal-open .modal {
 	overflow-x: hidden;

@@ -107,6 +107,7 @@ $('.open-modal').on('click', function(e){
 	
 	$(modal).find('.modal-body').addClass('loading').empty();
 	$(modal).find('.modal-title').text(title);
+	$(modal).removeClass('nutrition');
 
 	$(modal).modal('show');
 
@@ -142,6 +143,7 @@ function load_nutrition(data, modal)
 {
 	var html = '<img src="{{URL::asset('assets/uploads/product_images')}}/' + data.nutrition + '">';
 	$(modal).find('.modal-body').html(html).removeClass('loading');
+	$(modal).addClass('nutrition');
 }
 
 /**
@@ -177,20 +179,6 @@ function load_large_images()
 		});
 	}
 }
-
-/**
-* Parallax Cans
-*/
-$(window).bind('scroll',function(e){
-	parallaxScroll();
-});
-function parallaxScroll(){
-	var scrolled = $(window).scrollTop();
-	$('.joy-juice .large-image').css('top', (-30+(scrolled * .15))+'px');
-	$('.fruit-shine .large-image').css('top', (200-(scrolled * .15))+'px');
-	$('.fuzzy-navel .large-image').css('top', (200-(scrolled * .15))+'px');
-}
-
 </script>
 @stop
 
