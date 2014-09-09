@@ -8,7 +8,7 @@
 .flavor {
 	overflow: hidden;
 	padding: 50px 0px 20px 0px;
-	background-color: $green-dark;
+	background-color: darken($green-dark, 4%);
 	box-shadow: inset 0px 0px 100px 0px rgba(0,0,0,.4);
 	.container {
 		max-width: none;
