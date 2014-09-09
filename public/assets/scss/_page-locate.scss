@@ -1,0 +1,46 @@
+//
+// Locate Page
+// --------------------------------------------------
+.locate-page {
+	text-align: center;
+
+	// Store List
+	ul {
+		@include unstyled;
+		display: inline-block;
+		margin-bottom: 30px;
+		li {
+			display: inline-block;
+			max-width: 300px;
+			margin-left: 20px;
+			img {
+				border-radius: 3px;
+			}
+			&:first-child {
+				margin-left: 0;
+			}
+		}
+	} // ul
+
+	.store-button {
+		display: inline-block;
+		background-color: $yellow;
+		font-size: 18px;
+		font-weight: bold;
+		color: $green-dark;
+		padding: 0px 50px;
+		height: 50px;
+		line-height: 50px;
+		border-radius: 30px;
+		margin-bottom: 50px;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		box-shadow: 4px 4px 20px 0px rgba(0,0,0,.3);
+		border-bottom: 5px solid darken($yellow, 8%);
+		&:hover {
+			background-color: $white;
+			border-color: darken($white, 15%);
+		}
+	}
+
+} // .locate-page
