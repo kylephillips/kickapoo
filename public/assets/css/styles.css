@@ -1935,6 +1935,18 @@ footer {
       background-color: #ffffff;
       border-color: #d9d9d9; }
 
+@media (max-width: 767px) {
+  .locate-page ul {
+    display: block;
+    margin-bottom: 30px; }
+    .locate-page ul li {
+      display: inline-block;
+      margin: 0px 0px 20px 0px; }
+  .locate-page .store-button {
+    display: block;
+    padding: 0px;
+    height: 50px; } }
+
 .contact-page {
   text-align: center;
   font-weight: bold;
