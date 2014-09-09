@@ -108,7 +108,12 @@
 	}
 }
 
-
+@media (min-width: 768px)
+{
+	.navbar ul.nav {
+		display: block !important;
+	}
+}
 
 @media(max-width: 767px)
 {
@@ -122,20 +127,27 @@
 			display: none;
 			float: none;
 			clear: both;
+			width: 100%;
+			margin: 0;
 			li {
 				float: none;
-				margin-right: 0px;
+				margin: 0px;
+				padding: 0;
+				height: auto;
+				@include clearfix;
 				.caret {
 					float: right;
-					margin-top: 8px;
+					margin-top: 20px;
 				}
 				a {
+					background-color: $green-dark;
 					color: $white;
 					display: block;
-					padding: 8px;
-					border-top: 1px solid $green-dark;
+					padding: 2px 8px;
+					border-top: 1px solid darken($green-dark, 8%);
 				}
 				.dropdown-menu {
+					margin: 0;
 					padding: 0;
 					border: 0;
 					border-radius: 0;
@@ -145,6 +157,10 @@
 					width: 100%;
 					background-color: $green;
 					li a {
+						display: block;
+						padding: 8px;
+						background-color: darken($green-dark, 8%);
+						border-color: darken($green-dark, 12%);
 						color: $white;
 						&:hover {
 							background-color: $green;
@@ -161,7 +177,7 @@
 			}
 		}
 		.logo {
-			margin: 8px 0px 8px 8px;
+			margin: 8px 0px 0px 8px;
 		}
 	}
 }
