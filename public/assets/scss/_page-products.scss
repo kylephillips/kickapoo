@@ -1,6 +1,10 @@
 //
 // Products Page
 // --------------------------------------------------
+
+/**
+* Flavor Styles
+*/
 .flavor {
 	overflow: hidden;
 	padding: 50px 0px 20px 0px;
@@ -22,15 +26,6 @@
 		float: right;
 		width: 67.4418604651%; //870/1290
 		@include clearfix;
-		// .description {
-		// 	float: left;
-		// 	width: 66.6666666667%; //560/840
-		// }
-		.description-image {
-			float: right;
-			width: 27.1428571429%; //228/840
-			max-width: 225px;
-		}
 	}
 	h2 {
 		@include altGothic;
@@ -44,6 +39,7 @@
 		font-size: 18px;
 		line-height: 34px;
 	}
+	// Available In Sizes
 	.products {
 		clear: both;
 		padding-top: 20px;
@@ -72,7 +68,7 @@
 				-webkit-font-smoothing: antialiased;
 				font-size: 32px;
 			}
-		} // .headling
+		} // .heading
 		ul {
 			display: inline-block;
 			width: 90%;
@@ -135,12 +131,18 @@
 } // .flavor
 
 
+/**
+* Joy Juice
+*/
 .joy-juice {
 	padding-top: 20px;
 	box-shadow: none;
 }
 
 
+/**
+* Fruit Shine
+*/
 .fruit-shine {
 	background-image: url('../images/pattern-type-yellow.png');
 	h2 {
@@ -178,6 +180,9 @@
 } // .fruit-shine
 
 
+/**
+* Fuzzy Navel
+*/
 .fuzzy-navel {
 	background-color: #a12f25;
 	h2 {
@@ -201,6 +206,9 @@
 } // .fuzzy-navel
 
 
+/**
+* Maliblu
+*/
 .maliblu {
 	background-color: #003e7b;
 	background-image: url('../images/pattern-type-blue.png');
@@ -326,5 +334,9 @@
 				}
 			} // ul
 		} // .products
+		&.even .content {
+			float: none;
+			width: 100%;
+		}
 	} // .flavor
 }

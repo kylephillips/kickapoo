@@ -1620,6 +1620,9 @@ footer {
     .page-hero .bubble-pattern {
       display: none; } }
 
+/**
+* Flavor Styles
+*/
 .flavor {
   overflow: hidden;
   padding: 50px 0px 20px 0px;
@@ -1647,10 +1650,6 @@ footer {
       /* 2 */ }
     .flavor .content:after {
       clear: both; }
-    .flavor .content .description-image {
-      float: right;
-      width: 27.14286%;
-      max-width: 225px; }
   .flavor h2 {
     font-family: "alternate-gothic-no-2-d", sans-serif;
     font-style: normal;
@@ -1751,11 +1750,17 @@ footer {
     float: left;
     width: 67.44186%; }
 
+/**
+* Joy Juice
+*/
 .joy-juice {
   padding-top: 20px;
   -webkit-box-shadow: none;
           box-shadow: none; }
 
+/**
+* Fruit Shine
+*/
 .fruit-shine {
   background-image: url('../images/pattern-type-yellow.png'); }
   .fruit-shine h2 {
@@ -1777,6 +1782,9 @@ footer {
       background-color: #ffffff;
       color: #008d2c; }
 
+/**
+* Fuzzy Navel
+*/
 .fuzzy-navel {
   background-color: #a12f25; }
   .fuzzy-navel h2 {
@@ -1788,6 +1796,9 @@ footer {
   .fuzzy-navel .products ul li img {
     border-color: #78221b; }
 
+/**
+* Maliblu
+*/
 .maliblu {
   background-color: #003e7b;
   background-image: url('../images/pattern-type-blue.png'); }
@@ -1865,7 +1876,10 @@ footer {
         .flavor .products ul li img {
           max-width: none; }
       .flavor .products ul.four li, .flavor .products ul.three li, .flavor .products ul.two li {
-        width: 100%; } }
+        width: 100%; }
+    .flavor.even .content {
+      float: none;
+      width: 100%; } }
 
 .contact-page {
   text-align: center;
