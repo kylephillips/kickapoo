@@ -43,11 +43,8 @@
 		@include('admin.partials.nav')
 	@endif
 
-	@if( $page_slug == 'home' )
-	<img src="{{URL::asset('assets/images/preloader.png')}}" class="preloader">
+	<img src="{{URL::asset('assets/images/preloader.png')}}" class="preloader" aria-hidden="true">
 	<div class="page loading">
-	@endif
-
 
 	<nav class="mobile-nav">
 		@include('partials.mobilenav')
