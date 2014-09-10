@@ -30,3 +30,13 @@ body.nav-open {
 		transition: right 200ms ease;	
 	}
 }
+
+@media (min-width: 768px)
+{
+	.mobile-nav {
+		right: -70% !important;
+	}
+	.page-wrap {
+		right: 0% !important;
+	}
+}

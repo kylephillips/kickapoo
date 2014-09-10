@@ -24,6 +24,13 @@ h3 {
 	color: $yellow;
 }
 
+h4 {
+	@include altGothic;
+	font-size: 32px;
+	color: $yellow;
+	padding-top: 10px;
+}
+
 p {
 	margin: 0px 0px 20px 0px;
 }

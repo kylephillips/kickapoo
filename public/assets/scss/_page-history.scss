@@ -29,4 +29,14 @@
 	.history-hero {
 		margin-top: -20px;
 	}
+
+	.container.history {
+		aside {
+			display: none;
+		}
+		.main {
+			float: none;
+			width: 100%;
+		}
+	}
 }

@@ -75,6 +75,13 @@
 	border-bottom: 1px solid darken($white, 8%);
 	color: $black;
 	@include clearfix;
+	h4 {
+		font-family: $base-font-family;
+		color: $black;
+		font-size: 16px;
+		padding: 0;
+		font-weight: bold;
+	}
 }
 // Close icon
 .modal-header .close {
