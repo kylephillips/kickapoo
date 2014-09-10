@@ -110,6 +110,7 @@
 							<div class="image-file" style="display:none;">
 								{{Form::file('customfield[' . $c . '][value]')}}
 							</div>
+							<p class="image-name">{{substr($field->value, 11)}}</p>
 						</div>
 					@endif
 					{{Form::hidden('customfield[' . $c . '][field_type]', $field->field_type)}}

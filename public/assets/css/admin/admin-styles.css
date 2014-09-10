@@ -1573,7 +1573,8 @@ table {
 
 .image-thumb {
   position: relative;
-  width: 100px; }
+  width: 100px;
+  float: left; }
   .image-thumb img {
     float: none !important;
     width: auto !important;
@@ -1593,6 +1594,12 @@ table {
     cursor: pointer;
     font-size: 18px;
     color: #808080; }
+
+.image-name {
+  float: left;
+  clear: none;
+  margin-left: 10px;
+  padding-top: 24px; }
 
 .products {
   list-style-type: none;

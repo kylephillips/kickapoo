@@ -6,6 +6,7 @@
 .image-thumb {
 	position: relative;
 	width: 100px;
+	float: left;
 	img {
 		float: none !important;
 		width: auto !important;
@@ -26,6 +27,13 @@
 		color: darken($white, 50%);
 	}
 }
+.image-name {
+	float: left;
+	clear: none;
+	margin-left: 10px;
+	padding-top: 24px;
+}
+
 .products {
 	@include unstyled();
 	margin-bottom: 10px;
