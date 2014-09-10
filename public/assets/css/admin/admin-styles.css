@@ -1600,6 +1600,11 @@ table {
   clear: none;
   margin-left: 10px;
   padding-top: 24px; }
+  .image-name.bottom {
+    float: none;
+    margin: 0;
+    padding: 0;
+    clear: both; }
 
 .products {
   list-style-type: none;

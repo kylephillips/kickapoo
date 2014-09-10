@@ -44,6 +44,7 @@
 						<div class="image-file" style="display:none;">
 							{{Form::file('flavor_image')}}
 						</div>
+						<p class="image-name">{{substr($flavor->image, 11)}}</p>
 					@else
 						{{Form::file('flavor_image')}}
 					@endif
@@ -92,6 +93,7 @@
 									<div class="image-file" style="display:none;">
 										{{Form::file('product[' . $i . '][image]')}}
 									</div>
+									<p class="image-name bottom">{{substr($product->image, 11)}}</p>
 								@else
 									{{Form::file('product[' . $i . '][image]')}}
 								@endif
@@ -106,6 +108,7 @@
 									<div class="image-file" style="display:none;">
 										{{Form::file('product[' . $i . '][nutrition_label]')}}
 									</div>
+									<p class="image-name bottom">{{substr($product->nutrition_label, 11)}}</p>
 								@else
 									{{Form::file('product[' . $i . '][nutrition_label]')}}
 								@endif
