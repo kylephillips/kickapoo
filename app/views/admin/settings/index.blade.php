@@ -24,6 +24,8 @@
 			{{Form::label('contact_emails', 'Emails for contact form notifications (comma separated list)')}}
 			{{Form::text('contact_emails', $contact_emails, ['class'=>'form-control'])}}
 		</div>
+
+		<hr>
 		
 		<h3>Store Link</h3>
 

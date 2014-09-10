@@ -5,6 +5,7 @@
 /app/database/seeds/SettingsSeeder.php
 /node_modules/*
 /public/assets/videos/*
+/app/config/mail.php
 /app/config/staging/*
 /app/config/local/*
 composer.phar
