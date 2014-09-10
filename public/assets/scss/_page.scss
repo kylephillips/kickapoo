@@ -21,6 +21,19 @@
 	}
 }
 
+.intro-text {
+	p {
+		color: $yellow;
+		font-size: 20px;
+		font-weight: bold;
+		line-height: 38px;
+	}
+	hr {
+		background-color: darken($green-dark, 8%);
+		margin: 30px 0;
+	}
+}
+
 @media(max-width: 767px)
 {
 	.page-hero {
