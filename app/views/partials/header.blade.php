@@ -16,7 +16,7 @@
 			@foreach($social_links as $link)
 			@if( ($link->value_two != "") && ($link->value != "") )
 			<li>
-				<a href="{{$link->value}}" target="_blank"><i class="{{$link->value_two}}"></i></a></li>
+				<a href="{{$link->value}}" target="_blank"><i class="{{$link->value_two}}"></i></a>
 			</li>
 			@endif
 			@endforeach

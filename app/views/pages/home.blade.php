@@ -1,7 +1,7 @@
 @extends('partials.master')
 @section('content')
 
-<section class="headline">
+<div class="headline">
 	
 	@if( $page->get_field('Headline', $page->id) )
 		<img src="{{URL::asset('assets/uploads/page_images')}}/{{$page->get_field('Headline', $page->id)}}" class="header-image" alt="Share your Joy Face!" />
@@ -11,24 +11,24 @@
 	
 	{{$page['content']}}
 	<a href="{{URL::route('page', ['page'=>'contact'])}}" class="button">Or share it here <i class="icon-arrow-right"></i></a>
-</section>
+</div>
 
-<img src="{{URL::asset('assets/images/kickapoo-joy-juice-can.png')}}" class="home-green-can" />
-<img src="{{URL::asset('assets/images/kickapoo-fruit-shine-can.png')}}" class="home-red-can" />
+<img src="{{URL::asset('assets/images/kickapoo-joy-juice-can.png')}}" class="home-green-can" alt="Kickapoo Joy Juice Slim Can" />
+<img src="{{URL::asset('assets/images/kickapoo-fruit-shine-can.png')}}" class="home-red-can" alt="Kickapoo Fruit Shine Slim Can" />
 
-<img src="{{URL::asset('assets/images/home-yellowbubbles-left.png')}}" class="left-bubbles" />
-<img src="{{URL::asset('assets/images/home-yellowbubbles-right.png')}}" class="right-bubbles" />
+<img src="{{URL::asset('assets/images/home-yellowbubbles-left.png')}}" class="left-bubbles" alt="Yellow Bubbles" aria-hidden="true" />
+<img src="{{URL::asset('assets/images/home-yellowbubbles-right.png')}}" class="right-bubbles" alt="Yellow Bubbles" aria-hidden="true" />
 
 <hr class="bubble-pattern">
 
-</section><!-- .home-hero -->
+</div><!-- .home-hero -->
 
-<section class="post-area">
-	<section id="posts" class="social-posts loading">
+<div class="post-area">
+	<div id="posts" class="social-posts loading">
 		@if( count($posts) > 0 )
 			@foreach($posts as $i=>$post)
 				<div class="item @if($i % 3 == 0)white @elseif($i % 2 == 0)lime @elseif($i % 1 == 0)yellow @endif">
-					<section class="post">
+					<div class="post">
 					@if($post->type == 'instagram')
 						@include('partials.gram')
 					@elseif($post->type == 'twitter')
@@ -36,14 +36,14 @@
 					@else
 						@include('partials.fbpost')
 					@endif
-					</section>
+					</div>
 				</div>
 			@endforeach
 		@else
 			<p class="center">No Posts Yet!</p>
 		@endif
-	</section>
-</section>
+	</div>
+</div>
 
 
 @if(count($posts) > 0)
@@ -52,15 +52,15 @@
 @endif
 
 
-<section class="home-callouts">
+<div class="home-callouts">
 	<div class="container">
-		<section class="joy-meter">
+		<div class="joy-meter">
 			<div class="meter-interior">
-				<img src="{{URL::asset('assets/images/joy-meter-pointer.png')}}" alt="Gauge Needle" class="needle">
-				<img src="{{URL::asset('assets/images/joy-meter-bg.png')}}" alt="Guage" class="background">
-				<img src="{{URL::asset('assets/images/joy-meter-gauge.png')}}" alt="Guage" class="gauge">
+				<img src="{{URL::asset('assets/images/joy-meter-pointer.png')}}" alt="Gauge Needle" class="needle" />
+				<img src="{{URL::asset('assets/images/joy-meter-bg.png')}}" alt="Guage" class="background" />
+				<img src="{{URL::asset('assets/images/joy-meter-gauge.png')}}" alt="Guage" class="gauge" />
 			</div>
-		</section>
+		</div>
 		<a href="{{URL::route('page', ['page'=>'products'])}}" class="products">
 			<span>Products</span>
 			<img src="{{URL::asset('assets/images/homepage-products.jpg')}}" alt="Product Image" />
@@ -70,7 +70,7 @@
 			<img src="{{URL::asset('assets/images/homepage-history.jpg')}}" alt="History Image" />
 		</a>
 	</div>
-</section>
+</div>
 
 <!-- Parallax Bubbles -->
 <div class="bubbles one" aria-hidden="true">

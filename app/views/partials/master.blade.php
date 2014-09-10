@@ -43,45 +43,42 @@
 		@include('admin.partials.nav')
 	@endif
 
-	<img src="{{URL::asset('assets/images/preloader.png')}}" class="preloader" aria-hidden="true">
+	<img src="{{URL::asset('assets/images/preloader.png')}}" class="preloader" alt="Loading the Joy!" aria-hidden="true" />
 	<div class="page loading">
 
-	<nav class="mobile-nav">
-		@include('partials.mobilenav')
-	</nav>
+		<nav class="mobile-nav">
+			@include('partials.mobilenav')
+		</nav>
 
-	<div class="page-wrap">
-		@if( $page_slug == 'home' )
-		<section class="home-hero">
-		@else
-		<section class="page-hero" data-stellar-background-ratio="0.5">
+		<div class="page-wrap">
+			@if( $page_slug == 'home' )
+			<div class="home-hero">
+			@else
+			<section class="page-hero" data-stellar-background-ratio="0.5">
+			@endif
+
+			@include('partials.header')
+			
+			@yield('content')
+			
+			@include('partials.footer')
+		</div><!-- .page-wrap -->
+
+		@include('partials.scripts')
+		
+		@if(Auth::check())
+			<script src="{{URL::asset('assets/js/bootstrap.min.js')}}"></script>
+			<script>
+			$('.admin-nav-toggle').on('click', function(e){
+				e.preventDefault();
+				$('.nav').toggle();
+			});
+			</script>
 		@endif
 
+		@yield('footercontent')
 
-		@include('partials.header')
-		
-		@yield('content')
-		
-		@include('partials.footer')
-	</div><!-- .page-wrap -->
-
-	@include('partials.scripts')
-	
-	@if(Auth::check())
-		<script src="{{URL::asset('assets/js/bootstrap.min.js')}}"></script>
-		<script>
-		$('.admin-nav-toggle').on('click', function(e){
-			e.preventDefault();
-			$('.nav').toggle();
-		});
-		</script>
-	@endif
-
-	@yield('footercontent')
-
-	@if( $page_slug == 'home' )
-	</div><!-- .page -->
-	@endif
+	</div><!-- .page loading -->
 
 </body>
 </html>

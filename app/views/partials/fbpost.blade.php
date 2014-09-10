@@ -1,11 +1,11 @@
-<section class="user-info">
+<div class="user-info">
 	<img src="{{$post->fbpost->profile_image}}" alt="{{$post->fbpost->screen_name}}'s Profile Image" onerror="this.src='{{URL::asset('assets/images/avatar-default.png')}}'" />
 	<p>{{$post->fbpost->screen_name}}</p>
 	<span>
 		<i class="icon-facebook"></i>
 	</span>
-</section>
-<section class="content">
+</div>
+<div class="content">
 
 	@if($post->fbpost->message)
 		<p>{{$post->fbpost->message}}</p>
@@ -36,9 +36,9 @@
 		</div>
 	@endif
 
-</section>
+</div>
 @if($post->fbpost->image)
-<section class="image">
+<div class="image">
 	<img src="/assets/uploads/facebook_images/{{$post->fbpost->image}}" />
-</section>
+</div>
 @endif

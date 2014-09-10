@@ -1,4 +1,4 @@
-<section class="user-info">
+<div class="user-info">
 	<a href="http://instagram.com/{{$post->gram->screen_name}}" target="_blank">
 		<img src="{{$post->gram->profile_image}}" alt="{{$post->gram->screen_name}}'s Profile Image" onerror="this.src='{{URL::asset('assets/images/avatar-default.png')}}'" />
 	</a>
@@ -10,14 +10,14 @@
 	<span>
 		<a href="{{$post->gram->link}}" target="_blank"><i class="icon-instagram"></i></a>
 	</span>
-</section>
-<section class="content">
+</div>
+<div class="content">
 	{{$post->gram->text}}
-</section>
-<section class="image">
+</div>
+<div class="image">
 	@if($post->gram->type == 'image')
 	<a href="{{$post->gram->link}}" target="_blank">
-		<img src="{{URL::asset('assets/uploads/instagram_images')}}/{{$post->gram->image}}" />
+		<img src="{{URL::asset('assets/uploads/instagram_images')}}/{{$post->gram->image}}" alt="Instagram Image" />
 	</a>
 	@endif
-</section>
+</div>
