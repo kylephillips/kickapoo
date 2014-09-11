@@ -2,6 +2,8 @@
 
 use Kickapoo\Repositories\UserRepository;
 use Kickapoo\Repositories\PostRepository;
+use \Mail;
+use \URL;
 
 class UnmoderatedPostsNotification {
 
@@ -71,10 +73,10 @@ class UnmoderatedPostsNotification {
 	{
 		$mail_data = [
 			'count' => $this->unmoderated_count,
-			'login_link' => \URL::route('admin_index')
+			'login_link' => URL::route('admin_index')
 		];
 		$to = $user->email;
-		\Mail::send('emails.unmoderated-count-notification', $mail_data, function($message) use ($to) {
+		Mail::send('emails.unmoderated-count-notification', $mail_data, function($message) use ($to) {
 			$message->from('donotreply@drinkkickapoo.com', 'Kickapoo Website');
 			$message->subject('There are posts waiting to be moderated');
 			$message->to($to);
