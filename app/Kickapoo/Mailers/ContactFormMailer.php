@@ -2,6 +2,7 @@
 
 use Kickapoo\Repositories\SettingRepository;
 use \Mail;
+use \URL;
 
 class ContactFormMailer {
 
@@ -24,7 +25,8 @@ class ContactFormMailer {
 		$mail_data = [
 			'name' => $data['name'],
 			'email' => $data['email'],
-			'user_message' => $data['message']
+			'user_message' => $data['message'],
+			'logo' => URL::asset('assets/images/kickapoo-email-logo.png')
 		];
 		$emails = $this->settings_repo->getSetting('contact_emails');
 		if ( $emails ){
