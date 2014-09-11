@@ -43,4 +43,12 @@ class UserRepository {
 		return Banned::get();
 	}
 
+	/**
+	* Get Admins
+	*/
+	public function getAdmins()
+	{
+		return User::where('group_id',1)->orWhere('group_id',2)->get();
+	}
+
 }
