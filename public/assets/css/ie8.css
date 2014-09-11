@@ -1,0 +1,168 @@
+.container {
+  width: 980px; }
+
+.social-links li a {
+  background: url('../images/social-ie-bg.png') no-repeat;
+  background-position: center; }
+  .social-links li a:hover {
+    background: url('../images/social-ie-bg.png') no-repeat;
+    border: 0;
+    color: #ffffff; }
+.social-links.top {
+  background: url('../images/ie-black-bg.png') repeat; }
+
+footer .main li a {
+  padding: 8px 20px 8px 40px;
+  background: url('../images/ie-star.png') no-repeat;
+  background-position: 0px 10px; }
+footer .main li:after {
+  content: none; }
+footer .main li:first-child a {
+  background: transparent; }
+footer .social a {
+  background: url('../images/ie-social-green-bg.png');
+  -webkit-border-radius: 0px;
+          border-radius: 0px; }
+  footer .social a:hover {
+    background: url('../images/ie-social-green-bg.png'); }
+
+header .logo {
+  width: 200px; }
+header .buy-button {
+  margin-top: 20px;
+  display: block;
+  background: url('../images/ie-buy-button.png') no-repeat;
+  border: 0;
+  padding: 13px 10px 8px 45px;
+  -webkit-border-radius: 0;
+          border-radius: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  width: 157px;
+  height: 54px; }
+
+.home-hero {
+  background: url('../images/home-headline-rays.jpg');
+  background-repeat: repeat-x; }
+  .home-hero .headline .button {
+    display: block;
+    background: url('../images/ie-yellow-btn-large.png') no-repeat;
+    background-position: center;
+    width: 315px;
+    height: 68px;
+    margin: 0 auto 50px auto;
+    padding: 3px 0px 0px 0px;
+    -webkit-box-shadow: none;
+            box-shadow: none;
+    border: 0; }
+    .home-hero .headline .button:hover {
+      background: url('../images/ie-yellow-btn-large.png') no-repeat; }
+
+.social-posts {
+  width: 960px; }
+  .social-posts .item {
+    width: 33%; }
+    .social-posts .item .user-info {
+      background: url('../images/ie-black-bg-light.png'); }
+    .social-posts .item .twitter-links {
+      width: 100%; }
+      .social-posts .item .twitter-links li a {
+        background: url('../images/ie-black-bg-light.png'); }
+    .social-posts .item .facebook-caption {
+      background: url('../images/ie-black-bg-light.png'); }
+
+.load-more {
+  display: block;
+  margin: 0px auto 40px auto;
+  background: url('../images/ie-load-more-button.png') no-repeat;
+  width: 461px;
+  height: 70px;
+  padding: 18px 0 0 0;
+  -webkit-border-radius: 0px;
+          border-radius: 0px;
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+  .load-more i {
+    top: 7px; }
+
+.joy-meter {
+  display: none !important; }
+
+.home-callouts .products {
+  float: left;
+  width: 45%; }
+  .home-callouts .products img {
+    -webkit-border-radius: 0px;
+            border-radius: 0px; }
+  .home-callouts .products span {
+    position: relative;
+    font-size: 30px;
+    line-height: 50px;
+    width: 100%;
+    height: auto;
+    -webkit-border-radius: 0px;
+            border-radius: 0px;
+    border: 0; }
+.home-callouts .history {
+  float: right;
+  width: 45%;
+  margin-top: 0px; }
+  .home-callouts .history span {
+    position: relative;
+    bottom: auto;
+    width: 100%;
+    height: auto;
+    line-height: 50px;
+    -webkit-border-radius: 0px;
+            border-radius: 0px;
+    border: 0;
+    font-size: 30px;
+    background-color: #fff200;
+    color: #006c23; }
+  .home-callouts .history img {
+    -webkit-border-radius: 0;
+            border-radius: 0; }
+
+.page-hero {
+  background: url('../images/page-hero-rays-ie.jpg') repeat-x;
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+
+.flavor {
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+  .flavor .container {
+    width: 960px; }
+  .flavor h2 {
+    font-size: 60px; }
+  .flavor .products ul {
+    display: inline-block;
+    width: 90%;
+    zoom: 1; }
+    .flavor .products ul:before, .flavor .products ul:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */ }
+    .flavor .products ul:after {
+      clear: both; }
+    .flavor .products ul li p a {
+      background: url('../images/ie-black-bg-light.png'); }
+      .flavor .products ul li p a:hover {
+        background: url('../images/ie-black-bg-light.png'); }
+
+.locate-page .store-button {
+  display: block;
+  background: url('../images/ie-yellow-btn-large.png') no-repeat;
+  background-position: center;
+  width: 315px;
+  height: 68px;
+  margin: 0 auto 50px auto;
+  padding: 3px 0px 0px 0px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 0;
+  text-transform: none;
+  letter-spacing: 0; }
+  .locate-page .store-button:hover {
+    background: url('../images/ie-yellow-btn-large.png') no-repeat; }

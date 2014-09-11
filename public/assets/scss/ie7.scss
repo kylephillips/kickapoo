@@ -1,0 +1,307 @@
+//
+// IE 7 Specific Styles
+// --------------------------------------------------
+
+@import "_variables.scss";
+@import "_mixins.scss";
+
+.container {
+	width: 980px;
+}
+
+.bubbles, 
+.post-area, 
+.nextposts, 
+.bubble-pattern, 
+.bubble-pattern-small {
+	display: none;
+}
+.preloader {
+	display: none !important;
+}
+
+// Main Nav stars
+.main-nav ul li {
+	a {
+		background: url('../images/ie-star.png') no-repeat;
+		background-position: 0px 3px;
+		padding: 0 20px 0 37px;
+		&:before {
+			content: none;
+		}
+	}
+	&:first-child a {
+		background: transparent;
+	}
+} // .main-nav
+
+
+// Top Social Links
+// Need PNG background to replace rgba
+.social-links {
+	li a {
+		background: transparent;
+		background-position: center;
+		&:hover {
+			background: transparent;
+			border: 0;
+		}
+	}
+	&.top {
+		background: transparent;
+	}
+	i {
+		display: block;
+		width: 42px;
+		height: 42px;
+		&:before {
+			content: none;
+		}
+		&.icon-twitter {
+			background: url('../images/ie7-social-twitter.png');
+		}
+		&.icon-facebook {
+			background: url('../images/ie7-social-facebook.png');
+		}
+		&.icon-vine {
+			background: url('../images/ie7-social-vine.png');
+		}
+		&.icon-instagram {
+			background: url('../images/ie7-social-instagram.png');
+		}
+		&.icon-youtube {
+			background: url('../images/ie7-social-youtube.png');
+		}
+	}
+}
+
+
+// Footer
+// Social links need PNG background
+footer {
+	.main {
+		float: right;
+		li {
+			float: left;
+			a {
+				padding: 8px 20px 8px 40px;
+				background: url('../images/ie-star.png') no-repeat;
+				background-position: 0px 10px;
+			}
+			&:after {
+				content: none;
+			}
+			&:first-child a {
+				background: transparent;
+			}
+		}
+	}
+	.social {
+		display: none;
+	}
+}
+
+
+// Top Buy Button
+// Needs PNG background
+header {
+	.logo {
+		width: 200px;
+	}
+	.buy-button {
+		margin-top: 20px;
+		display: block;
+		background: url('../images/ie-buy-button.png') no-repeat;
+		border: 0;
+		text-align: center;
+		padding: 13px 0px 8px 0px;
+		border-radius: 0;
+		box-shadow: none;
+		width: 157px;
+		height: 54px;
+		i {
+			display: none;
+		}
+	}
+} // header
+
+
+// Home Hero Button Needs Image Background
+.home-hero {
+	background: url('../images/home-headline-rays.jpg');
+	background-repeat: repeat-x;
+	.headline .button {
+		display: block;
+		background: url('../images/ie-yellow-btn-large.png') no-repeat;
+		background-position: center;
+		width: 315px;
+		height: 68px;
+		margin: 0 auto 50px auto;
+		padding: 3px 0px 0px 0px;
+		box-shadow: none;
+		border:0;
+		&:hover {
+			background: url('../images/ie-yellow-btn-large.png') no-repeat;
+		}
+	}
+	hr {
+		display: none;
+	}
+}
+
+
+// Social Posts need png background - replaces rgba
+.social-posts {
+	width: 960px;
+	.item {
+		width: 33%;
+		.user-info {
+			background: url('../images/ie-black-bg-light.png');
+		} 
+		.twitter-links {
+			width: 100%;
+			li a {
+				background: url('../images/ie-black-bg-light.png');
+			}
+		}
+		.facebook-caption {
+			background: url('../images/ie-black-bg-light.png');
+		}
+	}
+}
+
+
+// Load more button needs png background
+.load-more {
+	display: block;
+	margin: 0px auto 40px auto;
+	background: url('../images/ie-load-more-button.png') no-repeat;
+	width: 461px;
+	height: 70px;
+	padding: 18px 0 0 0;
+	border-radius: 0px;
+	box-shadow: none;
+	i {
+		top: 7px;
+	}
+}
+
+.page.loading {
+	display: block !important;
+}
+
+// Homepage Callouts
+.joy-meter {
+	display: none !important;
+}
+.home-callouts {
+	background: transparent;
+	.products {
+		float: left;
+		width: 45%;
+		img {
+			border-radius: 0px;
+		}
+		span {
+			position: relative;
+			font-size: 30px;
+			line-height: 50px;
+			width: 100%;
+			height: auto;
+			border-radius: 0px;
+			border: 0;
+		}
+		&:hover span {
+			background-color: $white;
+			color: $green;
+			top: auto;
+		}
+	} // .products
+	.history {
+		float: right;
+		width: 45%;
+		margin-top: 0px;
+		span {
+			position: relative;
+			bottom: auto;
+			width: 100%;
+			height: auto;
+			line-height: 50px;
+			border-radius: 0px;
+			border: 0;
+			font-size: 30px;
+			background-color: $yellow;
+			color: $green-dark;
+		}
+		img {
+			border-radius: 0;
+		}
+		&:hover span {
+			bottom: auto;
+		}
+	} // .history
+} // .home-callouts
+
+
+// Page Hero
+.page-hero {
+	background: url('../images/page-hero-rays-ie.jpg') repeat-x;
+	box-shadow: none;
+}
+
+// Products Page
+.flavor {
+	box-shadow: none;
+	.container {
+		width: 960px;
+	}
+	.large-image {
+		width: 270px;
+	}
+	h2 {
+		font-size: 60px;
+	}
+	.products ul {
+		display: inline-block;
+		width: 90%;
+		@include clearfix;
+		li p a {
+			background: url('../images/ie-black-bg-light.png');
+			&:hover {
+				background: url('../images/ie-black-bg-light.png');
+			}
+		}
+	}
+}
+
+// Locate Page
+.locate-page {
+	.store-button {
+		display: block;
+		background: url('../images/ie-yellow-btn-large.png') no-repeat;
+		background-position: center;
+		width: 315px;
+		height: 68px;
+		margin: 0 auto 50px auto;
+		padding: 3px 0px 0px 0px;
+		box-shadow: none;
+		border:0;
+		text-transform: none;
+		letter-spacing: 0;
+		&:hover {
+			background: url('../images/ie-yellow-btn-large.png') no-repeat;
+		}
+	}
+	ul {
+		display: inline;
+		@include clearfix;
+		li {
+			float: left;
+		}
+	}
+} 
+
+
+.history-hero {
+	margin: 30px 0 30px 0;
+}
