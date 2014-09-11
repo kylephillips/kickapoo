@@ -1,7 +1,8 @@
 /**
 * Page Preloader
 */
-$(window).load(function(){
+window.addEventListener('load', function(){
+	
 	$('.page').removeClass('loading');
 	$('.preloader').remove();
 
@@ -36,7 +37,9 @@ $(document).ready(function(){
 * Parallax
 */
 $(window).bind('scroll',function(e){
-	parallaxScroll();
+	if ( !$('html').hasClass('touch') ){
+		parallaxScroll();
+	}
 });
 function parallaxScroll(){
 	var scrolled = $(window).scrollTop();

@@ -1206,6 +1206,9 @@ footer {
   .bubbles.three {
     z-index: 998; }
 
+html.touch .bubbles {
+  display: none; }
+
 .bubble {
   position: absolute;
   opacity: 0.4; }
@@ -1390,6 +1393,14 @@ footer {
     width: 23.75%;
     max-width: 380px; }
 
+@media (min-width: 768px) and (max-width: 1024px) {
+  .home-hero .headline {
+    width: 57%;
+    margin-left: 5%; }
+    .home-hero .headline p {
+      font-size: 20px;
+      margin-bottom: 20px; } }
+
 @media (max-width: 767px) {
   .home-hero {
     background: transparent;
@@ -1421,6 +1432,15 @@ footer {
   max-width: 330px;
   z-index: 20;
   top: 100px; }
+
+html.touch .home-red-can {
+  top: 130px; }
+
+@media (min-width: 768px) and (max-width: 1024px) {
+  .home-green-can {
+    width: 25%; }
+  .home-red-can {
+    width: 20%; } }
 
 @media (max-width: 767px) {
   .home-red-can, .home-green-can {

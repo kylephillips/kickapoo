@@ -19,6 +19,22 @@
 	top: 100px;
 }
 
+html.touch {
+	.home-red-can{
+		top: 130px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px)
+{
+	.home-green-can {
+		width: 25%;
+	}
+	.home-red-can {
+		width: 20%;
+	}
+}
+
 @media (max-width: 767px)
 {
 	.home-red-can, .home-green-can {

@@ -15,6 +15,11 @@
 		z-index: 998;
 	}
 }
+html.touch {
+	.bubbles {
+		display: none;
+	}
+}
 
 
 .bubble {
