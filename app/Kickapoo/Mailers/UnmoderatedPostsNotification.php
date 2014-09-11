@@ -73,7 +73,8 @@ class UnmoderatedPostsNotification {
 	{
 		$mail_data = [
 			'count' => $this->unmoderated_count,
-			'login_link' => URL::route('admin_index')
+			'login_link' => URL::route('admin_index'),
+			'logo' => URL::asset('assets/images/kickapoo-email-logo.png')
 		];
 		$to = $user->email;
 		Mail::send('emails.unmoderated-count-notification', $mail_data, function($message) use ($to) {
