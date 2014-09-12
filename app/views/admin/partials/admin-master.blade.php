@@ -43,7 +43,8 @@
 
 	<script>
 		var urls = {
-			'editor_upload' : "{{URL::route('editor_upload')}}"
+			'editor_upload' : "{{URL::route('editor_upload')}}",
+			'editor_styles' : "{{URL::asset('assets/css/editor-styles.css')}}"
 		}
 	</script>
 

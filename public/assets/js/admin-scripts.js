@@ -18,6 +18,9 @@ function apply_redactor()
 {
 	$('.redactor').redactor({
 		imageUpload : urls.editor_upload,
+		iframe: true,
+		minHeight: 500,
+		css: urls.editor_styles,
 		imageUploadCallback: function(image, json){
 			console.log(json);
 		},
