@@ -37,6 +37,15 @@
 
 		<hr>
 
+		<h3>Footer Scripts</h3>
+		<div class="form-group">
+			{{$errors->first('footer_scripts', '<span class="text-danger"><strong>:message</strong></span><br>')}}
+			{{Form::label('footer_scripts', 'Footer Scripts (include script tags)')}}
+			{{Form::textarea('footer_scripts', $footer_scripts, ['class'=>'form-control'])}}
+		</div>
+
+		<hr>
+
 		<h3>Social Links</h3>
 		<div class="alert alert-info">
 			Both the link and icon class are required to display on the site. Leave either off to hide from the site.

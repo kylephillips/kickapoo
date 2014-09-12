@@ -106,6 +106,7 @@ Route::get('/{page}', ['as'=>'page', 'uses'=>'PageController@getPage']);
 View::composer('*', 'Kickapoo\ViewComposers\PageViewComposer');
 View::composer('admin.partials.nav', 'Kickapoo\ViewComposers\AdminNavComposer');
 View::composer(['partials.header', 'partials.footer', 'partials.mobilenav'], 'Kickapoo\ViewComposers\HeaderViewComposer');
+View::composer('partials.master', 'Kickapoo\ViewComposers\MasterViewComposer');
 
 // Append query string to paginator
 View::composer(Paginator::getViewName(), function($view) {
