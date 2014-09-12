@@ -22,8 +22,8 @@
 					<td style="padding:20px;">
 						<h4 style="font-family: Arial, Helvetica, sans-serif; line-height: 1.4; margin: 0px 0 20px 0; background-color:#d9edf7; font-size:16px; color:#31708f; font-weight:normal; padding:8px; border:1px solid #bce8f1;">Looks like there are some unmoderated posts on the Kickapoo site.</h4>
 						<p style="font-family: Arial, Helvetica, sans-serif; line-height: 1.4; margin: 0px 0 0px 0; font-size:150px; line-height:140px; color:#00581c;"><strong>{{$count}}</strong></p>
-						<p style="font-family: Arial, Helvetica, sans-serif; line-height: 1.4; margin: 0px 0 10px 0; border-bottom:1px solid #ebebec; padding-bottom:10px;">posts waiting to be moderated. You can <a href="{{$login_link}}" style="color:#00581c;">login here</a> to moderate the posts.</p>
-						<p style="font-family: Arial, Helvetica, sans-serif; line-height: 1.4; margin: 0px 0 10px 0; padding-bottom:10px;">To to turn off these notifications, or reset the unmoderated post count for which you'd like to be notified, <a href="{{$login_link}}" style="color:#00581c; text-decoration:none;">login here</a> and click on your name and "update profile".</p>
+						<p style="font-family: Arial, Helvetica, sans-serif; line-height: 1.4; margin: 0px 0 10px 0; border-bottom:1px solid #ebebec; padding-bottom:10px;">posts waiting to be moderated.</p>
+						<p style="font-family: Arial, Helvetica, sans-serif; line-height: 1.4; margin: 0px 0 10px 0; padding-bottom:10px;">To to turn off these notifications, or reset the unmoderated post count for which you'd like to be notified, login to the Kickapoo admin area and click on your name and "update profile".</p>
 					</td>
 				</tr>
 			</table>
