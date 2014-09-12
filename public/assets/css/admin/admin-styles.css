@@ -1745,3 +1745,34 @@ table {
   text-align: center; }
   .flavor-save .btn {
     width: 60%; }
+
+.sizes-table {
+  list-style-type: none;
+  margin: 0;
+  padding: 0; }
+  .sizes-table li {
+    zoom: 1;
+    padding: 5px; }
+    .sizes-table li:before, .sizes-table li:after {
+      content: " ";
+      /* 1 */
+      display: table;
+      /* 2 */ }
+    .sizes-table li:after {
+      clear: both; }
+    .sizes-table li .translations {
+      display: none; }
+    .sizes-table li strong {
+      float: left;
+      margin-top: 8px; }
+    .sizes-table li em {
+      font-style: normal;
+      font-weight: bold; }
+    .sizes-table li p {
+      line-height: 24px; }
+    .sizes-table li .buttons {
+      float: right; }
+    .sizes-table li:nth-child(even) {
+      background-color: #ebebeb; }
+    .sizes-table li .translations {
+      clear: both; }

@@ -11,4 +11,20 @@ class ProductSize extends Eloquent {
 		'title' => 'required|unique:productsizes,title'
 	];
 
+	/**
+	* Get translated sizes
+	*/
+	public function translations()
+	{
+		return $this->belongsToMany('ProductSize', 'productsizes_translations', 'parent_size', 'translated_size');
+	}
+
+	/**
+	* Translation of
+	*/
+	public function translation_of()
+	{
+		return $this->belongsToMany('ProductSize', 'productsizes_translations', 'translated_size', 'parent_size');
+	}
+
 }

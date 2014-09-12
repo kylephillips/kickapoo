@@ -14,17 +14,33 @@
 		<div class="alert alert-success" style="display:none;"></div>
 		<div class="alert alert-success edit-success" style="display:none;"></div>
 
-		<table class="sizes">
+		<ul class="sizes-table">
 			@foreach($sizes as $size)
-			<tr>
-				<td class="title_{{$size->id}}">{{$size->title}}</td>
-				<td class="buttons">
+			<li>
+				<strong class="title_{{$size->id}}">{{$size->title}}</strong>
+				<div class="buttons">
+					<a href="#" class="btn toggle-translations">Translations</a>
 					<a href="#" class="btn btn-warning edit-size edit_{{$size->id}}" data-id="{{$size->id}}" data-title="{{$size->title}}">Edit</a>
 					<a href="{{$size->id}}" class="btn btn-danger delete-size">Delete</a>
-				</td>
-			</tr>
+				</div>
+				<div class="translations">
+					<p>
+					@foreach(LaravelLocalization::getSupportedLocales() as $code => $properties)
+					@if($code !== 'en')
+						<em>{{$properties['name']}}:</em>
+						@if ( array_key_exists($code, $translations[$size->id]) )
+						{{$translations[$size->id][$code]['title']}} (<a href="#" data-id="{{$translations[$size->id][$code]['id']}}" data-language="{{$properties['name']}}" data-code="{{$code}}">edit</a>)
+						@else
+						<a href="#" data-language="{{$properties['name']}}" data-code="{{$code}}" data-parent="{{$size->id}}">Add</a>
+						@endif
+						<br />
+					@endif
+					@endforeach
+					</p>
+				</div>
+			</li>
 			@endforeach
-		</table>
+		</ul>
 
 		@if(Session::has('errors'))
 		<div class="add-size-form" style="display:block;">
@@ -75,6 +91,15 @@
 @stop
 @section('footercontent')
 <script>
+/**
+* Translations
+*/
+$('.toggle-translations').on('click', function(e){
+	e.preventDefault();
+	var trans = $(this).parents('li').children('.translations');
+	$(trans).toggle();
+});
+
 /**
 * Edit an existing Size
 */
@@ -148,7 +173,7 @@ $('.add-cancel').on('click', function(e){
 $('.delete-size').on('click', function(e){
 	e.preventDefault();
 	if (confirm('Are you sure you want to delete this type? This will remove all instances of this type from current products.')){
-		var row = $(this).parents('tr');
+		var row = $(this).parents('li');
 		var id = $(this).attr('href');
 		delete_size(id, row);
 	}

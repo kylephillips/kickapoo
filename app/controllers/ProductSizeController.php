@@ -22,8 +22,13 @@ class ProductSizeController extends \BaseController {
 	public function index()
 	{
 		$sizes = $this->product_repo->getSizes();
+		foreach( $sizes as $size ){
+			$translations[$size->id] = $this->product_repo->getTranslationsArray('size', $size->id);
+		}
+		//dd($translations);
 		return View::make('admin.products.sizes')
-			->with('sizes', $sizes);
+			->with('sizes', $sizes)
+			->with('translations', $translations);
 	}
 
 
@@ -36,9 +41,11 @@ class ProductSizeController extends \BaseController {
 		if ( $validation->fails() ){
 			return Redirect::back()->withInput()->withErrors($validation);
 		}
+		$language = ( Input::get('language') ) ? Input::get('language') : 'en';
 		ProductSize::create([
 			'title' => Input::get('title'),
-			'slug' => Str::slug(Input::get('title'))
+			'slug' => Str::slug(Input::get('title')),
+			'language' => $language
 		]);
 		return Redirect::route('admin.size.index')
 			->with('success', 'Size successfully added.');
