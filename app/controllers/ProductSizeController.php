@@ -1,6 +1,7 @@
 <?php
 
 use Kickapoo\Repositories\ProductRepository;
+use Kickapoo\Factories\ProductFactory;
 
 class ProductSizeController extends \BaseController {
 
@@ -9,10 +10,16 @@ class ProductSizeController extends \BaseController {
 	*/
 	protected $product_repo;
 
+	/**
+	* Product Factory
+	*/
+	protected $product_factory;
 
-	public function __construct(ProductRepository $product_repo)
+
+	public function __construct(ProductRepository $product_repo, ProductFactory $product_factory)
 	{
 		$this->product_repo = $product_repo;
+		$this->product_factory = $product_factory;
 	}
 
 
@@ -25,7 +32,6 @@ class ProductSizeController extends \BaseController {
 		foreach( $sizes as $size ){
 			$translations[$size->id] = $this->product_repo->getTranslationsArray('size', $size->id);
 		}
-		//dd($translations);
 		return View::make('admin.products.sizes')
 			->with('sizes', $sizes)
 			->with('translations', $translations);
@@ -41,12 +47,7 @@ class ProductSizeController extends \BaseController {
 		if ( $validation->fails() ){
 			return Redirect::back()->withInput()->withErrors($validation);
 		}
-		$language = ( Input::get('language') ) ? Input::get('language') : 'en';
-		ProductSize::create([
-			'title' => Input::get('title'),
-			'slug' => Str::slug(Input::get('title')),
-			'language' => $language
-		]);
+		$this->product_factory->addSize(Input::all());
 		return Redirect::route('admin.size.index')
 			->with('success', 'Size successfully added.');
 	}
@@ -86,7 +87,35 @@ class ProductSizeController extends \BaseController {
 	{
 		if ( Request::ajax() ){
 			$size = $this->product_repo->getSize(Input::get('id'));
+
+			foreach($size->translations as $translation){
+				$trans = $this->product_repo->getSize($translation->id);
+				$trans->delete();
+			}
+
 			$size->delete();
+
+			return Response::json(['status'=>'success']);
+		}
+	}
+
+
+	/**
+	* Add a Translation of a size
+	*/
+	public function addTranslation()
+	{
+		if ( Request::ajax() ){
+			$validation = Validator::make(Input::all(), ProductSize::$translation_required);
+			
+			if ( $validation->fails() ){
+				return Response::json(['status'=>'error', 'message'=>$validation->getMessageBag()->first()]);
+			}
+
+			$translated_size = $this->product_factory->addSize(Input::all());
+			$parent = $this->product_repo->getSize(Input::get('parent'));
+			$parent->translations()->attach($translated_size);
+
 			return Response::json(['status'=>'success']);
 		}
 	}

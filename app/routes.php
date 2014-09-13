@@ -74,9 +74,12 @@ Route::group(['before'=>'auth'], function()
 	Route::get('admin/flavor/order', ['as'=>'flavor_order', 'uses'=>'ProductController@flavorOrder']);
 	Route::get('admin/product/delete', ['as'=>'delete_product', 'uses'=>'ProductController@deleteProduct']);
 	Route::get('admin/products/order', ['as'=>'product_order', 'uses'=>'ProductController@setOrder']);
+	
+	// Product Types/Sizes Management
 	Route::resource('admin/size', 'ProductSizeController', ['only'=>['index','store']]);
 	Route::get('admin/size/delete', ['as'=>'delete_size', 'uses'=>'ProductSizeController@delete']);
 	Route::post('admin/size/update', ['as'=>'update_size', 'uses'=>'ProductSizeController@update']);
+	Route::post('admin/size/add-translation', ['as'=>'add_size_translation', 'uses'=>'ProductSizeController@addTranslation']);
 
 	// Form Entry Management
 	Route::get('admin/forms', ['as'=>'form_entries', 'uses'=>'ContactFormController@index']);

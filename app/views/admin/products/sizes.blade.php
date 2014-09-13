@@ -29,9 +29,14 @@
 					@if($code !== 'en')
 						<em>{{$properties['name']}}:</em>
 						@if ( array_key_exists($code, $translations[$size->id]) )
-						{{$translations[$size->id][$code]['title']}} (<a href="#" data-id="{{$translations[$size->id][$code]['id']}}" data-language="{{$properties['name']}}" data-code="{{$code}}">edit</a>)
+							{{$translations[$size->id][$code]['title']}} 
+							<span id="edit_trans_{{$translations[$size->id][$code]['id']}}">
+								(<a href="#" data-id="{{$translations[$size->id][$code]['id']}}" data-language="{{$properties['name']}}" data-code="{{$code}}">edit</a>)
+							</span>
 						@else
-						<a href="#" data-language="{{$properties['name']}}" data-code="{{$code}}" data-parent="{{$size->id}}">Add</a>
+							<span id="add_{{$code}}_{{$size->id}}">
+								<a href="#" data-parentname="{{$size->title}}" data-language="{{$properties['name']}}" data-code="{{$code}}" data-parent="{{$size->id}}" class="add-translation">Add</a>
+							</span>
 						@endif
 						<br />
 					@endif
@@ -61,6 +66,7 @@
 	</div><!-- .well -->
 </div><!-- .container -->
 
+<!-- Edit existing type modal form -->
 <div class="modal fade" id="edit-size-modal">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -88,6 +94,36 @@
 </div><!-- /.modal -->
 
 
+<!-- Add Translation Modal Form -->
+<div class="modal fade" id="add-translation-modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			{{Form::open(['url'=>URL::route('add_size_translation'), 'id'=>'add-translation-form'])}}
+			<div class="modal-header">
+				<h4 class="modal-title"></h4>
+			</div>
+			<div class="modal-body">
+
+				<div id="translation-error" class="alert alert-danger edit-error" style="display:none;"></div>
+				
+				<input type="hidden" value="" id="parent-id" name="parent">
+				<input type="hidden" value="" id="language" name="language">
+
+				<p>
+					<label>Title</label>
+					<input type="text" name="title" id="add-translation-title" value="" />
+				</p>
+			</div>
+			<div class="modal-footer">
+				<button class="btn btn-success" id="add-translation-button">Save</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+			{{Form::close()}}
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
 @stop
 @section('footercontent')
 <script>
@@ -99,6 +135,58 @@ $('.toggle-translations').on('click', function(e){
 	var trans = $(this).parents('li').children('.translations');
 	$(trans).toggle();
 });
+
+/**
+* Add a Translation – open modal and populate form
+*/
+$('.add-translation').on('click', function(e){
+	e.preventDefault();
+	$('#parent-id').val($(this).data('parent'));
+	$('#language').val($(this).data('code'));
+
+	var element = $(this).parent('span');
+	var language = $(this).data('language');
+	var parent_name = $(this).data('parentname');
+	add_translation_modal(language, parent_name);
+});
+
+function add_translation_modal(language, parent_name)
+{
+	$('#add-translation-form').find('h4').text('Add ' + language + ' Translation for ' + parent_name);	
+	$('#add-translation-modal').modal('show');
+}
+
+/**
+* Add a Translation - submit the form
+*/
+$('#add-translation-button').on('click', function(e){
+	e.preventDefault();
+	add_size_translation();
+});
+function add_size_translation()
+{
+	$('#translation-error').hide();
+	var url = $('#add-translation-form').attr('action');
+	var data = $('#add-translation-form').serialize();
+	$.ajax({
+		url: url,
+		type: 'POST',
+		data: data,
+		success: function(data){
+			if ( data.status === 'success' ){
+				update_translation_text();
+			} else {
+				$('#translation-error').text(data.message).show();
+			}
+		}
+	});
+}
+function update_translation_text()
+{
+	var element = '#add_' + $('#language').val() + '_' + $('#parent-id').val();
+	$(element).text($('#add-translation-title').val());
+	$('#add-translation-modal').modal('hide');
+}
 
 /**
 * Edit an existing Size

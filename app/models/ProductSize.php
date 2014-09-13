@@ -11,6 +11,12 @@ class ProductSize extends Eloquent {
 		'title' => 'required|unique:productsizes,title'
 	];
 
+	public static $translation_required = [
+		'language' => 'required|size:2',
+		'parent' => 'required|exists:productsizes,id',
+		'title' => 'required'
+	];
+
 	/**
 	* Get translated sizes
 	*/

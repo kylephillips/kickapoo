@@ -3,6 +3,8 @@
 use \Product;
 use \Image;
 use \Flavor;
+use \ProductSize;
+use \Str;
 use Kickapoo\Repositories\ProductRepository;
 
 class ProductFactory {
@@ -152,6 +154,21 @@ class ProductFactory {
 			$flavor->order = $key;
 			$flavor->save();
 		}
+	}
+
+
+	/**
+	* Add a new type/size
+	*/
+	public function addSize($input)
+	{
+		$language = ( isset($input['language']) ) ? $input['language'] : 'en';
+		$size =ProductSize::create([
+			'title' => $input['title'],
+			'slug' => Str::slug($input['title']),
+			'language' => $language
+		]);
+		return $size;
 	}
 
 }
