@@ -46,8 +46,18 @@
 				@endif
 
 				@foreach($flavor->products as $product)
+					
+					<?php
+						$size_title = $product->size->title;
+						$translations = $product->size->translations->toArray();
+						foreach($translations as $translation){
+							if ( $translation['language'] == LaravelLocalization::getCurrentLocale() ) $size_title = $translation['title'];
+						}
+					?>
+
 					<li>
-						<strong>{{$product->size->title}}</strong>
+						<strong>{{$size_title}}</strong>
+
 						@if($product->image)
 						{{$product->size->ingredients}}
 							<img src="{{URL::asset('assets/uploads/product_images')}}/{{$product->image}}" alt="{{$flavor['title']}} in {{$product->size->title}}" />
@@ -55,8 +65,8 @@
 							<img src="{{URL::asset('assets/images/product-size-fpo.png')}}" alt="{{$flavor['title']}} in {{$product->size->title}}" />
 						@endif
 						<p>
-							<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$product->size->title}} Ingredients" data-id="{{$product->id}}" data-type="ingredients">{{Lang::get('messages.Ingredients')}}</a>
-							<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$product->size->title}} Nutrition" data-id="{{$product->id}}" data-type="nutrition">{{Lang::get('messages.Nutrition')}}</a>
+							<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$size_title}} Ingredients" data-id="{{$product->id}}" data-type="ingredients">{{Lang::get('messages.Ingredients')}}</a>
+							<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$size_title}} Nutrition" data-id="{{$product->id}}" data-type="nutrition">{{Lang::get('messages.Nutrition')}}</a>
 						</p>
 					</li>
 				@endforeach
