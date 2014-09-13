@@ -44,9 +44,7 @@ class ProductSizeController extends \BaseController {
 	public function store()
 	{
 		$validation = Validator::make(Input::all(), ProductSize::$required);
-		if ( $validation->fails() ){
-			return Redirect::back()->withInput()->withErrors($validation);
-		}
+		if ( $validation->fails() ) return Redirect::back()->withInput()->withErrors($validation);
 		$this->product_factory->addSize(Input::all());
 		return Redirect::route('admin.size.index')
 			->with('success', 'Size successfully added.');

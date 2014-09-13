@@ -27,18 +27,22 @@
 					<p>
 					@foreach(LaravelLocalization::getSupportedLocales() as $code => $properties)
 					@if($code !== 'en')
-						<em>{{$properties['name']}}:</em>
-						@if ( array_key_exists($code, $translations[$size->id]) )
-							{{$translations[$size->id][$code]['title']}} 
-							<span id="edit_trans_{{$translations[$size->id][$code]['id']}}">
-								(<a href="#" data-id="{{$translations[$size->id][$code]['id']}}" data-language="{{$properties['name']}}" data-code="{{$code}}">edit</a>)
-							</span>
-						@else
-							<span id="add_{{$code}}_{{$size->id}}">
-								<a href="#" data-parentname="{{$size->title}}" data-language="{{$properties['name']}}" data-code="{{$code}}" data-parent="{{$size->id}}" class="add-translation">Add</a>
-							</span>
-						@endif
+						<span class="translation">
+							<em>{{$properties['name']}}:</em>
+							@if ( array_key_exists($code, $translations[$size->id]) )
+								{{$translations[$size->id][$code]['title']}} 
+								<span id="edit_trans_{{$translations[$size->id][$code]['id']}}">
+									(<a href="#" data-id="{{$translations[$size->id][$code]['id']}}" data-language="{{$properties['name']}}" data-code="{{$code}}">Edit</a>
+									&nbsp;|&nbsp;
+									<a href="{{$translations[$size->id][$code]['id']}}" class="delete-size delete-translation">Delete</a>)
+								</span>
+							@else
+								<span id="add_{{$code}}_{{$size->id}}">
+									<a href="#" data-parentname="{{$size->title}}" data-language="{{$properties['name']}}" data-code="{{$code}}" data-parent="{{$size->id}}" class="add-translation">Add</a>
+								</span>
+							@endif
 						<br />
+						</span><!-- .translation -->
 					@endif
 					@endforeach
 					</p>
@@ -261,7 +265,7 @@ $('.add-cancel').on('click', function(e){
 $('.delete-size').on('click', function(e){
 	e.preventDefault();
 	if (confirm('Are you sure you want to delete this type? This will remove all instances of this type from current products.')){
-		var row = $(this).parents('li');
+		var row = ( $(this).hasClass('delete-translation') ) ? $(this).parents('.translation') : $(this).parents('li');
 		var id = $(this).attr('href');
 		delete_size(id, row);
 	}
