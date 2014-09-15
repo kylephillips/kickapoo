@@ -113,3 +113,11 @@ View::composer(Paginator::getViewName(), function($view) {
 	$query = array_except( Input::query(), Paginator::getPageName() );
 	$view->paginator->appends($query);
 });
+
+// Password Reminder Email
+View::composer('emails.auth.reminder', function($view) {
+		$view->with([
+			'logo' => URL::asset('assets/images/kickapoo-email-logo.png'),
+			'image' => URL::asset('assets/images/password-remind.jpg')
+		]);
+	});
