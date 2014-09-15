@@ -30,9 +30,9 @@
 						<span class="translation">
 							<em>{{$properties['name']}}:</em>
 							@if ( array_key_exists($code, $translations[$size->id]) )
-								{{$translations[$size->id][$code]['title']}} 
-								<span id="edit_trans_{{$translations[$size->id][$code]['id']}}">
-									(<a href="#" data-id="{{$translations[$size->id][$code]['id']}}" data-language="{{$properties['name']}}" data-code="{{$code}}">Edit</a>
+								<span class="title_{{$translations[$size->id][$code]['id']}}">{{$translations[$size->id][$code]['title']}} </span>
+								<span>
+									(<a href="#" class="edit-size edit_{{$translations[$size->id][$code]['id']}}" data-id="{{$translations[$size->id][$code]['id']}}" data-code="{{$code}}" data-title="{{$translations[$size->id][$code]['title']}}">Edit</a>
 									&nbsp;|&nbsp;
 									<a href="{{$translations[$size->id][$code]['id']}}" class="delete-size delete-translation">Delete</a>)
 								</span>
