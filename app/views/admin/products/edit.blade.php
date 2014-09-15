@@ -35,6 +35,10 @@
 					{{Form::text('css_class', $flavor->css_class)}}
 				</p>
 				<p>
+					{{Form::label('status', 'Publish Settings')}}
+					{{Form::select('status', ['publish'=>'Published','draft'=>'Draft'], $flavor->status)}}
+				</p>
+				<p>
 					{{Form::label('flavor_image', 'Image (365px &times; 690px)')}}
 					@if($flavor->image)
 						<div class="image-thumb">

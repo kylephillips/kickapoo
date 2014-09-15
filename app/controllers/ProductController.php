@@ -36,7 +36,7 @@ class ProductController extends \BaseController {
 	public function index()
 	{
 		$page = $this->page_repo->getPage('products');
-		$flavors = $this->product_repo->getAll();
+		$flavors = $this->product_repo->getAll('publish');
 
 		return View::make('pages.products')
 			->with('page', $page)

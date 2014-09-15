@@ -48,6 +48,7 @@ class ProductFactory {
 		$flavor->title = $input['flavor_title'];
 		$flavor->slug = \Str::slug($input['flavor_title']);
 		$flavor->content = ( isset($input['flavor_content']) ) ? $input['flavor_content'] : null;
+		$flavor->status = $input['status'];
 		if ( isset($input['flavor_image']) ) $flavor->image = $this->attachImage($input['flavor_image']);
 		$flavor->css_class = ( isset($input['css_class']) ) ? $input['css_class'] : null;
 		$flavor->save();
