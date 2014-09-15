@@ -1972,7 +1972,7 @@ html.touch .home-red-can {
     margin-bottom: 30px; }
     .locate-page ul li {
       display: inline-block;
-      max-width: 300px;
+      max-width: 250px;
       margin-left: 20px; }
       .locate-page ul li img {
         -webkit-border-radius: 3px;
@@ -2051,3 +2051,18 @@ html.touch .home-red-can {
           border-radius: 4px;
   text-align: left;
   margin-bottom: 30px; }
+
+.error {
+  text-align: center;
+  padding-top: 60px; }
+  .error h1 {
+    font-size: 320px;
+    line-height: 200px;
+    color: #fff200;
+    font-family: "alternate-gothic-no-2-d", sans-serif;
+    font-style: normal;
+    font-weight: 400; }
+  .error p {
+    font-size: 40px;
+    font-family: 'thirsty', 'proxima-nova', sans-serif;
+    color: #8ee031; }

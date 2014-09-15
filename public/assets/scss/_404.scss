@@ -1,0 +1,18 @@
+//
+// 404 Styles
+// --------------------------------------------------
+.error {
+	text-align: center;
+	padding-top: 60px;
+	h1 {
+		font-size: 320px;
+		line-height: 200px;
+		color: $yellow;
+		@include altGothic;
+	}
+	p {
+		font-size: 40px;
+		@include thirsty;
+		color: $lime;
+	}
+}
