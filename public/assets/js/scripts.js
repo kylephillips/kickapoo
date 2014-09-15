@@ -1,7 +1,7 @@
 /**
 * Page Preloader
 */
-window.addEventListener('load', function(){
+$(window).on('load', function(){
 	
 	$('.page').removeClass('loading');
 	$('.preloader').remove();
@@ -9,7 +9,7 @@ window.addEventListener('load', function(){
 	/**
 	* Joy Meter
 	*/
-	$('.load-more').waypoint(function(direction){
+	$('.home-callouts').waypoint(function(direction){
 		if ( direction === 'down' ){
 			$('.joy-meter').addClass('active');
 		}
