@@ -5,6 +5,7 @@ use \CustomField;
 use \Str;
 use \Image;
 use \Auth;
+use Kickapoo\Factories\UploadFactory;
 
 class PageFactory {
 
@@ -98,22 +99,15 @@ class PageFactory {
 		}
 	}
 
+
 	/**
-	* Upload an image for use in custom field
-	* @return string
+	* Upload an Image
 	*/
 	private function attachImage($file)
 	{
-		$destination = public_path() . '/assets/uploads/page_images/';
-		$thumbnail_destination = public_path() . '/assets/uploads/page_images/_thumbs/';
-		$filename = time() . '_' . $file->getClientOriginalName();
-		try {
-			$thumb = Image::make($file)->crop(100,100)->save($thumbnail_destination . $filename, 80);
-			$uploadSuccess = $file->move($destination, $filename);
-			return $filename;
-		} catch (\Exception $e) {
-			return null;
-		}
+		$upload = new UploadFactory;
+		$upload = $upload->uploadPageImage($file);
+		return basename($upload);
 	}
 
 

@@ -3,6 +3,7 @@
 use \Input;
 use \Upload;
 use \Response;
+use \Image;
 
 class UploadFactory {
 
@@ -15,6 +16,11 @@ class UploadFactory {
 	* The file name
 	*/
 	private $filename;
+
+	/**
+	* The original file name
+	*/
+	private $original_name;
 
 
 	/**
@@ -31,11 +37,13 @@ class UploadFactory {
 	/**
 	* Upload a new file
 	*/
-	public function uploadFile($file)
+	private function uploadFile($file)
 	{
 		try {
+			$this->setOriginalName($file->getClientOriginalName());
 			$this->setFilename(time() . '_' . $file->getClientOriginalName());
 			$full_path = public_path() . $this->destination;
+			$this->createThumbnail($file);
 			$upload_success = $file->move($full_path, $this->filename);
 		} catch (\Exception $e){
 			return false;
@@ -47,11 +55,22 @@ class UploadFactory {
 
 
 	/**
+	* Create a thumbnail for the file
+	*/
+	private function createThumbnail($file)
+	{
+		$thumbnail_destination = public_path() . '/assets/uploads/page_images/_thumbs/';
+		$thumb = Image::make($file)->crop(100,100)->save($thumbnail_destination . $this->filename, 80);
+	}
+
+
+	/**
 	* Create an Upload Record
 	*/
 	private function createUpload()
 	{
 		$upload = new Upload;
+		$upload->title = $this->original_name;
 		$upload->file = $this->filename;
 		$upload->folder = $this->destination;
 		$upload->save();
@@ -66,12 +85,22 @@ class UploadFactory {
 		$this->destination = $destination;
 	}
 
+
 	/**
 	* Set the file name
 	*/
 	private function setFilename($filename)
 	{
 		$this->filename = $filename;
+	}
+
+
+	/**
+	* Set the original file name
+	*/
+	public function setOriginalName($filename)
+	{
+		$this->original_name = $filename;
 	}
 
 }
