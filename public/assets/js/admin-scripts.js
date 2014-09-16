@@ -1,4 +1,14 @@
 /**
+* Media Library
+*/
+function open_media_library()
+{
+	//$('#media-library').modal('show');
+	console.log(urls.media_library_route);
+}
+
+
+/**
 * Remove an Image Thumbnail
 */
 $('.remove-thumb').on('click', function(e){

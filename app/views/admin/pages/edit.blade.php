@@ -319,7 +319,9 @@ $(document).ready(function(){
 	var desc_count = $('#seo_description').val().length;
 	seo_characters_remaining(desc_count);
 	update_slug();
-	apply_redactor();	
+	apply_redactor();
+
+	open_media_library();	
 });
 </script>
 @stop

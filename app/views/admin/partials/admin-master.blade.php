@@ -44,7 +44,8 @@
 	<script>
 		var urls = {
 			'editor_upload' : "{{URL::route('editor_upload')}}",
-			'editor_styles' : "{{URL::asset('assets/css/editor-styles.css')}}"
+			'editor_styles' : "{{URL::asset('assets/css/editor-styles.css')}}",
+			'media_library_route' : "{{URL::route('media_library')}}"
 		}
 	</script>
 
@@ -55,6 +56,7 @@
 	<script src="{{URL::asset('assets/js/admin-scripts.js')}}"></script>
 	<script src="{{URL::asset('assets/js/redactor.min.js')}}"></script>
 	
+	@include('admin.partials.media-library')
 	@yield('footercontent')
 	<script>
 	$(window).load(function(){

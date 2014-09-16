@@ -28,4 +28,15 @@ class UploadController extends BaseController {
 		}
 	}
 
+
+	/**
+	* Display the Media Library
+	*/
+	public function mediaLibrary()
+	{
+		if ( Request::ajax() ){
+			return Response::json(['status'=>'success']);
+		}
+	}
+
 }
