@@ -57,9 +57,8 @@
 				</p>
 				{{Form::submit('Send')}}
 			{{Form::close()}}
+			@endif
 		</div><!-- .container -->
 	</section><!-- .page-content -->
-
-	@endif
 
 @stop
