@@ -56,7 +56,7 @@
 				<img src="{{URL::asset('assets/images/joy-meter-bg.png')}}" alt="Guage" class="background" />
 				<img src="{{URL::asset('assets/images/joy-meter-gauge.png')}}" alt="Guage" class="gauge" />
 			</div>
-		</section>
+		</div>
 		
 		@if($products_page)
 		<a href="{{URL::route('page', ['page'=>$products_page->slug])}}" class="products">
