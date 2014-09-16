@@ -72,6 +72,7 @@ Route::group(['before'=>'auth'], function()
 	Route::post('admin/products/create', ['as'=>'store_flavor', 'uses'=>'ProductController@store']);
 	Route::get('admin/flavor/delete/{id}', ['as'=>'delete_flavor', 'uses'=>'ProductController@destroy']);
 	Route::get('admin/flavor/order', ['as'=>'flavor_order', 'uses'=>'ProductController@flavorOrder']);
+	Route::get('admin/flavor/translation', ['as'=>'add_flavor_translation', 'uses'=>'ProductController@addTranslation']);
 	Route::get('admin/product/delete', ['as'=>'delete_product', 'uses'=>'ProductController@deleteProduct']);
 	Route::get('admin/products/order', ['as'=>'product_order', 'uses'=>'ProductController@setOrder']);
 	

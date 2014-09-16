@@ -166,6 +166,36 @@
 	</div><!-- .well -->
 </div><!-- .container -->
 
+
+@if ( count($flavor->translation_of) == 0 )
+<!-- Translation modal -->
+<div class="modal fade" id="translation-modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close btn btn-mini" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Available Translations</h4>
+			</div>
+			<div class="modal-body">
+				<div class="alert alert-info">Select an available language to add a new translation. To add a new language, contact the system administrator at Object 9.</div>
+				
+				@foreach( LaravelLocalization::getSupportedLocales() as $code => $properties )
+					@if ( count(array_only($translations, [$code])) == 0 )
+					<p><a href="{{URL::route('add_flavor_translation', ['parent_flavor'=>$flavor->id, 'language'=>$code, 'language_name'=>$properties['name']])}}">{{$properties['name']}}</a></p>
+					@endif
+				@endforeach
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div><!-- /.modal -->
+@endif
+
+
+
 @stop
 @section('footercontent')
 <script src="{{URL::asset('assets/js/redactor.min.js')}}"></script>

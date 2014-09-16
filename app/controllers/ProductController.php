@@ -83,6 +83,24 @@ class ProductController extends \BaseController {
 
 
 	/**
+	* Add a Flavor Translation
+	*/
+	public function addTranslation()
+	{
+		$sizes = $this->product_repo->getSizesArray();
+		$language = Input::get('language');
+		$language_name = Input::get('language_name');
+		$parent_flavor = $this->product_repo->getProduct(Input::get('parent_flavor'));
+
+		return View::make('admin.products.create')
+			->with('sizes', $sizes)
+			->with('parent_flavor', $parent_flavor)
+			->with('language', $language)
+			->with('language_name', $language_name);
+	}
+
+
+	/**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  int  $id
