@@ -28,7 +28,7 @@ class ProductRepository {
 	*/
 	public function getSizesArray()
 	{
-		$all_sizes = ProductSize::get()->toArray();
+		$all_sizes = ProductSize::where('language','en')->get()->toArray();
 		foreach ($all_sizes as $size){
 			$sizes[$size['id']] = $size['title'];
 		}
@@ -61,7 +61,7 @@ class ProductRepository {
 
 
 	/**
-	* Get an array of all the translations
+	* Get an array of all the translations for either a product or a type/size
 	* @return array
 	*/
 	public function getTranslationsArray($type = 'product', $id)
