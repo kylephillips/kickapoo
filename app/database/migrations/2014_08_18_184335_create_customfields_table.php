@@ -14,6 +14,7 @@ class CreateCustomfieldsTable extends Migration {
 	{
 		Schema::create('customfields', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->string('name');
 			$table->string('key');

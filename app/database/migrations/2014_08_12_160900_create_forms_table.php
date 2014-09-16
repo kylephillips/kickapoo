@@ -14,6 +14,7 @@ class CreateFormsTable extends Migration {
 	{
 		Schema::create('forms', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->string('name')->nullable();
 			$table->string('email')->nullable();

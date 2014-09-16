@@ -14,6 +14,7 @@ class CreateFlavorsTable extends Migration {
 	{
 		Schema::create('flavors', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->string('title');
 			$table->integer('order')->default(0);

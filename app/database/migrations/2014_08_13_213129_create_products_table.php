@@ -14,6 +14,7 @@ class CreateProductsTable extends Migration {
 	{
 		Schema::create('products', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->integer('flavor_id')->unsigned()->nullable();
 			$table->foreign('flavor_id')->references('id')->on('flavors')->onDelete('cascade');
