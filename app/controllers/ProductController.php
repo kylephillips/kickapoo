@@ -36,7 +36,7 @@ class ProductController extends \BaseController {
 	public function index()
 	{
 		$page = $this->page_repo->getPage('products', LaravelLocalization::getCurrentLocale());
-		$flavors = $this->product_repo->getAll();
+		$flavors = $this->product_repo->getAll($language = LaravelLocalization::getCurrentLocale());
 
 		return View::make('pages.products')
 			->with('page', $page)
@@ -92,10 +92,12 @@ class ProductController extends \BaseController {
 	{
 		$flavor = $this->product_repo->getFlavor($id);
 		$sizes = $this->product_repo->getSizesArray();
+		$translations = $this->product_repo->getTranslationsArray('flavor', $id);
 
 		return View::make('admin.products.edit')
 			->with('flavor', $flavor)
-			->with('sizes', $sizes);
+			->with('sizes', $sizes)
+			->with('translations', $translations);
 	}
 
 

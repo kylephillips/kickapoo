@@ -21,6 +21,11 @@
 				@endif
 			</div>
 			<div class="fields">
+				@if ( count($flavor->translation_of) > 0 )
+				<p>
+					<strong>Translation of <a href="{{URL::route('edit_flavor', ['id'=>$flavor->translation_of[0]->id])}}">{{$flavor->translation_of[0]->title}}</a></strong>
+				</p>
+				@endif
 				<p>
 					{{$errors->first('flavor_title', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 					{{Form::label('flavor_title', 'Flavor Name')}}
@@ -48,6 +53,30 @@
 						{{Form::file('flavor_image')}}
 					@endif
 				</p>
+				@if ( count($flavor->translation_of) == 0 )
+				<p>
+					<label>
+						Translations 
+						@if( count($translations) < count(LaravelLocalization::getSupportedLocales()) )
+							(<a href="#translation-modal" data-toggle="modal" class="new-translation">New</a>)
+						@endif
+					</label>
+					@if ( count($translations) > 1 )
+						<select id="translations">
+							<option>Select to Edit</option>
+							@foreach($translations as $key => $translation)
+							@if($key !== $flavor->language)
+								<option value="{{URL::route('edit_flavor', ['id'=>$translation['id']])}}">
+									{{$translation['name']}}
+								</option>
+							@endif
+							@endforeach
+						</select>
+					@else
+						No translations yet.
+					@endif
+				</p>
+				@endif
 			</div><!-- .fields -->
 		</div><!-- .flavor-fields -->
 
@@ -269,6 +298,16 @@ function apply_redactor()
 
 $(document).ready(function(){
 	apply_redactor();
+});
+
+/**
+* Translation Select
+*/
+$('#translations').on('change', function(){
+	var href = $(this).val();
+	if ( href !== '' ){
+		window.location = href;
+	}
 });
 </script>
 @stop

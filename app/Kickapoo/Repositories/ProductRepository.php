@@ -10,9 +10,9 @@ class ProductRepository {
 	/**
 	* Get all flavors with products/sizes
 	*/
-	public function getAll()
+	public function getAll($lang = 'en')
 	{
-		return Flavor::with('products', 'products.size', 'products.size.translations')->orderBy('flavors.order')->get();
+		return Flavor::where('language', $lang)->with('products', 'products.size', 'products.size.translations')->orderBy('flavors.order')->get();
 	}
 
 	/**
@@ -20,7 +20,7 @@ class ProductRepository {
 	*/
 	public function getFlavor($id)
 	{
-		return Flavor::with('products', 'products.size')->findOrFail($id);
+		return Flavor::with('products', 'products.size', 'translations', 'translation_of')->findOrFail($id);
 	}
 
 	/**
@@ -64,9 +64,9 @@ class ProductRepository {
 	* Get an array of all the translations for either a product or a type/size
 	* @return array
 	*/
-	public function getTranslationsArray($type = 'product', $id)
+	public function getTranslationsArray($type = 'flavor', $id)
 	{
-		$parent = ( $type == 'product' ) ? $this->getProduct($id) : $this->getSize($id);
+		$parent = ( $type == 'flavor' ) ? $this->getFlavor($id) : $this->getSize($id);
 
 		$locales = LaravelLocalization::getSupportedLocales();
 		$locale = array_get($locales, $parent['language']);
