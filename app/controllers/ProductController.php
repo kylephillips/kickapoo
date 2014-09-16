@@ -35,8 +35,8 @@ class ProductController extends \BaseController {
 	 */
 	public function index()
 	{
-		$page = $this->page_repo->getPage('products');
-		$flavors = $this->product_repo->getAll('publish');
+		$page = $this->page_repo->getPage('products', LaravelLocalization::getCurrentLocale());
+		$flavors = $this->product_repo->getAll($language = LaravelLocalization::getCurrentLocale());
 
 		return View::make('pages.products')
 			->with('page', $page)
@@ -83,6 +83,24 @@ class ProductController extends \BaseController {
 
 
 	/**
+	* Add a Flavor Translation
+	*/
+	public function addTranslation()
+	{
+		$sizes = $this->product_repo->getSizesArray();
+		$language = Input::get('language');
+		$language_name = Input::get('language_name');
+		$parent_flavor = $this->product_repo->getFlavor(Input::get('parent_flavor'));
+
+		return View::make('admin.products.create')
+			->with('sizes', $sizes)
+			->with('parent_flavor', $parent_flavor)
+			->with('language', $language)
+			->with('language_name', $language_name);
+	}
+
+
+	/**
 	 * Show the form for editing the specified resource.
 	 *
 	 * @param  int  $id
@@ -92,10 +110,12 @@ class ProductController extends \BaseController {
 	{
 		$flavor = $this->product_repo->getFlavor($id);
 		$sizes = $this->product_repo->getSizesArray();
+		$translations = $this->product_repo->getTranslationsArray('flavor', $id);
 
 		return View::make('admin.products.edit')
 			->with('flavor', $flavor)
-			->with('sizes', $sizes);
+			->with('sizes', $sizes)
+			->with('translations', $translations);
 	}
 
 

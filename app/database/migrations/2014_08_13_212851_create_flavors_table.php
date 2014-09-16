@@ -21,6 +21,7 @@ class CreateFlavorsTable extends Migration {
 			$table->text('content')->nullable();
 			$table->string('image')->nullable();
 			$table->string('css_class')->nullable();
+			$table->string('language')->default('en');
 			$table->timestamps();
 		});
 	}

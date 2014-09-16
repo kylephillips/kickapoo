@@ -17,6 +17,7 @@ class CreateProductsizesTable extends Migration {
 			$table->increments('id')->unsigned();
 			$table->string('title');
 			$table->string('slug')->unique();
+			$table->string('language')->default('en');
 			$table->timestamps();
 		});
 	}

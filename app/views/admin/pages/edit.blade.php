@@ -4,7 +4,16 @@
 
 <div class="container small">
 
-	<h1>Edit {{$page['title']}} Page <a href="{{URL::route('page', ['page'=>$page['slug']])}}" class="btn pull-right">View Page</a></h1>
+	<h1>Edit {{$page['title']}} 
+		@if( count($page['translation_of']) > 0 )
+		<?php
+		$link = LaravelLocalization::getLocalizedURL($page['language'], URL::route('page', ['page'=>$page['slug']]));
+		?>
+		<a href="{{$link}}" class="btn pull-right">View Page</a>
+		@else
+		<a href="{{URL::route('page', ['page'=>$page['slug']])}}" class="btn pull-right">View Page</a>
+		@endif
+	</h1>
 
 	<div class="well">
 
@@ -18,7 +27,12 @@
 
 		{{Form::open(['url'=>URL::route('update_page', ['id'=>$page['id']]), 'files'=>true])}}
 		
-		<h3>{{$page['title']}}</h3>
+		<h3>
+			{{$page['title']}}
+			@if ( count($page['translation_of']) > 0 )
+			 (Translation of <a href="{{URL::route('edit_page', ['slug'=>$page['translation_of'][0]->slug])}}">{{$page['translation_of'][0]->title}}</a> Page)
+			@endif
+		</h3>
 
 		<p>
 			{{$errors->first('title', '<span class="text-danger"><strong>:message</strong></span><br>')}}
@@ -32,7 +46,7 @@
 				{{$errors->first('slug', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 				{{Form::label('slug', 'Page Link:')}}
 				<p>
-					{{URL::route('home')}}/
+					{{URL::route('home')}}/{{$page['language']}}/
 					<em>{{$page['slug']}}</em>
 				</p>
 				{{Form::text('slug', $page['slug'], ['class'=>'form-control hidden'])}}
@@ -45,15 +59,49 @@
 
 		<div class="well">
 			<h4>General Settings</h4>
+
+			@if ( count($page['translation_of']) == 1 )
 			<p class="half">
+			@else
+			<p class="third">
+			@endif			
 				{{Form::label('status', 'Status')}}
 				{{Form::select('status', ['publish'=>'Published', 'draft'=>'Draft'], $page['status'])}}
 			</p>
 
+			@if ( count($page['translation_of']) == 1 )
 			<p class="half right">
+			@else
+			<p class="third">
+			@endif
 				{{Form::label('template', 'Page Template')}}
 				{{Form::select('template', $templates, $page['template'])}}
 			</p>
+
+			@if ( count($page['translation_of']) == 0 )
+			<p class="third last">
+				<label>
+					Translations 
+					@if( count($translations) < count(LaravelLocalization::getSupportedLocales()) )
+						(<a href="#translation-modal" data-toggle="modal" class="new-translation">New</a>)
+					@endif
+				</label>
+				@if ( count($translations) > 1 )
+					<select id="translations">
+						<option>Select to Edit</option>
+						@foreach($translations as $key => $translation)
+						@if($key !== $page['language'])
+							<option value="{{URL::route('edit_page', ['slug'=>$translation['slug']])}}">
+								{{$translation['name']}}
+							</option>
+						@endif
+						@endforeach
+					</select>
+				@else
+					No translations yet.
+				@endif
+			</p>
+			@endif
 		</div>
 
 		<hr>
@@ -167,6 +215,34 @@
 	</div><!-- .well -->
 </div><!-- .container -->
 
+
+@if ( count($page['translation_of']) == 0 )
+<!-- Translation modal -->
+<div class="modal fade" id="translation-modal">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close btn btn-mini" data-dismiss="modal">&times;</button>
+				<h4 class="modal-title">Available Translations</h4>
+			</div>
+			<div class="modal-body">
+				<div class="alert alert-info">Select an available language to add a new translation. To add a new language, contact the system administrator at Object 9.</div>
+				
+				@foreach( LaravelLocalization::getSupportedLocales() as $code => $properties )
+					@if ( count(array_only($translations, [$code])) == 0 )
+					<p><a href="{{URL::route('add_translation', ['parent_page'=>$page['id'], 'language'=>$code, 'language_name'=>$properties['name']])}}">{{$properties['name']}}</a></p>
+					@endif
+				@endforeach
+
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			</div>
+		</div>
+	</div>
+</div><!-- /.modal -->
+@endif
+
 @stop
 
 @section('footercontent')
@@ -229,6 +305,15 @@ function add_custom_field()
 	$('#newfields').append(html);
 }
 
+/**
+* Translation Select
+*/
+$('#translations').on('change', function(){
+	var href = $(this).val();
+	if ( href !== '' ){
+		window.location = href;
+	}
+});
 
 $(document).ready(function(){
 	var desc_count = $('#seo_description').val().length;

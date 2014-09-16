@@ -3,6 +3,8 @@
 use \Product;
 use \Image;
 use \Flavor;
+use \ProductSize;
+use \Str;
 use Kickapoo\Repositories\ProductRepository;
 
 class ProductFactory {
@@ -26,14 +28,17 @@ class ProductFactory {
 		$image = ( isset($input['image']) ) ? $this->attachImage($input['image']) : null;
 		$content = ( isset($input['content']) ) ? $input['content'] : null;
 		$css_class = ( isset($input['css_class']) ) ? $input['css_class'] : null;
+		$language = ( isset($input['language']) ) ? $input['language'] : 'en';
 		$flavor = Flavor::create([
 			'title' => $input['title'],
 			'slug' => \Str::slug($input['title']),
 			'image' => $image,
 			'content' => $content,
-			'css_class' => $css_class
+			'css_class' => $css_class,
+			'language' => $language
 		]);
 		if ( isset($input['new_product']) ) $this->addTypes($input['new_product'], $flavor->id);
+		if ( isset($input['language']) ) $this->addTranslation($input['parent_flavor'], $flavor->id);
 	}
 
 
@@ -153,6 +158,31 @@ class ProductFactory {
 			$flavor->order = $key;
 			$flavor->save();
 		}
+	}
+
+
+	/**
+	* Add a new type/size
+	*/
+	public function addSize($input)
+	{
+		$language = ( isset($input['language']) ) ? $input['language'] : 'en';
+		$size = ProductSize::create([
+			'title' => $input['title'],
+			'slug' => Str::slug($input['title']),
+			'language' => $language
+		]);
+		return $size;
+	}
+
+
+	/**
+	* Add Translation Record
+	*/
+	private function addTranslation($parent_flavor, $translated_flavor)
+	{
+		$parent = Flavor::find($parent_flavor);
+		$parent->translations()->attach($translated_flavor);
 	}
 
 }

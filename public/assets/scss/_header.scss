@@ -8,9 +8,19 @@ header {
 		float: left;
 		max-width: 200px;
 	}
+	.language-select {
+		float: right;
+		position: relative;
+		margin-top: -10px;
+		font-size: 15px;
+		.dropdown-toggle {
+			color: $lime;
+		}
+	}
 	.buy-button {
 		float: right;
-		margin-top: 30px;
+		clear: right;
+		margin-top: 20px;
 		display: inline-block;
 		background-color: $yellow;
 		background: linear-gradient(lighten($yellow, 4%), darken($yellow, 6%));
@@ -40,6 +50,10 @@ header {
 {
 	header {
 		padding: 15px;
+		.language-select {
+			margin: 8px 0px 0px 10px;
+			font-size: 15px;
+		}
 		.logo {
 			max-width: 150px;
 		}

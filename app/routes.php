@@ -1,15 +1,29 @@
 <?php
 /**
 * Pages (Catch-all below other routes)
+* Localized
 */
-Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
-Route::get('products', ['as'=>'products', 'uses'=>'ProductController@index']);
+Route::group([
+	'prefix' => LaravelLocalization::setLocale(),
+	'before' => 'LaravelLocalizationRedirectFilter'
+	], 
+	function(){
+		Route::get('/', ['as'=>'home','uses'=>'PageController@home']);
+		
+		// Products requires translated slug
+		$pagerepo = new Kickapoo\Repositories\PageRepository;
+		Route::get($pagerepo->getProductsRoute(), ['as'=>'products', 'uses'=>'ProductController@index']);
+	}
+);
+// Product ingredients & nutrition
 Route::get('modal-info', ['as'=>'modal_info', 'uses'=>'ProductController@modalInfo']);
+
 
 /**
 * Forms
 */
 Route::post('/form-submit', ['before'=>'csrf', 'as'=>'process_form', 'uses'=>'ContactFormController@process']);
+
 
 /**
 * Admin Login
@@ -44,6 +58,7 @@ Route::group(['before'=>'auth'], function()
 	Route::get('admin/pages/destroy/{slug}', ['as'=>'destroy_page', 'uses'=>'PageController@destroy']);
 	Route::get('admin/pages/order', ['as'=>'order_pages', 'uses'=>'PageController@setOrder']);
 	Route::post('admin/pages/menutoggle', ['as'=>'menu_toggle', 'uses'=>'PageController@menuToggle']);
+	Route::get('admin/pages/translation', ['as'=>'add_translation', 'uses'=>'PageController@addTranslation']);
 
 	// Custom Field Management
 	Route::post('admin/customfield/validate', ['as'=>'validate_custom_fields', 'uses'=>'CustomFieldController@validate']);
@@ -57,11 +72,15 @@ Route::group(['before'=>'auth'], function()
 	Route::post('admin/products/create', ['as'=>'store_flavor', 'uses'=>'ProductController@store']);
 	Route::get('admin/flavor/delete/{id}', ['as'=>'delete_flavor', 'uses'=>'ProductController@destroy']);
 	Route::get('admin/flavor/order', ['as'=>'flavor_order', 'uses'=>'ProductController@flavorOrder']);
+	Route::get('admin/flavor/translation', ['as'=>'add_flavor_translation', 'uses'=>'ProductController@addTranslation']);
 	Route::get('admin/product/delete', ['as'=>'delete_product', 'uses'=>'ProductController@deleteProduct']);
 	Route::get('admin/products/order', ['as'=>'product_order', 'uses'=>'ProductController@setOrder']);
+	
+	// Product Types/Sizes Management
 	Route::resource('admin/size', 'ProductSizeController', ['only'=>['index','store']]);
 	Route::get('admin/size/delete', ['as'=>'delete_size', 'uses'=>'ProductSizeController@delete']);
 	Route::post('admin/size/update', ['as'=>'update_size', 'uses'=>'ProductSizeController@update']);
+	Route::post('admin/size/add-translation', ['as'=>'add_size_translation', 'uses'=>'ProductSizeController@addTranslation']);
 
 	// Form Entry Management
 	Route::get('admin/forms', ['as'=>'form_entries', 'uses'=>'ContactFormController@index']);
@@ -96,8 +115,14 @@ Route::group(['before'=>'auth'], function()
 
 /**
 * Front end pages
+* Localized
 */
-Route::get('/{page}', ['as'=>'page', 'uses'=>'PageController@getPage']);
+Route::group([
+	'prefix' => LaravelLocalization::setLocale(),
+	'before' => 'LaravelLocalizationRedirectFilter'
+	], function(){
+	Route::get('/{page}', ['as'=>'page', 'uses'=>'PageController@getPage']);
+});
 
 
 /**

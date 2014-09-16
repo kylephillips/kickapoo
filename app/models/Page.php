@@ -4,7 +4,7 @@ class Page extends Eloquent {
 	protected $table = 'pages';
 
 	protected $fillable = [
-		'title', 'slug', 'content', 'author', 'status', 'menu_order', 'template', 'seo_title', 'seo_description', 'show_in_menu'
+		'title', 'slug', 'content', 'author', 'status', 'menu_order', 'template', 'seo_title', 'seo_description', 'show_in_menu','language'
 	];
 
 	/**
@@ -26,6 +26,22 @@ class Page extends Eloquent {
 		} catch (\Exception $e){
 			return false;
 		}
+	}
+
+	/**
+	* Get translated pages
+	*/
+	public function translations()
+	{
+		return $this->belongsToMany('Page', 'page_translations', 'parent_page', 'translated_page');
+	}
+
+	/**
+	* Translation of
+	*/
+	public function translation_of()
+	{
+		return $this->belongsToMany('Page', 'page_translations', 'translated_page', 'parent_page');
 	}
 	
 }

@@ -7,7 +7,8 @@
 		"laravel/framework": "4.2.*",
 		"guzzle/guzzle": "3.8.*@dev",
 		"mohsen/captcha": "dev-master",
-		"intervention/image": "dev-master"
+		"intervention/image": "dev-master",
+		"mcamara/laravel-localization": "0.14.*"
 	},
 	"autoload": {
 		"classmap": [

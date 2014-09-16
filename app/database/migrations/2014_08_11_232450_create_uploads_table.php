@@ -14,6 +14,7 @@ class CreateUploadsTable extends Migration {
 	{
 		Schema::create('uploads', function(Blueprint $table)
 		{
+			$table->engine = 'InnoDB';
 			$table->increments('id')->unsigned();
 			$table->string('file')->nullable();
 			$table->string('folder')->nullable();

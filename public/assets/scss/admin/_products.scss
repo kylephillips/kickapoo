@@ -211,3 +211,37 @@
 		width: 60%;
 	}
 }
+
+// Product sizes
+.sizes-table {
+	@include unstyled;
+	li {
+		@include clearfix;
+		padding: 5px;
+		.translations {
+			display: none;
+		}
+		strong {
+			float: left;
+			margin-top: 8px;
+		}
+		em {
+			font-style: normal;
+			font-weight: bold;
+		}
+		p {
+			line-height: 24px;
+		}
+		.buttons {
+			float: right;
+		}
+		&:nth-child(even){
+			background-color: darken($white, 8%);
+		}
+		.translations {
+			clear: both;
+		}
+	}
+}
+
+

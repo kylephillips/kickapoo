@@ -8,6 +8,7 @@
 /app/config/mail.php
 /app/config/staging/*
 /app/config/local/*
+/.idea/*
 composer.phar
 composer.lock
 .env.*.php
