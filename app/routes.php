@@ -86,6 +86,7 @@ Route::group(['before'=>'auth'], function()
 	Route::get('admin/forms', ['as'=>'form_entries', 'uses'=>'ContactFormController@index']);
 	Route::get('admin/forms/delete', ['as'=>'delete_form_entry', 'uses'=>'ContactFormController@destroy']);
 	Route::post('admin/forms/bulk-delete', ['as'=>'bulk_delete_form_entries', 'uses'=>'ContactFormController@bulkDelete']);
+	Route::get('admin/forms/download', ['as'=>'download_form_entries', 'uses'=>'ContactFormController@download']);
 
 	// Media Management
 	Route::post('admin/media/editor-upload', ['as'=>'editor_upload', 'uses'=>'UploadController@editorUpload']);

@@ -79,5 +79,13 @@ class ContactFormController extends BaseController {
 		return Redirect::back()->with('success', 'Entries successfully deleted.');
 	}
 
+	/**
+	* Download a CSV with form entries
+	*/
+	public function download()
+	{
+		return $this->form_factory->downloadCSV();
+	}
+
 
 }

@@ -42,6 +42,7 @@
 				</tbody>
 			</table>
 			{{Form::submit('Delete Selected', ['class'=>'btn btn-danger bulk-delete', 'disabled'=>'disabled'])}}
+			<a href="{{URL::route('download_form_entries')}}" class="btn">Download Entries as CSV</a>
 			{{Form::close()}}
 		@else
 			No contact form entries at this time.

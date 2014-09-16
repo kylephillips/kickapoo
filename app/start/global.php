@@ -49,7 +49,7 @@ Log::useFiles(storage_path().'/logs/laravel.log');
 App::error(function(Exception $exception, $code)
 {
 	Log::error($exception);
-	return Response::view('pages.404', array('error_page' => true), 404);
+	//return Response::view('pages.404', array('error_page' => true), 404);
 });
 
 /*

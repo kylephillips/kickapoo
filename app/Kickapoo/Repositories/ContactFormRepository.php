@@ -14,4 +14,9 @@ class ContactFormRepository {
 		return ContactForm::findOrFail($id);
 	}
 
+	public function getAllNoPagination()
+	{
+		return ContactForm::get();
+	}
+
 }
