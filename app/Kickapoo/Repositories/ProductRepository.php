@@ -10,9 +10,13 @@ class ProductRepository {
 	/**
 	* Get all flavors with products/sizes
 	*/
-	public function getAll($lang = 'en')
+	public function getAll($status = null, $lang = 'en')
 	{
-		return Flavor::where('language', $lang)->with('products', 'products.size', 'products.size.translations')->orderBy('flavors.order')->get();
+		if ( isset($status) ){
+			return Flavor::where('language', $lang)->where('status', $status)->with('products', 'products.size', 'products.size.translations')->orderBy('flavors.order')->get();
+		} else {
+			return Flavor::where('language', $lang)->with('products', 'products.size', 'products.size.translations')->orderBy('flavors.order')->get();
+		}
 	}
 
 	/**

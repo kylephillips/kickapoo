@@ -36,7 +36,7 @@ class ProductController extends \BaseController {
 	public function index()
 	{
 		$page = $this->page_repo->getPage('products', LaravelLocalization::getCurrentLocale());
-		$flavors = $this->product_repo->getAll($language = LaravelLocalization::getCurrentLocale());
+		$flavors = $this->product_repo->getAll($status = 'publish', $language = LaravelLocalization::getCurrentLocale());
 
 		return View::make('pages.products')
 			->with('page', $page)

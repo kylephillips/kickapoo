@@ -44,7 +44,7 @@
 /**
 * Only load large images on big screens
 */
-$(document).ready(function(){
+$(window).load(function(){
 	load_large_images();
 });
 

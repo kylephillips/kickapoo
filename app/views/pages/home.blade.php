@@ -2,7 +2,12 @@
 @section('content')
 
 <section class="headline">
-	<img src="{{URL::asset('assets/images/home-headline.png')}}" class="home-headline" />
+	@if( $page->get_field('Headline', $page->id) )
+		<img src="{{URL::asset('assets/uploads/page_images')}}/{{$page->get_field('Headline', $page->id)}}" class="header-image" alt="Share your Joy Face!" />
+	@else
+		<img src="{{URL::asset('assets/images/home-headline.png')}}" class="home-headline" />
+	@endif
+	
 	{{$page['content']}}
 	@if($contact_page)
 	<a href="{{URL::route('page', ['page'=>$contact_page->slug])}}" class="button">{{Lang::get('messages.share')}} <i class="icon-arrow-right"></i></a>
