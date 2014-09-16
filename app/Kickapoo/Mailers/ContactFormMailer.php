@@ -22,11 +22,13 @@ class ContactFormMailer {
 	*/
 	public function adminNotification($data)
 	{
+		$opt_in = ( isset($data['email_opt_in']) ) ? 'Yes' : 'No';
 		$mail_data = [
 			'name' => $data['name'],
 			'email' => $data['email'],
 			'user_message' => $data['message'],
-			'logo' => URL::asset('assets/images/kickapoo-email-logo.png')
+			'logo' => URL::asset('assets/images/kickapoo-email-logo.png'),
+			'opt_in' => $opt_in
 		];
 		$emails = $this->settings_repo->getSetting('contact_emails');
 		if ( $emails ){

@@ -49,6 +49,9 @@
 					{{Form::label('message', 'Message')}}
 					{{Form::textarea('message')}}
 				</p>
+				<p>
+					<label>{{Form::checkbox('email_opt_in', '1', true)}} Include me in special announcements</label>
+				</p>
 				{{$errors->first('user-captcha', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 				<p class="captcha">
 					{{Form::label('user-captcha', 'Please enter the following')}}

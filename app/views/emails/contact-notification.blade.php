@@ -24,6 +24,7 @@
 						<p style="font-family: Arial, Helvetica, sans-serif; line-height: 1.4; margin: 0px 0 10px 0; border-bottom:1px solid #ebebec; padding-bottom:10px;"><strong>From: </strong>{{$name}}</p>
 						<p style="font-family: Arial, Helvetica, sans-serif; line-height: 1.4; margin: 0px 0 10px 0; border-bottom:1px solid #ebebec; padding-bottom:10px;"><strong>Email: </strong><a href="mailto:{{$email}}" style="color:#00581c; text-decoration:none;">{{$email}}</a></p>
 						<p style="font-family: Arial, Helvetica, sans-serif; line-height: 1.4; margin: 0px 0 10px 0;"><strong>Message: </strong><br />{{$user_message}}</p>
+						<p style="font-family: Arial, Helvetica, sans-serif; line-height: 1.4; margin: 0px 0 10px 0;"><strong>Opt-In to Email: </strong><br />{{$opt_in}}</p>
 					</td>
 				</tr>
 			</table>
