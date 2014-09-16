@@ -11,6 +11,7 @@
 		</ul>
 	</nav>
 
+	@if(isset($translations))
 	<nav class="language-select dropdown">
 		<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ LaravelLocalization::getCurrentLocaleName() }} 
 			<span class="caret"></span>
@@ -30,6 +31,7 @@
 			@endforeach
 		</ul>
 	</nav>
+	@endif
 
 	<nav class="social-links">
 		<ul>
