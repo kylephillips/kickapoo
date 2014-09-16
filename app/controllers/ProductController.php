@@ -90,7 +90,7 @@ class ProductController extends \BaseController {
 		$sizes = $this->product_repo->getSizesArray();
 		$language = Input::get('language');
 		$language_name = Input::get('language_name');
-		$parent_flavor = $this->product_repo->getProduct(Input::get('parent_flavor'));
+		$parent_flavor = $this->product_repo->getFlavor(Input::get('parent_flavor'));
 
 		return View::make('admin.products.create')
 			->with('sizes', $sizes)
