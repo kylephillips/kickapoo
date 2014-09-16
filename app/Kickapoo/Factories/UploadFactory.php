@@ -8,6 +8,11 @@ use \Image;
 class UploadFactory {
 
 	/**
+	* The original uploaded file object
+	*/
+	private $file;
+
+	/**
 	* The destination folder
 	*/
 	private $destination;
@@ -29,22 +34,22 @@ class UploadFactory {
 	*/
 	public function uploadPageImage($file)
 	{
+		$this->file = $file;
 		$this->setDestination('/assets/uploads/page_images/');
-		return $this->uploadFile($file);
+		return $this->uploadFile();
 	}
 
 
 	/**
 	* Upload a new file
 	*/
-	private function uploadFile($file)
+	private function uploadFile()
 	{
 		try {
-			$this->setOriginalName($file->getClientOriginalName());
-			$this->setFilename(time() . '_' . $file->getClientOriginalName());
-			$full_path = public_path() . $this->destination;
-			$this->createThumbnail($file);
-			$upload_success = $file->move($full_path, $this->filename);
+			$this->setOriginalName();
+			$this->setFilename();
+			$this->createThumbnail();
+			$upload_success = $this->file->move( public_path() . $this->destination, $this->filename );
 		} catch (\Exception $e){
 			return false;
 		}
@@ -57,10 +62,10 @@ class UploadFactory {
 	/**
 	* Create a thumbnail for the file
 	*/
-	private function createThumbnail($file)
+	private function createThumbnail()
 	{
 		$thumbnail_destination = public_path() . '/assets/uploads/page_images/_thumbs/';
-		$thumb = Image::make($file)->crop(100,100)->save($thumbnail_destination . $this->filename, 80);
+		$thumb = Image::make($this->file)->crop(100,100)->save($thumbnail_destination . $this->filename, 80);
 	}
 
 
@@ -89,18 +94,18 @@ class UploadFactory {
 	/**
 	* Set the file name
 	*/
-	private function setFilename($filename)
+	private function setFilename()
 	{
-		$this->filename = $filename;
+		$this->filename = time() . '_' . $this->file->getClientOriginalName();
 	}
 
 
 	/**
 	* Set the original file name
 	*/
-	public function setOriginalName($filename)
+	public function setOriginalName()
 	{
-		$this->original_name = $filename;
+		$this->original_name = $this->file->getClientOriginalName();
 	}
 
 }
