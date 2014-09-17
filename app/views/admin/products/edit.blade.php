@@ -59,6 +59,7 @@
 					@endif
 				</p>
 				@if ( count($flavor->translation_of) == 0 )
+				<hr>
 				<p>
 					<label>
 						Translations 

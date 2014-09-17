@@ -52,7 +52,7 @@
 
 		<div class="page-wrap">
 			@if( $page_slug == 'home' )
-			<div class="home-hero">
+			<div class="home-hero" data-stellar-background-ratio="0.3">
 			@else
 			<section class="page-hero" data-stellar-background-ratio="0.5">
 			@endif
