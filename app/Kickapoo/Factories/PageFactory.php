@@ -106,7 +106,7 @@ class PageFactory {
 	private function attachImage($file)
 	{
 		$upload = new UploadFactory;
-		$upload = $upload->uploadPageImage($file);
+		$upload = $upload->uploadImage($file);
 		return basename($upload);
 	}
 

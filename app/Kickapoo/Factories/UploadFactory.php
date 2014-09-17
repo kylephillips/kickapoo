@@ -29,21 +29,21 @@ class UploadFactory {
 
 
 	/**
-	* Upload a page image
+	* Upload an image
 	* @return string - path to new image
 	*/
-	public function uploadPageImage($file)
+	public function uploadImage($file)
 	{
 		$this->file = $file;
 		$this->setDestination('/assets/uploads/page_images/');
-		return $this->uploadFile();
+		return $this->upload();
 	}
 
 
 	/**
 	* Upload a new file
 	*/
-	private function uploadFile()
+	private function upload()
 	{
 		try {
 			$this->setOriginalName();

@@ -5,14 +5,6 @@ use \CustomField;
 class CustomFieldFactory {
 
 	/**
-	* Create a new Custom Field
-	*/
-	public function createField($input)
-	{
-		dd($input);
-	}
-
-	/**
 	* Delete a series of fields
 	* @param eloquent object
 	*/
