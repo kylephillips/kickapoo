@@ -49,6 +49,7 @@ class UploadFactory {
 			$this->setOriginalName();
 			$this->setFilename();
 			$this->createThumbnail();
+			$this->createLargeThumbnail();
 			$upload_success = $this->file->move( public_path() . $this->destination, $this->filename );
 		} catch (\Exception $e){
 			return false;
@@ -66,6 +67,15 @@ class UploadFactory {
 	{
 		$thumbnail_destination = public_path() . '/assets/uploads/page_images/_thumbs/';
 		$thumb = Image::make($this->file)->crop(100,100)->save($thumbnail_destination . $this->filename, 80);
+	}
+
+	/**
+	* Create large thumbnail for the file
+	*/
+	private function createLargeThumbnail()
+	{
+		$thumbnail_destination = public_path() . '/assets/uploads/page_images/_thumbs-large/';
+		$thumb = Image::make($this->file)->fit(400,200)->save($thumbnail_destination . $this->filename, 80);
 	}
 
 
