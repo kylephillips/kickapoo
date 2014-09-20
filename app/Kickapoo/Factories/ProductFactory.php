@@ -6,6 +6,7 @@ use \Flavor;
 use \ProductSize;
 use \Str;
 use Kickapoo\Repositories\ProductRepository;
+use Kickapoo\Factories\UploadFactory;
 
 class ProductFactory {
 
@@ -115,23 +116,15 @@ class ProductFactory {
 
 
 	/**
-	* Upload an image to the product images directory
-	* @return string
+	* Upload an Image
 	*/
 	private function attachImage($file)
 	{
-		$destination = public_path() . '/assets/uploads/product_images/';
-		$thumbnail_destination = public_path() . '/assets/uploads/product_images/_thumbs/';
-		$filename = time() . '_' . $file->getClientOriginalName();
-		try {
-			$thumb = Image::make($file)->crop(100,100)->save($thumbnail_destination . $filename, 80);
-			$uploadSuccess = $file->move($destination, $filename);
-			return $filename;
-		} catch (\Exception $e) {
-			dd($e);
-			return null;
-		}
+		$upload = new UploadFactory;
+		$upload = $upload->uploadImage($file, 'product_images');
+		return basename($upload);
 	}
+	
 
 	/**
 	* Update the order of product
