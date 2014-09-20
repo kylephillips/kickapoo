@@ -32,10 +32,10 @@ class UploadFactory {
 	* Upload an image
 	* @return string - path to new image
 	*/
-	public function uploadImage($file)
+	public function uploadImage($file, $destination_folder)
 	{
 		$this->file = $file;
-		$this->setDestination('/assets/uploads/page_images/');
+		$this->destination = '/assets/uploads/' . $destination_folder . '/';
 		return $this->upload();
 	}
 
@@ -65,7 +65,7 @@ class UploadFactory {
 	*/
 	private function createThumbnail()
 	{
-		$thumbnail_destination = public_path() . '/assets/uploads/page_images/_thumbs/';
+		$thumbnail_destination = public_path() . $this->destination . '_thumbs/';
 		$thumb = Image::make($this->file)->crop(100,100)->save($thumbnail_destination . $this->filename, 80);
 	}
 
@@ -74,7 +74,7 @@ class UploadFactory {
 	*/
 	private function createLargeThumbnail()
 	{
-		$thumbnail_destination = public_path() . '/assets/uploads/page_images/_thumbs-large/';
+		$thumbnail_destination = public_path() . $this->destination . '_thumbs-large/';
 		$thumb = Image::make($this->file)->fit(400,200)->save($thumbnail_destination . $this->filename, 80);
 	}
 
@@ -89,15 +89,6 @@ class UploadFactory {
 		$upload->file = $this->filename;
 		$upload->folder = $this->destination;
 		$upload->save();
-	}
-
-
-	/**
-	* Set the destination folder
-	*/
-	private function setDestination($destination)
-	{
-		$this->destination = $destination;
 	}
 
 
