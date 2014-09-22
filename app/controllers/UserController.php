@@ -1,6 +1,8 @@
 <?php
 use Kickapoo\Repositories\UserRepository;
 use Kickapoo\Factories\UserFactory;
+use Kickapoo\Mailers\NewUserMailer;
+use Kickapoo\Mailers\NewUserAdminNotification;
 
 class UserController extends \BaseController {
 
@@ -60,7 +62,11 @@ class UserController extends \BaseController {
 			return Redirect::back()
 				->withErrors($validation)->withInput();
 		} else {
+			// Send Notifications & create the user
+			$admin_notification = new NewUserAdminNotification(Input::all());
+			$user_notification = new NewUserMailer(Input::all());
 			$this->user_factory->createUser(Input::all());
+
 			return Redirect::route('admin.user.index')
 				->with('success', 'User successfully added! Joy!');
 		}

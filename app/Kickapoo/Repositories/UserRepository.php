@@ -3,6 +3,7 @@
 use \User;
 use \Group;
 use \Banned;
+use \DB;
 
 class UserRepository {
 
@@ -49,6 +50,19 @@ class UserRepository {
 	public function getAdmins()
 	{
 		return User::where('group_id',1)->orWhere('group_id',2)->get();
+	}
+
+	/**
+	* Get Admin Emails
+	*/
+	public function getAdminEmails()
+	{
+		$admin_emails = DB::table('users')->where('group_id',1)->select('email')->get();
+		foreach ( $admin_emails as $e )
+		{
+			$emails[] = $e->email;
+		}
+		return $emails;
 	}
 
 }
