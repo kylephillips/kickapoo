@@ -3,7 +3,7 @@
 
 	<div class="container">
 		@if( $page->get_field('Header Image', $page->id) )
-			<img src="{{URL::asset('assets/uploads/page_images')}}/{{$page->get_field('Header Image', $page->id)}}" class="header-image" alt="{{$page['title']}}" />
+			<img src="{{URL::asset($page->get_field('Header Image', $page->id))}}" class="header-image" alt="{{$page['title']}}" />
 		@else
 			<h1>{{$page['title']}}</h1>
 		@endif
@@ -69,7 +69,7 @@ function load_large_images()
 		$.each(images, function(i, v){
 			var image = $(this).data('image');
 			var title = $(this).data('title');
-			var html = '<img src="{{URL::asset('assets/uploads/page_images')}}/' + image + '" alt="Kickapoo Flavors" />';
+			var html = '<img src="' + image + '" alt="Kickapoo Flavors" />';
 			$(this).html(html);
 		});
 	}
