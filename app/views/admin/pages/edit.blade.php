@@ -25,7 +25,7 @@
 		<div class="alert alert-success">{{Session::get('success')}}</div>
 		@endif
 
-		{{Form::open(['url'=>URL::route('update_page', ['id'=>$page['id']]), 'files'=>true])}}
+		{{Form::open(['url'=>URL::route('update_page', ['id'=>$page['id']]), 'files'=>true, 'id'=>'page_form'])}}
 		
 		<h3>
 			{{$page['title']}}
@@ -150,15 +150,20 @@
 
 					@else
 						<div>
-							<label>Image</label>
-							<div class="image-thumb">
-								<button class="remove-thumb">&times;</button>
-								<img src="{{URL::asset('assets/uploads/page_images/_thumbs')}}/{{$field->value}}">
+							<?php 
+							$folder = $field->image->folder;
+							$folder = substr($folder, 16);
+							$folder = rtrim($folder, '/');
+							?>
+							<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="customfield_image_{{$c}}" style="display:none;"><i class="icon-image"></i> Add from Media Library</a>
+							<input type="hidden" id="customfield_image_{{$c}}" name="customfield[{{$c}}][value]" value="{{$field->image->id}}">
+							<div class="image-preview">
+								<div class="image-thumb">
+									<button class="remove-thumb">&times;</button>
+									<img src="{{$field->image->folder}}/_thumbs/{{$field->image->file}}" />
+								</div>
+								<p class="image-name">{{$field->image->title}}</p>
 							</div>
-							<div class="image-file" style="display:none;">
-								{{Form::file('customfield[' . $c . '][value]')}}
-							</div>
-							<p class="image-name">{{substr($field->value, 11)}}</p>
 						</div>
 					@endif
 					{{Form::hidden('customfield[' . $c . '][field_type]', $field->field_type)}}
@@ -270,7 +275,7 @@ $('.delete-field').on('click', function(e){
 /**
 * Validate custom fields titles
 */
-$('form').on('submit', function(e){
+$('#page_form').on('submit', function(e){
 	e.preventDefault();
 	$('#customfielderrors').hide();
 	var data = $('form').serialize();
@@ -281,8 +286,8 @@ $('form').on('submit', function(e){
 		success: function(data){
 			console.log(data);
 			if ( data.status === 'success' ){
-				$('form').unbind('submit');
-				$('form').submit();
+				$('#page_form').unbind('submit');
+				$('#page_form').submit();
 			} else {
 				$('#customfielderrors').text(data.message).show();
 			}
@@ -320,8 +325,6 @@ $(document).ready(function(){
 	seo_characters_remaining(desc_count);
 	update_slug();
 	apply_redactor();
-
-	open_media_library();	
 });
 </script>
 @stop

@@ -1,21 +1,11 @@
 /**
-* Media Library
-*/
-function open_media_library()
-{
-	//$('#media-library').modal('show');
-	console.log(urls.media_library_route);
-}
-
-
-/**
 * Remove an Image Thumbnail
 */
 $('.remove-thumb').on('click', function(e){
 	e.preventDefault();
 	var thumb = $(this).parents('.image-thumb');
 	$(thumb).siblings('.image-name').hide();
-	var input = $(thumb).siblings('.image-file');
+	var input = $(thumb).parent('.image-preview').siblings('.open-media-library');
 	$(thumb).hide();
 	$(input).show();
 });
@@ -105,7 +95,11 @@ function custom_field_type(type, item, count)
 		break;
 
 		case 'image' :
-		html = '<input type="file" name="newcustomfield[' + count + '][fieldvalue]">';
+		//html = '<p><input type="file" name="newcustomfield[' + count + '][fieldvalue]"></p>';
+		html = '<div>';
+		html += '<a href="#" class="btn btn-success open-media-library" data-folder="page_images" data-field="customfield_image_' + count + '"><i class="icon-image"></i> Add from Media Library</a>';
+		html += '<input type="hidden" id="customfield_image_' + count + '" name="newcustomfield[' + count + '][fieldvalue]">';
+		html += '</div>';
 		break;
 	}
 	$(item).find('.newfieldcont').html(html);

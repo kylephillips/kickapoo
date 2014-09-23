@@ -90,7 +90,8 @@ Route::group(['before'=>'auth'], function()
 
 	// Media Management
 	Route::post('admin/media/editor-upload', ['as'=>'editor_upload', 'uses'=>'UploadController@editorUpload']);
-	Route::get('admin/media/library', ['as'=>'media_library', 'uses'=>'Uploadcontroller@mediaLibrary']);
+	Route::get('admin/media/library', ['as'=>'media_library', 'uses'=>'UploadController@mediaLibrary']);
+	Route::post('admin/media/library-upload', ['as'=>'media_library_upload', 'uses'=>'UploadController@libraryUpload']);
 
 	// Social Search Terms
 	Route::post('searchterms', ['as'=>'update_search', 'uses'=>'PostController@updateSearchTerms']);

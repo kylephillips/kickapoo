@@ -73,7 +73,7 @@ h1 {
   font-size: 30px;
   font-weight: bold;
   -webkit-font-smoothing: antialiased; }
-  h1 .btn {
+  h1 .btn, h1 .dz-message p span, .dz-message p h1 span {
     font-family: "proxima-nova", sans-serif;
     font-style: normal;
     font-weight: 400; }
@@ -81,7 +81,7 @@ h1 {
     font-size: 16px;
     font-weight: normal;
     margin-top: 15px; }
-    h1 span .btn {
+    h1 span .btn, h1 span .dz-message p span, .dz-message p h1 span span {
       margin-top: -20px; }
 
 .modal-body {
@@ -264,7 +264,7 @@ h1 {
     background-color: #245369;
     border-color: #214d61; }
 
-.btn {
+.btn, .dz-message p span {
   display: inline-block;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
@@ -282,24 +282,24 @@ h1 {
           transition: all 200ms ease;
   color: #000;
   line-height: 33px; }
-  .btn:hover {
+  .btn:hover, .dz-message p span:hover {
     background-color: #e0e0e0;
     -webkit-transition: all 200ms ease;
          -o-transition: all 200ms ease;
             transition: all 200ms ease;
     border-color: #bfbfbf;
     color: #000; }
-  .btn.btn-mini {
+  .btn.btn-mini, .dz-message p span.btn-mini {
     padding: 0px 6px;
     font-size: 13px; }
-  .btn:focus {
+  .btn:focus, .dz-message p span:focus {
     outline: none; }
-  .btn.active {
+  .btn.active, .dz-message p span.active {
     -webkit-box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
             box-shadow: inset 0px 1px 3px 0px rgba(0, 0, 0, 0.3);
     background-color: #e0e0e0;
     border-color: #bfbfbf; }
-  .btn:disabled {
+  .btn:disabled, .dz-message p span:disabled {
     background-color: #cccccc;
     border-color: #b3b3b3;
     cursor: not-allowed; }
@@ -333,7 +333,7 @@ h1 {
     background-color: #245369;
     border-color: #214d61; }
 
-.alert {
+.alert, .dz-preview .dz-details .dz-filename span {
   display: block;
   background-color: #d9edf7;
   color: #31708f;
@@ -344,17 +344,17 @@ h1 {
           border-radius: 3px;
   font-size: 15px;
   zoom: 1; }
-  .alert:before, .alert:after {
+  .alert:before, .dz-preview .dz-details .dz-filename span:before, .alert:after, .dz-preview .dz-details .dz-filename span:after {
     content: " ";
     /* 1 */
     display: table;
     /* 2 */ }
-  .alert:after {
+  .alert:after, .dz-preview .dz-details .dz-filename span:after {
     clear: both; }
-  .alert .btn {
+  .alert .btn, .alert .dz-preview .dz-details .dz-filename span, .dz-preview .dz-details .dz-filename .alert span, .alert .dz-message p span, .dz-message p .alert span {
     margin-left: 8px;
     float: left; }
-    .alert .btn.pull-right {
+    .alert .btn.pull-right, .alert .dz-preview .dz-details .dz-filename span, .dz-preview .dz-details .dz-filename .alert span, .alert .dz-message p span.pull-right, .dz-message p .alert span.pull-right {
       float: right; }
 
 .alert-import {
@@ -376,19 +376,19 @@ h1 {
   color: #a94442; }
 
 @media (max-width: 767px) {
-  .alert {
+  .alert, .dz-preview .dz-details .dz-filename span {
     zoom: 1; }
-    .alert:before, .alert:after {
+    .alert:before, .dz-preview .dz-details .dz-filename span:before, .alert:after, .dz-preview .dz-details .dz-filename span:after {
       content: " ";
       /* 1 */
       display: table;
       /* 2 */ }
-    .alert:after {
+    .alert:after, .dz-preview .dz-details .dz-filename span:after {
       clear: both; }
-    .alert .pull-right {
+    .alert .pull-right, .alert .dz-preview .dz-details .dz-filename span, .dz-preview .dz-details .dz-filename .alert span {
       float: none !important;
       text-align: center; }
-    .alert .btn {
+    .alert .btn, .alert .dz-preview .dz-details .dz-filename span, .dz-preview .dz-details .dz-filename .alert span, .alert .dz-message p span, .dz-message p .alert span {
       float: none;
       display: inline-block;
       margin: 0; } }
@@ -488,10 +488,10 @@ h1 {
     /* 2 */ }
   .modal-footer:after {
     clear: both; }
-  .modal-footer .btn + .btn {
+  .modal-footer .btn + .btn, .modal-footer .btn + .dz-message p span, .dz-message p .modal-footer .btn + span, .modal-footer .btn + .dz-message p span, .dz-message p .modal-footer .btn + span {
     margin-left: 5px;
     margin-bottom: 0; }
-  .modal-footer .btn-group .btn + .btn {
+  .modal-footer .btn-group .btn + .btn, .modal-footer .btn-group .btn + .dz-message p span, .dz-message p .modal-footer .btn-group .btn + span, .modal-footer .btn-group .btn + .dz-message p span, .dz-message p .modal-footer .btn-group .btn + span {
     margin-left: -1px; }
   .modal-footer .btn-block + .btn-block {
     margin-left: 0; }
@@ -511,8 +511,158 @@ h1 {
     -webkit-box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); } }
 
+.media-library-tabs {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  margin-top: -11px; }
+  .media-library-tabs li {
+    display: inline-block; }
+    .media-library-tabs li a {
+      display: block;
+      background-color: #ebebeb;
+      padding: 0px 45px 0px 15px;
+      line-height: 35px;
+      height: 35px;
+      color: #666666;
+      position: relative;
+      margin-left: -5px; }
+      .media-library-tabs li a i {
+        position: absolute;
+        display: block;
+        width: 35px;
+        height: 35px;
+        right: 0;
+        top: 0;
+        line-height: 35px;
+        background-color: rgba(0, 0, 0, 0.08); }
+      .media-library-tabs li a.active {
+        background-color: #31708f;
+        color: #ffffff; }
+    .media-library-tabs li:first-child a {
+      padding: 0px 15px 0px 45px; }
+      .media-library-tabs li:first-child a i {
+        right: auto;
+        left: 0; }
+
+.modal.media .modal-header {
+  text-align: center; }
 .modal.media .modal-dialog {
   width: 90%; }
+.modal.media .modal-body {
+  max-height: 400px; }
+  .modal.media .modal-body.loading {
+    height: 100px;
+    background: url('../../images/loading-gray.gif'), #e6e6e6;
+    background-repeat: no-repeat;
+    background-position: center; }
+
+.modal-select {
+  padding: 10px 10px 0px 10px; }
+
+.media-library-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  zoom: 1;
+  padding: 10px;
+  background-color: #e6e6e6; }
+  .media-library-list:before, .media-library-list:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+  .media-library-list:after {
+    clear: both; }
+  .media-library-list li {
+    float: left;
+    width: 25%; }
+    .media-library-list li.first {
+      clear: both; }
+    .media-library-list li div {
+      padding: 8px; }
+    .media-library-list li a {
+      -webkit-box-sizing: border-box;
+         -moz-box-sizing: border-box;
+              box-sizing: border-box;
+      display: block;
+      padding: 10px;
+      font-size: 14px;
+      background-color: #ffffff; }
+      .media-library-list li a.selected {
+        border: 3px solid #00a950; }
+    .media-library-list li span {
+      overflow: hidden;
+      max-height: 17px;
+      display: block; }
+
+.dropzone-file {
+  display: none; }
+
+.dropzone-folder-select {
+  padding: 8px 20px 0px 20px; }
+
+.dz-message {
+  padding: 0px 20px;
+  cursor: pointer;
+  display: block; }
+  .dz-message .dz-interior {
+    background-color: #f0f0f0;
+    height: 160px;
+    text-align: center;
+    padding: 20px;
+    -webkit-transition: all 200ms ease;
+         -o-transition: all 200ms ease;
+            transition: all 200ms ease; }
+  .dz-message p {
+    border: 2px dashed #cccccc;
+    height: 140px;
+    padding-top: 20px;
+    margin: 0;
+    background-color: #fafafa;
+    -webkit-transition: all 200ms ease;
+         -o-transition: all 200ms ease;
+            transition: all 200ms ease; }
+    .dz-message p span {
+      margin-top: 15px; }
+  .dz-message strong {
+    display: block; }
+  .dz-message i {
+    font-size: 45px;
+    color: #333333;
+    -webkit-transition: all 200ms ease;
+         -o-transition: all 200ms ease;
+            transition: all 200ms ease; }
+
+.dz-drag-hover .dz-message .dz-interior {
+  background-color: #31708f;
+  -webkit-transition: all 200ms ease;
+       -o-transition: all 200ms ease;
+          transition: all 200ms ease; }
+.dz-drag-hover .dz-message p {
+  background-color: #31708f;
+  color: #ffffff;
+  border-color: #245369;
+  -webkit-transition: all 200ms ease;
+       -o-transition: all 200ms ease;
+          transition: all 200ms ease; }
+.dz-drag-hover .dz-message i {
+  color: #bce8f1;
+  -webkit-transition: all 200ms ease;
+       -o-transition: all 200ms ease;
+          transition: all 200ms ease; }
+
+.dz-preview {
+  background-color: #f0f0f0; }
+  .dz-preview .dz-size, .dz-preview .dz-success-mark, .dz-preview .dz-error-mark, .dz-preview .dz-remove {
+    display: none; }
+  .dz-preview .dz-details {
+    text-align: center; }
+    .dz-preview .dz-details .dz-filename span {
+      display: inline-block; }
+    .dz-preview .dz-details img {
+      border: 3px solid #00a950; }
 
 .form-group.half {
   float: left;
@@ -715,7 +865,7 @@ form .slug {
   clear: both;
   -webkit-border-radius: 3px;
           border-radius: 3px; }
-  .delete-well .btn {
+  .delete-well .btn, .delete-well .dz-message p span, .dz-message p .delete-well span {
     font-size: 14px; }
 
 .pagination {
@@ -1122,7 +1272,7 @@ table {
         font-size: 20px;
         top: 9px;
         left: 13px; }
-  .searchterm .btn {
+  .searchterm .btn, .searchterm .dz-message p span, .dz-message p .searchterm span {
     float: right;
     width: 18%;
     font-size: 18px;
@@ -1148,7 +1298,7 @@ table {
       float: none;
       width: 100%;
       margin-bottom: 10px; }
-  .searchterm .btn {
+  .searchterm .btn, .searchterm .dz-message p span, .dz-message p .searchterm span {
     float: none;
     width: 100%; } }
 
@@ -1689,7 +1839,7 @@ table {
       width: 80%;
       height: 35px;
       -webkit-appearance: menulist-button; }
-    .products .size .btn {
+    .products .size .btn, .products .size .dz-message p span, .dz-message p .products .size span {
       float: right;
       width: 15%;
       text-align: center; }
@@ -1780,7 +1930,7 @@ table {
 .flavor-save {
   margin-top: 20px;
   text-align: center; }
-  .flavor-save .btn {
+  .flavor-save .btn, .flavor-save .dz-message p span, .dz-message p .flavor-save span {
     width: 60%; }
 
 .sizes-table {

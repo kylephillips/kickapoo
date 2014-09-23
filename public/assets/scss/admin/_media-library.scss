@@ -1,8 +1,181 @@
 //
 // Media Library
 // --------------------------------------------------
+.media-library-tabs {
+	@include unstyled;
+	display: inline-block;
+	margin-top: -11px;
+	li {
+		display: inline-block;
+		a {
+			display: block;
+			background-color: darken($white, 8%);
+			padding: 0px 45px 0px 15px;
+			line-height: 35px;
+			height: 35px;
+			color: darken($white, 60%);
+			position: relative;
+			margin-left: -5px;
+			i {
+				position: absolute;
+				display: block;
+				width: 35px;
+				height: 35px;
+				right: 0;
+				top: 0;
+				line-height: 35px;
+				background-color: rgba(0,0,0,.08);
+			}
+			&.active {
+				background-color: $info-text;
+				color: $white;
+			}
+		}
+		&:first-child a {
+			padding: 0px 15px 0px 45px;
+			i {
+				right: auto;
+				left: 0;
+			}
+		}
+	}
+} // .media-library-tabs
+
+// General Styles
 .modal.media {
+	.modal-header {
+		text-align: center;
+	}
 	.modal-dialog {
 		width: 90%;
 	}
+	.modal-body {
+		max-height: 400px;
+		&.loading {
+			height: 100px;
+			background: url('../../images/loading-gray.gif'), darken($white, 10%);
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	}
 }
+
+// Directory Select
+.modal-select {
+	padding: 10px 10px 0px 10px;
+}
+
+// Image Listing
+.media-library-list {
+	@include unstyled;
+	@include clearfix;
+	padding: 10px;
+	background-color: darken($white, 10%);
+	li {
+		float: left;
+		width: 25%;
+		&.first {
+			clear: both;
+		}
+		div {
+			padding: 8px;
+		}
+		a {
+			box-sizing: border-box;
+			display: block;
+			padding: 10px;
+			font-size: 14px;
+			background-color: $white;
+			&.selected {
+				border: 3px solid $green;
+			}
+		}
+		span {
+			overflow: hidden;
+			max-height: 17px;
+			display: block;
+		}
+	}
+}
+
+// Dropzone
+.dropzone-file {
+	display: none;
+}
+
+// Folder select
+.dropzone-folder-select {
+	padding: 8px 20px 0px 20px;
+}
+
+// Upload Area
+.dz-message {
+	padding: 0px 20px;
+	cursor: pointer;
+	display: block;
+	.dz-interior {
+		background-color: darken($white, 6%);
+		height: 160px;
+		text-align: center;
+		padding: 20px;
+		transition: all 200ms ease;
+	}
+	p {
+		border: 2px dashed darken($white, 20%);
+		height: 140px;
+		padding-top: 20px;
+		margin: 0;
+		background-color: darken($white, 2%);
+		transition: all 200ms ease;
+		span {
+			@extend .btn;
+			margin-top: 15px;
+		}
+	}
+	strong {
+		display: block;
+	}
+	i {
+		font-size: 45px;
+		color: darken($white, 80%);
+		transition: all 200ms ease;
+	}
+}
+
+// Drag State (dragging a file into the area)
+.dz-drag-hover .dz-message {
+	.dz-interior {
+		background-color: $info-text;
+		transition: all 200ms ease;
+	}
+	p {
+		background-color: $info-text;
+		color: $white;
+		border-color: darken($info-text, 10%);
+		transition: all 200ms ease;
+	}
+	i {
+		color: $info-border;
+		transition: all 200ms ease;
+	}
+}
+
+// Preview of uploaded image
+.dz-preview {
+	background-color: darken($white, 6%);
+	.dz-size, .dz-success-mark, .dz-error-mark, .dz-remove {
+		display: none;
+	}
+	.dz-details {
+		text-align: center;
+		.dz-filename span {
+			@extend .alert;
+			@extend .alert-info;
+			display: inline-block;
+		}
+		img {
+			border: 3px solid $green;
+		}
+	}
+}
+

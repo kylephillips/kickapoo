@@ -35,6 +35,7 @@ class CustomFieldController extends \BaseController {
 			foreach ( $customfields as $cfield ){
 				if ( !$cfield['fieldname'] ) return Response::json(['status' => 'error', 'message' => 'All custom fields require a name.']);
 				if ( CustomField::where('name', $cfield['fieldname'])->where('page_id',$cfield['page_id'])->first() ) return Response::json(['status' => 'error', 'message' => 'The custom field name "' . $cfield['fieldname'] . '"" has been taken.']);
+				if ( !$cfield['fieldvalue'] ) return Response::json(['status' => 'error', 'message' => 'All custom fields require a value.']);
 			}
 		}
 		return Response::json(['status'=>'success']);
