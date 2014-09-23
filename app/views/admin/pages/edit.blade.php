@@ -252,6 +252,15 @@
 
 @section('footercontent')
 <script>
+@if(count($page->customfields) > 0 )
+var cf_count = {
+	count : {{count($page->customfields)}}
+}
+@else
+var cf_count = {
+	count : 0
+}
+@endif
 /**
 * Delete a custom field
 */
@@ -302,7 +311,12 @@ $('.add-custom').on('click', function(e){
 
 function add_custom_field()
 {
-	var count = $('.newfield').length;
+	if ( cf_count.count > 0 ){
+		var count = cf_count.count + $('.newfield').length;
+	} else {
+		var count = $('.newfield').length;	
+	}
+	
 	var html = '<div class="newfield"><span class="field_count" style="display:none;">' + count + '</span><p class="half"><label>Field Name</label><input type="text" name="newcustomfield[' + count + '][fieldname]" ></p>';
 	html += '<p class="half right"><label for="fieldtype">Type of Field</label><select class="fieldtype" name="newcustomfield[' + count + '][fieldtype]"><option value="text">Text</option><option value="textarea">Textarea</option><option value="editor">Editor</option><option value="image">Image</option></select></p>';
 	html += '<input type="hidden" name="newcustomfield[' + count + '][page_id]" id="page_id" value="{{$page["id"]}}">';

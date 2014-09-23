@@ -21,7 +21,10 @@ class Page extends Eloquent {
 	public function get_field($field, $pageid)
 	{
 		try {
-			$field = CustomField::where('name',$field)->where('page_id',$pageid)->first();
+			$field = CustomField::where('name',$field)->with('image')->where('page_id',$pageid)->first();
+			if ( $field->field_type == 'image' ){
+				return $field->image->folder . $field->image->file;
+			}
 			return $field->value;
 		} catch (\Exception $e){
 			return false;
