@@ -13,7 +13,7 @@ class Flavor extends Eloquent {
 			->orderBy('products.order', 'asc');;
 	}
 
-	public function image()
+	public function upload()
 	{
 		return $this->hasOne('Upload', 'id', 'upload_id');
 	}

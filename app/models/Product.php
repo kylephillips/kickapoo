@@ -17,4 +17,14 @@ class Product extends Eloquent {
 		return $this->belongsTo('ProductSize');
 	}
 
+	public function upload()
+	{
+		return $this->hasOne('Upload', 'id', 'image_id');
+	}
+
+	public function nutrition_upload()
+	{
+		return $this->hasOne('Upload', 'id', 'nutrition_label_id');
+	}
+
 }
