@@ -4,7 +4,7 @@ class Product extends Eloquent {
 	protected $table = 'products';
 
 	protected $fillable = [
-		'flavor_id', 'size_id', 'ingredients', 'nutrition_label', 'content', 'image', 'order'
+		'flavor_id', 'size_id', 'ingredients', 'nutrition_label', 'content', 'image', 'order', 'image_id', 'nutrition_label_id'
 	];
 
 	public function flavor()

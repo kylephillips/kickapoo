@@ -26,10 +26,10 @@
 				{{Form::label('content', 'Flavor Description')}}
 				{{Form::textarea('content', null, ['class'=>'redactor'])}}
 			</p>
-			<p>
-				{{Form::label('image', 'Image (365px &times; 690px)')}}
-				{{Form::file('image')}}
-			</p>
+			<div>
+				<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="flavor_image"><i class="icon-image"></i> Add from Media Library</a>
+				<input type="hidden" id="flavor_image" name="image" value="">
+			</div>
 			@if( isset($parent_flavor) )
 			{{Form::hidden('parent_flavor', $parent_flavor->id)}}
 			{{Form::hidden('language', $language)}}
@@ -87,8 +87,11 @@ function add_product_field()
 	var html = '<div class="flavor_' + count + ' flavor new-flavor"><h4>New Product Type</h4><section><p class="size"><select name="new_product[' + count + '][size]">' + options + '</select><a href="{{URL::route('admin.size.index')}}" class="btn btn-mini">Edit Types</a></p>';
 	html += '<p><label>Description</label><textarea name="new_product[' + count + '][description]" class="redactor"></textarea></p>';
 	html += '<p><label>Ingredients</label><textarea name="new_product[' + count + '][ingredients]"></textarea></p>';
-	html += '<p><label>Image</label><input type="file" name="new_product[' + count + '][image]"></p>';
-	html += '<p><label>Nutrition Label</label><input type="file" name="new_product[' + count + '][nutrition_label]"></p>';
+	
+	html += '<div><label>Image</label><div><a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_image_' + count + '"><i class="icon-image"></i> Add from Media Library</a><input type="hidden" id="product_image_' + count + '" name="new_product[' + count + '][image]"></div></div><p>&nbsp;</p>';
+	
+	html += '<div><label>Nutrition Label</label><div><a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_nutrition_' + count + '"><i class="icon-image"></i> Add from Media Library</a><input type="hidden" id="product_nutrition_' + count + '" name="new_product[' + count + '][nutrition_label]"></div></div>';
+	
 	html += '<input type="hidden" name="add_new" value="true">';
 	html += '<a href="#" class="btn btn-danger remove-new-product">Cancel</a></section></div>';
 

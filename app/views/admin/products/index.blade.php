@@ -16,8 +16,8 @@
 		<ul class="product-list">
 			@foreach($flavors as $flavor)
 			<li id="{{$flavor->id}}">
-				@if($flavor->image)
-					<img src="{{URL::asset('assets/uploads/product_images')}}/{{$flavor->image}}" alt="{{$flavor->title}}" class="flavor-image" />
+				@if($flavor->upload)
+					<img src="{{$flavor->upload->folder}}/{{$flavor->upload->file}}" alt="{{$flavor->title}}" class="flavor-image" />
 				@else
 					<img src="{{URL::asset('assets/images/product-fpo.png')}}" alt="{{$flavor->title}}" class="flavor-image" />
 				@endif

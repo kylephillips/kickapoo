@@ -26,17 +26,18 @@ class ProductFactory {
 	*/
 	public function createProduct($input)
 	{
-		$image = ( isset($input['image']) ) ? $this->attachImage($input['image']) : null;
+		$image = ( $input['image'] !== "" ) ? $input['image'] : null;
 		$content = ( isset($input['content']) ) ? $input['content'] : null;
 		$css_class = ( isset($input['css_class']) ) ? $input['css_class'] : null;
 		$language = ( isset($input['language']) ) ? $input['language'] : 'en';
 		$flavor = Flavor::create([
 			'title' => $input['title'],
 			'slug' => \Str::slug($input['title']),
-			'image' => $image,
+			'image' => null,
 			'content' => $content,
 			'css_class' => $css_class,
-			'language' => $language
+			'language' => $language,
+			'upload_id' => $image
 		]);
 		if ( isset($input['new_product']) ) $this->addTypes($input['new_product'], $flavor->id);
 		if ( isset($input['language']) ) $this->addTranslation($input['parent_flavor'], $flavor->id);
@@ -55,7 +56,7 @@ class ProductFactory {
 		$flavor->slug = \Str::slug($input['flavor_title']);
 		$flavor->content = ( isset($input['flavor_content']) ) ? $input['flavor_content'] : null;
 		$flavor->status = $input['status'];
-		if ( isset($input['flavor_image']) ) $flavor->image = $this->attachImage($input['flavor_image']);
+		$flavor->upload_id = ( isset($input['flavor_image']) ) ? $input['flavor_image'] : null;
 		$flavor->css_class = ( isset($input['css_class']) ) ? $input['css_class'] : null;
 		$flavor->save();
 		if ( isset($input['product']) ) $this->updateTypes($input['product'], $id);
@@ -75,8 +76,8 @@ class ProductFactory {
 			$product->ingredients = ( isset($type['ingredients']) ) ? $type['ingredients'] : null;
 			$product->size_id = $type['size_id'];
 			$product->flavor_id = $flavor_id;
-			if ( isset($type['image']) ) $product->image = $this->attachImage($type['image']);
-			if ( isset($type['nutrition_label']) ) $product->nutrition_label = $this->attachImage($type['nutrition_label']);
+			$product->image_id = ( $type['image'] !== "" ) ? $type['image'] : null;
+			$product->nutrition_label_id = ( $type['nutrition_label'] !== "" ) ? $type['nutrition_label'] : null;
 			$product->save();
 		}
 	}
@@ -90,16 +91,16 @@ class ProductFactory {
 			$content = ( isset($type['description']) ) ? $type['description'] : null;
 			$ingredients = ( isset($type['ingredients']) ) ? $type['ingredients'] : null;
 			
-			$image = ( isset($type['image']) ) ? $this->attachImage($type['image']) : null;
-			$nutrition_label = ( isset($type['nutrition_label']) ) ? $this->attachImage($type['nutrition_label']) : null;
+			$image = ( $type['image'] !== "" ) ? $type['image'] : null;
+			$nutrition_label = ( $type['nutrition_label'] !== "" ) ? $type['nutrition_label'] : null;
 			
 			Product::create([
 				'flavor_id' => $flavor_id,
 				'size_id' => $type['size'],
 				'content' => $content,
 				'ingredients' => $ingredients,
-				'image' => $image,
-				'nutrition_label' => $nutrition_label
+				'image_id' => $image,
+				'nutrition_label_id' => $nutrition_label
 			]);
 		}
 	}

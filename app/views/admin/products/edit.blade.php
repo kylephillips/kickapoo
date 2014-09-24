@@ -14,8 +14,8 @@
 		{{Form::open(['url'=>URL::route('update_flavor', ['id'=>$flavor->id]), 'files'=>true])}}
 		<div class="flavor-fields">
 			<div class="image">
-				@if($flavor->image)
-					<img src="{{URL::asset('assets/uploads/product_images')}}/{{$flavor->image}}" alt="{{$flavor->title}}" />
+				@if( $flavor->upload ) 
+					<img src="{{$flavor->upload->folder}}{{$flavor->upload->file}}" alt="{{$flavor->title}}" />
 				@else
 					<img src="{{URL::asset('assets/images/product-fpo.png')}}" alt="{{$flavor->title}}" />
 				@endif
@@ -45,17 +45,28 @@
 				</p>
 				<p>
 					{{Form::label('flavor_image', 'Image (365px &times; 690px)')}}
-					@if($flavor->image)
-						<div class="image-thumb">
-							<button class="remove-thumb">&times;</button>
-							<img src="{{URL::asset('assets/uploads/product_images/_thumbs')}}/{{$flavor->image}}">
+					@if( $flavor->upload ) 
+						<div>
+							<?php 
+							$folder = $flavor->upload->folder;
+							$folder = substr($folder, 16);
+							$folder = rtrim($folder, '/');
+							?>
+							<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="flavor_image" style="display:none;"><i class="icon-image"></i> Add from Media Library</a>
+							<input type="hidden" id="flavor_image" name="flavor_image" value="{{$flavor->upload->id}}">
+							<div class="image-preview">
+								<div class="image-thumb">
+									<button class="remove-thumb">&times;</button>
+									<img src="{{$flavor->upload->folder}}/_thumbs/{{$flavor->upload->file}}" />
+								</div>
+								<p class="image-name">{{$flavor->upload->title}}</p>
+							</div>
 						</div>
-						<div class="image-file" style="display:none;">
-							{{Form::file('flavor_image')}}
-						</div>
-						<p class="image-name">{{substr($flavor->image, 11)}}</p>
 					@else
-						{{Form::file('flavor_image')}}
+						<div>
+							<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="flavor_image"><i class="icon-image"></i> Add from Media Library</a>
+							<input type="hidden" id="flavor_image" name="flavor_image" value="">
+						</div>
 					@endif
 				</p>
 				@if ( count($flavor->translation_of) == 0 )
@@ -97,8 +108,8 @@
 				<h4><span class="sort-handle">{{$i}}</span> {{$product->size->title}}<i class="icon-caret-down"></i></h4>
 				<section>
 					<div class="image">
-						@if($product->image)
-							<img src="{{URL::asset('assets/uploads/product_images')}}/{{$product->image}}" alt="{{$flavor->title}}" />
+						@if($product->upload)
+							<img src="{{$product->upload->folder}}/{{$product->upload->file}}" alt="{{$flavor->title}}" />
 						@else
 							<img src="{{URL::asset('assets/images/product-fpo.png')}}" alt="{{$flavor->title}}" />
 						@endif
@@ -116,38 +127,63 @@
 							{{Form::label('product[' . $i . '][ingredients]', 'Ingredients')}}
 							{{Form::textarea('product[' . $i . '][ingredients]', $product->ingredients)}}
 						</p>
-						<div class="clearfix">
-							<div class="half">
-								{{Form::label('product[' . $i . '][image]', 'Image')}}
-								@if($product->image)
-									<div class="image-thumb">
-										<button class="remove-thumb">&times;</button>
-										<img src="{{URL::asset('assets/uploads/product_images/_thumbs')}}/{{$product->image}}">
+							
+						<div>
+							{{Form::label('product[' . $i . '][image]', 'Image')}}
+							@if($product->upload)
+								<div>
+									<?php 
+									$folder = $product->upload->folder;
+									$folder = substr($folder, 16);
+									$folder = rtrim($folder, '/');
+									?>
+									<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="product_image_{{$i}}" style="display:none;"><i class="icon-image"></i> Add from Media Library</a>
+									<input type="hidden" id="product_image_{{$i}}" name="product[{{$i}}][image]" value="{{$product->upload->id}}">
+									<div class="image-preview">
+										<div class="image-thumb">
+											<button class="remove-thumb">&times;</button>
+											<img src="{{$product->upload->folder}}/_thumbs/{{$product->upload->file}}" />
+										</div>
+										<p class="image-name">{{$product->upload->title}}</p>
 									</div>
-									<div class="image-file" style="display:none;">
-										{{Form::file('product[' . $i . '][image]')}}
+								</div>
+							@else
+								<div>
+									<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_image_{{$i}}"><i class="icon-image"></i> Add from Media Library</a>
+									<input type="hidden" id="product_image_{{$i}}" name="product[{{$i}}][image]" value="">
+								</div>
+							@endif
+						</div><!-- Product Image -->
+						
+						<p>&nbsp;</p>
+
+						<div>
+							{{Form::label('product[' . $i . '][nutrition_label]', 'Nutrition Label')}}
+							@if($product->nutrition_upload)
+								<div>
+									<?php 
+									$folder = $product->nutrition_upload->folder;
+									$folder = substr($folder, 16);
+									$folder = rtrim($folder, '/');
+									?>
+									<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="product_nutrition_{{$i}}" style="display:none;"><i class="icon-image"></i> Add from Media Library</a>
+									<input type="hidden" id="product_nutrition_{{$i}}" name="product[{{$i}}][nutrition_label]" value="{{$product->nutrition_upload->id}}">
+									<div class="image-preview">
+										<div class="image-thumb">
+											<button class="remove-thumb">&times;</button>
+											<img src="{{$product->nutrition_upload->folder}}/_thumbs/{{$product->nutrition_upload->file}}" />
+										</div>
+										<p class="image-name">{{$product->nutrition_upload->title}}</p>
 									</div>
-									<p class="image-name bottom">{{substr($product->image, 11)}}</p>
-								@else
-									{{Form::file('product[' . $i . '][image]')}}
-								@endif
-							</div>
-							<div class="half right">
-								{{Form::label('product[' . $i . '][nutrition_label]', 'Nutrition Label')}}
-								@if($product->nutrition_label)
-									<div class="image-thumb">
-										<button class="remove-thumb">&times;</button>
-										<img src="{{URL::asset('assets/uploads/product_images/_thumbs')}}/{{$product->nutrition_label}}">
-									</div>
-									<div class="image-file" style="display:none;">
-										{{Form::file('product[' . $i . '][nutrition_label]')}}
-									</div>
-									<p class="image-name bottom">{{substr($product->nutrition_label, 11)}}</p>
-								@else
-									{{Form::file('product[' . $i . '][nutrition_label]')}}
-								@endif
-							</div>
-						</div>
+								</div>
+							@else
+								<div>
+									<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_nutrition_{{$i}}"><i class="icon-image"></i> Add from Media Library</a>
+									<input type="hidden" id="product_nutrition_{{$i}}" name="product[{{$i}}][nutrition_label]" value="">
+								</div>
+							@endif
+						</div><!-- nutrition label -->
+
 						<p>
 							{{Form::hidden('product[' . $i . '][product_id]', $product->id)}}
 						</p>
@@ -245,15 +281,17 @@ function change_sort_numbers()
 */
 function add_product_field()
 {
-	var flavor_count = $('.flavor').length;
-	var count = flavor_count + 1;
+	var count = $('.flavor').length + 1;
 	var options = '<?php foreach ($sizes as $id=>$size){	echo '<option value="' . $id . '">' . $size . '</option>'; } ?>';
 
 	var html = '<div class="flavor_' + count + ' flavor new-flavor"><h4><span class="sort-handle">' + count + '</span> New Product Type</h4><section><p class="size"><select name="new_product[' + count + '][size]">' + options + '</select><a href="{{URL::route('admin.size.index')}}" class="btn btn-mini">Edit Types</a></p>';
 	html += '<p><label>Description</label><textarea name="new_product[' + count + '][description]" class="redactor"></textarea></p>';
 	html += '<p><label>Ingredients</label><textarea name="new_product[' + count + '][ingredients]"></textarea></p>';
-	html += '<p><label>Image</label><input type="file" name="new_product[' + count + '][image]"></p>';
-	html += '<p><label>Nutrition Label</label><input type="file" name="new_product[' + count + '][nutrition_label]"></p>';
+	
+	html += '<div><label>Image</label><div><a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_image_' + count + '"><i class="icon-image"></i> Add from Media Library</a><input type="hidden" id="product_image_' + count + '" name="new_product[' + count + '][image]"></div></div><p>&nbsp;</p>';
+	
+	html += '<div><label>Nutrition Label</label><div><a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_nutrition_' + count + '"><i class="icon-image"></i> Add from Media Library</a><input type="hidden" id="product_nutrition_' + count + '" name="new_product[' + count + '][nutrition_label]"></div></div>';
+
 	html += '<input type="hidden" name="add_new" value="true">';
 	html += '<a href="#" class="btn btn-danger remove-new-product">Cancel</a></section></div>';
 
