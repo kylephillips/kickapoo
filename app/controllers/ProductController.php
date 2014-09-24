@@ -190,7 +190,11 @@ class ProductController extends \BaseController {
 	public function modalInfo()
 	{
 		$product = $this->product_repo->getProduct(Input::get('id'));
-		$nutrition = $product->nutrition_label;
+		if ( Input::get('content') == 'ingredients'){
+			$nutrition = null;
+		} else {
+			$nutrition = $product->nutrition_upload->folder . $product->nutrition_upload->file;
+		}
 		$ingredients = $product->ingredients;
 		$content = $product->content;
 		return Response::json([

@@ -13,9 +13,9 @@ class ProductRepository {
 	public function getAll($status = null, $lang = 'en')
 	{
 		if ( isset($status) ){
-			return Flavor::where('language', $lang)->where('status', $status)->with('upload', 'products', 'products.size', 'products.size.translations')->orderBy('flavors.order')->get();
+			return Flavor::where('language', $lang)->where('status', $status)->with('upload', 'products', 'products.upload', 'products.nutrition_upload','products.size', 'products.size.translations')->orderBy('flavors.order')->get();
 		} else {
-			return Flavor::where('language', $lang)->with('products', 'products.size', 'products.size.translations')->orderBy('flavors.order')->get();
+			return Flavor::where('language', $lang)->with('products', 'products.upload', 'products.nutrition_upload','products.size', 'products.size.translations')->orderBy('flavors.order')->get();
 		}
 	}
 
@@ -60,7 +60,7 @@ class ProductRepository {
 	*/
 	public function getProduct($id)
 	{
-		return Product::findOrFail($id);
+		return Product::with('upload', 'nutrition_upload')->findOrFail($id);
 	}
 
 
