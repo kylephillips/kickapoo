@@ -31,16 +31,15 @@
 
 .modal-dialog {
 	position: relative;
-	width: auto;
-	margin: 10px;
+	width: 95%;
+	margin: 10px auto;
 }
 
 // Actual modal
 .modal-content {
 	position: relative;
 	background-color: $white;
-	border-radius: 6px;
-	box-shadow: 0 3px 9px rgba(0,0,0,.5);
+	box-shadow: 2px 2px 9px rgba(0,0,0,.5);
 	background-clip: padding-box;
 	outline: 0;
 }
@@ -53,7 +52,7 @@
 	bottom: 0;
 	left: 0;
 	z-index: 999999;
-	background-color: #000;
+	background-color: rgba(0,0,0,.8);
 
 	&.fade { 
 		opacity: 0; 
@@ -69,14 +68,19 @@
 	padding: 15px 6px 6px 6px;
 	border-bottom: 1px solid darken($white, 8%);
 	@include clearfix;
-}
-// Close icon
-.modal-header .close {
-	margin-top: -11px;
-	float: right;
-	height: auto;
-	padding: 0 10px;
-	font-weight: bold;
+	button {
+		position: absolute;
+		right: 5px;
+		top: 0px;
+		font-weight: bold;
+		font-size: 24px !important;
+		background: transparent;
+		border: 0;
+		&:hover {
+			color: $info-text;
+			background: transparent;
+		}
+	}
 }
 
 // Title text within header
@@ -86,7 +90,7 @@
 
 .modal-body {
 	position: relative;
-	padding: 10px;
+	padding: 20px;
 }
 
 // Footer (for actions)
@@ -117,17 +121,4 @@
 	width: 50px;
 	height: 50px;
 	overflow: scroll;
-}
-
-// Scale up the modal
-@media (min-width: 768px) {
-	// Automatically set modal's width for larger viewports
-	.modal-dialog {
-		width: 500px;
-		margin: 70px auto 30px auto;
-	}
-	.modal-content {
-		box-shadow: 0 5px 15px rgba(0,0,0,.5);
-	}
-
 }

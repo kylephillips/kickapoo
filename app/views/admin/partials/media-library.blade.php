@@ -5,8 +5,8 @@
 			<div class="modal-header">
 				<button type="button" class="close btn btn-mini cancel-media" data-dismiss="modal">&times;</button>
 				<ul class="media-library-tabs">
-					<li><a href="#media-existing" class="active">Choose Existing<i class="icon-checkmark"></i></a></li>
-					<li><a href="#media-new"><i class="icon-image"></i>Upload Image</a></li>
+					<li><a href="#media-existing" class="active">Media Library</a></li>
+					<li><a href="#media-new">Upload Files</a></li>
 				</ul>
 			</div>
 			
@@ -19,8 +19,8 @@
 			</div>
 			
 			<div id="media-new" class="modal-body-upload modal-body-panel" style="display:none;">
-				<form action="{{URL::route('media_library_upload')}}" class="dropzone" id="dropzoneForm">
-					<div class="dropzone-folder-select">
+				<form action="{{URL::route('media_library_upload')}}" class="dropzone dropzone-form-cont" id="dropzoneForm">
+					<div class="modal-select dropzone-folder-select">
 						<label for="dz-folder">Upload Directory</label>
 						<select id="dz-folder" name="folder">
 							<option value="page_images">page_images</option>
@@ -33,8 +33,7 @@
 
 			<div class="modal-footer">
 				<input type="hidden" id="field-selected">
-				<button type="button" class="btn btn-success choose-media" disabled>Use Selected</button>
-				<button type="button" class="btn btn-default cancel-media" data-dismiss="modal">Cancel</button>
+				<button type="button" class="btn btn-success choose-media" disabled>Set Image</button>
 			</div>
 		</div>
 	</div>

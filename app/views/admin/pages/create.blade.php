@@ -3,15 +3,12 @@
 <div class="container small">
 
 	@if ( isset($parent_page) )
-	<h1>Add a Translation </h1>
+	<h1>Add {{$language_name}} Translation of {{$parent_page->title}}</h1>
 	@else
 	<h1>Add a New Page </h1>
 	@endif
 
 	<div class="well">
-		@if( isset($parent_page) )
-		<h3>{{$language_name}} Translation of {{$parent_page->title}}</h3>
-		@endif
 
 		@if(Session::has('errors'))
 		<div class="alert alert-danger">Ooops! Looks like there were some errors. That's not Joyful!</div>

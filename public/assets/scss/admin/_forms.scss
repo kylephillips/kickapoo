@@ -16,6 +16,9 @@
 label {
 	display: block;
 	margin-bottom: 3px;
+	font-weight: bold;
+	color: darken($white, 70%);
+	font-size: 15px;
 }
 select {
 	width: 100%;
@@ -68,10 +71,27 @@ textarea {
 	}
 }
 
+select {
+	-webkit-appearance: none;
+	padding: 0 8px;
+	background: url('../../images/select-arrow.png') darken($white, 12%);
+	background-repeat: no-repeat;
+	background-position: right center;
+	border: 1px solid darken($white, 15%);
+	font-size: 15px;
+	border-radius: 3px;
+	&:focus {
+		outline: none;
+	}
+}
+
 
 form {
 	.well {
-		background-color: darken($white, 7%);
+		box-shadow: none;
+		border: 1px solid darken($white, 12%);
+		background-color: $white;
+		padding: 15px;
 		@include clearfix;
 		padding-bottom: 0;
 	}

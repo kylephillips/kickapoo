@@ -27,7 +27,8 @@ class UploadController extends BaseController {
 	*/
 	public function editorUpload()
 	{
-		$upload = $this->upload_factory->uploadImage(Input::file('file'), 'page_images');
+		$file = Input::file('file');
+		$upload = $this->upload_factory->uploadImage($file, 'page_images');
 		if ( $upload ){
 			return Response::json(['filelink' => $upload]);
 		} else {
@@ -41,7 +42,7 @@ class UploadController extends BaseController {
 	public function libraryUpload()
 	{
 		if ( Request::ajax() ){
-			$upload = $this->upload_factory->uploadImage(Input::file('file'), Input::get('folder'));
+			$upload = $this->upload_factory->uploadImage(Input::file('file')[0], Input::get('folder'));
 			if ( $upload ){
 				return Response::json(['status'=>'success', 'file' => $upload, 'folder' => Input::get('folder')]);
 			} else {

@@ -28,7 +28,6 @@
 		{{Form::open(['url'=>URL::route('update_page', ['id'=>$page['id']]), 'files'=>true, 'id'=>'page_form'])}}
 		
 		<h3>
-			{{$page['title']}}
 			@if ( count($page['translation_of']) > 0 )
 			 (Translation of <a href="{{URL::route('edit_page', ['slug'=>$page['translation_of'][0]->slug])}}">{{$page['translation_of'][0]->title}}</a> Page)
 			@endif
@@ -107,7 +106,6 @@
 		<hr>
 
 		<p>
-			{{Form::label('content', 'Content')}}
 			{{Form::textarea('content', $page['content'], ['class'=>'redactor'])}}
 		</p>
 
@@ -174,8 +172,6 @@
 			<?php $c++; ?>
 			@endforeach
 		</ul>
-		@else
-			<p>No custom fields.</p>
 		@endif
 
 		<div id="newfields"></div>

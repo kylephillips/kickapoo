@@ -189,41 +189,60 @@ $(document).on('change', '#ml-folders', function(){
 */
 $(document).on('click', '.media-library-tabs a', function(e){
 	e.preventDefault();
+	// Disable the Use selected button
 	$('.choose-media').prop('disabled', 'disabled');
+
+	// Show the correct panel
 	var target = $(this).attr('href');
 	$('.modal-body-panel').hide();
 	$(target).show();
+	
+	// Toggle Tabs
 	$('.media-library-tabs a').removeClass('active');
+	$(this).addClass('active');	
 
 	// Remove any currently selected images
 	remove_selected_image();
 	$('.media-library-item').removeClass('selected');
 
-	$(this).addClass('active');
-});
+	// Select the correct upload directory & reload images
+	if ( target === '#media-existing' ){
+		var directory = $('#dz-folder').val();
+		$('#ml-folders').val(directory);
+		get_media_library_data(directory);
+	} else {
+		var directory = $('#ml-folders').val();
+		$('#dz-folder').val(directory);
+	}
 
+
+});
 /**
 * Dropzone config
 */
 Dropzone.options.dropzoneForm = {
-	addRemoveLinks: true,
-	maxFiles: 1,
-	uploadMultiple: false,
-    thumbnailWidth: 360,
-    thumbnailHeight: 240,
-    dictDefaultMessage: '<div class="dz-interior"><p><i class="icon-box-add"></i> <strong>Drag Image Here</strong><span>Select File</span></p></div>',
+	addRemoveLinks: false,
+	maxFiles: 20,
+	uploadMultiple: true,
+    thumbnailWidth: 100,
+    thumbnailHeight: 100,
+    autoProcessQueue: true,
+    dictDefaultMessage: '<div class="dz-interior"><p><strong>Drop files to upload</strong><em>or</em><span>Select File</span></p></div>',
     init: function(){
     	addform = this;
     	this.on('success', function(file, response){
 			if ( response.status === "error" ){
 			} else {
 				$('.dz-message').hide();
-				select_media_image(response.file.id, response.file.title, response.file.folder);
 				console.log(response);
 			}	
 		});
+		// Reset the dropzone form when switching tabs
+		$('.media-library-tabs a').on('click', function(){
+			addform.removeAllFiles();
+		});
     }
-}
+};
 
 
 
