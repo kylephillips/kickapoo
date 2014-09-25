@@ -897,7 +897,7 @@ form .slug {
 
 .seo-preview {
   margin: 15px 0px 0px 0px;
-  background-color: #ffffff;
+  border: 1px solid #ebebeb;
   padding: 10px;
   font-family: arial, sans-serif; }
   .seo-preview h4 {
@@ -916,7 +916,8 @@ form .slug {
     font-style: normal; }
 
 .newfield {
-  background-color: #f0f0f0;
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
   padding: 8px;
   margin-bottom: 20px; }
 
@@ -967,8 +968,7 @@ form .slug {
   height: 5px; }
 
 .delete-well {
-  background-color: #fce4e5;
-  padding: 8px;
+  text-align: right;
   margin: 20px 0;
   clear: both;
   -webkit-border-radius: 3px;
@@ -1121,6 +1121,7 @@ form .slug {
 footer .container {
   padding: 30px 0px;
   font-size: 15px;
+  text-align: center;
   color: #999999; }
 
 @font-face {
@@ -1468,7 +1469,6 @@ table {
       height: 35px; }
 
 .post-filters {
-  background-color: #ebebeb;
   margin-bottom: 20px; }
   .post-filters ul {
     list-style-type: none;
@@ -1525,7 +1525,6 @@ table {
             padding: 4px; }
 
 .admin-posts h3 {
-  background-color: #ebebeb;
   text-align: center;
   margin: 0;
   padding: 10px 0 0 0;
@@ -1879,7 +1878,8 @@ table {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  border: 1px solid #e0e0e0; }
   .products textarea {
     height: 80px; }
   .products label {
@@ -1892,7 +1892,7 @@ table {
       float: right;
       clear: none; }
   .products .flavor {
-    border: 1px solid #ebebeb;
+    border-top: 1px solid #e0e0e0;
     background-color: #ffffff; }
     .products .flavor section {
       display: none;
@@ -1918,7 +1918,6 @@ table {
       height: 35px;
       line-height: 35px; }
       .products .flavor h4 span {
-        background-color: rgba(0, 0, 0, 0.07);
         font-weight: normal;
         float: left;
         display: block;
@@ -1933,6 +1932,8 @@ table {
         margin-top: 15px; }
     .products .flavor:nth-child(even) {
       background-color: #ededed; }
+    .products .flavor:first-child {
+      border-top: 0; }
   .products .size {
     zoom: 1; }
     .products .size:before, .products .size:after {
@@ -2015,8 +2016,6 @@ table {
 
 .flavor-fields {
   zoom: 1;
-  background-color: #f0f0f0;
-  padding: 8px;
   margin-bottom: 20px; }
   .flavor-fields:before, .flavor-fields:after {
     content: " ";
@@ -2044,10 +2043,14 @@ table {
 .sizes-table {
   list-style-type: none;
   margin: 0;
-  padding: 0; }
+  padding: 0;
+  margin-bottom: 20px;
+  border: 1px solid #e0e0e0; }
   .sizes-table li {
     zoom: 1;
-    padding: 5px; }
+    padding: 8px 10px;
+    background-color: #ffffff;
+    border-top: 1px solid #e0e0e0; }
     .sizes-table li:before, .sizes-table li:after {
       content: " ";
       /* 1 */
@@ -2068,6 +2071,8 @@ table {
     .sizes-table li .buttons {
       float: right; }
     .sizes-table li:nth-child(even) {
-      background-color: #ebebeb; }
+      background-color: #f0f0f0; }
     .sizes-table li .translations {
       clear: both; }
+    .sizes-table li:first-child {
+      border: 0; }

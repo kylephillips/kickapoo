@@ -103,13 +103,9 @@
 			@endif
 		</div>
 
-		<hr>
-
 		<p>
 			{{Form::textarea('content', $page['content'], ['class'=>'redactor'])}}
 		</p>
-
-		<hr>
 
 		<h3>Custom Fields</h3>
 		
@@ -176,9 +172,8 @@
 
 		<div id="newfields"></div>
 		<a href="#" class="btn btn-success add-custom">Add Custom Field</a>
-
-		<hr>
-
+		<p>&nbsp;</p>
+		
 		<div class="well">
 			<h4>SEO Settings</h4>
 			<div class="seo-preview">

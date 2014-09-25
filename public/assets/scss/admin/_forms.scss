@@ -155,7 +155,7 @@ form {
 // SEO preview Area
 .seo-preview {
 	margin: 15px 0px 0px 0px;
-	background-color: $white;
+	border: 1px solid darken($white, 8%);
 	padding: 10px;
 	font-family: arial, sans-serif;
 	h4 {
@@ -180,7 +180,8 @@ form {
 
 // Custom Fields - New field
 .newfield {
-	background-color: darken($white, 6%);
+	background-color: $white;
+	border: 1px solid darken($white, 12%);
 	padding: 8px;
 	margin-bottom: 20px;
 }
