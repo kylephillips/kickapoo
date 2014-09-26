@@ -6,7 +6,7 @@
 				<button type="button" class="close btn btn-mini cancel-media" data-dismiss="modal">&times;</button>
 				<ul class="media-library-tabs">
 					<li><a href="#media-existing" class="active">Media Library</a></li>
-					<li><a href="#media-new">Image</a></li>
+					<li><a href="#media-new">Upload Image</a></li>
 				</ul>
 			</div>
 			
