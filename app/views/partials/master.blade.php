@@ -42,8 +42,12 @@
 	@if(Auth::check())
 		@include('admin.partials.nav')
 	@endif
-
-	<img src="{{URL::asset('assets/images/preloader.png')}}" class="preloader" alt="Loading the Joy!" aria-hidden="true" />
+	
+	<?php
+	$preloader = URL::asset('assets/images/preloader/preloader-' . LaravelLocalization::getCurrentLocale() . '.png');
+	?>
+	<img src="{{$preloader}}" class="preloader" alt="Loading the Joy!" aria-hidden="true" onerror="this.src='{{URL::asset('assets/images/preloader/preloader.png')}}';"/>
+	
 	<div class="page loading">
 
 		<nav class="mobile-nav">
