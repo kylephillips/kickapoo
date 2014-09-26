@@ -41,19 +41,21 @@
 
 		<div class="well">
 			<h4>General Settings</h4>
-			<p class="half">
-				{{Form::label('status', 'Status')}}
-				{{Form::select('status', ['publish'=>'Published', 'draft'=>'Draft'], 'draft')}}
-			</p>
+			<div class="well-interior">
+				<p class="half">
+					{{Form::label('status', 'Status')}}
+					{{Form::select('status', ['publish'=>'Published', 'draft'=>'Draft'], 'draft')}}
+				</p>
 
-			<p class="half right">
-				{{Form::label('template', 'Page Template')}}
-				@if ( isset($parent_page) )
-				{{Form::select('template', $templates, $parent_page['template'])}}
-				@else
-				{{Form::select('template', $templates, 'default_page')}}
-				@endif
-			</p>
+				<p class="half right">
+					{{Form::label('template', 'Page Template')}}
+					@if ( isset($parent_page) )
+					{{Form::select('template', $templates, $parent_page['template'])}}
+					@else
+					{{Form::select('template', $templates, 'default_page')}}
+					@endif
+				</p>
+			</div>
 		</div>
 
 		<p>
@@ -114,22 +116,24 @@
 
 		<div class="well">
 			<h4>SEO Settings</h4>
-			<div class="seo-preview">
-				<h4>Kickapoo Joy Juice - <span class="seo-title"></span></h4>
+			<div class="well-interior">
+				<div class="seo-preview">
+					<h4>Kickapoo Joy Juice - <span class="seo-title"></span></h4>
+					<p>
+						<em>www.kickapoo.com/<span class="slug-seo"></span></em>
+						<span class="seo-description"></span>
+					</p>
+				</div>
 				<p>
-					<em>www.kickapoo.com/<span class="slug-seo"></span></em>
-					<span class="seo-description"></span>
+					{{Form::label('seo_title', 'SEO Title')}}
+					{{Form::text('seo_title', null, ['id'=>'seo_title'])}}
+				</p>
+				<p>
+					{{Form::label('seo_description', 'SEO Description')}}
+					{{Form::textarea('seo_description', null, ['id'=>'seo_description'])}}
+					<div id="description_count" class="alert alert-info"><span><strong>150</strong></span> Characters Remaining</div>
 				</p>
 			</div>
-			<p>
-				{{Form::label('seo_title', 'SEO Title')}}
-				{{Form::text('seo_title', null, ['id'=>'seo_title'])}}
-			</p>
-			<p>
-				{{Form::label('seo_description', 'SEO Description')}}
-				{{Form::textarea('seo_description', null, ['id'=>'seo_description'])}}
-				<div id="description_count" class="alert alert-info"><span><strong>150</strong></span> Characters Remaining</div>
-			</p>
 		</div>
 
 		@if ( isset($language) )

@@ -15,22 +15,22 @@ class UploadController extends BaseController {
 	protected $upload_repo;
 
 
-	public function __construct(UploadFactory $upload_factory, UploadRepository $upload_repo)
+	public function __construct(UploadRepository $upload_repo)
 	{
-		$this->upload_factory = $upload_factory;
 		$this->upload_repo = $upload_repo;
 	}
 
 
 	/**
 	* Upload a file through editor
+	* @todo Create method in upload factory to return full path of image, return path
 	*/
 	public function editorUpload()
 	{
 		$file = Input::file('file');
-		$upload = $this->upload_factory->uploadImage($file, 'page_images');
+		$upload = new UploadFactory($file, 'page_images');
 		if ( $upload ){
-			return Response::json(['filelink' => $upload]);
+			return Response::json(['filelink' => $upload->getFolder() . $upload->getFilename()]);
 		} else {
 			return Response::json(['error'=>'There was an error uploading this file.']);
 		}
@@ -42,11 +42,21 @@ class UploadController extends BaseController {
 	public function libraryUpload()
 	{
 		if ( Request::ajax() ){
-			$upload = $this->upload_factory->uploadImage(Input::file('file')[0], Input::get('folder'));
+			
+			$upload = new UploadFactory(Input::file('file'), Input::get('folder'));
+			
 			if ( $upload ){
-				return Response::json(['status'=>'success', 'file' => $upload, 'folder' => Input::get('folder')]);
+				return Response::json([
+					'status'=>'success', 
+					'upload_id' => $upload->getID(), 
+					'file' => $upload->getFilename(), 
+					'folder' => $upload->getFolder()
+				]);
 			} else {
-				return Response::json(['status'=>'error', 'error'=>'There was an error uploading this file.']);
+				return Response::json([
+					'status'=>'error', 
+					'error'=>'There was an error uploading this file.'
+				]);
 			}
 		}
 	}

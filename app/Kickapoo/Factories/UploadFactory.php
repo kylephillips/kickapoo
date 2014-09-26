@@ -13,7 +13,7 @@ class UploadFactory {
 	private $file;
 
 	/**
-	* The destination folder
+	* The destination folder full path
 	*/
 	private $destination;
 
@@ -27,16 +27,18 @@ class UploadFactory {
 	*/
 	private $original_name;
 
-
 	/**
-	* Upload an image
-	* @return string - path to new image
+	* The new upload's ID
 	*/
-	public function uploadImage($file, $destination_folder)
+	private $upload_id;
+
+
+	public function __construct($file, $destination_folder)
 	{
 		$this->file = $file;
 		$this->destination = '/assets/uploads/' . $destination_folder . '/';
-		return $this->upload();
+		$this->upload();
+		return $this->filename;
 	}
 
 
@@ -56,7 +58,6 @@ class UploadFactory {
 		}
 
 		$this->createUpload();
-		return $this->destination . $this->filename;
 	}
 
 
@@ -89,6 +90,7 @@ class UploadFactory {
 		$upload->file = $this->filename;
 		$upload->folder = $this->destination;
 		$upload->save();
+		$this->upload_id = $upload->id;
 	}
 
 
@@ -100,6 +102,14 @@ class UploadFactory {
 		$this->filename = time() . '_' . $this->file->getClientOriginalName();
 	}
 
+	/**
+	* Get the file name
+	*/
+	public function getFilename()
+	{
+		return $this->filename;
+	}
+
 
 	/**
 	* Set the original file name
@@ -107,6 +117,22 @@ class UploadFactory {
 	public function setOriginalName()
 	{
 		$this->original_name = $this->file->getClientOriginalName();
+	}
+
+	/**
+	* Get the new upload ID
+	*/
+	public function getID()
+	{
+		return $this->upload_id;
+	}
+
+	/**
+	* Get the destination folder
+	*/
+	public function getFolder()
+	{
+		return $this->destination;
 	}
 
 }

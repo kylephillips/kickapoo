@@ -60,7 +60,6 @@
 		}
 	}
 	.flavor {
-		border-top: 1px solid darken($white, 12%);
 		background-color: $white;
 		section {
 			display: none;
@@ -97,20 +96,12 @@
 				margin-top: 15px;
 			}
 		}
-		&:nth-child(even){
-			background-color: darken($white, 7%);
-		}
-		&:first-child {
-			border-top: 0;
-		}
 	}
 	.size {
 		@include clearfix;
 		select {
 			float: left;
 			width: 80%;
-			height: 35px;
-			-webkit-appearance: menulist-button;
 		}
 		.btn {
 			float: right;

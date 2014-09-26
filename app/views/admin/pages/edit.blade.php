@@ -58,6 +58,7 @@
 
 		<div class="well">
 			<h4>General Settings</h4>
+			<div class="well-interior">
 
 			@if ( count($page['translation_of']) == 1 )
 			<p class="half">
@@ -101,7 +102,8 @@
 				@endif
 			</p>
 			@endif
-		</div>
+			</div><!-- .well-interior -->
+		</div><!-- .well -->
 
 		<p>
 			{{Form::textarea('content', $page['content'], ['class'=>'redactor'])}}
@@ -176,26 +178,28 @@
 		
 		<div class="well">
 			<h4>SEO Settings</h4>
-			<div class="seo-preview">
-				@if($page['seo_title'])
-				<h4>Kickapoo Joy Juice - <span class="seo-title">{{$page['seo_title']}}</span></h4>
-				@else
-				<h4>Kickapoo Joy Juice</h4>
-				@endif
+			<div class="well-interior">
+				<div class="seo-preview">
+					@if($page['seo_title'])
+					<h4>Kickapoo Joy Juice - <span class="seo-title">{{$page['seo_title']}}</span></h4>
+					@else
+					<h4>Kickapoo Joy Juice</h4>
+					@endif
+					<p>
+						<em>www.kickapoo.com/<span class="slug-seo">{{$page['slug']}}</span></em>
+						<span class="seo-description">{{$page['seo_description']}}</span>
+					</p>
+				</div>
 				<p>
-					<em>www.kickapoo.com/<span class="slug-seo">{{$page['slug']}}</span></em>
-					<span class="seo-description">{{$page['seo_description']}}</span>
+					{{Form::label('seo_title', 'SEO Title')}}
+					{{Form::text('seo_title', $page['seo_title'])}}
+				</p>
+				<p>
+					{{Form::label('seo_description', 'SEO Description')}}
+					{{Form::textarea('seo_description', $page['seo_description'])}}
+					<div id="description_count" class="alert alert-info"><span><strong>150</strong></span> Characters Remaining</div>
 				</p>
 			</div>
-			<p>
-				{{Form::label('seo_title', 'SEO Title')}}
-				{{Form::text('seo_title', $page['seo_title'])}}
-			</p>
-			<p>
-				{{Form::label('seo_description', 'SEO Description')}}
-				{{Form::textarea('seo_description', $page['seo_description'])}}
-				<div id="description_count" class="alert alert-info"><span><strong>150</strong></span> Characters Remaining</div>
-			</p>
 		</div>
 
 		{{Form::submit('Save Page', ['class'=>'btn btn-primary'])}}

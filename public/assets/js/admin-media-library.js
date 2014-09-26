@@ -213,6 +213,7 @@ $(document).on('click', '.media-library-tabs a', function(e){
 	} else {
 		var directory = $('#ml-folders').val();
 		$('#dz-folder').val(directory);
+		$('.dz-message').show();
 	}
 
 
@@ -223,7 +224,8 @@ $(document).on('click', '.media-library-tabs a', function(e){
 Dropzone.options.dropzoneForm = {
 	addRemoveLinks: false,
 	maxFiles: 20,
-	uploadMultiple: true,
+	previewTemplate: '<div class="dz-preview"><div class="dz-filename"><span data-dz-name></span></div><div class="dz-image-preview"><img src="/assets/images/dz-loading-placeholder.png"></div></div>',
+	uploadMultiple: false,
     thumbnailWidth: 100,
     thumbnailHeight: 100,
     autoProcessQueue: true,
@@ -232,8 +234,12 @@ Dropzone.options.dropzoneForm = {
     	addform = this;
     	this.on('success', function(file, response){
 			if ( response.status === "error" ){
+				// Error
 			} else {
 				$('.dz-message').hide();
+				var element = file.previewElement;
+				var html = '<a href="#" class="media-library-item" data-name="' + response.file + '" data-id="' + response.upload_id + '" data-folder="' + response.folder + '"><img src="' + urls.site_index + response.folder + '/_thumbs-large/' + response.file + '"></a>';
+				$(element).find('.dz-image-preview').empty().html(html);
 				console.log(response);
 			}	
 		});

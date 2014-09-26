@@ -48,13 +48,14 @@
 	}
 	.modal-header {
 		padding-bottom: 0;
+		padding-top: 8px;
 		background-color: darken($white, 6%);
 		border-bottom: 1px solid darken($white, 20%);
 		position: relative;
 		button {
 			position: absolute;
 			right: 5px;
-			top: 15px;
+			top: 5px;
 			font-weight: bold;
 			font-size: 24px;
 			background: transparent;
@@ -191,64 +192,50 @@
 	}
 }
 
-// Upload indicator
-.dz-progress {
-	background-color: $green;
-	height: 6px;
-	position: relative;
-}
-.dz-upload {
-	-webkit-animation: loading 0.4s linear infinite;
-	-moz-animation: loading 0.4s linear infinite;
-	-o-animation: loading 0.4s linear infinite;
-	-ms-animation: loading 0.4s linear infinite;
-	animation: loading 0.4s linear infinite;
-	-webkit-transition: width 0.3s ease-in-out;
-	-moz-transition: width 0.3s ease-in-out;
-	-o-transition: width 0.3s ease-in-out;
-	-ms-transition: width 0.3s ease-in-out;
-	transition: width 0.3s ease-in-out;
-	-webkit-border-radius: 2px;
-	border-radius: 2px;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 0%;
-	height: 100%;
-	background-image: url("../../images/dz-loading.png");
-	background-repeat: repeat-x;
+// File is Uploaded
+.dz-success.dz-preview {
+	cursor: pointer;
 }
 
 // Preview of uploaded image
 .dz-preview {
 	float: left;
-	width: 25%;
+	width: 22.5%;
 	padding: 10px;
 	box-sizing: border-box;
+	background-color: darken($white, 6%);
+	margin: 0 0 20px 2%;
 	.dz-size, .dz-success-mark, .dz-error-mark, .dz-remove {
 		display: none;
 	}
-	.dz-details {
+	&:nth-child(4n+4){
+		clear: both;
+	}
+	.dz-filename {
+		display: none;
+		font-size: 14px;
+		margin-bottom: 10px;
+		//height: 40px;
+		overflow: hidden;
+	}
+	.dz-image-preview {
 		text-align: center;
-		.dz-filename span {
-			display: block;
-			font-size: 14px;
-			margin-bottom: 10px;
-			height: 40px;
-			overflow: hidden;
-		}
-		img {
-			border: 1px solid darken($white, 12%);
-			border-radius: 2px;
+		display: block;
+		box-sizing: border-box;
+	}
+	.media-library-item {
+		display: block;
+		&.selected {
+			border: 3px solid $green;
 		}
 	}
-}
-
-@keyframes loading {
-	from {
-		background-position: 0px 0px;
-	}
-	to {
-		background-position: -7px 0px;
+	&.dz-processing {
+		background: url('../../images/loading-dropzone.gif') darken($white, 6%);
+		background-repeat: no-repeat;
+		background-position: center;
+		&.dz-success {
+			background: transparent;
+			background-color: darken($white, 6%);
+		}
 	}
 }
