@@ -19,7 +19,7 @@ class NewUserAdminNotification {
 	}
 
 	/**
-	* Send the new user a welcome email
+	* Send admins a notification that a new user has been registered
 	*/
 	public function notify_admins()
 	{
@@ -33,7 +33,7 @@ class NewUserAdminNotification {
 		$admins = $user_repo->getAdminEmails();
 		Mail::send('emails.new-user-admin-notification', $mail_data, function($message) use ($admins) {
 			$message->from('donotreply@drinkkickapoo.com', 'Kickapoo Website');
-			$message->subject('Welcome to the Kickapoo Website');
+			$message->subject('New user on the Kickapoo website');
 			$message->to($admins);
 		});
 	}

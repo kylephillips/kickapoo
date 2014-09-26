@@ -1,3 +1,4 @@
 User-agent: *
 Disallow: /admin
 Disallow: /login
+Sitemap: http://drinkkickapoo.com/sitemap.xml
