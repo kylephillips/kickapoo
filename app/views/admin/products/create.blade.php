@@ -3,11 +3,7 @@
 
 <div class="container small">
 
-	@if( isset($parent_flavor) )
-	<h1>Add a {{$language_name}} Translation of <a href="{{URL::route('edit_flavor', ['id'=>$parent_flavor->id])}}">{{$parent_flavor->title}}</a></h1>
-	@else
 	<h1>Add a Product <span class="pull-right"><a href="{{URL::route('edit_products')}}">Back to Products</a></span></h1>
-	@endif
 
 	<div class="well flavor-form">
 
@@ -26,14 +22,15 @@
 				{{Form::label('content', 'Flavor Description')}}
 				{{Form::textarea('content', null, ['class'=>'redactor'])}}
 			</p>
+			<p>
+				{{Form::label('css_class', 'CSS Class (for display)')}}
+				{{Form::text('css_class')}}
+			</p>
 			<div>
+				<label>Image</label>
 				<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="flavor_image"><i class="icon-image"></i> Add from Media Library</a>
 				<input type="hidden" id="flavor_image" name="image" value="">
 			</div>
-			@if( isset($parent_flavor) )
-			{{Form::hidden('parent_flavor', $parent_flavor->id)}}
-			{{Form::hidden('language', $language)}}
-			@endif
 		</div><!-- .flavor-fields -->
 
 		<ul class="products">

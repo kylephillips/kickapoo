@@ -106,7 +106,7 @@ class ProductController extends \BaseController {
 		$language_name = Input::get('language_name');
 		$parent_flavor = $this->product_repo->getFlavor(Input::get('parent_flavor'));
 
-		return View::make('admin.products.create')
+		return View::make('admin.products.create-translation')
 			->with('sizes', $sizes)
 			->with('parent_flavor', $parent_flavor)
 			->with('language', $language)
