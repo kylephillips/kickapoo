@@ -19,9 +19,11 @@
 					</td>
 				</tr>
 				<tr>
-					<p style="font-family: Arial, Helvetica, sans-serif; line-height: 1.4; margin: 0px 0 0px 0;"><strong>You're now a super-special editor on the Kickapoo Joy Juice website! With this great power comes great responsibility… use it wisely!</strong></p>
-					<p>You can <a href="http://drinkkickapoo.com/login">login here.</a> If you don't know your password, or need to reset it, you can do that <a href="http://drinkkickapoo.com/password/remind">here.</a></p>
-					<p>Happy Editing!</p>
+					<td>
+						<p style="font-family: Arial, Helvetica, sans-serif; line-height: 1.4; margin: 0px 0 0px 0;"><strong>You're now a super-special editor on the Kickapoo Joy Juice website! With this great power comes great responsibility… use it wisely!</strong></p>
+						<p>You can <a href="http://drinkkickapoo.com/login">login here.</a> If you don't know your password, or need to reset it, you can do that <a href="http://drinkkickapoo.com/password/remind">here.</a></p>
+						<p>Happy Editing!</p>
+					</td>
 				</tr>
 			</table>
 
