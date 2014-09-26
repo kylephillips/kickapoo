@@ -6,9 +6,10 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"guzzle/guzzle": "3.8.*@dev",
-		"mohsen/captcha": "dev-master",
+		"mohsen/captcha": "2.0",
 		"intervention/image": "dev-master",
-		"mcamara/laravel-localization": "0.14.*"
+		"mcamara/laravel-localization": "0.14.*",
+		"doctrine/dbal": "2.5.*@dev"
 	},
 	"autoload": {
 		"classmap": [

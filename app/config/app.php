@@ -191,7 +191,8 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'Image' 		  => 'Intervention\Image\Facades\Image',
-		'LaravelLocalization'   => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization'
+		'LaravelLocalization'   => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
+		'Captcha'		  => 'Mohsen\Captcha\Captcha'
 	),
 
 );

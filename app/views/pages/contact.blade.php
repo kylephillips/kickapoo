@@ -55,7 +55,7 @@
 				{{$errors->first('user-captcha', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 				<p class="captcha">
 					{{Form::label('user-captcha', 'Please enter the following')}}
-					<img src="{{ URL::to('/captcha')}}" alt="captcha">
+					<img src="{{Captcha::getImage()}}">
 					<input type="text" name="user-captcha" id="user-captcha">
 				</p>
 				{{Form::submit('Send')}}
