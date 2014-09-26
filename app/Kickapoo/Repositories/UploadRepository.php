@@ -11,7 +11,7 @@ class UploadRepository {
 	public function getDirectory($directory = 'page_images')
 	{
 		$folder = '/assets/uploads/' . $directory . '/';
-		return Upload::where('folder', $folder)->get();
+		return Upload::where('folder', $folder)->orderBy('created_at', 'DESC')->get();
 	}
 
 

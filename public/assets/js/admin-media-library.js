@@ -159,7 +159,7 @@ function update_image_preview()
 /**
 * Remove a selected image from a field
 */
-$(document).on('click', '.remove-ml-thumb, .cancel-media', function(e){
+$(document).on('click', '.remove-ml-thumb, .cancel-media, .open-media-library', function(e){
 	e.preventDefault();
 	remove_selected_image();
 });
@@ -170,6 +170,7 @@ function remove_selected_image()
 	$(selected_field_cont).find('.image-preview').remove();
 	$(selected_field_cont).find('.open-media-library').show();
 	$(selected_field_cont).find('input').val('');
+	$('.media-library-item').removeClass('selected');
 	$('.ml-chosen-image').text('Choose Your Image');
 }
 
