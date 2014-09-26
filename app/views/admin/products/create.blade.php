@@ -19,8 +19,8 @@
 		<div class="flavor-fields">
 			<p>
 				{{$errors->first('title', '<span class="text-danger"><strong>:message</strong></span><br>')}}
-				{{Form::label('title', 'Flavor Name')}}
-				{{Form::text('title')}}
+				{{Form::label('flavor_title', 'Flavor Name')}}
+				{{Form::text('flavor_title')}}
 			</p>
 			<p>
 				{{Form::label('content', 'Flavor Description')}}

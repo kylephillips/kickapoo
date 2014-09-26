@@ -72,7 +72,21 @@ class ProductController extends \BaseController {
 	 */
 	public function store()
 	{
-		$validation = Validator::make(Input::all(), ['title'=>'required|unique:flavors,title']);
+		// Slug Validation for Translations
+		if ( Input::get('language') ){
+			$slug = Str::slug(Input::get('flavor_title') . '-' . Input::get('language'));
+		} else {
+			$slug = Str::slug(Input::get('flavor_title'));
+		}
+
+		$validation = Validator::make([
+			'title' => Input::get('flavor_title'),
+			'slug' => $slug
+			], [
+			'title' => 'required',
+			'slug' => 'unique:flavors,slug'
+		]);
+		
 		if ( $validation->fails() ) return Redirect::back()->withErrors($validation);
 
 		$this->product_factory->createProduct(Input::all());
@@ -127,7 +141,21 @@ class ProductController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		$validation = Validator::make(Input::all(), ['flavor_title'=>'required|unique:flavors,title,' . $id]);
+		// Slug Validation for Translations
+		if ( Input::get('language') ){
+			$slug = Str::slug(Input::get('flavor_title') . '-' . Input::get('language'));
+		} else {
+			$slug = Str::slug(Input::get('flavor_title'));
+		}
+
+		$validation = Validator::make([
+			'title' => Input::get('flavor_title'),
+			'slug' => $slug
+			], [
+			'title' => 'required',
+			'slug' => 'unique:flavors,slug,' . $id
+		]);	
+
 		if ( $validation->fails() ) return Redirect::back()->withErrors($validation);
 
 		$this->product_factory->updateProduct($id, Input::all());
@@ -190,11 +218,7 @@ class ProductController extends \BaseController {
 	public function modalInfo()
 	{
 		$product = $this->product_repo->getProduct(Input::get('id'));
-		if ( Input::get('content') == 'ingredients'){
-			$nutrition = null;
-		} else {
-			$nutrition = $product->nutrition_upload->folder . $product->nutrition_upload->file;
-		}
+		$nutrition = ( Input::get('content') == 'ingredients') ? null : $product->nutrition_upload->folder . $product->nutrition_upload->file;
 		$ingredients = $product->ingredients;
 		$content = $product->content;
 		return Response::json([

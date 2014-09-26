@@ -29,11 +29,19 @@ class ProductFactory {
 		$image = ( $input['image'] !== "" ) ? $input['image'] : null;
 		$content = ( isset($input['content']) ) ? $input['content'] : null;
 		$css_class = ( isset($input['css_class']) ) ? $input['css_class'] : null;
-		$language = ( isset($input['language']) ) ? $input['language'] : 'en';
+		
+		// Create Slug with Translation Appended to prevent SQL error for duplicates
+		if ( isset($input['language']) ) {
+			$language = $input['language'];
+			$slug = Str::slug($input['flavor_title']) . '-' . $input['language'];
+		} else {
+			$language = 'en';
+			$slug = Str::slug($input['flavor_title']);
+		}
+
 		$flavor = Flavor::create([
-			'title' => $input['title'],
-			'slug' => \Str::slug($input['title']),
-			'image' => null,
+			'title' => $input['flavor_title'],
+			'slug' => $slug,
 			'content' => $content,
 			'css_class' => $css_class,
 			'language' => $language,
@@ -53,7 +61,14 @@ class ProductFactory {
 	{
 		$flavor = $this->product_repo->getFlavor($id);
 		$flavor->title = $input['flavor_title'];
-		$flavor->slug = \Str::slug($input['flavor_title']);
+		
+		// Create Slug with Translation Appended to prevent SQL error for duplicates
+		if ( $flavor->language != 'en' ) {
+			$flavor->slug = Str::slug($input['flavor_title']) . '-' . $input['language'];
+		} else {
+			$flavor->slug = Str::slug($input['flavor_title']);
+		}
+
 		$flavor->content = ( isset($input['flavor_content']) ) ? $input['flavor_content'] : null;
 		$flavor->status = $input['status'];
 		$flavor->upload_id = ( $input['flavor_image'] !== "" ) ? $input['flavor_image'] : null;

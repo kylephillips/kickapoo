@@ -24,6 +24,7 @@
 				@if ( count($flavor->translation_of) > 0 )
 				<p>
 					<strong>Translation of <a href="{{URL::route('edit_flavor', ['id'=>$flavor->translation_of[0]->id])}}">{{$flavor->translation_of[0]->title}}</a></strong>
+					{{Form::hidden('language', $flavor->language)}}
 				</p>
 				@endif
 				<p>
