@@ -56,7 +56,7 @@ class ProductFactory {
 		$flavor->slug = \Str::slug($input['flavor_title']);
 		$flavor->content = ( isset($input['flavor_content']) ) ? $input['flavor_content'] : null;
 		$flavor->status = $input['status'];
-		$flavor->upload_id = ( isset($input['flavor_image']) ) ? $input['flavor_image'] : null;
+		$flavor->upload_id = ( $input['flavor_image'] !== "" ) ? $input['flavor_image'] : null;
 		$flavor->css_class = ( isset($input['css_class']) ) ? $input['css_class'] : null;
 		$flavor->save();
 		if ( isset($input['product']) ) $this->updateTypes($input['product'], $id);

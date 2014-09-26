@@ -75,7 +75,19 @@
 		}
 	}
 	select {
-		max-width: 300px;
+		width: 30%;
+		float: left;
+		box-sizing: border-box;
+	}
+	.ml-body {
+		clear: both;
+	}
+	.ml-chosen-image {
+		clear: none;
+		float: right;
+		width: 65%;
+		@extend .alert;
+		margin: 0;
 	}
 }
 

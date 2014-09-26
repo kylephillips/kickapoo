@@ -121,6 +121,7 @@ function select_media_image(id, name, folder, item)
 	$(selected_field).attr('data-name', name);
 	$(selected_field).removeAttr('data-folder');
 	$(selected_field).attr('data-folder', folder)
+	$('.ml-chosen-image').text(name);
 
 	$('.media-library-item').removeClass('selected');
 	if ( item  ){
@@ -169,6 +170,7 @@ function remove_selected_image()
 	$(selected_field_cont).find('.image-preview').remove();
 	$(selected_field_cont).find('.open-media-library').show();
 	$(selected_field_cont).find('input').val('');
+	$('.ml-chosen-image').text('Choose Your Image');
 }
 
 
