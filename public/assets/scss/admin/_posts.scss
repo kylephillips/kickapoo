@@ -3,7 +3,7 @@
 // --------------------------------------------------
 
 // Alert area for imports
-.import-buttons{
+.import-buttons {
 	#import-loading {
 		display: none;
 		img {
@@ -28,9 +28,7 @@
 		select {
 			float: left;
 			width: 75%;
-			height: 35px;
 			margin: 0;
-			-webkit-appearance: menulist-button;
 		}
 		.help-btn {
 			float: right;
@@ -61,12 +59,12 @@
 
 // Filter Menus
 .post-filters {
-	background-color: darken($white, 8%);
+	//background-color: darken($white, 8%);
 	margin-bottom: 20px;
 	ul {
 		@include unstyled();
 		@include clearfix();
-		padding: 10px 20px;
+		padding: 10px 0px;
 		li {
 			float: right;
 			width: 48%;
@@ -117,7 +115,7 @@
 // Listing of posts with save/remove buttons
 .admin-posts {
 	h3 {
-		background-color: darken($white, 8%);
+		//background-color: darken($white, 8%);
 		text-align: center;
 		margin: 0;
 		padding: 10px 0 0 0;
@@ -130,24 +128,24 @@
 	}
 	ul.postfeed, ul.trash {
 		@include unstyled();
-		background-color: darken($white, 8%);
+		@include clearfix;
 		border-top: 0;
 		li {
+			padding: 15px 0px;
 			.ban-user {
 				color: $red;
 			}
-			padding: 30px;
 			&:first-child {
 				border: 0;
 				box-shadow: none;
 				padding-top: 10px;
 			}
 			.content {
-				border-radius: 4px;
+				border-radius: 3px;
 				padding: 30px 20px 20px 20px;
 				background-color: $white;
 				@include clearfix();
-				box-shadow: 0px 0px 3px 0px rgba(0,0,0,.15);
+				border: 1px solid darken($white, 10%);
 			}
 			&.approved .content {
 				box-shadow: inset 0px 0px 0px 6px $green;

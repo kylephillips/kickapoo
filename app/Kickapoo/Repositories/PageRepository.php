@@ -44,7 +44,7 @@ class PageRepository {
 	*/
 	public function getPageWithoutLanguage($slug)
 	{
-		return Page::where('slug', $slug)->with('customfields','translations','translation_of')->firstOrFail();
+		return Page::where('slug', $slug)->with('customfields','customfields.image','translations','translation_of')->firstOrFail();
 	}
 
 

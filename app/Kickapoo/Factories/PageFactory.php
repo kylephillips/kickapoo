@@ -70,7 +70,7 @@ class PageFactory {
 			$cfield->key = Str::slug($field['name']);
 			
 			if ( ($field['field_type'] == 'image') && (isset($field['value']) ) ){
-				$cfield->value = $this->attachImage($field['value']);
+				$cfield->upload_id = $field['value'];
 			}
 			elseif ( $field['field_type'] != 'image' ){
 				$cfield->value = $field['value'];
@@ -88,13 +88,15 @@ class PageFactory {
 	public function addCustomFields($fields, $page_id)
 	{
 		foreach($fields as $field){
-			$value = ( $field['fieldtype'] == 'image' ) ? $this->attachImage($field['fieldvalue']) : $field['fieldvalue'];
+			$value = ( $field['fieldtype'] == 'image' ) ? '' : $field['fieldvalue'];
+			$upload_id = ( $field['fieldtype'] == 'image' ) ? $field['fieldvalue'] : null;
 			CustomField::create([
 				'name' => $field['fieldname'],
 				'key' => Str::slug($field['fieldname']),
 				'field_type' => $field['fieldtype'],
 				'page_id' => $page_id,
-				'value' => $value
+				'value' => $value,
+				'upload_id' => $upload_id
 			]);
 		}
 	}
@@ -106,7 +108,7 @@ class PageFactory {
 	private function attachImage($file)
 	{
 		$upload = new UploadFactory;
-		$upload = $upload->uploadImage($file);
+		$upload = $upload->uploadImage($file, 'page_images');
 		return basename($upload);
 	}
 

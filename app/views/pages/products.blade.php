@@ -4,7 +4,7 @@
 	<div class="container">
 
 		@if( $page->get_field('Header Image', $page->id) )
-			<img src="{{URL::asset('assets/uploads/page_images')}}/{{$page->get_field('Header Image', $page->id)}}" class="header-image" alt="Swig Some Swag!" />
+			<img src="{{URL::asset($page->get_field('Header Image', $page->id))}}" class="header-image" alt="Swig Some Swag!" />
 		@else
 			<h1>{{$page['title']}}</h1>
 		@endif
@@ -20,9 +20,9 @@
 @foreach($flavors as $flavor)
 <section class="flavor {{$flavor->css_class}} <?php if ( $i % 2 == 0 ) echo 'even'; ?>">
 	<div class="container">
-	
-		<div class="large-image" data-image="{{$flavor->image}}" data-title="{{$flavor->title}}"></div>
-
+		@if ( $flavor->upload )
+		<div class="large-image" data-image="{{$flavor->upload->folder}}{{$flavor->upload->file}}" data-title="{{$flavor->title}}"></div>
+		@endif
 		<section class="content">
 
 			<section class="description">
@@ -56,15 +56,19 @@
 					<li>
 						<strong>{{$size_title}}</strong>
 
-						@if($product->image)
-						{{$product->size->ingredients}}
-							<img src="{{URL::asset('assets/uploads/product_images')}}/{{$product->image}}" alt="{{$flavor['title']}} in {{$product->size->title}}" />
+						@if($product->upload)
+							<img src="{{$product->upload->folder}}/{{$product->upload->file}}" alt="{{$flavor['title']}} in {{$product->size->title}}" />
 						@else
 							<img src="{{URL::asset('assets/images/product-size-fpo.png')}}" alt="{{$flavor['title']}} in {{$product->size->title}}" />
 						@endif
 						<p>
-							<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$size_title}} Ingredients" data-id="{{$product->id}}" data-type="ingredients">{{Lang::get('messages.Ingredients')}}</a>
-							<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$size_title}} Nutrition" data-id="{{$product->id}}" data-type="nutrition">{{Lang::get('messages.Nutrition')}}</a>
+							@if($product->ingredients)
+								<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$size_title}} Ingredients" data-id="{{$product->id}}" data-type="ingredients">{{Lang::get('messages.Ingredients')}}</a>
+							@endif
+							
+							@if($product->nutrition_upload)
+								<a href="#productmodal" class="open-modal" data-title="{{$flavor['title']}} {{$size_title}} Nutrition" data-id="{{$product->id}}" data-type="nutrition">{{Lang::get('messages.Nutrition')}}</a>
+							@endif
 						</p>
 					</li>
 				@endforeach
@@ -151,7 +155,7 @@ function load_ingredients(data, modal)
 }
 function load_nutrition(data, modal)
 {
-	var html = '<img src="{{URL::asset('assets/uploads/product_images')}}/' + data.nutrition + '">';
+	var html = '<img src="' + data.nutrition + '">';
 	$(modal).find('.modal-body').html(html).removeClass('loading');
 	$(modal).addClass('nutrition');
 }
@@ -184,7 +188,7 @@ function load_large_images()
 		$.each(images, function(i, v){
 			var image = $(this).data('image');
 			var title = $(this).data('title');
-			var html = '<img src="{{URL::asset('assets/uploads/product_images')}}/' + image + '" alt="' + title + '" />';
+			var html = '<img src="' + image + '" alt="' + title + '" />';
 			$(this).html(html);
 		});
 	}

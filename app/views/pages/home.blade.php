@@ -3,7 +3,7 @@
 
 <section class="headline">
 	@if( $page->get_field('Headline', $page->id) )
-		<img src="{{URL::asset('assets/uploads/page_images')}}/{{$page->get_field('Headline', $page->id)}}" class="header-image" alt="Share your Joy Face!" />
+		<img src="{{URL::asset($page->get_field('Headline', $page->id))}}" class="header-image" alt="Share your Joy Face!" />
 	@else
 		<img src="{{URL::asset('assets/images/home-headline.png')}}" class="home-headline" />
 	@endif

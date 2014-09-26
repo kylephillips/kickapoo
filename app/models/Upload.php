@@ -7,4 +7,9 @@ class Upload extends Eloquent {
 		'file', 'folder', 'title', 'alt', 'caption'
 	];
 
+	public function customfield()
+	{
+		return $this->belongsTo('CustomField');
+	}
+
 }

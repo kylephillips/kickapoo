@@ -13,7 +13,7 @@ class UploadFactory {
 	private $file;
 
 	/**
-	* The destination folder
+	* The destination folder full path
 	*/
 	private $destination;
 
@@ -27,16 +27,18 @@ class UploadFactory {
 	*/
 	private $original_name;
 
-
 	/**
-	* Upload an image
-	* @return string - path to new image
+	* The new upload's ID
 	*/
-	public function uploadImage($file)
+	private $upload_id;
+
+
+	public function __construct($file, $destination_folder)
 	{
 		$this->file = $file;
-		$this->setDestination('/assets/uploads/page_images/');
-		return $this->upload();
+		$this->destination = '/assets/uploads/' . $destination_folder . '/';
+		$this->upload();
+		return $this->filename;
 	}
 
 
@@ -49,13 +51,13 @@ class UploadFactory {
 			$this->setOriginalName();
 			$this->setFilename();
 			$this->createThumbnail();
+			$this->createLargeThumbnail();
 			$upload_success = $this->file->move( public_path() . $this->destination, $this->filename );
 		} catch (\Exception $e){
 			return false;
 		}
 
 		$this->createUpload();
-		return $this->destination . $this->filename;
 	}
 
 
@@ -64,8 +66,17 @@ class UploadFactory {
 	*/
 	private function createThumbnail()
 	{
-		$thumbnail_destination = public_path() . '/assets/uploads/page_images/_thumbs/';
+		$thumbnail_destination = public_path() . $this->destination . '_thumbs/';
 		$thumb = Image::make($this->file)->crop(100,100)->save($thumbnail_destination . $this->filename, 80);
+	}
+
+	/**
+	* Create large thumbnail for the file
+	*/
+	private function createLargeThumbnail()
+	{
+		$thumbnail_destination = public_path() . $this->destination . '_thumbs-large/';
+		$thumb = Image::make($this->file)->fit(400,200)->save($thumbnail_destination . $this->filename, 80);
 	}
 
 
@@ -79,15 +90,7 @@ class UploadFactory {
 		$upload->file = $this->filename;
 		$upload->folder = $this->destination;
 		$upload->save();
-	}
-
-
-	/**
-	* Set the destination folder
-	*/
-	private function setDestination($destination)
-	{
-		$this->destination = $destination;
+		$this->upload_id = $upload->id;
 	}
 
 
@@ -99,6 +102,14 @@ class UploadFactory {
 		$this->filename = time() . '_' . $this->file->getClientOriginalName();
 	}
 
+	/**
+	* Get the file name
+	*/
+	public function getFilename()
+	{
+		return $this->filename;
+	}
+
 
 	/**
 	* Set the original file name
@@ -106,6 +117,22 @@ class UploadFactory {
 	public function setOriginalName()
 	{
 		$this->original_name = $this->file->getClientOriginalName();
+	}
+
+	/**
+	* Get the new upload ID
+	*/
+	public function getID()
+	{
+		return $this->upload_id;
+	}
+
+	/**
+	* Get the destination folder
+	*/
+	public function getFolder()
+	{
+		return $this->destination;
 	}
 
 }

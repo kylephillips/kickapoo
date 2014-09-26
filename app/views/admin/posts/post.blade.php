@@ -481,7 +481,7 @@ $(document).on('click', 'a.ban-user', function(e){
 // Infinite Scroll
 $(function() {
 	$('.scroll').jscroll({
-		loadingHtml: '<div class="loading-infinite"><img src="{{URL::asset('assets/images/loading-small-white.gif')}}" alt="Loading" /></div>',
+		loadingHtml: '<div class="loading-infinite"><img src="{{URL::asset('assets/images/loading-gray.gif')}}" alt="Loading" /></div>',
 		autoTrigger: true,
 		nextSelector: '.pagination li.active + li a', 
 		contentSelector: 'div.scroll',

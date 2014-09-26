@@ -4,13 +4,18 @@ class Flavor extends Eloquent {
 	protected $table = 'flavors';
 
 	protected $fillable = [
-		'title', 'slug', 'content', 'image', 'css_class', 'order', 'language', 'status'
+		'title', 'slug', 'content', 'image', 'css_class', 'order', 'language', 'status', 'upload_id'
 	];
 
 	public function products()
 	{
 		return $this->hasMany('Product')
 			->orderBy('products.order', 'asc');;
+	}
+
+	public function upload()
+	{
+		return $this->hasOne('Upload', 'id', 'upload_id');
 	}
 
 	/**

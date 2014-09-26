@@ -3,7 +3,7 @@
 
 	<div class="container">
 		@if( $page->get_field('Header Image', $page->id) )
-			<img src="{{URL::asset('assets/uploads/page_images')}}/{{$page->get_field('Header Image', $page->id)}}" class="header-image" alt="Swig Some Swag!" />
+			<img src="{{URL::asset($page->get_field('Header Image', $page->id))}}" class="header-image" alt="Swig Some Swag!" />
 		@else
 			<h1>{{$page['title']}}</h1>
 		@endif
@@ -15,7 +15,7 @@
 
 <div class="container">
 	@if( $page->get_field('Hero Image', $page->id) )
-		<img src="{{URL::asset('assets/uploads/page_images')}}/{{$page->get_field('Hero Image', $page->id)}}" class="history-hero" alt="Kickapoo Joy Juice History" />
+		<img src="{{URL::asset($page->get_field('Hero Image', $page->id))}}" class="history-hero" alt="Kickapoo Joy Juice History" />
 	@endif
 
 	@if($page->get_field('Intro Text', $page->id))
@@ -31,7 +31,7 @@
 
 	@if($page->get_field('Large Bottle', $page->id))
 		<aside>
-			<img src="{{URL::asset('assets/uploads/page_images')}}/{{$page->get_field('Large Bottle', $page->id)}}" alt="Kickapoo Joy Juice 12oz Glass Bottle" />
+			<img src="{{URL::asset($page->get_field('Large Bottle', $page->id))}}" alt="Kickapoo Joy Juice 12oz Glass Bottle" />
 		</aside>
 		<section class="main">
 			{{$page['content']}}

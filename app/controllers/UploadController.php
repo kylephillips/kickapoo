@@ -1,5 +1,6 @@
 <?php
 use Kickapoo\Factories\UploadFactory;
+use Kickapoo\Repositories\UploadRepository;
 
 class UploadController extends BaseController {
 
@@ -8,23 +9,55 @@ class UploadController extends BaseController {
 	*/
 	protected $upload_factory;
 
+	/**
+	* Upload Repository
+	*/
+	protected $upload_repo;
 
-	public function __construct(UploadFactory $upload_factory)
+
+	public function __construct(UploadRepository $upload_repo)
 	{
-		$this->upload_factory = $upload_factory;
+		$this->upload_repo = $upload_repo;
 	}
 
 
 	/**
 	* Upload a file through editor
+	* @todo Create method in upload factory to return full path of image, return path
 	*/
 	public function editorUpload()
 	{
-		$upload = $this->upload_factory->uploadImage(Input::file('file'));
+		$file = Input::file('file');
+		$upload = new UploadFactory($file, 'page_images');
 		if ( $upload ){
-			return Response::json(['filelink' => $upload]);
+			return Response::json(['filelink' => $upload->getFolder() . $upload->getFilename()]);
 		} else {
 			return Response::json(['error'=>'There was an error uploading this file.']);
+		}
+	}
+
+	/**
+	* Library Modal Upload (dropzone)
+	*/
+	public function libraryUpload()
+	{
+		if ( Request::ajax() ){
+			
+			$upload = new UploadFactory(Input::file('file'), Input::get('folder'));
+			
+			if ( $upload ){
+				return Response::json([
+					'status'=>'success', 
+					'upload_id' => $upload->getID(), 
+					'file' => $upload->getFilename(), 
+					'folder' => $upload->getFolder()
+				]);
+			} else {
+				return Response::json([
+					'status'=>'error', 
+					'error'=>'There was an error uploading this file.'
+				]);
+			}
 		}
 	}
 
@@ -35,7 +68,13 @@ class UploadController extends BaseController {
 	public function mediaLibrary()
 	{
 		if ( Request::ajax() ){
-			return Response::json(['status'=>'success']);
+			$media = $this->upload_repo->getDirectory(Input::get('directory'));
+			$folders = $this->upload_repo->getDirectoriesArray();
+			return Response::json([
+				'status'=>'success', 
+				'folders'=>$folders, 
+				'media'=>$media
+			]);
 		}
 	}
 

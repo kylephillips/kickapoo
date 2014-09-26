@@ -25,10 +25,9 @@
 		<div class="alert alert-success">{{Session::get('success')}}</div>
 		@endif
 
-		{{Form::open(['url'=>URL::route('update_page', ['id'=>$page['id']]), 'files'=>true])}}
+		{{Form::open(['url'=>URL::route('update_page', ['id'=>$page['id']]), 'files'=>true, 'id'=>'page_form'])}}
 		
 		<h3>
-			{{$page['title']}}
 			@if ( count($page['translation_of']) > 0 )
 			 (Translation of <a href="{{URL::route('edit_page', ['slug'=>$page['translation_of'][0]->slug])}}">{{$page['translation_of'][0]->title}}</a> Page)
 			@endif
@@ -59,6 +58,7 @@
 
 		<div class="well">
 			<h4>General Settings</h4>
+			<div class="well-interior">
 
 			@if ( count($page['translation_of']) == 1 )
 			<p class="half">
@@ -102,16 +102,12 @@
 				@endif
 			</p>
 			@endif
-		</div>
-
-		<hr>
+			</div><!-- .well-interior -->
+		</div><!-- .well -->
 
 		<p>
-			{{Form::label('content', 'Content')}}
 			{{Form::textarea('content', $page['content'], ['class'=>'redactor'])}}
 		</p>
-
-		<hr>
 
 		<h3>Custom Fields</h3>
 		
@@ -150,15 +146,20 @@
 
 					@else
 						<div>
-							<label>Image</label>
-							<div class="image-thumb">
-								<button class="remove-thumb">&times;</button>
-								<img src="{{URL::asset('assets/uploads/page_images/_thumbs')}}/{{$field->value}}">
+							<?php 
+							$folder = $field->image->folder;
+							$folder = substr($folder, 16);
+							$folder = rtrim($folder, '/');
+							?>
+							<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="customfield_image_{{$c}}" style="display:none;"><i class="icon-image"></i> Add from Media Library</a>
+							<input type="hidden" id="customfield_image_{{$c}}" name="customfield[{{$c}}][value]" value="{{$field->image->id}}">
+							<div class="image-preview">
+								<div class="image-thumb">
+									<button class="remove-thumb">&times;</button>
+									<img src="{{$field->image->folder}}/_thumbs/{{$field->image->file}}" />
+								</div>
+								<p class="image-name">{{$field->image->title}}</p>
 							</div>
-							<div class="image-file" style="display:none;">
-								{{Form::file('customfield[' . $c . '][value]')}}
-							</div>
-							<p class="image-name">{{substr($field->value, 11)}}</p>
 						</div>
 					@endif
 					{{Form::hidden('customfield[' . $c . '][field_type]', $field->field_type)}}
@@ -169,37 +170,36 @@
 			<?php $c++; ?>
 			@endforeach
 		</ul>
-		@else
-			<p>No custom fields.</p>
 		@endif
 
 		<div id="newfields"></div>
 		<a href="#" class="btn btn-success add-custom">Add Custom Field</a>
-
-		<hr>
-
+		<p>&nbsp;</p>
+		
 		<div class="well">
 			<h4>SEO Settings</h4>
-			<div class="seo-preview">
-				@if($page['seo_title'])
-				<h4>Kickapoo Joy Juice - <span class="seo-title">{{$page['seo_title']}}</span></h4>
-				@else
-				<h4>Kickapoo Joy Juice</h4>
-				@endif
+			<div class="well-interior">
+				<div class="seo-preview">
+					@if($page['seo_title'])
+					<h4>Kickapoo Joy Juice - <span class="seo-title">{{$page['seo_title']}}</span></h4>
+					@else
+					<h4>Kickapoo Joy Juice</h4>
+					@endif
+					<p>
+						<em>www.kickapoo.com/<span class="slug-seo">{{$page['slug']}}</span></em>
+						<span class="seo-description">{{$page['seo_description']}}</span>
+					</p>
+				</div>
 				<p>
-					<em>www.kickapoo.com/<span class="slug-seo">{{$page['slug']}}</span></em>
-					<span class="seo-description">{{$page['seo_description']}}</span>
+					{{Form::label('seo_title', 'SEO Title')}}
+					{{Form::text('seo_title', $page['seo_title'])}}
+				</p>
+				<p>
+					{{Form::label('seo_description', 'SEO Description')}}
+					{{Form::textarea('seo_description', $page['seo_description'])}}
+					<div id="description_count" class="alert alert-info"><span><strong>150</strong></span> Characters Remaining</div>
 				</p>
 			</div>
-			<p>
-				{{Form::label('seo_title', 'SEO Title')}}
-				{{Form::text('seo_title', $page['seo_title'])}}
-			</p>
-			<p>
-				{{Form::label('seo_description', 'SEO Description')}}
-				{{Form::textarea('seo_description', $page['seo_description'])}}
-				<div id="description_count" class="alert alert-info"><span><strong>150</strong></span> Characters Remaining</div>
-			</p>
 		</div>
 
 		{{Form::submit('Save Page', ['class'=>'btn btn-primary'])}}
@@ -247,6 +247,15 @@
 
 @section('footercontent')
 <script>
+@if(count($page->customfields) > 0 )
+var cf_count = {
+	count : {{count($page->customfields)}}
+}
+@else
+var cf_count = {
+	count : 0
+}
+@endif
 /**
 * Delete a custom field
 */
@@ -270,7 +279,7 @@ $('.delete-field').on('click', function(e){
 /**
 * Validate custom fields titles
 */
-$('form').on('submit', function(e){
+$('#page_form').on('submit', function(e){
 	e.preventDefault();
 	$('#customfielderrors').hide();
 	var data = $('form').serialize();
@@ -281,8 +290,8 @@ $('form').on('submit', function(e){
 		success: function(data){
 			console.log(data);
 			if ( data.status === 'success' ){
-				$('form').unbind('submit');
-				$('form').submit();
+				$('#page_form').unbind('submit');
+				$('#page_form').submit();
 			} else {
 				$('#customfielderrors').text(data.message).show();
 			}
@@ -297,7 +306,12 @@ $('.add-custom').on('click', function(e){
 
 function add_custom_field()
 {
-	var count = $('.newfield').length;
+	if ( cf_count.count > 0 ){
+		var count = cf_count.count + $('.newfield').length;
+	} else {
+		var count = $('.newfield').length;	
+	}
+	
 	var html = '<div class="newfield"><span class="field_count" style="display:none;">' + count + '</span><p class="half"><label>Field Name</label><input type="text" name="newcustomfield[' + count + '][fieldname]" ></p>';
 	html += '<p class="half right"><label for="fieldtype">Type of Field</label><select class="fieldtype" name="newcustomfield[' + count + '][fieldtype]"><option value="text">Text</option><option value="textarea">Textarea</option><option value="editor">Editor</option><option value="image">Image</option></select></p>';
 	html += '<input type="hidden" name="newcustomfield[' + count + '][page_id]" id="page_id" value="{{$page["id"]}}">';
@@ -320,8 +334,6 @@ $(document).ready(function(){
 	seo_characters_remaining(desc_count);
 	update_slug();
 	apply_redactor();
-
-	open_media_library();	
 });
 </script>
 @stop

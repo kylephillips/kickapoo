@@ -45,7 +45,9 @@
 		var urls = {
 			'editor_upload' : "{{URL::route('editor_upload')}}",
 			'editor_styles' : "{{URL::asset('assets/css/editor-styles.css')}}",
-			'media_library_route' : "{{URL::route('media_library')}}"
+			'media_library_route' : "{{URL::route('media_library')}}",
+			'media_library_upload' : "{{URL::route('media_library_upload')}}",
+			'site_index' : "{{URL::route('home')}}"
 		}
 	</script>
 
@@ -53,7 +55,9 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
 	<script src="{{URL::asset('assets/js/bootstrap.min.js')}}"></script>
 	<script src="{{URL::asset('assets/js/jquery.jscroll.min.js')}}"></script>
+	<script src="{{URL::asset('assets/js/dropzone.min.js')}}"></script>
 	<script src="{{URL::asset('assets/js/admin-scripts.js')}}"></script>
+	<script src="{{URL::asset('assets/js/admin-media-library.js')}}"></script>
 	<script src="{{URL::asset('assets/js/redactor.min.js')}}"></script>
 	
 	@include('admin.partials.media-library')

@@ -1,8 +1,253 @@
 //
 // Media Library
 // --------------------------------------------------
+.media-library-tabs {
+	@include unstyled;
+	@include clearfix;
+	margin-left: -6px;
+	li {
+		float: left;
+		position: relative;
+		height: 40px;
+		a {
+			position: absolute;
+			left: 0;
+			top: 0;
+			display: block;
+			line-height: 40px;
+			height: 40px;
+			padding: 0 20px;
+			color: darken($white, 60%);
+			position: relative;
+			transition: none;
+			color: $info-text;
+			&.active {
+				color: $black;
+				background-color: $white;
+				border-top: 1px solid darken($white, 20%);
+				border-left: 1px solid darken($white, 20%);
+				border-right: 1px solid darken($white, 20%);
+				border-bottom: 1px solid $white;
+				transition: none;
+			}
+		}
+		&:first-child a.active {
+			border-left: 0;
+		}
+	}
+} // .media-library-tabs
+
+// General Styles
 .modal.media {
 	.modal-dialog {
-		width: 90%;
+		height: 95%;
+		overflow: auto;
+	}
+	.modal-content {
+		height: 100%;
+	}
+	.modal-header {
+		padding-bottom: 0;
+		padding-top: 8px;
+		background-color: darken($white, 6%);
+		border-bottom: 1px solid darken($white, 20%);
+		position: relative;
+		button {
+			position: absolute;
+			right: 5px;
+			top: 5px;
+			font-weight: bold;
+			font-size: 24px;
+			background: transparent;
+			border: 0;
+			&:hover {
+				color: $info-text;
+			}
+		}
+	}
+	.modal-body {
+		max-height: 400px;
+		&.loading {
+			height: 100px;
+			background: url('../../images/loading-gray-white.gif'), $white;
+			background-repeat: no-repeat;
+			background-position: center;
+		}
+	}
+	select {
+		width: 30%;
+		float: left;
+		box-sizing: border-box;
+	}
+	.ml-body {
+		clear: both;
+	}
+	.ml-chosen-image {
+		clear: none;
+		float: right;
+		width: 65%;
+		@extend .alert;
+		margin: 0;
+	}
+}
+
+// Directory Select
+.modal-select {
+	padding: 10px 10px 0px 10px;
+}
+
+// Image Listing
+.media-library-list {
+	@include unstyled;
+	@include clearfix;
+	margin-top: -20px;
+	padding: 10px;
+	background-color: darken($white, 10%);
+	li {
+		float: left;
+		width: 25%;
+		&.first {
+			clear: both;
+		}
+		div {
+			padding: 8px;
+		}
+		a {
+			box-sizing: border-box;
+			display: block;
+			padding: 10px;
+			font-size: 14px;
+			background-color: $white;
+			&.selected {
+				border: 3px solid $green;
+			}
+		}
+		span {
+			overflow: hidden;
+			max-height: 17px;
+			display: block;
+		}
+	}
+}
+
+// Dropzone
+.dropzone-file {
+	display: none;
+}
+
+// Folder select
+.modal-select {
+	padding: 8px 20px 0px 20px;
+}
+
+// Upload Area
+.dropzone-form-cont {
+	@include clearfix;
+}
+
+.dz-message {
+	padding: 0px 20px;
+	cursor: pointer;
+	display: block;
+	.dz-interior {
+		background-color: darken($white, 6%);
+		height: 180px;
+		text-align: center;
+		padding: 20px;
+		transition: all 200ms ease;
+	}
+	p {
+		height: 140px;
+		padding-top: 40px;
+		margin: 0;
+		background-color: darken($white, 2%);
+		box-shadow: 0px 0px 2px 0px rgba(0,0,0,.15);
+		transition: all 200ms ease;
+		span {
+			@extend .btn;
+			margin-top: 10px;
+		}
+	}
+	em {
+		display: block;
+		font-style: normal;
+	}
+	strong {
+		display: block;
+		font-size: 24px;
+	}
+	i {
+		font-size: 45px;
+		color: darken($white, 80%);
+		transition: all 200ms ease;
+	}
+}
+.dz-started .dz-message {
+	display: none;
+}
+
+// Drag State (dragging a file into the area)
+.dz-drag-hover .dz-message {
+	.dz-interior {
+		background-color: $info-text;
+		transition: all 200ms ease;
+	}
+	p {
+		background-color: $info-text;
+		color: $white;
+		border-color: darken($info-text, 10%);
+		transition: all 200ms ease;
+	}
+	i {
+		color: $info-border;
+		transition: all 200ms ease;
+	}
+}
+
+// File is Uploaded
+.dz-success.dz-preview {
+	cursor: pointer;
+}
+
+// Preview of uploaded image
+.dz-preview {
+	float: left;
+	width: 22.5%;
+	padding: 10px;
+	box-sizing: border-box;
+	background-color: darken($white, 6%);
+	margin: 0 0 20px 2%;
+	.dz-size, .dz-success-mark, .dz-error-mark, .dz-remove {
+		display: none;
+	}
+	&:nth-child(4n+4){
+		clear: both;
+	}
+	.dz-filename {
+		display: none;
+		font-size: 14px;
+		margin-bottom: 10px;
+		//height: 40px;
+		overflow: hidden;
+	}
+	.dz-image-preview {
+		text-align: center;
+		display: block;
+		box-sizing: border-box;
+	}
+	.media-library-item {
+		display: block;
+		&.selected {
+			border: 3px solid $green;
+		}
+	}
+	&.dz-processing {
+		background: url('../../images/loading-dropzone.gif') darken($white, 6%);
+		background-repeat: no-repeat;
+		background-position: center;
+		&.dz-success {
+			background: transparent;
+			background-color: darken($white, 6%);
+		}
 	}
 }

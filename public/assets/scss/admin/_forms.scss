@@ -16,6 +16,9 @@
 label {
 	display: block;
 	margin-bottom: 3px;
+	font-weight: bold;
+	color: darken($white, 70%);
+	font-size: 15px;
 }
 select {
 	width: 100%;
@@ -68,12 +71,34 @@ textarea {
 	}
 }
 
+select {
+	-webkit-appearance: none;
+	padding: 0 8px;
+	background: url('../../images/select-arrow.png') darken($white, 12%);
+	background-repeat: no-repeat;
+	background-position: right center;
+	border: 1px solid darken($white, 15%);
+	font-size: 15px;
+	border-radius: 3px;
+	&:focus {
+		outline: none;
+	}
+}
+
 
 form {
 	.well {
-		background-color: darken($white, 7%);
+		box-shadow: none;
+		border: 1px solid darken($white, 12%);
+		background-color: $white;
+		//padding: 15px;
 		@include clearfix;
 		padding-bottom: 0;
+	}
+	h4 {
+		padding: 8px;
+		border-bottom: 1px solid darken($white, 12%);
+		margin: 0;
 	}
 	p {
 		clear: both;
@@ -135,7 +160,7 @@ form {
 // SEO preview Area
 .seo-preview {
 	margin: 15px 0px 0px 0px;
-	background-color: $white;
+	border: 1px solid darken($white, 8%);
 	padding: 10px;
 	font-family: arial, sans-serif;
 	h4 {
@@ -160,7 +185,8 @@ form {
 
 // Custom Fields - New field
 .newfield {
-	background-color: darken($white, 6%);
+	background-color: $white;
+	border: 1px solid darken($white, 12%);
 	padding: 8px;
 	margin-bottom: 20px;
 }

@@ -154,6 +154,7 @@ class PageController extends BaseController {
 	{
 		$templates = $this->page_repo->getPageTemplates();
 		$page = $this->page_repo->getPageWithoutLanguage($slug);
+		
 		$translations = $this->page_repo->getTranslationsArray($page->id);
 		return View::make('admin.pages.edit')
 			->with('page', $page)
