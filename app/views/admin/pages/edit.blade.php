@@ -7,11 +7,19 @@
 	<h1>Edit {{$page['title']}} 
 		@if( count($page['translation_of']) > 0 )
 		<?php
-		$link = LaravelLocalization::getLocalizedURL($page['language'], URL::route('page', ['page'=>$page['slug']]));
+			if ( $page['translation_of'][0]['slug'] == 'home'){
+				$link = URL::route('home') . '/' . $page['language'];
+			} else {
+				$link = LaravelLocalization::getLocalizedURL($page['language'], URL::route('page', ['page'=>$page['slug']]));
+			}
 		?>
 		<a href="{{$link}}" class="btn pull-right">View Page</a>
 		@else
-		<a href="{{URL::route('page', ['page'=>$page['slug']])}}" class="btn pull-right">View Page</a>
+			@if($page['slug'] == 'home')
+				<a href="{{URL::route('home')}}" class="btn pull-right">View Page</a>
+			@else
+				<a href="{{URL::route('page', ['page'=>$page['slug']])}}" class="btn pull-right">View Page</a>
+			@endif
 		@endif
 	</h1>
 
