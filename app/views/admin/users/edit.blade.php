@@ -2,7 +2,7 @@
 @section('content')
 
 <section class="page-head margin">
-	<div class="container small">
+	<div class="container">
 		@if( Auth::user()->id == $user->id )
 			<h1>Edit Your Profile
 		@else
@@ -13,7 +13,7 @@
 	</div>
 </section>
 
-<div class="container small">
+<div class="container">
 
 	<div class="well">
 

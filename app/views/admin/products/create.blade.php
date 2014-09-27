@@ -2,12 +2,12 @@
 @section('content')
 
 <section class="page-head margin">
-	<div class="container small">
+	<div class="container">
 		<h1>Add a Product <span class="pull-right"><a href="{{URL::route('edit_products')}}">Back to Products</a></span></h1>
 	</div>
 </section>
 
-<div class="container small">
+<div class="container">
 
 	<div class="well flavor-form">
 

@@ -2,12 +2,12 @@
 @section('content')
 
 <section class="page-head margin">
-	<div class="container small">
+	<div class="container">
 		<h1>Site Settings</h1>
 	</div>
 </section>
 
-<div class="container small">
+<div class="container">
 
 	<div class="well">
 

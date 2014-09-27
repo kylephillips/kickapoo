@@ -2,12 +2,12 @@
 @section('content')
 
 <section class="page-head">
-	<div class="container small">
+	<div class="container">
 		<h1>Add a New Page </h1>
 	</div>
 </section>
 
-<div class="container small">
+<div class="container">
 
 	<div class="well">
 

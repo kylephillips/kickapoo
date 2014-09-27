@@ -2,12 +2,12 @@
 @section('content')
 
 <section class="page-head margin">
-	<div class="container small">
+	<div class="container">
 		<h1>Trashed Posts <span class="pull-right"><a href="{{URL::route('admin.post.index')}}">&laquo; Back to Posts</a></span></h1>
 	</div>
 </section>
 
-<div class="container small">
+<div class="container">
 	<div class="alert alert-info">
 		Last emptied: {{$last_trash}}
 		@if( count($posts) > 0 )
@@ -22,11 +22,11 @@
 </div>
 
 @if(count($posts) == 0)
-	<div class="container small">
+	<div class="container">
 		<div class="alert alert-success">The trash is empty.</div>
 	</div>
 @else
-	<div class="container small admin-posts">	
+	<div class="container admin-posts">	
 		<ul class="trash">
 		@foreach($posts as $post)
 			<?php 

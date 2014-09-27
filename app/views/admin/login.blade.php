@@ -1,7 +1,7 @@
 @extends('admin.partials.admin-master')
 @section('content')
 
-<div class="container small">
+<div class="container">
 	
 	<div class="login">
 

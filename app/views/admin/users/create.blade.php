@@ -2,12 +2,12 @@
 @section('content')
 
 <section class="page-head margin">
-	<div class="container small">
+	<div class="container">
 		<h1> Add New User <span class="pull-right"><a href="{{URL::route('admin.user.index')}}">&laquo; Back to Users</a></span></h1>
 	</div>
 </section>
 
-<div class="container small">
+<div class="container">
 
 	<div class="well">
 

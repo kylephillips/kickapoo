@@ -2,7 +2,7 @@
 @section('content')
 
 <section class="page-head margin">
-	<div class="container small">
+	<div class="container">
 		@if( isset($_GET['name']) )
 			<h1>All {{$_GET['name']}} Pages</h1>
 		@else
@@ -17,7 +17,7 @@
 	</div>
 </section>
 
-<div class="container small">
+<div class="container">
 
 	<div class="well">
 

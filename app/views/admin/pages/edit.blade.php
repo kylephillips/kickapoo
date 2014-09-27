@@ -2,7 +2,7 @@
 @section('content')
 
 <section class="page-head">
-	<div class="container small">
+	<div class="container">
 		<h1>Edit {{$page['title']}} 
 		@if( count($page['translation_of']) > 0 )
 		<?php
@@ -24,7 +24,7 @@
 	</div>
 </section>
 
-<div class="container small">
+<div class="container">
 
 	<div class="well">
 

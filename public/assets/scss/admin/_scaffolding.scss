@@ -23,7 +23,6 @@ a {
 .pagewrap {
 	box-sizing: border-box;
 	min-height: 100%;
-	//background: url('../../images/pattern-type-gray.png');
 }
 .clearfix {
 	@include clearfix;
@@ -31,8 +30,6 @@ a {
 
 .container {
 	margin: 0 auto;
-}
-.container.small {
 	max-width: 850px;
 }
 
@@ -49,7 +46,6 @@ img {
 
 .well {
 	background: transparent;
-	//box-shadow: 0px 0px 2px 0px rgba(0,0,0,.15);
 	margin-bottom: 20px;
 	hr {
 		height: 3px;

@@ -2,12 +2,12 @@
 @section('content')
 
 <section class="page-head margin">
-	<div class="container small">
+	<div class="container">
 		<h1>Social Posts</h1>
 	</div>
 </section>
 
-	<div class="container small">
+	<div class="container">
 		
 		{{Form::open(['url'=>URL::route('update_search'), 'class'=>'searchterm'])}}
 			@if(Session::has('errors'))
@@ -78,7 +78,7 @@
 	</div><!-- .container -->
 
 	<!-- Post Feed -->
-	<div class="container small admin-posts">
+	<div class="container admin-posts">
 
 		<h3>Posts <em>(<span id="pending_count">{{$pending_count}}</span> awaiting moderation)</em></h3>
 

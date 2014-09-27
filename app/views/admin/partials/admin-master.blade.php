@@ -61,6 +61,7 @@
 	<script src="{{URL::asset('assets/js/redactor.min.js')}}"></script>
 	
 	@include('admin.partials.media-library')
+	
 	@yield('footercontent')
 	<script>
 	$(window).load(function(){

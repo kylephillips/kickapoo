@@ -40,9 +40,7 @@ a {
     clear: both; }
 
 .container {
-  margin: 0 auto; }
-
-.container.small {
+  margin: 0 auto;
   max-width: 850px; }
 
 img {

@@ -2,12 +2,12 @@
 @section('content')
 
 <section class="page-head margin">
-	<div class="container small">
+	<div class="container">
 		<h1>Add a {{$language_name}} Translation of <a href="{{URL::route('edit_flavor', ['id'=>$parent_flavor->id])}}">{{$parent_flavor->title}}</a></h1>
 	</div>
 </section>
 
-<div class="container small">
+<div class="container">
 
 	<div class="well flavor-form">
 

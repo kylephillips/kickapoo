@@ -2,12 +2,12 @@
 @section('content')
 
 <section class="page-head">
-	<div class="container small">
+	<div class="container">
 		<h1>Add {{$language_name}} Translation of <a href="{{URL::route('edit_page', ['slug'=>$parent_page->slug])}}">{{$parent_page->title}}</a></h1>
 	</div>
 </section>
 
-<div class="container small">
+<div class="container">
 
 	<div class="well">
 
