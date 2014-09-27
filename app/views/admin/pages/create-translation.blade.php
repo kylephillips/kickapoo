@@ -1,8 +1,13 @@
 @extends('admin.partials.admin-master')
 @section('content')
-<div class="container small">
 
-	<h1>Add {{$language_name}} Translation of {{$parent_page->title}}</h1>
+<section class="page-head">
+	<div class="container small">
+		<h1>Add {{$language_name}} Translation of <a href="{{URL::route('edit_page', ['slug'=>$parent_page->slug])}}">{{$parent_page->title}}</a></h1>
+	</div>
+</section>
+
+<div class="container small">
 
 	<div class="well">
 

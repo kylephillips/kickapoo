@@ -1,8 +1,13 @@
 @extends('admin.partials.admin-master')
 @section('content')
 
+<section class="page-head margin">
+	<div class="container small">
+		<h1>Banned Users</h1>
+	</div>
+</section>
+
 <div class="container small">
-	<h1>Banned Users</h1>
 	<div class="alert alert-info">Banned users' posts will not be imported to the social feed.</div>
 	<ul class="banned-users">
 		@foreach($banned_users as $user)

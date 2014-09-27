@@ -22,7 +22,7 @@ function apply_redactor(item)
 		toolbarFixed: true,
 		toolbarFixedTopOffset: 42,
 		plugins: ['medialibrary'],
-		buttons: ['html', 'formatting', 'bold', 'italic', 'deleted', 'unorderedlist', 'orderedlist', 'outdent', 'indent', 'link', 'alignment', 'horizontalrule'],
+		buttons: ['html', 'formatting', 'bold', 'italic', 'unorderedlist', 'orderedlist', 'outdent', 'indent', 'link', 'alignment', 'horizontalrule'],
 		imageUploadCallback: function(image, json){
 			console.log(json);
 		},
@@ -49,8 +49,6 @@ RedactorPlugins.medialibrary = function()
 		{
 			ActiveEditor = this.medialibrary;
 			open_media_library('page_images', true);
-			//this.medialibrary.image_html = 'TESTING IMAGE';
-			//this.medialibrary.insert();
 		},
 		insert: function()
 		{
@@ -59,7 +57,7 @@ RedactorPlugins.medialibrary = function()
 		}
 	};
 };
-
+// Empty object to store media library instance
 var ActiveEditor = {};
 
 

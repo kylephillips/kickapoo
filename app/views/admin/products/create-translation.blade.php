@@ -1,9 +1,13 @@
 @extends('admin.partials.admin-master')
 @section('content')
 
-<div class="container small">
+<section class="page-head margin">
+	<div class="container small">
+		<h1>Add a {{$language_name}} Translation of <a href="{{URL::route('edit_flavor', ['id'=>$parent_flavor->id])}}">{{$parent_flavor->title}}</a></h1>
+	</div>
+</section>
 
-	<h1>Add a {{$language_name}} Translation of <a href="{{URL::route('edit_flavor', ['id'=>$parent_flavor->id])}}">{{$parent_flavor->title}}</a></h1>
+<div class="container small">
 
 	<div class="well flavor-form">
 

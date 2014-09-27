@@ -1,7 +1,13 @@
 @extends('admin.partials.admin-master')
 @section('content')
+
+<section class="page-head margin">
+	<div class="container small">
+		<h1>Trashed Posts <span class="pull-right"><a href="{{URL::route('admin.post.index')}}">&laquo; Back to Posts</a></span></h1>
+	</div>
+</section>
+
 <div class="container small">
-	<h1><i class="icon-remove"></i> Trash <span class="pull-right"><a href="{{URL::route('admin.post.index')}}">&laquo; Back to Posts</a></span></h1>
 	<div class="alert alert-info">
 		Last emptied: {{$last_trash}}
 		@if( count($posts) > 0 )

@@ -1,16 +1,23 @@
 @extends('admin.partials.admin-master')
 @section('content')
 
+<section class="page-head margin">
+	<div class="container small">
+		@if( isset($_GET['name']) )
+			<h1>All {{$_GET['name']}} Pages</h1>
+		@else
+			<h1>All Pages</h1>
+		@endif
+		<select id="language-select">
+			<option>Select Language</option>
+			@foreach( LaravelLocalization::getSupportedLocales() as $code => $properties )
+			<option value="{{URL::route('page_index', ['lang'=>$code])}}&name={{$properties['name']}}">{{$properties['name']}}</option>
+			@endforeach
+		</select>
+	</div>
+</section>
+
 <div class="container small">
-
-	<h1>All Pages</h1>
-
-	<select id="language-select">
-		<option>Select Language</option>
-		@foreach( LaravelLocalization::getSupportedLocales() as $code => $properties )
-		<option value="{{URL::route('page_index', ['lang'=>$code])}}">{{$properties['name']}}</option>
-		@endforeach
-	</select>
 
 	<div class="well">
 

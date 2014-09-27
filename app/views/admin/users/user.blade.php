@@ -1,11 +1,13 @@
 @extends('admin.partials.admin-master')
 @section('content')
 
-<div class="container small">
-
-	
+<section class="page-head margin">
+	<div class="container small">
 		<h1>Kickapoo Users <span class="pull-right"><a href="{{URL::route('admin.user.create')}}" class="btn btn-large btn-primary">+ Add User</a></span></h1>
-	
+	</div>
+</section>
+
+<div class="container small">	
 
 	<div class="well">
 

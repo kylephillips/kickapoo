@@ -1,10 +1,9 @@
 @extends('admin.partials.admin-master')
 @section('content')
 
-
-<div class="container small">
-
-	<h1>Edit {{$page['title']}} 
+<section class="page-head">
+	<div class="container small">
+		<h1>Edit {{$page['title']}} 
 		@if( count($page['translation_of']) > 0 )
 		<?php
 			if ( $page['translation_of'][0]['slug'] == 'home'){
@@ -22,6 +21,10 @@
 			@endif
 		@endif
 	</h1>
+	</div>
+</section>
+
+<div class="container small">
 
 	<div class="well">
 

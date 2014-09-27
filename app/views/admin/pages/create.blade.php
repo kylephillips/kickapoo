@@ -1,8 +1,13 @@
 @extends('admin.partials.admin-master')
 @section('content')
-<div class="container small">
 
-	<h1>Add a New Page </h1>
+<section class="page-head">
+	<div class="container small">
+		<h1>Add a New Page </h1>
+	</div>
+</section>
+
+<div class="container small">
 
 	<div class="well">
 

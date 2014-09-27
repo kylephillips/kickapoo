@@ -1,12 +1,13 @@
 @extends('admin.partials.admin-master')
 @section('content')
 
-<div class="container small">
+<section class="page-head margin">
+	<div class="container small">
+		<h1> Add New User <span class="pull-right"><a href="{{URL::route('admin.user.index')}}">&laquo; Back to Users</a></span></h1>
+	</div>
+</section>
 
-	<h1>
-		Add New User
-		<span class="pull-right"><a href="{{URL::route('admin.user.index')}}">&laquo; Back to Users</a></span>
-	</h1>
+<div class="container small">
 
 	<div class="well">
 

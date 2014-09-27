@@ -1,7 +1,13 @@
 @extends('admin.partials.admin-master')
 @section('content')
+
+<section class="page-head margin">
 	<div class="container small">
 		<h1>Social Posts</h1>
+	</div>
+</section>
+
+	<div class="container small">
 		
 		{{Form::open(['url'=>URL::route('update_search'), 'class'=>'searchterm'])}}
 			@if(Session::has('errors'))

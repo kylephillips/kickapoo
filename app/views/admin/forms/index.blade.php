@@ -1,9 +1,13 @@
 @extends('admin.partials.admin-master')
 @section('content')
 
-<div class="container small">
+<section class="page-head margin">
+	<div class="container small">
+		<h1>Contact Form Entries</h1>
+	</div>
+</section>
 
-	<h1>Contact Form Entries</h1>
+<div class="container small">
 
 	<div class="well">
 
