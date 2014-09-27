@@ -19,5 +19,9 @@
 	<a href="{{$post->gram->link}}" target="_blank">
 		<img src="{{URL::asset('assets/uploads/instagram_images')}}/{{$post->gram->image}}" alt="Instagram Image" />
 	</a>
+	@else
+	<video width="100%" controls>
+		<source src="{{$post->gram->video_url}}" type="video/mp4"/>
+	</video>
 	@endif
 </div>
