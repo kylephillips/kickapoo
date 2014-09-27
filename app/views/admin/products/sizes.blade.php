@@ -9,69 +9,66 @@
 
 <div class="container">
 
-	<div class="well">
-
-		@if(Session::has('success'))
+	@if(Session::has('success'))
 		<div class="alert alert-success">{{Session::get('success')}}</div>
-		@endif
+	@endif
 
-		<div class="alert alert-success" style="display:none;"></div>
-		<div class="alert alert-success edit-success" style="display:none;"></div>
+	<div class="alert alert-success" style="display:none;"></div>
+	<div class="alert alert-success edit-success" style="display:none;"></div>
 
-		<ul class="sizes-table">
-			@foreach($sizes as $size)
-			<li>
-				<strong class="title_{{$size->id}}">{{$size->title}}</strong>
-				<div class="buttons">
-					<a href="#" class="btn toggle-translations">Translations</a>
-					<a href="#" class="btn btn-warning edit-size edit_{{$size->id}}" data-id="{{$size->id}}" data-title="{{$size->title}}">Edit</a>
-					<a href="{{$size->id}}" class="btn btn-danger delete-size">Delete</a>
-				</div>
-				<div class="translations">
-					<p>
-					@foreach(LaravelLocalization::getSupportedLocales() as $code => $properties)
-					@if($code !== 'en')
-						<span class="translation">
-							<em>{{$properties['name']}}:</em>
-							@if ( array_key_exists($code, $translations[$size->id]) )
-								<span class="title_{{$translations[$size->id][$code]['id']}}">{{$translations[$size->id][$code]['title']}} </span>
-								<span>
-									(<a href="#" class="edit-size edit_{{$translations[$size->id][$code]['id']}}" data-id="{{$translations[$size->id][$code]['id']}}" data-code="{{$code}}" data-title="{{$translations[$size->id][$code]['title']}}">Edit</a>
-									&nbsp;|&nbsp;
-									<a href="{{$translations[$size->id][$code]['id']}}" class="delete-size delete-translation">Delete</a>)
-								</span>
-							@else
-								<span id="add_{{$code}}_{{$size->id}}">
-									<a href="#" data-parentname="{{$size->title}}" data-language="{{$properties['name']}}" data-code="{{$code}}" data-parent="{{$size->id}}" class="add-translation">Add</a>
-								</span>
-							@endif
-						<br />
-						</span><!-- .translation -->
-					@endif
-					@endforeach
-					</p>
-				</div>
-			</li>
-			@endforeach
-		</ul>
+	<ul class="sizes-table">
+		@foreach($sizes as $size)
+		<li>
+			<strong class="title_{{$size->id}}">{{$size->title}}</strong>
+			<div class="buttons">
+				<a href="#" class="btn toggle-translations">Translations</a>
+				<a href="#" class="btn btn-warning edit-size edit_{{$size->id}}" data-id="{{$size->id}}" data-title="{{$size->title}}">Edit</a>
+				<a href="{{$size->id}}" class="btn btn-danger delete-size">Delete</a>
+			</div>
+			<div class="translations">
+				<p>
+				@foreach(LaravelLocalization::getSupportedLocales() as $code => $properties)
+				@if($code !== 'en')
+					<span class="translation">
+						<em>{{$properties['name']}}:</em>
+						@if ( array_key_exists($code, $translations[$size->id]) )
+							<span class="title_{{$translations[$size->id][$code]['id']}}">{{$translations[$size->id][$code]['title']}} </span>
+							<span>
+								(<a href="#" class="edit-size edit_{{$translations[$size->id][$code]['id']}}" data-id="{{$translations[$size->id][$code]['id']}}" data-code="{{$code}}" data-title="{{$translations[$size->id][$code]['title']}}">Edit</a>
+								&nbsp;|&nbsp;
+								<a href="{{$translations[$size->id][$code]['id']}}" class="delete-size delete-translation">Delete</a>)
+							</span>
+						@else
+							<span id="add_{{$code}}_{{$size->id}}">
+								<a href="#" data-parentname="{{$size->title}}" data-language="{{$properties['name']}}" data-code="{{$code}}" data-parent="{{$size->id}}" class="add-translation">Add</a>
+							</span>
+						@endif
+					<br />
+					</span><!-- .translation -->
+				@endif
+				@endforeach
+				</p>
+			</div>
+		</li>
+		@endforeach
+	</ul>
 
-		@if(Session::has('errors'))
-		<div class="add-size-form" style="display:block;">
-		@else
-		<div class="add-size-form">
-		@endif
-			{{Form::open(['url'=>URL::route('admin.size.store')])}}
-				{{$errors->first('title', '<span class="text-danger"><strong>:message</strong></span><br>')}}
-				{{Form::label('title', 'Size Name')}}
-				{{Form::text('title')}}
-				{{Form::submit('Save Size', ['class'=>'btn'])}}
-				<button class="btn add-cancel">Cancel</button>
-			{{Form::close()}}
-		</div>
+	@if(Session::has('errors'))
+	<div class="add-size-form" style="display:block;">
+	@else
+	<div class="add-size-form">
+	@endif
+		{{Form::open(['url'=>URL::route('admin.size.store')])}}
+			{{$errors->first('title', '<span class="text-danger"><strong>:message</strong></span><br>')}}
+			{{Form::label('title', 'Size Name')}}
+			{{Form::text('title')}}
+			{{Form::submit('Save Size', ['class'=>'btn'])}}
+			<button class="btn add-cancel">Cancel</button>
+		{{Form::close()}}
+	</div>
 
-		<a href="#" class="btn btn-success add-size">Add New Type</a>
+	<a href="#" class="btn btn-success add-size">Add New Type</a>
 
-	</div><!-- .well -->
 </div><!-- .container -->
 
 <!-- Edit existing type modal form -->

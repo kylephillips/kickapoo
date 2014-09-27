@@ -52,16 +52,6 @@ img {
 .sr-only {
   display: none; }
 
-.well {
-  background: transparent;
-  margin-bottom: 20px; }
-  .well hr {
-    height: 3px;
-    background-color: #d9d9d9;
-    clear: both; }
-  .well h4 {
-    margin: 0; }
-
 .page-head {
   background-color: #e6e6e6;
   border-bottom: 1px solid #d9d9d9;
@@ -93,6 +83,13 @@ h1 {
     margin-top: 15px; }
     h1 span .btn, h1 span .dz-message p span, .dz-message p h1 span span {
       margin-top: -20px; }
+
+hr {
+  border: 0;
+  margin: 20px 0;
+  height: 3px;
+  background-color: #d9d9d9;
+  clear: both; }
 
 .modal-body {
   max-height: 300px;
@@ -961,13 +958,27 @@ form .slug {
     line-height: 20px;
     float: right; }
 
-.well h3 {
-  margin: 0 0 15px 0;
-  padding: 0; }
-.well hr {
-  border: 0;
-  margin: 20px 0;
-  height: 5px; }
+.well {
+  background: transparent;
+  margin-bottom: 20px;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: 1px solid #e0e0e0;
+  background-color: #ffffff;
+  zoom: 1;
+  padding-bottom: 0; }
+  .well:before, .well:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */ }
+  .well:after {
+    clear: both; }
+  .well h3 {
+    margin: 0 0 15px 0;
+    padding: 0; }
+  .well h4 {
+    margin: 0; }
 
 .well-interior {
   padding: 15px; }

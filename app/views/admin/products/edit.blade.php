@@ -9,7 +9,7 @@
 
 <div class="container">
 
-	<div class="well flavor-form">
+	<div class="flavor-form">
 
 		@if(Session::has('success'))
 			<div class="alert alert-success">{{Session::get('success')}}</div>
@@ -212,7 +212,7 @@
 
 		{{Form::close()}}
 
-	</div><!-- .well -->
+	</div><!-- .flavor-form -->
 </div><!-- .container -->
 
 

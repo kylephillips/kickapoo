@@ -9,49 +9,46 @@
 
 <div class="container">
 
-	<div class="well">
+	@if(Session::has('success'))
+		<div class="alert alert-success">{{Session::get('success')}}</div>
+	@endif
 
-		@if(Session::has('success'))
-			<div class="alert alert-success">{{Session::get('success')}}</div>
-		@endif
-
-		<div class="alert alert-success remove-success" style="display:none;">Entry successfully removed.</div>
-		
-		@if(count($entries) > 0)
-		{{Form::open(['url'=>URL::route('bulk_delete_form_entries')])}}
-			<table class="form-entries">
-				<thead>
-					<tr>
-						<th>Date</th>
-						<th>Name</th>
-						<th>Message</th>
-						<th>Delete</th>
-					</tr>
-				</thead>
-				<tbody>
-					@foreach($entries as $entry)
-					<?php
-					$date = date('M jS, Y', strtotime($entry['created_at']));
-					?>
-					<tr>
-						<td>
-							{{Form::checkbox('id[]', $entry['id'])}}
-							{{$date}}
-						</td>
-						<td><a href="mailto:{{$entry['email']}}">{{$entry['name']}}</a></td>
-						<td>{{$entry['message']}}</td>
-						<td><a href="{{$entry['id']}}" class="btn btn-mini btn-danger delete-entry">Delete</a></td>
-					</tr>
-					@endforeach
-				</tbody>
-			</table>
-			{{Form::submit('Delete Selected', ['class'=>'btn btn-danger bulk-delete', 'disabled'=>'disabled'])}}
-			<a href="{{URL::route('download_form_entries')}}" class="btn">Download Entries as CSV</a>
-			{{Form::close()}}
-		@else
-			No contact form entries at this time.
-		@endif
-	</div><!-- .well -->
+	<div class="alert alert-success remove-success" style="display:none;">Entry successfully removed.</div>
+	
+	@if(count($entries) > 0)
+	{{Form::open(['url'=>URL::route('bulk_delete_form_entries')])}}
+		<table class="form-entries">
+			<thead>
+				<tr>
+					<th>Date</th>
+					<th>Name</th>
+					<th>Message</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach($entries as $entry)
+				<?php
+				$date = date('M jS, Y', strtotime($entry['created_at']));
+				?>
+				<tr>
+					<td>
+						{{Form::checkbox('id[]', $entry['id'])}}
+						{{$date}}
+					</td>
+					<td><a href="mailto:{{$entry['email']}}">{{$entry['name']}}</a></td>
+					<td>{{$entry['message']}}</td>
+					<td><a href="{{$entry['id']}}" class="btn btn-mini btn-danger delete-entry">Delete</a></td>
+				</tr>
+				@endforeach
+			</tbody>
+		</table>
+		{{Form::submit('Delete Selected', ['class'=>'btn btn-danger bulk-delete', 'disabled'=>'disabled'])}}
+		<a href="{{URL::route('download_form_entries')}}" class="btn">Download Entries as CSV</a>
+		{{Form::close()}}
+	@else
+		No contact form entries at this time.
+	@endif
 	
 	<div class="pagination-cont">
 		{{$entries->links()}}

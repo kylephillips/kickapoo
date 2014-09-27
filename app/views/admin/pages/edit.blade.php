@@ -20,210 +20,208 @@
 				<a href="{{URL::route('page', ['page'=>$page['slug']])}}" class="btn pull-right">View Page</a>
 			@endif
 		@endif
-	</h1>
-	</div>
+		</h1>
+	</div><!-- .container -->
 </section>
 
 <div class="container">
 
-	<div class="well">
-
-		@if(Session::has('errors'))
+	@if(Session::has('errors'))
 		<div class="alert alert-danger">Ooops! Looks like there were some errors. That's not Joyful!</div>
-		@endif
+	@endif
 
-		@if(Session::has('success'))
+	@if(Session::has('success'))
 		<div class="alert alert-success">{{Session::get('success')}}</div>
+	@endif
+
+	{{Form::open(['url'=>URL::route('update_page', ['id'=>$page['id']]), 'files'=>true, 'id'=>'page_form'])}}
+	
+	<h3>
+		@if ( count($page['translation_of']) > 0 )
+		 (Translation of <a href="{{URL::route('edit_page', ['slug'=>$page['translation_of'][0]->slug])}}">{{$page['translation_of'][0]->title}}</a> Page)
 		@endif
+	</h3>
 
-		{{Form::open(['url'=>URL::route('update_page', ['id'=>$page['id']]), 'files'=>true, 'id'=>'page_form'])}}
-		
-		<h3>
-			@if ( count($page['translation_of']) > 0 )
-			 (Translation of <a href="{{URL::route('edit_page', ['slug'=>$page['translation_of'][0]->slug])}}">{{$page['translation_of'][0]->title}}</a> Page)
-			@endif
-		</h3>
+	<p>
+		{{$errors->first('title', '<span class="text-danger"><strong>:message</strong></span><br>')}}
+		{{Form::label('title', 'Page Title')}}
+		{{Form::text('title', $page['title'], ['class'=>'form-control'])}}
+	</p>
 
-		<p>
-			{{$errors->first('title', '<span class="text-danger"><strong>:message</strong></span><br>')}}
-			{{Form::label('title', 'Page Title')}}
-			{{Form::text('title', $page['title'], ['class'=>'form-control'])}}
-		</p>
+	@if($page['slug'] !== 'home' && $page['slug'] !== 'products')
+	<p>
+		<div class="slug">
+			{{$errors->first('slug', '<span class="text-danger"><strong>:message</strong></span><br>')}}
+			{{Form::label('slug', 'Page Link:')}}
+			<p>
+				{{URL::route('home')}}/{{$page['language']}}/
+				<em>{{$page['slug']}}</em>
+			</p>
+			{{Form::text('slug', $page['slug'], ['class'=>'form-control hidden'])}}
+			<button class="slug-ok btn hidden">Ok</button>
+		</div>
+	</p>
+	@else
+	{{Form::hidden('slug', $page['slug'])}}
+	@endif
 
-		@if($page['slug'] !== 'home' && $page['slug'] !== 'products')
-		<p>
-			<div class="slug">
-				{{$errors->first('slug', '<span class="text-danger"><strong>:message</strong></span><br>')}}
-				{{Form::label('slug', 'Page Link:')}}
-				<p>
-					{{URL::route('home')}}/{{$page['language']}}/
-					<em>{{$page['slug']}}</em>
-				</p>
-				{{Form::text('slug', $page['slug'], ['class'=>'form-control hidden'])}}
-				<button class="slug-ok btn hidden">Ok</button>
-			</div>
-		</p>
+	<div class="well">
+		<h4>General Settings</h4>
+		<div class="well-interior">
+
+		@if ( count($page['translation_of']) == 1 )
+		<p class="half">
 		@else
-		{{Form::hidden('slug', $page['slug'])}}
-		@endif
-
-		<div class="well">
-			<h4>General Settings</h4>
-			<div class="well-interior">
-
-			@if ( count($page['translation_of']) == 1 )
-			<p class="half">
-			@else
-			<p class="third">
-			@endif			
-				{{Form::label('status', 'Status')}}
-				{{Form::select('status', ['publish'=>'Published', 'draft'=>'Draft'], $page['status'])}}
-			</p>
-
-			@if ( count($page['translation_of']) == 1 )
-			<p class="half right">
-			@else
-			<p class="third">
-			@endif
-				{{Form::label('template', 'Page Template')}}
-				{{Form::select('template', $templates, $page['template'])}}
-			</p>
-
-			@if ( count($page['translation_of']) == 0 )
-			<p class="third last">
-				<label>
-					Translations 
-					@if( count($translations) < count(LaravelLocalization::getSupportedLocales()) )
-						(<a href="#translation-modal" data-toggle="modal" class="new-translation">New</a>)
-					@endif
-				</label>
-				@if ( count($translations) > 1 )
-					<select id="translations">
-						<option>Select to Edit</option>
-						@foreach($translations as $key => $translation)
-						@if($key !== $page['language'])
-							<option value="{{URL::route('edit_page', ['slug'=>$translation['slug']])}}">
-								{{$translation['name']}}
-							</option>
-						@endif
-						@endforeach
-					</select>
-				@else
-					No translations yet.
-				@endif
-			</p>
-			@endif
-			</div><!-- .well-interior -->
-		</div><!-- .well -->
-
-		<p>
-			{{Form::textarea('content', $page['content'], ['class'=>'redactor'])}}
+		<p class="third">
+		@endif			
+			{{Form::label('status', 'Status')}}
+			{{Form::select('status', ['publish'=>'Published', 'draft'=>'Draft'], $page['status'])}}
 		</p>
 
-		<h3>Custom Fields</h3>
-		
-		<div class="alert alert-danger" id="customfielderrors" style="display:none;"></div>
-
-		@if(count($page->customfields) > 0 )
-		<ul class="customfields-existing">
-			<?php $c = 0; ?>
-			@foreach($page->customfields as $field)
-			<li class="customfield-existing">
-				<h4>{{$field->name}} <i class="icon-caret-down"></i></h4>
-				<section>
-					
-					<p>
-						<label>Name</label>
-						{{Form::text('customfield[' . $c . '][name]', $field->name)}}
-					</p>
-					
-					@if($field->field_type == 'text')
-						<p>
-							<label>Content</label>
-							{{Form::text('customfield[' . $c . '][value]', $field->value)}}
-						</p>
-
-					@elseif($field->field_type == 'textarea')
-						<p>
-							<label>Content</label>
-							{{Form::textarea('customfield[' . $c . '][value]', $field->value)}}
-						</p>
-
-					@elseif($field->field_type == 'editor')
-						<p>
-							<label>Content</label>
-							{{Form::textarea('customfield[' . $c . '][value]', $field->value, ['class'=>'redactor'])}}
-						</p>
-
-					@else
-						<div>
-							<?php 
-							$folder = $field->image->folder;
-							$folder = substr($folder, 16);
-							$folder = rtrim($folder, '/');
-							?>
-							<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="customfield_image_{{$c}}" style="display:none;"><i class="icon-image"></i> Add from Media Library</a>
-							<input type="hidden" id="customfield_image_{{$c}}" name="customfield[{{$c}}][value]" value="{{$field->image->id}}">
-							<div class="image-preview">
-								<div class="image-thumb">
-									<button class="remove-thumb">&times;</button>
-									<img src="{{$field->image->folder}}/_thumbs/{{$field->image->file}}" />
-								</div>
-								<p class="image-name">{{$field->image->title}}</p>
-							</div>
-						</div>
-					@endif
-					{{Form::hidden('customfield[' . $c . '][field_type]', $field->field_type)}}
-					{{Form::hidden('customfield[' . $c . '][id]', $field->id)}}
-					<a href="{{URL::route('destroy_custom_field', ['id'=>$field->id])}}" class="btn btn-danger delete-field">Delete Field</a>
-				</section>
-			</li>
-			<?php $c++; ?>
-			@endforeach
-		</ul>
+		@if ( count($page['translation_of']) == 1 )
+		<p class="half right">
+		@else
+		<p class="third">
 		@endif
+			{{Form::label('template', 'Page Template')}}
+			{{Form::select('template', $templates, $page['template'])}}
+		</p>
 
-		<div id="newfields"></div>
-		<a href="#" class="btn btn-success add-custom">Add Custom Field</a>
-		<p>&nbsp;</p>
-		
-		<div class="well">
-			<h4>SEO Settings</h4>
-			<div class="well-interior">
-				<div class="seo-preview">
-					@if($page['seo_title'])
-					<h4>Kickapoo Joy Juice - <span class="seo-title">{{$page['seo_title']}}</span></h4>
-					@else
-					<h4>Kickapoo Joy Juice</h4>
+		@if ( count($page['translation_of']) == 0 )
+		<p class="third last">
+			<label>
+				Translations 
+				@if( count($translations) < count(LaravelLocalization::getSupportedLocales()) )
+					(<a href="#translation-modal" data-toggle="modal" class="new-translation">New</a>)
+				@endif
+			</label>
+			@if ( count($translations) > 1 )
+				<select id="translations">
+					<option>Select to Edit</option>
+					@foreach($translations as $key => $translation)
+					@if($key !== $page['language'])
+						<option value="{{URL::route('edit_page', ['slug'=>$translation['slug']])}}">
+							{{$translation['name']}}
+						</option>
 					@endif
-					<p>
-						<em>www.kickapoo.com/<span class="slug-seo">{{$page['slug']}}</span></em>
-						<span class="seo-description">{{$page['seo_description']}}</span>
-					</p>
-				</div>
+					@endforeach
+				</select>
+			@else
+				No translations yet.
+			@endif
+		</p>
+		@endif
+		</div><!-- .well-interior -->
+	</div><!-- .well -->
+
+	<p>
+		{{Form::textarea('content', $page['content'], ['class'=>'redactor'])}}
+	</p>
+
+	<h3>Custom Fields</h3>
+	
+	<div class="alert alert-danger" id="customfielderrors" style="display:none;"></div>
+
+	@if(count($page->customfields) > 0 )
+	<ul class="customfields-existing">
+		<?php $c = 0; ?>
+		@foreach($page->customfields as $field)
+		<li class="customfield-existing">
+			<h4>{{$field->name}} <i class="icon-caret-down"></i></h4>
+			<section>
+				
 				<p>
-					{{Form::label('seo_title', 'SEO Title')}}
-					{{Form::text('seo_title', $page['seo_title'])}}
+					<label>Name</label>
+					{{Form::text('customfield[' . $c . '][name]', $field->name)}}
 				</p>
+				
+				@if($field->field_type == 'text')
+					<p>
+						<label>Content</label>
+						{{Form::text('customfield[' . $c . '][value]', $field->value)}}
+					</p>
+
+				@elseif($field->field_type == 'textarea')
+					<p>
+						<label>Content</label>
+						{{Form::textarea('customfield[' . $c . '][value]', $field->value)}}
+					</p>
+
+				@elseif($field->field_type == 'editor')
+					<p>
+						<label>Content</label>
+						{{Form::textarea('customfield[' . $c . '][value]', $field->value, ['class'=>'redactor'])}}
+					</p>
+
+				@else
+					<div>
+						<?php 
+						$folder = $field->image->folder;
+						$folder = substr($folder, 16);
+						$folder = rtrim($folder, '/');
+						?>
+						<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="customfield_image_{{$c}}" style="display:none;"><i class="icon-image"></i> Add from Media Library</a>
+						<input type="hidden" id="customfield_image_{{$c}}" name="customfield[{{$c}}][value]" value="{{$field->image->id}}">
+						<div class="image-preview">
+							<div class="image-thumb">
+								<button class="remove-thumb">&times;</button>
+								<img src="{{$field->image->folder}}/_thumbs/{{$field->image->file}}" />
+							</div>
+							<p class="image-name">{{$field->image->title}}</p>
+						</div>
+					</div>
+				@endif
+				{{Form::hidden('customfield[' . $c . '][field_type]', $field->field_type)}}
+				{{Form::hidden('customfield[' . $c . '][id]', $field->id)}}
+				<a href="{{URL::route('destroy_custom_field', ['id'=>$field->id])}}" class="btn btn-danger delete-field">Delete Field</a>
+			</section>
+		</li>
+		<?php $c++; ?>
+		@endforeach
+	</ul>
+	@endif
+
+	<div id="newfields"></div>
+	<a href="#" class="btn btn-success add-custom">Add Custom Field</a>
+	<p>&nbsp;</p>
+	
+	<div class="well">
+		<h4>SEO Settings</h4>
+		<div class="well-interior">
+			<div class="seo-preview">
+				@if($page['seo_title'])
+				<h4>Kickapoo Joy Juice - <span class="seo-title">{{$page['seo_title']}}</span></h4>
+				@else
+				<h4>Kickapoo Joy Juice</h4>
+				@endif
 				<p>
-					{{Form::label('seo_description', 'SEO Description')}}
-					{{Form::textarea('seo_description', $page['seo_description'])}}
-					<div id="description_count" class="alert alert-info"><span><strong>150</strong></span> Characters Remaining</div>
+					<em>www.kickapoo.com/<span class="slug-seo">{{$page['slug']}}</span></em>
+					<span class="seo-description">{{$page['seo_description']}}</span>
 				</p>
 			</div>
+			<p>
+				{{Form::label('seo_title', 'SEO Title')}}
+				{{Form::text('seo_title', $page['seo_title'])}}
+			</p>
+			<p>
+				{{Form::label('seo_description', 'SEO Description')}}
+				{{Form::textarea('seo_description', $page['seo_description'])}}
+				<div id="description_count" class="alert alert-info"><span><strong>150</strong></span> Characters Remaining</div>
+			</p>
 		</div>
+	</div>
 
-		{{Form::submit('Save Page', ['class'=>'btn btn-primary'])}}
-		
-		@if($page['slug'] !== 'home')
-		<div class="delete-well">
-			<a href="{{URL::route('destroy_page', ['slug'=>$page['slug']])}}" class="btn btn-danger">Delete Page</a>
-		</div>
-		@endif
+	{{Form::submit('Save Page', ['class'=>'btn btn-primary'])}}
+	
+	@if($page['slug'] !== 'home')
+	<div class="delete-well">
+		<a href="{{URL::route('destroy_page', ['slug'=>$page['slug']])}}" class="btn btn-danger">Delete Page</a>
+	</div>
+	@endif
 
-		{{Form::close()}}
+	{{Form::close()}}
 
-	</div><!-- .well -->
+	
 </div><!-- .container -->
 
 

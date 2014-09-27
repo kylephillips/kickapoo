@@ -19,27 +19,24 @@
 
 <div class="container">
 
-	<div class="well">
+	@if(Session::has('success'))
+	<div class="alert alert-success">{{Session::get('success')}}</div>
+	@endif
 
-		@if(Session::has('success'))
-		<div class="alert alert-success">{{Session::get('success')}}</div>
-		@endif
+	<div class="alert alert-info">Click and drag rows to reorder pages</div>
 
-		<div class="alert alert-info">Click and drag rows to reorder pages</div>
+	<ul class="page-list">
+		@foreach($pages as $page)
+		<li id="{{$page->id}}">
+			<strong>{{$page->title}}</strong>
+			<a href="{{URL::route('edit_page', ['slug'=>$page->slug])}}" class="btn btn-warning pull-right">Edit Page</a>
+			<label><input type="checkbox" class="show-in-menu" name="show" data-slug="{{$page->slug}}" @if( $page->show_in_menu == 1) checked @endif> 
+				Show in Navigation
+			</label>
+		</li>
+		@endforeach
+	</ul>
 
-		<ul class="page-list">
-			@foreach($pages as $page)
-			<li id="{{$page->id}}">
-				<strong>{{$page->title}}</strong>
-				<a href="{{URL::route('edit_page', ['slug'=>$page->slug])}}" class="btn btn-warning pull-right">Edit Page</a>
-				<label><input type="checkbox" class="show-in-menu" name="show" data-slug="{{$page->slug}}" @if( $page->show_in_menu == 1) checked @endif> 
-					Show in Navigation
-				</label>
-			</li>
-			@endforeach
-		</ul>
-
-	</div><!-- .well -->
 </div><!-- .container -->
 
 @stop

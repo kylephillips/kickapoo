@@ -2,17 +2,19 @@
 // Wells
 // --------------------------------------------------
 .well {
-	//background-color: $white;
-	// padding: 20px;
-	//border-radius: 4px;
+	background: transparent;
+	margin-bottom: 20px;
+	box-shadow: none;
+	border: 1px solid darken($white, 12%);
+	background-color: $white;
+	@include clearfix;
+	padding-bottom: 0;
 	h3 {
 		margin: 0 0 15px 0;
 		padding: 0;
 	}
-	hr {
-		border: 0;
-		margin: 20px 0;
-		height: 5px;
+	h4 {
+		margin: 0;
 	}
 }
 

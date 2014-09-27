@@ -9,46 +9,43 @@
 
 <div class="container">
 
-	<div class="well flavor-form">
+	@if(Session::has('success'))
+		<div class="alert alert-success">{{Session::get('success')}}</div>
+	@endif
 
-		@if(Session::has('success'))
-			<div class="alert alert-success">{{Session::get('success')}}</div>
-		@endif
-
-		{{Form::open(['url'=>URL::route('store_flavor'), 'files'=>true])}}
-		<div class="flavor-fields">
-			<p>
-				{{$errors->first('title', '<span class="text-danger"><strong>:message</strong></span><br>')}}
-				{{Form::label('flavor_title', 'Flavor Name')}}
-				{{Form::text('flavor_title')}}
-			</p>
-			<p>
-				{{Form::label('content', 'Flavor Description')}}
-				{{Form::textarea('content', null, ['class'=>'redactor'])}}
-			</p>
-			<p>
-				{{Form::label('css_class', 'CSS Class (for display)')}}
-				{{Form::text('css_class')}}
-			</p>
-			<div>
-				<label>Image</label>
-				<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="flavor_image"><i class="icon-image"></i> Add from Media Library</a>
-				<input type="hidden" id="flavor_image" name="image" value="">
-			</div>
-		</div><!-- .flavor-fields -->
-
-		<ul class="products">
-		</ul><!-- .products -->
-
-		<a href="#" class="btn add-product">+ Add a Product Type</a>
-
-		<div class="flavor-save">
-			{{Form::submit('Save', ['class'=>'btn btn-success'])}}
+	{{Form::open(['url'=>URL::route('store_flavor'), 'files'=>true])}}
+	<div class="flavor-fields">
+		<p>
+			{{$errors->first('title', '<span class="text-danger"><strong>:message</strong></span><br>')}}
+			{{Form::label('flavor_title', 'Flavor Name')}}
+			{{Form::text('flavor_title')}}
+		</p>
+		<p>
+			{{Form::label('content', 'Flavor Description')}}
+			{{Form::textarea('content', null, ['class'=>'redactor'])}}
+		</p>
+		<p>
+			{{Form::label('css_class', 'CSS Class (for display)')}}
+			{{Form::text('css_class')}}
+		</p>
+		<div>
+			<label>Image</label>
+			<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="flavor_image"><i class="icon-image"></i> Add from Media Library</a>
+			<input type="hidden" id="flavor_image" name="image" value="">
 		</div>
+	</div><!-- .flavor-fields -->
 
-		{{Form::close()}}
+	<ul class="products">
+	</ul><!-- .products -->
 
-	</div><!-- .well -->
+	<a href="#" class="btn add-product">+ Add a Product Type</a>
+
+	<div class="flavor-save">
+		{{Form::submit('Save', ['class'=>'btn btn-success'])}}
+	</div>
+
+	{{Form::close()}}
+
 </div><!-- .container -->
 
 @stop
