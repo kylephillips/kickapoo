@@ -2,7 +2,7 @@
 @section('content')
 <div class="container small">
 
-	<h1>Add a New Page </h1>
+	<h1>Add {{$language_name}} Translation of {{$parent_page->title}}</h1>
 
 	<div class="well">
 
@@ -19,7 +19,7 @@
 		<p>
 			{{$errors->first('title', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 			{{Form::label('title', 'Page Title')}}
-			{{Form::text('title', null, ['class'=>'form-control'])}}
+			{{Form::text('title', $parent_page->title, ['class'=>'form-control'])}}
 		</p>
 
 		<p>
@@ -28,9 +28,9 @@
 				{{Form::label('slug', 'Page Link:')}}
 				<p>
 					{{URL::route('home')}}/<?php if ( isset($language) ) echo $language . '/'; ?>
-					<em></em>
+					<em>{{$parent_page->slug}}-{{$language}}</em>
 				</p>
-				{{Form::text('slug', null, ['class'=>'form-control hidden'])}}
+				{{Form::text('slug', $parent_page->slug . '-' . $language, ['class'=>'form-control hidden'])}}
 				<button class="slug-ok btn hidden">Ok</button>
 			</div>
 		</p>
@@ -45,11 +45,7 @@
 
 				<p class="half right">
 					{{Form::label('template', 'Page Template')}}
-					@if ( isset($parent_page) )
 					{{Form::select('template', $templates, $parent_page['template'])}}
-					@else
-					{{Form::select('template', $templates, 'default_page')}}
-					@endif
 				</p>
 			</div>
 		</div>
@@ -57,52 +53,67 @@
 		<p>
 			{{$errors->first('content', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 			{{Form::label('content', 'Content')}}
-			{{Form::textarea('content', null, ['class'=>'redactor'])}}
+			{{Form::textarea('content', $parent_page->content, ['class'=>'redactor'])}}
 		</p>
 
 		<h3>Custom Fields</h3>
 
-		@if(Input::old('newcustomfield'))
-			<ul class="customfields-existing">
-				<?php $c = 0; ?>
-				@foreach(Input::old('newcustomfield') as $field)
-				<div class="newfield">
-					<span class="field_count" style="display:none;">{{$c}}</span>
-					<p class="half">
-						@if($field['fieldname'] == '')
-							<span class="text-danger"><strong>The Field Name is Required</strong></span>
-						@endif
-						<label>Field Name</label>
-						<input type="text" name="newcustomfield[{{$c}}][fieldname]" value="{{$field['fieldname']}}">
-					</p>
-					<p class="half right">
-						<label for="fieldtype">Type of Field</label>
-						<select class="fieldtype" name="newcustomfield[{{$c}}][fieldtype]">
-							<option value="text" <?php if ($field['fieldtype'] == 'text') echo 'selected'; ?>>Text</option>
-							<option value="textarea" <?php if ($field['fieldtype'] == 'textarea') echo 'selected'; ?>>Textarea</option>
-							<option value="editor" <?php if ($field['fieldtype'] == 'editor') echo 'selected'; ?>>Editor</option>
-							<option value="image" <?php if ($field['fieldtype'] == 'image') echo 'selected'; ?>>Image</option>
-						</select>
-					</p>
+		@if(count($parent_page->customfields) > 0 )
+		<ul class="customfields-existing">
+			<?php $c = 0; ?>
+			@foreach($parent_page->customfields as $field)
+			<li class="customfield-existing">
+				<h4>{{$field->name}} <i class="icon-caret-down"></i></h4>
+				<section>
+					
 					<p>
-						<label>Content</label>
-						<span class="newfieldcont">
-							@if($field['fieldtype'] == 'text')
-							<input type="text" class="fieldvalue" name="newcustomfield[{{$c}}][fieldvalue]" value="{{$field['fieldvalue']}}" />
-							@elseif($field['fieldtype'] == 'textarea')
-							<textarea name="newcustomfield[{{$c}}][fieldvalue]">{{$field['fieldvalue']}}</textarea>
-							@elseif($field['fieldtype'] == 'editor')
-							<textarea name="newcustomfield[{{$c}}][fieldvalue]" class="redactor">{{$field['fieldvalue']}}</textarea>
-							@else
-							<input type="file" name="newcustomfield[{{$c}}][fieldvalue]" >
-							@endif
-						</span>
+						<label>Name</label>
+						{{Form::text('newcustomfield[' . $c . '][fieldname]', $field->name)}}
 					</p>
-					{{Form::hidden("has-custom", 'true')}}
-					<p><button class="btn cancel-new-field">Remove Field</button></div>
-				<?php $c++; ?>
-				@endforeach
-			</ul>
+					
+					@if($field->field_type == 'text')
+						<p>
+							<label>Content</label>
+							{{Form::text('newcustomfield[' . $c . '][fieldvalue]', $field->value)}}
+						</p>
+
+					@elseif($field->field_type == 'textarea')
+						<p>
+							<label>Content</label>
+							{{Form::textarea('newcustomfield[' . $c . '][fieldvalue]', $field->value)}}
+						</p>
+
+					@elseif($field->field_type == 'editor')
+						<p>
+							<label>Content</label>
+							{{Form::textarea('newcustomfield[' . $c . '][fieldvalue]', $field->value, ['class'=>'redactor'])}}
+						</p>
+
+					@else
+						<div>
+							<?php 
+							$folder = $field->image->folder;
+							$folder = substr($folder, 16);
+							$folder = rtrim($folder, '/');
+							?>
+							<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="customfield_image_{{$c}}" style="display:none;"><i class="icon-image"></i> Add from Media Library</a>
+							<input type="hidden" id="customfield_image_{{$c}}" name="newcustomfield[{{$c}}][fieldvalue]" value="{{$field->image->id}}">
+							<div class="image-preview">
+								<div class="image-thumb">
+									<button class="remove-thumb">&times;</button>
+									<img src="{{$field->image->folder}}/_thumbs/{{$field->image->file}}" />
+								</div>
+								<p class="image-name">{{$field->image->title}}</p>
+							</div>
+						</div>
+					@endif
+					{{Form::hidden('newcustomfield[' . $c . '][fieldtype]', $field->field_type)}}
+					<a href="#" class="btn btn-danger delete-field">Delete Field</a>
+				</section>
+			</li>
+			<?php $c++; ?>
+			@endforeach
+		</ul>
 		@endif
 
 
@@ -131,6 +142,11 @@
 				</p>
 			</div>
 		</div>
+
+		@if ( isset($language) )
+		{{Form::hidden('language', $language)}}
+		{{Form::hidden('parent_page', $parent_page->id)}}
+		@endif
 
 		{{Form::submit('Save Page', ['class'=>'btn btn-block btn-primary'])}}
 		{{Form::close()}}

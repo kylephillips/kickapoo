@@ -113,7 +113,7 @@ class PageController extends BaseController {
 		$language_name = Input::get('language_name');
 		$parent_page = $this->page_repo->getTranslatedPage(Input::get('parent_page'));
 
-		return View::make('admin.pages.create')
+		return View::make('admin.pages.create-translation')
 			->with('templates', $templates)
 			->with('parent_page', $parent_page)
 			->with('language', $language)
