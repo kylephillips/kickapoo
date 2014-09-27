@@ -14,13 +14,15 @@ $('.remove-thumb').on('click', function(e){
 /**
 * Apply Redactor to Textareas with appropriate class
 */
-function apply_redactor()
+function apply_redactor(item)
 {
-	$('.redactor').redactor({
+	$(item).redactor({
 		imageUpload : urls.editor_upload,
-		iframe: true,
-		minHeight: 500,
-		css: urls.editor_styles,
+		buttonSource: true,
+		toolbarFixed: true,
+		toolbarFixedTopOffset: 42,
+		plugins: ['medialibrary'],
+		buttons: ['html', 'formatting', 'bold', 'italic', 'deleted', 'unorderedlist', 'orderedlist', 'outdent', 'indent', 'link', 'alignment', 'horizontalrule'],
 		imageUploadCallback: function(image, json){
 			console.log(json);
 		},
@@ -30,7 +32,35 @@ function apply_redactor()
 	});
 }
 
+/**
+* Redactor Media Library Plugin
+*/
+if (!RedactorPlugins) var RedactorPlugins = {};
+RedactorPlugins.medialibrary = function()
+{
+	return {
+		image_html: 'TEST',
+		init: function ()
+		{
+			var button = this.button.add('media-library', 'Media Library');
+			this.button.addCallback(button, this.medialibrary.testButton);
+		},
+		testButton: function(buttonName)
+		{
+			ActiveEditor = this.medialibrary;
+			open_media_library('page_images', true);
+			//this.medialibrary.image_html = 'TESTING IMAGE';
+			//this.medialibrary.insert();
+		},
+		insert: function()
+		{
+			this.insert.html(this.medialibrary.image_html);
+			this.code.sync();
+		}
+	};
+};
 
+var ActiveEditor = {};
 
 
 /**
@@ -95,7 +125,6 @@ function custom_field_type(type, item, count)
 		break;
 
 		case 'image' :
-		//html = '<p><input type="file" name="newcustomfield[' + count + '][fieldvalue]"></p>';
 		html = '<div>';
 		html += '<a href="#" class="btn btn-success open-media-library" data-folder="page_images" data-field="customfield_image_' + count + '"><i class="icon-image"></i> Add from Media Library</a>';
 		html += '<input type="hidden" id="customfield_image_' + count + '" name="newcustomfield[' + count + '][fieldvalue]">';
@@ -103,7 +132,9 @@ function custom_field_type(type, item, count)
 		break;
 	}
 	$(item).find('.newfieldcont').html(html);
-	apply_redactor();
+	if ( type === 'editor' ){
+		apply_redactor($(item).find('textarea'));
+	}
 }
 
 /**

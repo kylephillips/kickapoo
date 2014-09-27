@@ -1,0 +1,100 @@
+//
+// Editor Styles
+// --------------------------------------------------
+.redactor-editor {
+	background-color: darken($green-dark, 4%);
+	font-size: 16px;
+	line-height: 24px;
+	color: $white;
+	font-family: "proxima-nova-n4","proxima-nova", sans-serif;
+	font-size: 16px;
+		h1, h2, h3, h4, h5, h6 {
+		font-weight: bold;
+	}
+
+	h1 {
+		font-size: 36px;
+		line-height: 38px;
+		margin: 0px 0px 10px 0px;
+	}
+	h2 {
+		font-size: 28px;
+		line-height: 30px;
+		margin: 0px 0px 10px 0px;
+		color: $yellow;
+	}
+
+	h3 {
+		font-size: 24px;
+		line-height: 26px;
+		margin: 0px 0px 8px 0px;
+		color: $yellow;
+	}
+
+	h4 {
+		@include altGothic;
+		font-size: 32px;
+		color: $yellow;
+		padding-top: 10px;
+		border: 0;
+	}
+
+	p {
+		margin: 0px 0px 20px 0px;
+		clear: none;
+	}
+
+	a {
+		color: $yellow;
+		text-decoration: none;
+		transition: all 200ms ease;
+		&:hover,
+		&:focus {
+		color: darken($yellow, 20%);
+		text-decoration: none;
+		transition: all 200ms ease;
+		}
+	}
+
+	strong {
+		font-weight: bold;
+	}
+
+	hr {
+		height: 5px;
+		border: 0;
+		background-color: $green;
+		margin: 20px 0;
+	}
+
+	.alignright {
+		float: right;
+		width: 30%;
+		margin: 0 0 20px 20px;
+	}
+
+	.alignleft {
+		float: left;
+		width: 30%;
+		margin: 0 20px 20px 0;
+	}
+} // .redactor-editor
+
+// Toolbar
+.redactor-toolbar {
+	box-shadow: none;
+	li {
+		border: 0;
+		background-color: $white;
+		&:nth-child(odd){
+			background-color: $white;
+		}
+	}
+}
+
+// Custom Media Library Button
+.re-media-library {
+	&:before {
+		content: "\e60f";
+	}
+}

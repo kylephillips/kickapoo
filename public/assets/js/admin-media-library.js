@@ -12,7 +12,7 @@ $(document).on('click', '.open-media-library', function(e){
 	var folder = $(this).data('folder');
 	var field = $(this).data('field');
 	save_selected_image_field(field);
-	open_media_library(folder);
+	open_media_library(folder, false);
 });
 
 /*
@@ -23,10 +23,13 @@ function save_selected_image_field(field)
 	$('#field-selected').val(field);
 }
 
-function open_media_library(directory)
+function open_media_library(directory, editor)
 {
 	$('#media-library').modal('show');
 	get_media_library_data(directory);
+	if ( editor ){
+		$('#media-library').addClass('is-editor');
+	}
 }
 
 
@@ -113,14 +116,21 @@ $(document).on('click', '.media-library-item', function(e){
 });
 function select_media_image(id, name, folder, item)
 {
-	// Set the hidden fields
-	var selected_field = '#' + $('#field-selected').val();
-	$(selected_field).val(id);
+	if ( !$('#media-library').hasClass('is-editor') ){
+		// Set the hidden fields
+		var selected_field = '#' + $('#field-selected').val();
+		$(selected_field).val(id);
 
-	$(selected_field).removeAttr('data-name');
-	$(selected_field).attr('data-name', name);
-	$(selected_field).removeAttr('data-folder');
-	$(selected_field).attr('data-folder', folder)
+		$(selected_field).removeAttr('data-name');
+		$(selected_field).attr('data-name', name);
+		$(selected_field).removeAttr('data-folder');
+		$(selected_field).attr('data-folder', folder)
+	}
+
+	// Editor 
+	$('#media-library').removeAttr('data-editor');
+	$('#media-library').attr('data-editor', folder + name);
+	
 	$('.ml-chosen-image').text(name);
 
 	$('.media-library-item').removeClass('selected');
@@ -128,6 +138,17 @@ function select_media_image(id, name, folder, item)
 		$(item).addClass('selected');
 	}
 	$('.choose-media').prop('disabled', '');
+}
+
+/**
+* Insert the selected image into the editor
+*/
+function insert_editor_image()
+{
+	var selected = $('#media-library').attr('data-editor');
+	ActiveEditor.image_html = '<img src="' + selected + '">';
+	ActiveEditor.insert();
+	console.log(ActiveEditor);
 }
 
 /**
@@ -139,20 +160,27 @@ $(document).on('click', '.choose-media', function(e){
 });
 function update_image_preview()
 {
-	var selected_field = '#' + $('#field-selected').val();
-	var selected_field_cont = $(selected_field).parent('div');
+	if ( !$('#media-library').hasClass('is-editor') ){
+		var selected_field = '#' + $('#field-selected').val();
+		var selected_field_cont = $(selected_field).parent('div');
 
-	var folder = $(selected_field).attr('data-folder');
-	var file = $(selected_field).attr('data-name');
+		var folder = $(selected_field).attr('data-folder');
+		var file = $(selected_field).attr('data-name');
 
-	var html = '<div class="image-preview">';
-	html += '<div class="image-thumb"><button class="remove-ml-thumb">&times;</button>';
-	html += '<img src="' + folder + '/_thumbs/' + file + '" /></div>';
-	html += '<p class="image-name">' + file + '</p></div>';
+		var html = '<div class="image-preview">';
+		html += '<div class="image-thumb"><button class="remove-ml-thumb">&times;</button>';
+		html += '<img src="' + folder + '/_thumbs/' + file + '" /></div>';
+		html += '<p class="image-name">' + file + '</p></div>';
 
-	$(selected_field_cont).find('.open-media-library').hide();
-	$(selected_field_cont).append(html);
-	$('#media-library').modal('hide');
+		$(selected_field_cont).find('.open-media-library').hide();
+		$(selected_field_cont).append(html);
+
+		$('#media-library').modal('hide');
+	} else {
+		insert_editor_image();
+		$('#media-library').modal('hide');
+		$('#media-library').removeAttr('data-editor');
+	}
 }
 
 
@@ -165,6 +193,7 @@ $(document).on('click', '.remove-ml-thumb, .cancel-media, .open-media-library', 
 });
 function remove_selected_image()
 {
+	$('#media-library').removeClass('is-editor');
 	var selected_field = '#' + $('#field-selected').val();
 	var selected_field_cont = $(selected_field).parent('div');
 	$(selected_field_cont).find('.image-preview').remove();

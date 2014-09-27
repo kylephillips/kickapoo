@@ -249,21 +249,8 @@ $(document).on('click', '.flavor h4', function(){
 });
 
 
-function apply_redactor()
-{
-	$('.redactor').redactor({
-		imageUpload : '{{URL::route("editor_upload")}}',
-		imageUploadCallback: function(image, json){
-			console.log(json);
-		},
-		imageUploadErrorCallback: function(json){
-			console.log(json.error);
-		}
-	});
-}
-
 $(document).ready(function(){
-	apply_redactor();
+	apply_redactor('.redactor');
 });
 </script>
 @stop

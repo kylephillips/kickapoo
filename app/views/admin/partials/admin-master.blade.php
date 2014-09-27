@@ -8,8 +8,8 @@
 	<link rel="icon" href="/favicon.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	
-	<link rel="stylesheet" href="{{URL::asset('assets/css/admin/admin-styles.css')}}">
 	<link rel="stylesheet" href="{{URL::asset('assets/css/admin/redactor.css')}}">
+	<link rel="stylesheet" href="{{URL::asset('assets/css/admin/admin-styles.css')}}">
 
 	<!--[if IE 8]>
 		<link rel="stylesheet" type="text/css" href="/assets/css/ie8.css" />

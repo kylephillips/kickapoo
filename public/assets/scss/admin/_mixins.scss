@@ -38,27 +38,16 @@
 .pull-right {
   float:right;
 }
-
-@mixin hooligan {
-    font-family: "hooligan",sans-serif;
-    font-style: normal;
-    font-weight: 400;
-}
-
-@mixin bello {
-  font-family: "bello-caps",cursive;
-  font-style: normal;
-  font-weight: 400;
-}
-
 @mixin proxima {
-  font-family: "proxima-nova",sans-serif;
-  font-style: normal;
-  font-weight: 400;
+  font-family: "proxima-nova-n4","proxima-nova", sans-serif;
 }
 
-@mixin script {
-  font-family: "corner-store",sans-serif;
+@mixin thirsty {
+  font-family: 'thirsty', 'proxima-nova', sans-serif;
+}
+
+@mixin altGothic {
+  font-family: "alternate-gothic-no-2-d",sans-serif;
   font-style: normal;
   font-weight: 400;
 }

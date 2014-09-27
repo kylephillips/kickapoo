@@ -7,9 +7,7 @@ html {
 body {
   background-color: #f0f0f0;
   height: 100%;
-  font-family: "proxima-nova", sans-serif;
-  font-style: normal;
-  font-weight: 400;
+  font-family: "proxima-nova-n4", "proxima-nova", sans-serif;
   font-size: 16px;
   margin: 0; }
 
@@ -72,9 +70,7 @@ h1 {
   font-weight: bold;
   -webkit-font-smoothing: antialiased; }
   h1 .btn, h1 .dz-message p span, .dz-message p h1 span {
-    font-family: "proxima-nova", sans-serif;
-    font-style: normal;
-    font-weight: 400; }
+    font-family: "proxima-nova-n4", "proxima-nova", sans-serif; }
   h1 span {
     font-size: 16px;
     font-weight: normal;
@@ -2066,3 +2062,77 @@ table {
       clear: both; }
     .sizes-table li:first-child {
       border: 0; }
+
+.redactor-editor {
+  background-color: #005c23;
+  font-size: 16px;
+  line-height: 24px;
+  color: #ffffff;
+  font-family: "proxima-nova-n4", "proxima-nova", sans-serif;
+  font-size: 16px; }
+  .redactor-editor h1, .redactor-editor h2, .redactor-editor h3, .redactor-editor h4, .redactor-editor h5, .redactor-editor h6 {
+    font-weight: bold; }
+  .redactor-editor h1 {
+    font-size: 36px;
+    line-height: 38px;
+    margin: 0px 0px 10px 0px; }
+  .redactor-editor h2 {
+    font-size: 28px;
+    line-height: 30px;
+    margin: 0px 0px 10px 0px;
+    color: #fff200; }
+  .redactor-editor h3 {
+    font-size: 24px;
+    line-height: 26px;
+    margin: 0px 0px 8px 0px;
+    color: #fff200; }
+  .redactor-editor h4 {
+    font-family: "alternate-gothic-no-2-d", sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
+    color: #fff200;
+    padding-top: 10px;
+    border: 0; }
+  .redactor-editor p {
+    margin: 0px 0px 20px 0px;
+    clear: none; }
+  .redactor-editor a {
+    color: #fff200;
+    text-decoration: none;
+    -webkit-transition: all 200ms ease;
+         -o-transition: all 200ms ease;
+            transition: all 200ms ease; }
+    .redactor-editor a:hover, .redactor-editor a:focus {
+      color: #998f00;
+      text-decoration: none;
+      -webkit-transition: all 200ms ease;
+           -o-transition: all 200ms ease;
+              transition: all 200ms ease; }
+  .redactor-editor strong {
+    font-weight: bold; }
+  .redactor-editor hr {
+    height: 5px;
+    border: 0;
+    background-color: #00a950;
+    margin: 20px 0; }
+  .redactor-editor .alignright {
+    float: right;
+    width: 30%;
+    margin: 0 0 20px 20px; }
+  .redactor-editor .alignleft {
+    float: left;
+    width: 30%;
+    margin: 0 20px 20px 0; }
+
+.redactor-toolbar {
+  -webkit-box-shadow: none;
+          box-shadow: none; }
+  .redactor-toolbar li {
+    border: 0;
+    background-color: #ffffff; }
+    .redactor-toolbar li:nth-child(odd) {
+      background-color: #ffffff; }
+
+.re-media-library:before {
+  content: "\e60f"; }
