@@ -3,7 +3,6 @@
 // --------------------------------------------------
 .searchterm {
 	background-color: darken($white, 15%);
-	//background-color: rgba(darken($green-dark, 5%), .8);
 	border-radius: 3px;
 	padding: 8px;
 	margin-bottom: 30px;
@@ -17,11 +16,9 @@
 			position: relative;
 			box-sizing: border-box;
 			border-radius: 2px;
-			//padding: 3px;
 			float: left;
 			width: 49%;
 			font-size: 18px;
-			//background-color: darken($green-lighter, 5%);
 			&:nth-child(even){
 				float: right;
 			}

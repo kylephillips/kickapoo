@@ -1,0 +1,23 @@
+//
+// Page Head
+// --------------------------------------------------
+.page-head {
+	background-color: darken($white, 10%);
+	border-bottom: 1px solid darken($white, 15%);
+	box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, .75);
+	padding: 20px 0;
+	&.margin {
+		margin-bottom: 20px;
+	}
+	h1 {
+		margin: 0;
+	}
+	select {
+		float: right;
+		width: 50%;
+		max-width: 200px;
+		margin-top: -35px;
+		background-color: darken($white, 20%);
+		border: 0;
+	}
+}

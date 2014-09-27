@@ -1,0 +1,12 @@
+//
+// Utility Classes
+// --------------------------------------------------
+.clearfix {
+	@include clearfix;
+}
+.pull-right {
+	float: right;
+}
+.sr-only {
+	display: none;
+}

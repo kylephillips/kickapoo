@@ -1,0 +1,29 @@
+//
+// Typography
+// --------------------------------------------------
+
+h1 {
+	color: darken($white, 70%);
+	font-size: 30px;
+	font-weight:bold;
+	-webkit-font-smoothing: antialiased;
+	.btn {
+		@include proxima;
+	}
+	span {
+		font-size: 16px;
+		font-weight: normal;
+		margin-top: 15px;
+		.btn {
+			margin-top: -20px;
+		}
+	}
+}
+
+hr {
+	border: 0;
+	margin: 20px 0;
+	height: 3px;
+	background-color: darken($white, 15%);
+	clear: both;
+}

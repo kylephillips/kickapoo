@@ -6,11 +6,11 @@
 	background-color: $white;
 	li {
 		padding: 8px;
+		font-size: 16px;
 		@include clearfix();
 		&:nth-child(even){
 			background-color: darken($white, 8%);
 		}
-		font-size: 16px;
 		i {
 			color: $green-dark;
 			font-size: 22px;

@@ -1,10 +1,15 @@
+// Required Imports
 @import "_variables.scss";
 @import "_mixins.scss";
+@import "_utilities.scss";
 
 // Global Styles
 @import "_scaffolding.scss";
-@import "_navbar.scss";
+@import "_typography.scss";
+
+// Modular Elements
 @import "_buttons.scss";
+@import "_icons.scss";
 @import "_alerts.scss";
 @import "_modals.scss";
 @import "_media-library.scss";
@@ -12,16 +17,19 @@
 @import "_wells.scss";
 @import "_pagination.scss";
 @import "_dropdowns.scss";
-@import "_footer.scss";
-@import "_icons.scss";
-@import "_flash-message.scss";
 @import "_tables.scss";
-//@import "_dropzone.scss";
+
+// Navigation
+@import "_navbar.scss";
+
+// Partials
+@import "_footer.scss";
+@import "_page-head.scss";
 
 // Page Specific Styles
 @import "_login.scss";
 @import "_user.scss";
-@import "_searchform.scss";
+@import "_posts-search.scss";
 @import "_posts.scss";
 @import "_trash.scss";
 @import "_banned.scss";
