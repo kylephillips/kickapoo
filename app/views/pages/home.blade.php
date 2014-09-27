@@ -14,8 +14,17 @@
 	@endif
 </section>
 
+@if( $page->get_field('Can One', $page->id) )
+<img src="{{URL::asset( $page->get_field('Can One', $page->id) )}}" class="home-green-can" alt="Kickapoo Joy Juice Slim Can" />
+@else
 <img src="{{URL::asset('assets/images/kickapoo-joy-juice-can.png')}}" class="home-green-can" alt="Kickapoo Joy Juice Slim Can" />
+@endif
+
+@if( $page->get_field('Can Two', $page->id) )
+<img src="{{URL::asset( $page->get_field('Can Two', $page->id) )}}" class="home-red-can" alt="Kickapoo Fruit Shine Slim Can" />
+@else
 <img src="{{URL::asset('assets/images/kickapoo-fruit-shine-can.png')}}" class="home-red-can" alt="Kickapoo Fruit Shine Slim Can" />
+@endif
 
 <img src="{{URL::asset('assets/images/home-yellowbubbles-left.png')}}" class="left-bubbles" alt="Yellow Bubbles" aria-hidden="true" />
 <img src="{{URL::asset('assets/images/home-yellowbubbles-right.png')}}" class="right-bubbles" alt="Yellow Bubbles" aria-hidden="true" />
