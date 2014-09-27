@@ -21,3 +21,23 @@
 		border: 0;
 	}
 }
+
+@media (max-width: 767px)
+{
+	.page-head {
+		padding: 10px 20px;
+		.container {
+			padding: 0;
+		}
+		select {
+			float: none;
+			width: 100%;
+			max-width: none;
+			margin-top: 5px;
+		}
+		.pull-right {
+			float: none;
+			display: block;
+		}
+	}
+}

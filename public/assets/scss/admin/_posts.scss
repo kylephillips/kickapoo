@@ -59,7 +59,6 @@
 
 // Filter Menus
 .post-filters {
-	//background-color: darken($white, 8%);
 	margin-bottom: 20px;
 	ul {
 		@include unstyled();
@@ -393,4 +392,53 @@
 			} // a
 		} // li
 	} // status
+
+	.single-form {
+		.buttons {
+			float: none;
+			width: 100%;
+			margin-bottom: 10px;
+		}
+		.inputs {
+			clear: both;
+			padding-top: 10px;
+			float: none;
+			width: 100%;
+			input[type='text']{
+				float: none;
+				width: 100%;
+				margin-bottom: 10px;
+			}
+			button {
+				clear: both;
+				float: none;
+				width: 100%;
+			}
+		}
+	} // .single-form
+
+	.post-filters {
+		margin-bottom: 20px;
+		ul {
+			padding: 0px;
+			li {
+				box-sizing: border-box;
+				float: none;
+				width: 100%;
+				padding: 0;
+				margin-top: 10px;
+				&:first-child {
+					float: none;
+				}
+				ul {
+					left: 10px;
+					box-sizing: border-box;
+					width: 90%;
+					li {
+						margin: 0;
+					}
+				}
+			}
+		} //u l
+	} // .post-filters
 }

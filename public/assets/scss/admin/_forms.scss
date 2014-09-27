@@ -87,19 +87,6 @@ select {
 
 
 form {
-	.well {
-		box-shadow: none;
-		border: 1px solid darken($white, 12%);
-		background-color: $white;
-		//padding: 15px;
-		@include clearfix;
-		padding-bottom: 0;
-	}
-	h4 {
-		padding: 8px;
-		border-bottom: 1px solid darken($white, 12%);
-		margin: 0;
-	}
 	p {
 		clear: both;
 	}
@@ -232,5 +219,31 @@ form {
 	}
 }
 
+@media (max-width: 767px)
+{
+	.form-group.half {
+		float: none;
+		width: 100%;
+	}
 
+	form {
+		p.half {
+			float: none;
+			width: 100%;
+			&.right {
+				float: none;
+				clear: none;
+			}
+		}
+		p.third {
+			float: none;
+			width: 100%;
+			margin: 10px 0 0 0;
+			clear: both;
+			&.last {
+				float: none;
+			}
+		}
+	} // form
+}
 

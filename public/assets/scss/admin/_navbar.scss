@@ -97,14 +97,17 @@
 .admin-nav-toggle {
 	display: none;
 	float: right;
-	background-color: $green-dark;
+	background-color: darken($white, 70%);
 	color: $white;
 	padding: 5px 10px;
 	border-radius: 3px;
 	margin: 8px 8px 0px 0px;
+	&:hover {
+		color: $white;
+	}
 	&.active {
 		background-color: $white;
-		color: $green-dark;
+		color: $black;
 	}
 }
 
@@ -140,11 +143,11 @@
 					margin-top: 20px;
 				}
 				a {
-					background-color: $green-dark;
+					background-color: darken($white, 80%);
 					color: $white;
 					display: block;
 					padding: 2px 8px;
-					border-top: 1px solid darken($green-dark, 8%);
+					border-top: 1px solid darken($white, 90%);
 				}
 				.dropdown-menu {
 					margin: 0;
@@ -159,11 +162,11 @@
 					li a {
 						display: block;
 						padding: 8px;
-						background-color: darken($green-dark, 8%);
-						border-color: darken($green-dark, 12%);
+						background-color: darken($white, 70%);
+						border-color: darken($white, 80%);
 						color: $white;
 						&:hover {
-							background-color: $green;
+							background-color: $black;
 						}
 					}
 				}

@@ -20,10 +20,21 @@ h1 {
 	}
 }
 
+h4 {
+	margin: 0;
+}
+
 hr {
 	border: 0;
 	margin: 20px 0;
 	height: 3px;
 	background-color: darken($white, 15%);
 	clear: both;
+}
+
+@media (max-width: 767px)
+{
+	h1 {
+		font-size: 22px;
+	}
 }

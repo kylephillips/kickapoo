@@ -53,6 +53,10 @@ a {
 img {
   max-width: 100%; }
 
+@media (max-width: 767px) {
+  .container {
+    padding: 0 20px; } }
+
 h1 {
   color: #4d4d4d;
   font-size: 30px;
@@ -67,12 +71,19 @@ h1 {
     h1 span .btn, h1 span .dz-message p span, .dz-message p h1 span span {
       margin-top: -20px; }
 
+h4 {
+  margin: 0; }
+
 hr {
   border: 0;
   margin: 20px 0;
   height: 3px;
   background-color: #d9d9d9;
   clear: both; }
+
+@media (max-width: 767px) {
+  h1 {
+    font-size: 22px; } }
 
 .btn-primary {
   background-color: #31708f;
@@ -660,6 +671,30 @@ hr {
       background: transparent;
       background-color: #f0f0f0; }
 
+@media (max-width: 767px) {
+  .modal.media .modal-dialog {
+    height: auto;
+    overflow: auto; }
+  .modal.media .modal-body {
+    max-height: 200px; }
+  .modal.media select {
+    width: 100%;
+    float: none; }
+  .modal.media .ml-chosen-image {
+    display: none; }
+  .media-library-tabs li {
+    float: left;
+    position: relative;
+    height: 35px; }
+    .media-library-tabs li a {
+      font-size: 15px;
+      line-height: 35px;
+      height: 35px;
+      padding: 0 10px; }
+  .media-library-list li {
+    float: left;
+    width: 50%; } }
+
 .form-group.half {
   float: left;
   width: 48%; }
@@ -738,24 +773,6 @@ select {
   select:focus {
     outline: none; }
 
-form .well {
-  -webkit-box-shadow: none;
-          box-shadow: none;
-  border: 1px solid #e0e0e0;
-  background-color: #ffffff;
-  zoom: 1;
-  padding-bottom: 0; }
-  form .well:before, form .well:after {
-    content: " ";
-    /* 1 */
-    display: table;
-    /* 2 */ }
-  form .well:after {
-    clear: both; }
-form h4 {
-  padding: 8px;
-  border-bottom: 1px solid #e0e0e0;
-  margin: 0; }
 form p {
   clear: both; }
 form p.half {
@@ -867,6 +884,24 @@ form .slug {
     line-height: 20px;
     float: right; }
 
+@media (max-width: 767px) {
+  .form-group.half {
+    float: none;
+    width: 100%; }
+  form p.half {
+    float: none;
+    width: 100%; }
+    form p.half.right {
+      float: none;
+      clear: none; }
+  form p.third {
+    float: none;
+    width: 100%;
+    margin: 10px 0 0 0;
+    clear: both; }
+    form p.third.last {
+      float: none; } }
+
 .well {
   background: transparent;
   margin-bottom: 20px;
@@ -887,6 +922,8 @@ form .slug {
     margin: 0 0 15px 0;
     padding: 0; }
   .well h4 {
+    padding: 8px;
+    border-bottom: 1px solid #e0e0e0;
     margin: 0; }
 
 .well-interior {
@@ -1183,15 +1220,17 @@ table {
 .admin-nav-toggle {
   display: none;
   float: right;
-  background-color: #00702c;
+  background-color: #4d4d4d;
   color: #ffffff;
   padding: 5px 10px;
   -webkit-border-radius: 3px;
           border-radius: 3px;
   margin: 8px 8px 0px 0px; }
+  .admin-nav-toggle:hover {
+    color: #ffffff; }
   .admin-nav-toggle.active {
     background-color: #ffffff;
-    color: #00702c; }
+    color: #000000; }
 
 @media (min-width: 768px) {
   .navbar ul.nav {
@@ -1225,11 +1264,11 @@ table {
           float: right;
           margin-top: 20px; }
         .navbar ul.nav li a {
-          background-color: #00702c;
+          background-color: #333333;
           color: #ffffff;
           display: block;
           padding: 2px 8px;
-          border-top: 1px solid #00471b; }
+          border-top: 1px solid #1a1a1a; }
         .navbar ul.nav li .dropdown-menu {
           margin: 0;
           padding: 0;
@@ -1244,11 +1283,11 @@ table {
           .navbar ul.nav li .dropdown-menu li a {
             display: block;
             padding: 8px;
-            background-color: #00471b;
-            border-color: #003313;
+            background-color: #4d4d4d;
+            border-color: #333333;
             color: #ffffff; }
             .navbar ul.nav li .dropdown-menu li a:hover {
-              background-color: #00a950; }
+              background-color: #000000; }
     .navbar ul.navbar-right {
       float: none; }
       .navbar ul.navbar-right .dropdown-menu {
@@ -1293,6 +1332,20 @@ footer.admin {
     margin-top: -35px;
     background-color: #cccccc;
     border: 0; }
+
+@media (max-width: 767px) {
+  .page-head {
+    padding: 10px 20px; }
+    .page-head .container {
+      padding: 0; }
+    .page-head select {
+      float: none;
+      width: 100%;
+      max-width: none;
+      margin-top: 5px; }
+    .page-head .pull-right {
+      float: none;
+      display: block; } }
 
 .login {
   padding-top: 50px;
@@ -1794,7 +1847,46 @@ footer.admin {
                   border-radius: 0; }
       .status ul li:first-child a {
         -webkit-border-radius: 0;
-                border-radius: 0; } }
+                border-radius: 0; }
+  .single-form .buttons {
+    float: none;
+    width: 100%;
+    margin-bottom: 10px; }
+  .single-form .inputs {
+    clear: both;
+    padding-top: 10px;
+    float: none;
+    width: 100%; }
+    .single-form .inputs input[type='text'] {
+      float: none;
+      width: 100%;
+      margin-bottom: 10px; }
+    .single-form .inputs button {
+      clear: both;
+      float: none;
+      width: 100%; }
+  .post-filters {
+    margin-bottom: 20px; }
+    .post-filters ul {
+      padding: 0px; }
+      .post-filters ul li {
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+        float: none;
+        width: 100%;
+        padding: 0;
+        margin-top: 10px; }
+        .post-filters ul li:first-child {
+          float: none; }
+        .post-filters ul li ul {
+          left: 10px;
+          -webkit-box-sizing: border-box;
+             -moz-box-sizing: border-box;
+                  box-sizing: border-box;
+          width: 90%; }
+          .post-filters ul li ul li {
+            margin: 0; } }
 
 #trash-loading {
   margin-top: -6px;
