@@ -6,12 +6,18 @@ var autoprefix = require('gulp-autoprefixer');
 var livereload = require('gulp-livereload');
 var notify = require('gulp-notify');
 var plumber = require('gulp-plumber');
+var jshint = require('gulp-jshint');
+var concat = require('gulp-concat');
+var uglify = require('gulp-uglify');
 
 // Paths
 var adminScss = 'public/assets/scss/admin/**/*';
 var adminCss = 'public/assets/css/admin/';
 var scss = 'public/assets/scss/*';
 var css = 'public/assets/css/';
+
+var js_source = 'public/assets/js/source/*';
+var js_front_end = 'public/assets/js';
 
 /**
 * Smush the admin Styles and output
@@ -24,6 +30,17 @@ gulp.task('admin_sass', function(){
 		.pipe(plumber())
 		.pipe(livereload())
 		.pipe(notify('Admin styles compiled & compressed.'));
+});
+
+/**
+* Smush the front end js plugins and output
+*/
+gulp.task('js', function(){
+	return gulp.src(js_source)
+		.pipe(concat('plugins.min.js'))
+		.pipe(gulp.dest(js_front_end))
+		.pipe(uglify())
+		.pipe(gulp.dest(js_front_end))
 });
 
 /**
@@ -51,4 +68,4 @@ gulp.task('watch', function(){
 /**
 * Default
 */
-gulp.task('default', ['admin_sass', 'sass', 'watch']);
+gulp.task('default', ['admin_sass', 'sass', 'js', 'watch']);
