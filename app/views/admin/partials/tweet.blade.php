@@ -6,15 +6,13 @@
 		<div class="main">
 			<ul class="info">
 				<li><a href="https://twitter.com/{{$post['screen_name']}}/status/{{$post['twitter_id']}}" target="_blank"><i class="icon-twitter"></i></a></li>
-				<li>{{$post['retweet_count']}} <i class="icon-loop"></i></li>
-				<li>{{$post['favorite_count']}} <i class="icon-star"></i></li>
 			</ul>
 			<strong><a href="http://twitter.com/{{$post['screen_name']}}" target="_blank">{{$post['screen_name']}}</a></strong>
 			&nbsp;&nbsp;|&nbsp;&nbsp;
 			@if($post['banned'])
 				<span class="ban-user banned">Banned</span>
 			@else
-				<a href="#" class="ban-user" data-user="{{$post['screen_name']}}" data-type="twitter" data-id="{{$post['twitter_id']}}">Ban this User</a>
+				<a href="#" class="ban-user" data-user="{{$post['screen_name']}}" data-type="twitter" data-id="{{$post['twitter_id']}}">Ban</a>
 			@endif
 			<span class="date">{{$date}}</span>
 			<p>{{$post['text']}}</p>
@@ -24,7 +22,6 @@
 			</div>
 			@endif
 		</div><!-- .main -->
-	</div><!-- .content -->
 
 	@if(isset($trash))
 		
@@ -40,7 +37,7 @@
 		@if($post['approved'] == 1)
 		<div class="status-approved">
 			<p><i class="icon-checkmark"></i> 
-				Approved {{$postdate}} by {{$postdate}} by {{$post['post']['user']['first_name']}} {{$post['post']['user']['last_name']}}
+				Approved {{$postdate}} by {{$post['post']['user']['last_name']}}
 			</p>
 			<a href="#" class="remove-approved" data-id="{{$post['twitter_id']}}" data-type="{{$post_type}}" data-postid="{{$post['post']['id']}}">Unapprove and Trash</a>
 		</div>
@@ -54,4 +51,5 @@
 		@endif
 
 	@endif
+	</div><!-- .content -->
 </li>

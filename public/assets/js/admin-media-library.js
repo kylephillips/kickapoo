@@ -5,6 +5,18 @@
 */
 
 /**
+* Remove an Image Thumbnail
+*/
+$('.remove-thumb').on('click', function(e){
+	e.preventDefault();
+	var thumb = $(this).parents('.image-thumb');
+	$(thumb).siblings('.image-name').hide();
+	var input = $(thumb).parent('.image-preview').siblings('.open-media-library');
+	$(thumb).hide();
+	$(input).show();
+});
+
+/**
 * Open the library window
 */
 $(document).on('click', '.open-media-library', function(e){

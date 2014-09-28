@@ -3,19 +3,22 @@
 		<div class="avatar">
 			<img src="{{$post['profile_image']}}" alt="user icon">
 		</div>
+		
 		<div class="main">
 			<ul class="info">
 				<li><a href="{{$post['link']}}" target="_blank"><i class="icon-instagram"></i></a></li>
-				<li>{{$post['like_count']}} <i class="icon-heart"></i></li>
 			</ul>
 			<strong><a href="http://instagram.com/{{$post['screen_name']}}" target="_blank">{{$post['screen_name']}}</a></strong>
-			&nbsp;&nbsp;|&nbsp;&nbsp;
+			&nbsp;|&nbsp;
 			@if($post['banned'])
 				<span class="ban-user banned">Banned</span>
 			@else
-				<a href="#" class="ban-user" data-user="{{$post['screen_name']}}" data-type="instagram" data-id="{{$post['instagram_id']}}">Ban this User</a>
+				<a href="#" class="ban-user" data-user="{{$post['screen_name']}}" data-type="instagram" data-id="{{$post['instagram_id']}}">Ban</a>
 			@endif
 			<span class="date">{{$date}}</span>
+		</div>
+
+		<div class="post-content">
 			@if($post['text'])<p>{{$post['text']}}</p>@endif
 			@if($post['type'] == 'image')
 			<div class="image">
@@ -55,4 +58,4 @@
 			
 		@endif
 	</div><!-- .content -->
-	</li>
+</li>

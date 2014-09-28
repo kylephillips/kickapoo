@@ -20,11 +20,10 @@
 	}
 }
 
-.alert-import {
-	padding: 15px 8px 8px 8px;
-	.import-buttons {
-		margin-top: -7px;
-	}
+.alert-gray {
+	background-color: darken($white, 8%);
+	color: $black;
+	border-color: darken($white, 20%);
 }
 
 .alert-danger {

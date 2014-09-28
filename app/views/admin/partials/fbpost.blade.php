@@ -56,7 +56,6 @@
 			</div>
 			@endif
 		</div>
-	</div><!-- .content -->
 
 	@if(isset($trash))
 
@@ -85,4 +84,5 @@
 		@endif
 
 	@endif
+	</div><!-- .content -->
 </li>

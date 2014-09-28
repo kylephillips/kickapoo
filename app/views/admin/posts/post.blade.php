@@ -1,15 +1,34 @@
 @extends('admin.partials.admin-master')
 @section('content')
 
-<section class="page-head margin">
-	<div class="container">
-		<h1>Social Posts</h1>
-	</div>
-</section>
+<section class="panel-side">
 
-	<div class="container">
-		
-		{{Form::open(['url'=>URL::route('update_search'), 'class'=>'searchterm'])}}
+	<!-- Last Import -->
+	<div class="alert alert-gray">
+		Last Import: 
+		@if(isset($last_import['date']))
+			{{$last_import['count']}} items on {{$last_import['date']}}
+		@else
+			{{$last_import}}
+		@endif
+		&ndash; <strong><span id="pending_count">{{$pending_count}}</span> awaiting moderation</strong>
+	</div>
+
+	<!-- Manual Import -->
+	<div class="alert alert-info" id="import-alert" style="display:none;"></div>
+	<div class="import-buttons run-import">
+		<span class="text">
+			<i class="icon-loop2"></i> Run Import
+		</span>
+		<span id="import-loading">
+			<img src="{{URL::asset('assets/images/loading-black.gif')}}" alt="loading" />
+		</span>
+	</div>
+	
+	<!-- Social Search Terms -->
+	<div class="social-search-terms">
+		<h4>Search Term <i class="icon-caret-down"></i></h4>
+		{{Form::open(['url'=>URL::route('update_search'), 'class'=>'search-term-form'])}}
 			@if(Session::has('errors'))
 				<div class="alert alert-danger">{{Session::get('errors')->first()}}</div>
 			@endif
@@ -28,85 +47,65 @@
 			</ul>
 			{{Form::submit('Save', ['class'=>'btn btn-small btn-primary'])}}
 		{{Form::close()}}
+	</div><!-- social-search-terms -->
 
-		<div class="alert alert-info alert-import">
-			Last Import: 
-			@if(isset($last_import['date']))
-				{{$last_import['count']}} items on {{$last_import['date']}}
-			@else
-				{{$last_import}}
-			@endif
-			<span class="pull-right import-buttons">
-				<span id="import-loading">
-					<img src="{{URL::asset('assets/images/loading-small-blue.gif')}}" alt="loading" />
-				</span>
-				<button class="btn btn-mini btn-default run-import">
-					<i class="icon-loop2"></i> Run Import
-				</button>
-				<button class="btn btn-mini btn-default import-single-toggle">
-					<i class="icon-box-add"></i> Import Single
-				</button>
-				<a href="{{URL::route('post_trash')}}" class="btn btn-mini btn-default trash-toggle">
-					<i class="icon-remove"></i> Trash
-				</a>
-			</span>
-		</div>
-
-		<div class="alert alert-info" id="import-alert" style="display:none;"></div>
-
-		<!-- Single Import Form -->
-		<div class="single-form">
+	<!-- Single Import Form -->
+	<div class="single-form">
+		<h4>Import Single <i class="icon-caret-down"></i></h4>
+		
+		{{Form::open(['url'=>''])}}
 			<div id="single-error" class="alert alert-danger" style="display:none;"></div>
 			<div id="single-success" class="alert alert-success" style="display:none;"></div>
-			
-			{{Form::open(['url'=>''])}}
-				<span class="buttons">
-					<select name="social-type">
-						<option value="twitter">Twitter</option>
-						<option value="instagram">Instagram</option>
-					</select>
-					<a href="#twitterhelp" class="btn btn-default help-btn" data-toggle="modal"><strong>?</strong></a>
-				</span>
-				<div class="inputs">
-					{{Form::text('id', null, ['class'=>'social-id', 'placeholder'=>'Tweet ID'])}}
-					<input type="hidden" id="import-type" value="twitter" />
-					<button id="single-submit" class="btn btn-mini btn-default import-single">Import</button>
-				</div>
-			{{Form::close()}}
-		</div><!-- .single-form -->
 
-	</div><!-- .container -->
+			<div class="buttons">
+				<select name="social-type">
+					<option value="twitter">Twitter</option>
+					<option value="instagram">Instagram</option>
+				</select>
+				<a href="#twitterhelp" class="btn btn-default help-btn" data-toggle="modal"><strong>?</strong></a>
+			</div>
+			<div class="inputs">
+				{{Form::text('id', null, ['class'=>'social-id', 'placeholder'=>'Tweet ID'])}}
+				<input type="hidden" id="import-type" value="twitter" />
+				<button id="single-submit" class="btn btn-mini btn-default import-single">Import</button>
+			</div>
+		{{Form::close()}}
+	</div><!-- .single-form -->
+
+	<!-- Post Filters -->
+	<div class="post-filters">
+		<p>Filter Posts</p>
+		<ul class="filter">
+			<li class="dropdown">
+				<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+					Type: <em>{{$type}}</em> <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="{{$type_link}}&type=all" class="filter-type">All</a></li>
+					<li><a href="{{$type_link}}&type=twitter" class="filter-type">Twitter</a></li>
+					<li><a href="{{$type_link}}&type=instagram" class="filter-type">Instagram</a></li>
+					<li><a href="{{$type_link}}&type=facebook" class="filter-type">Facebook</a></li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" data-toggle="dropdown" class="dropdown-toggle">
+					Status: <em>{{$status}}</em> <span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="{{$status_link}}&status=all" class="filter-type">All</a></li>
+					<li><a href="{{$status_link}}&status=unmoderated" class="filter-type">Unmoderated</a></li>
+					<li><a href="{{$status_link}}&status=approved" class="filter-type">Approved</a></li>
+				</ul>
+			</li>
+		</ul>
+	</div><!-- post-filters -->
+
+</section><!-- .panel-side -->
+
+<section class="panel-body">
 
 	<!-- Post Feed -->
-	<div class="container admin-posts">
-
-		<h3>Posts <em>(<span id="pending_count">{{$pending_count}}</span> awaiting moderation)</em></h3>
-
-		<div class="post-filters">
-			<ul class="filter">
-				<li class="dropdown">
-					<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-						Type: <em>{{$type}}</em> <span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="{{$type_link}}&type=all" class="filter-type">All</a></li>
-						<li><a href="{{$type_link}}&type=twitter" class="filter-type">Twitter</a></li>
-						<li><a href="{{$type_link}}&type=instagram" class="filter-type">Instagram</a></li>
-						<li><a href="{{$type_link}}&type=facebook" class="filter-type">Facebook</a></li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a href="#" data-toggle="dropdown" class="dropdown-toggle">
-						Status: <em>{{$status}}</em> <span class="caret"></span>
-					</a>
-					<ul class="dropdown-menu">
-						<li><a href="{{$status_link}}&status=all" class="filter-type">All</a></li>
-						<li><a href="{{$status_link}}&status=unmoderated" class="filter-type">Unmoderated</a></li>
-						<li><a href="{{$status_link}}&status=approved" class="filter-type">Approved</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div><!-- post-filters -->
+	<div class="admin-posts">
 
 		@if(count($posts) < 1)
 		<div class="alert alert-danger">No Posts Found.</div>
@@ -137,59 +136,37 @@
 		{{$posts->links()}}
 
 		</div><!-- .scroll -->
+	</div><!-- .admin-posts -->
 
-	</div><!-- .container -->
+</section><!-- .panel-body -->
 @stop
 
 @section('footercontent')
-<!-- Twitter help modal -->
-<div class="modal fade" id="twitterhelp">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close btn btn-mini" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Finding a Tweet's ID</h4>
-			</div>
-			<div class="modal-body">
-				<ol>
-					<li>Within your timeline, click the tweet to expand it (or click "more").</li>
-					<li>Once the tweet is expanded, look for the date of the tweet in gray lettering. Click the "Details" link next to the date. This will open the single view of the tweet.<br />
-						<img src="{{URL::asset('assets/images/twitter-help-one.jpg')}}"></li>
-					<li>The ID of the tweet is the last line of numbers in the browser address bar. It will appear as a long string of numbers:.<br />
-						<img src="{{URL::asset('assets/images/twitter-help-two.jpg')}}"></li>
-				</ol>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
-</div><!-- /.modal -->
+<script src="{{URL::asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/masonry.pkgd.min.js')}}"></script>
 
-<!-- Instagram help modal -->
-<div class="modal fade" id="instagramhelp">
-	<div class="modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close btn btn-mini" data-dismiss="modal">&times;</button>
-				<h4 class="modal-title">Finding an Instagram ID</h4>
-			</div>
-			<div class="modal-body">
-				<ol>
-					<li>Under the user's timelime, click the image to embed. This will open a modal window.</li>
-					<li>The ID of the post will be in the address bar:<br />
-						<img src="{{URL::asset('assets/images/instagram-help.jpg')}}">
-					</li>
-				</ol>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-			</div>
-		</div>
-	</div>
-</div><!-- /.modal -->
+@include('admin.modals.modal-help-twitter')
+@include('admin.modals.modal-help-instagram')
 
 <script>
+
+/**
+* Initialize masonry on posts container
+*/
+function loadMasonry()
+{
+	var $container = $('#postfeed');
+	$container.imagesLoaded(function(){
+		$container.masonry({
+			itemSelector: '.post'
+		});
+	});
+}
+$(document).ready(function(){
+	loadMasonry();
+});
+
+
 /**
 * Remove Post from list
 */
@@ -205,6 +182,7 @@ function removePost(id, type, item)
 			if (data == 'success'){
 				$(item).fadeOut();
 				getPending();
+				loadMasonry();
 			}
 		}
 	});
@@ -220,7 +198,8 @@ function doImport()
 		success: function(data){
 			console.log(data);
 			$('#import-loading').hide();
-			$('.run-import').removeAttr('disabled').html('<i class="icon-loop2"></i> Run Import');
+			$('.run-import').removeClass('disabled');
+			$('.run-import').find('.text').html('<i class="icon-loop2"></i> Run Import')
 			if ( data.status == 'success' ){
 				if ( data.import_count === 0 ){
 					$('#import-alert').text('There were no new items to import').show();
@@ -439,8 +418,8 @@ $(document).on('click', '.remove-approved', function(e){
 $(document).on('click', '.run-import', function(e){
 	e.preventDefault();
 	$('#import-loading').show();
-	$(this).attr('disabled', 'disabled');
-	$(this).text('Importing');
+	$(this).addClass('disabled');
+	$(this).find('.text').text('Importing...');
 	doImport();
 });
 
@@ -485,15 +464,27 @@ $(document).on('click', 'a.ban-user', function(e){
 @if($num_posts > 4)
 <script>
 // Infinite Scroll
-$(function() {
-	$('.scroll').jscroll({
-		loadingHtml: '<div class="loading-infinite"><img src="{{URL::asset('assets/images/loading-gray.gif')}}" alt="Loading" /></div>',
-		autoTrigger: true,
-		nextSelector: '.pagination li.active + li a', 
-		contentSelector: 'div.scroll',
-		callback: function() {
-			$('ul.pagination:visible:first').hide();
+$(function() {	
+	/**
+	* Infinite Scroll
+	*/
+	$('#postfeed').infinitescroll({
+		navSelector  : '.pagination',
+		nextSelector : '.pagination li:last-child a',
+	  	itemSelector : '.post',
+		extraScrollPx: 0,
+	  	loading: {
+			finishedMsg: undefined,
+			img: null,
 		}
+	},
+	// trigger Masonry as a callback
+	function( newElements ){
+		var $newElems = $( newElements ).css({ opacity: 0 });
+		$newElems.imagesLoaded(function(){
+			$newElems.animate({ opacity: 1 });
+			$('#postfeed').masonry( 'appended', $newElems, true ); 
+		});
 	});
 });
 </script>

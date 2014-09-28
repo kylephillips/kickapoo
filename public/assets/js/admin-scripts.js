@@ -1,18 +1,37 @@
 /**
-* Remove an Image Thumbnail
+* Toggle the admin menu
 */
-$('.remove-thumb').on('click', function(e){
+$('.admin-nav-toggle').on('click', function(e){
 	e.preventDefault();
-	var thumb = $(this).parents('.image-thumb');
-	$(thumb).siblings('.image-name').hide();
-	var input = $(thumb).parent('.image-preview').siblings('.open-media-library');
-	$(thumb).hide();
-	$(input).show();
+	$('.nav').toggle();
 });
 
 
 /**
-* Apply Redactor to Textareas with appropriate class
+* ----------------------------------------------------------------------
+* Post Feed
+* ----------------------------------------------------------------------
+*/
+
+// Toggle Side Panel Forms
+$('.panel-side h4').on('click', function(e){
+	e.preventDefault();
+	var searchform = $(this).siblings('form');
+	var icon = $(this).find('i');
+	if ( searchform.is(':visible') ){
+		searchform.hide();
+		icon.removeClass('icon-caret-up').addClass('icon-caret-down');
+	} else {
+		searchform.show();
+		icon.removeClass('icon-caret-down').addClass('icon-caret-up');
+	}
+});
+
+
+/**
+* ----------------------------------------------------------------------
+* Redactor.js Functionality
+* ----------------------------------------------------------------------
 */
 function apply_redactor(item)
 {
@@ -62,9 +81,9 @@ var ActiveEditor = {};
 
 
 /**
-* ========================================================================
+* ----------------------------------------------------------------------
 * Edit/Create Page Specific Functionality
-* ========================================================================
+* ----------------------------------------------------------------------
 */
 
 /**

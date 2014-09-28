@@ -1,0 +1,139 @@
+//
+// Side Panel Tools for post feed
+// --------------------------------------------------
+
+// Alert area for imports
+.import-buttons {
+	margin-bottom: 15px;
+	background-color: darken($white, 70%);
+	cursor: pointer;
+	font-size: 15px;
+	color: $white;
+	padding: 8px 8px 0px 8px;
+	height: 26px;
+	transition: all 200ms ease;
+	@include clearfix;
+	&:hover {
+		background-color: darken($white, 60%);
+		transition: all 200ms ease;
+	}
+	#import-loading {
+		display: none;
+		img {
+			float: right;
+			width: 25px;
+			margin-top: -4px;
+		}
+	}
+	&.disabled {
+		cursor: not-allowed;
+		&:hover {
+			background-color: darken($white, 70%);
+		}
+	}
+}
+
+
+// Single Import Form
+.single-form {
+	background-color: darken($white, 70%);
+	margin-bottom: 20px;
+	form {
+		display: none;
+		padding: 8px;
+	}
+	.buttons {
+		@include clearfix();
+		margin-bottom: 10px;
+		select {
+			border-radius: 0;
+			float: left;
+			width: 75%;
+			margin: 0;
+		}
+		.help-btn {
+			border-radius: 0;
+			background-color: darken($white, 63%);
+			border: 0;
+			color: $white;
+			float: right;
+			width: 20%;
+			text-align: center;
+		}
+	}
+	.inputs {
+		
+		button {
+			width: 100%;
+			height: 35px;
+			border-radius: 0;
+			border: 0;
+		}
+	}
+} // .single-form
+
+
+// Filter Menus
+.post-filters {
+	margin-bottom: 20px;
+	background-color: darken($white, 70%);
+	padding: 8px;
+	p {
+		color: $white;
+		margin: 0;
+		padding-bottom: 8px;
+		border-bottom: 2px solid darken($white, 65%);
+	}
+	ul {
+		@include unstyled();
+		@include clearfix();
+		li {
+			.dropdown-toggle {
+				display: block;
+				position: relative;
+				background-color: darken($white, 8%);
+				border: 1px solid darken($white, 18%);
+				padding: 6px 8px;
+				color: $black;
+				margin-top: 8px;
+				&:hover {
+					text-decoration: none;
+				}
+				em {
+					font-style: normal;
+					font-weight: bold;
+				}
+				span {
+					float: right;
+					margin-top: 8px;
+				}
+			}
+			ul {
+				float: none;
+				border: 0;
+				position: relative;
+				box-shadow: none;
+				width: 100%;
+				box-sizing: border-box;
+				top: auto;
+				margin: 0;
+				border-radius: 0;
+				@include unstyled;
+				li {
+					float: none;
+					width: 100%;
+					border: 0;
+					border-top: 1px solid darken($white, 8%);
+					&:first-child {
+						float: none;
+						border: 0;
+					}
+					a {
+						display: block;
+						padding: 4px;
+					}
+				}
+			}
+		}
+	} //u l
+} // .post-filters

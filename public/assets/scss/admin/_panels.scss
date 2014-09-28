@@ -1,0 +1,75 @@
+//
+// Layout Panels
+// --------------------------------------------------
+
+// Fixed position side panel
+.panel-side {
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	background-color: darken($white, 90%);
+	width: 25%;
+	padding: 60px 15px 30px 15px;
+	box-sizing: border-box;
+	h1 {
+		margin: 0;
+		padding: 15px 0;
+		color: $white;
+		font-size: 22px;
+	}
+	h4 {
+		font-weight: normal;
+		font-size: 15px;
+		padding: 8px;
+		cursor: pointer;
+		color: $white;
+		i {
+			float: right;
+			margin-top: 8px;
+			&.icon-caret-up {
+				margin-top: 2px;
+			}
+		}
+	}
+	input[type='text']{
+		height: 35px;
+		border: 0;
+		background-color: darken($white, 60%);
+		padding: 0 8px;
+		margin: 0 0 10px 0;
+		border-radius: 0;
+		color: $white;
+		font-size: 15px;
+	}
+	.alert {
+		border-radius: 0;
+	}
+} // .post-tools-panel
+
+// Primary Panels
+.panel-body {
+	float: right;
+	width: 65%;
+	margin-right: 5%;
+	padding-top: 20px;
+}
+
+@media (max-width: 767px)
+{
+	.panel-side {
+		position: relative;
+		left: 0;
+		top: 0;
+		height: auto;
+		width: 100%;
+		padding: 10px 15px 10px 15px;
+		box-sizing: border-box;
+	} // .post-tools-panel
+
+	.panel-body {
+		float: none;
+		width: 100%;
+		margin-right: 100%;
+	}
+}
