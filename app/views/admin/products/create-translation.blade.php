@@ -3,7 +3,7 @@
 
 <section class="page-head margin">
 	<div class="container">
-		<h1>Add a {{$language_name}} Translation of <a href="{{URL::route('edit_flavor', ['id'=>$parent_flavor->id])}}">{{$parent_flavor->title}}</a></h1>
+		<h1><i class="icon-admin-bubbles"></i> Add a {{$language_name}} Translation of <a href="{{URL::route('edit_flavor', ['id'=>$parent_flavor->id])}}">{{$parent_flavor->title}}</a></h1>
 	</div>
 </section>
 
@@ -38,7 +38,7 @@
 					$folder = substr($folder, 16);
 					$folder = rtrim($folder, '/');
 					?>
-					<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="flavor_image" style="display:none;"><i class="icon-image"></i> Add from Media Library</a>
+					<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="flavor_image" style="display:none;"><i class="icon-admin-image"></i> Add from Media Library</a>
 					<input type="hidden" id="flavor_image" name="image" value="{{$parent_flavor->upload->id}}">
 					<div class="image-preview">
 						<div class="image-thumb">
@@ -50,7 +50,7 @@
 				</div>
 			@else
 				<div>
-					<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="flavor_image"><i class="icon-image"></i> Add from Media Library</a>
+					<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="flavor_image"><i class="icon-admin-image"></i> Add from Media Library</a>
 					<input type="hidden" id="flavor_image" name="image" value="">
 				</div>
 			@endif
@@ -65,7 +65,7 @@
 	<?php $i = 1; ?>
 	@foreach($parent_flavor->products as $product)
 		<li class="flavor_{{$i}} flavor" id="{{$product->id}}">
-			<h4><span class="sort-handle">{{$i}}</span> {{$product->size->title}}<i class="icon-caret-down"></i></h4>
+			<h4><span class="sort-handle">{{$i}}</span> {{$product->size->title}}<i class="icon-admin-caret-down"></i></h4>
 			<section>
 				<div class="image">
 					@if($product->upload)
@@ -97,7 +97,7 @@
 								$folder = substr($folder, 16);
 								$folder = rtrim($folder, '/');
 								?>
-								<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="product_image_{{$i}}" style="display:none;"><i class="icon-image"></i> Add from Media Library</a>
+								<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="product_image_{{$i}}" style="display:none;"><i class="icon-admin-image"></i> Add from Media Library</a>
 								<input type="hidden" id="product_image_{{$i}}" name="new_product[{{$i}}][image]" value="{{$product->upload->id}}">
 								<div class="image-preview">
 									<div class="image-thumb">
@@ -109,7 +109,7 @@
 							</div>
 						@else
 							<div>
-								<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_image_{{$i}}"><i class="icon-image"></i> Add from Media Library</a>
+								<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_image_{{$i}}"><i class="icon-admin-image"></i> Add from Media Library</a>
 								<input type="hidden" id="product_image_{{$i}}" name="new_product[{{$i}}][image]" value="">
 							</div>
 						@endif
@@ -126,7 +126,7 @@
 								$folder = substr($folder, 16);
 								$folder = rtrim($folder, '/');
 								?>
-								<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="product_nutrition_{{$i}}" style="display:none;"><i class="icon-image"></i> Add from Media Library</a>
+								<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="product_nutrition_{{$i}}" style="display:none;"><i class="icon-admin-image"></i> Add from Media Library</a>
 								<input type="hidden" id="product_nutrition_{{$i}}" name="new_product[{{$i}}][nutrition_label]" value="{{$product->nutrition_upload->id}}">
 								<div class="image-preview">
 									<div class="image-thumb">
@@ -138,7 +138,7 @@
 							</div>
 						@else
 							<div>
-								<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_nutrition_{{$i}}"><i class="icon-image"></i> Add from Media Library</a>
+								<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_nutrition_{{$i}}"><i class="icon-admin-image"></i> Add from Media Library</a>
 								<input type="hidden" id="product_nutrition_{{$i}}" name="new_product[{{$i}}][nutrition_label]" value="">
 							</div>
 						@endif
@@ -149,7 +149,7 @@
 					</p>
 
 					<div class="delete-well">
-						<a href="#" class="btn btn-danger delete-product" data-id="{{$product->id}}"><i class="icon-remove"></i> Delete Product</a>
+						<a href="#" class="btn btn-danger delete-product" data-id="{{$product->id}}"><i class="icon-admin-remove"></i> Delete Product</a>
 					</div>
 
 				</div><!-- .product-fields -->
@@ -207,9 +207,9 @@ function add_product_field()
 	html += '<p><label>Description</label><textarea name="new_product[' + count + '][description]" class="redactor"></textarea></p>';
 	html += '<p><label>Ingredients</label><textarea name="new_product[' + count + '][ingredients]"></textarea></p>';
 	
-	html += '<div><label>Image</label><div><a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_image_' + count + '"><i class="icon-image"></i> Add from Media Library</a><input type="hidden" id="product_image_' + count + '" name="new_product[' + count + '][image]"></div></div><p>&nbsp;</p>';
+	html += '<div><label>Image</label><div><a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_image_' + count + '"><i class="icon-admin-image"></i> Add from Media Library</a><input type="hidden" id="product_image_' + count + '" name="new_product[' + count + '][image]"></div></div><p>&nbsp;</p>';
 	
-	html += '<div><label>Nutrition Label</label><div><a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_nutrition_' + count + '"><i class="icon-image"></i> Add from Media Library</a><input type="hidden" id="product_nutrition_' + count + '" name="new_product[' + count + '][nutrition_label]"></div></div>';
+	html += '<div><label>Nutrition Label</label><div><a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_nutrition_' + count + '"><i class="icon-admin-image"></i> Add from Media Library</a><input type="hidden" id="product_nutrition_' + count + '" name="new_product[' + count + '][nutrition_label]"></div></div>';
 	
 	html += '<input type="hidden" name="add_new" value="true">';
 	html += '<a href="#" class="btn btn-danger remove-new-product">Cancel</a></section></div>';
@@ -242,10 +242,10 @@ $(document).on('click', '.flavor h4', function(){
 	var section = $(this).parent('.flavor').children('section');
 	if ( $(section).is(':visible') ){
 		$(section).slideUp();
-		$(this).find('i').removeClass('icon-caret-up').addClass('icon-caret-down');
+		$(this).find('i').removeClass('icon-admin-caret-up').addClass('icon-admin-caret-down');
 	} else {
 		$(section).slideDown();
-		$(this).find('i').removeClass('icon-caret-down').addClass('icon-caret-up');
+		$(this).find('i').removeClass('icon-admin-caret-down').addClass('icon-admin-caret-up');
 	}
 });
 

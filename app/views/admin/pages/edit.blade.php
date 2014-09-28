@@ -3,7 +3,7 @@
 
 <section class="page-head">
 	<div class="container">
-		<h1>Edit {{$page['title']}} 
+		<h1><i class="icon-admin-pencil"></i> Edit {{$page['title']}} 
 		@if( count($page['translation_of']) > 0 )
 		<?php
 			if ( $page['translation_of'][0]['slug'] == 'home'){
@@ -127,7 +127,7 @@
 		<?php $c = 0; ?>
 		@foreach($page->customfields as $field)
 		<li class="customfield-existing">
-			<h4>{{$field->name}} <i class="icon-caret-down"></i></h4>
+			<h4>{{$field->name}} <i class="icon-admin-caret-down"></i></h4>
 			<section>
 				
 				<p>
@@ -160,7 +160,7 @@
 						$folder = substr($folder, 16);
 						$folder = rtrim($folder, '/');
 						?>
-						<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="customfield_image_{{$c}}" style="display:none;"><i class="icon-image"></i> Add from Media Library</a>
+						<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="customfield_image_{{$c}}" style="display:none;"><i class="icon-admin-image"></i> Add from Media Library</a>
 						<input type="hidden" id="customfield_image_{{$c}}" name="customfield[{{$c}}][value]" value="{{$field->image->id}}">
 						<div class="image-preview">
 							<div class="image-thumb">

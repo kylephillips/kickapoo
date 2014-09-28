@@ -3,7 +3,7 @@
 
 <section class="page-head margin">
 	<div class="container">
-		<h1>Kickapoo Users <span class="pull-right"><a href="{{URL::route('admin.user.create')}}" class="btn btn-large btn-primary">+ Add User</a></span></h1>
+		<h1><i class="icon-admin-users"></i> Kickapoo Users <span class="pull-right"><a href="{{URL::route('admin.user.create')}}" class="btn btn-large btn-primary">+ Add User</a></span></h1>
 	</div>
 </section>
 

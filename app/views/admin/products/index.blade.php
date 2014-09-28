@@ -3,7 +3,7 @@
 
 <section class="page-head margin">
 	<div class="container">
-		<h1>Products</h1>
+		<h1><i class="icon-admin-happy"></i> Products</h1>
 	</div>
 </section>
 

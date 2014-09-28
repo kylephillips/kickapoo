@@ -6,7 +6,7 @@
 		
 		<div class="main">
 			<ul class="info">
-				<li><a href="{{$post['link']}}" target="_blank"><i class="icon-instagram"></i></a></li>
+				<li><a href="{{$post['link']}}" target="_blank"><i class="icon-admin-instagram"></i></a></li>
 			</ul>
 			<strong><a href="http://instagram.com/{{$post['screen_name']}}" target="_blank">{{$post['screen_name']}}</a></strong>
 			&nbsp;|&nbsp;
@@ -35,8 +35,8 @@
 			
 			<div class="status">
 				<ul>
-					<li><a href="#" class="remove" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-remove"></i> Remove Permanently</a></li>
-					<li><a href="#" class="restore" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Restore</a></li>
+					<li><a href="#" class="remove" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-admin-remove"></i> Remove Permanently</a></li>
+					<li><a href="#" class="restore" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-admin-checkmark"></i> Restore</a></li>
 				</ul>
 			</div>
 
@@ -44,14 +44,14 @@
 			
 			@if($post['approved'] == 1)
 			<div class="status-approved">
-				<p><i class="icon-checkmark"></i> Approved {{$postdate}} by {{$post['post']['user']['first_name']}} {{$post['post']['user']['last_name']}}</p>
+				<p><i class="icon-admin-checkmark"></i> Approved {{$postdate}} by {{$post['post']['user']['first_name']}} {{$post['post']['user']['last_name']}}</p>
 				<a href="#" class="remove-approved" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}" data-postid="{{$post['post']['id']}}">Unapprove and Trash</a>
 			</div>
 			@else
 			<div class="status">
 				<ul>
-					<li><a href="#" class="remove" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-remove"></i> Trash</a></li>
-					<li><a href="#" class="approve" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-checkmark"></i> Approve</a></li>
+					<li><a href="#" class="remove" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-admin-remove"></i> Trash</a></li>
+					<li><a href="#" class="approve" data-id="{{$post['instagram_id']}}" data-type="{{$post_type}}"><i class="icon-admin-checkmark"></i> Approve</a></li>
 				</ul>
 			</div>
 			@endif

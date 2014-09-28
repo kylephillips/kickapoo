@@ -3,7 +3,7 @@
 
 <section class="page-head margin">
 	<div class="container">
-		<h1>Site Settings</h1>
+		<h1><i class="icon-admin-cog"></i> Site Settings</h1>
 	</div>
 </section>
 

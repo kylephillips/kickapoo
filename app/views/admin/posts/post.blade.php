@@ -5,7 +5,7 @@
 
 	<!-- Last Import -->
 	<div class="alert alert-gray">
-		Last Import: 
+		<i class="icon-admin-clock"></i> Last Import: 
 		@if(isset($last_import['date']))
 			{{$last_import['count']}} items on {{$last_import['date']}}
 		@else
@@ -18,7 +18,7 @@
 	<div class="alert alert-info" id="import-alert" style="display:none;"></div>
 	<div class="import-buttons run-import">
 		<span class="text">
-			<i class="icon-loop2"></i> Run Import
+			<i class="icon-admin-loop2"></i> Run Import
 		</span>
 		<span id="import-loading">
 			<img src="{{URL::asset('assets/images/loading-black-white.gif')}}" alt="loading" />
@@ -27,7 +27,7 @@
 	
 	<!-- Social Search Terms -->
 	<div class="social-search-terms">
-		<h4>Search Term <i class="icon-caret-down"></i></h4>
+		<h4><i class="icon-admin-search"></i> Search Term <i class="icon-admin-caret-down caret-toggle"></i></h4>
 		{{Form::open(['url'=>URL::route('update_search'), 'class'=>'search-term-form'])}}
 			@if(Session::has('errors'))
 				<div class="alert alert-danger">{{Session::get('errors')->first()}}</div>
@@ -37,11 +37,11 @@
 			@endif
 			<ul>
 				<li>
-					<label for="twitter_search"><i class="icon-twitter"></i></label>
+					<label for="twitter_search"><i class="icon-admin-twitter"></i></label>
 					{{Form::text('twitter_search', $twitter_search)}}
 				</li>
 				<li>
-					<label for="instagram_search"><i class="icon-instagram"></i></label>
+					<label for="instagram_search"><i class="icon-admin-instagram"></i></label>
 					{{Form::text('instagram_search', $instagram_search)}}
 				</li>
 			</ul>
@@ -51,7 +51,7 @@
 
 	<!-- Single Import Form -->
 	<div class="single-form">
-		<h4>Import Single <i class="icon-caret-down"></i></h4>
+		<h4><i class="icon-admin-box-remove"></i> Import Single <i class="icon-admin-caret-down caret-toggle"></i></h4>
 		
 		{{Form::open(['url'=>''])}}
 			<div id="single-error" class="alert alert-danger" style="display:none;"></div>
@@ -197,7 +197,7 @@ function doImport()
 			console.log(data);
 			$('#import-loading').hide();
 			$('.run-import').removeClass('disabled');
-			$('.run-import').find('.text').html('<i class="icon-loop2"></i> Run Import')
+			$('.run-import').find('.text').html('<i class="icon-admin-loop2"></i> Run Import')
 			if ( data.status == 'success' ){
 				if ( data.import_count === 0 ){
 					$('#import-alert').text('There were no new items to import').show();
@@ -225,6 +225,7 @@ function approvePost(id, type, item)
 			$(item).addClass('approved');
 			$(item).find('.status').remove();
 			addApprovedStatus(id, item, type, data);
+			$('#postfeed').masonry();
 			getPending();
 		}
 	});
@@ -235,7 +236,7 @@ function approvePost(id, type, item)
 */
 function addApprovedStatus(id, item, type, post)
 {
-	var out = '<div class="status-approved"><p><i class="icon-checkmark"></i> Approved ' + post.approval_date + ' by ' + post.firstname + ' ' + post.lastname + '</p><a href="#" class="remove-approved" data-id="' + id + '" data-type="' + type + '" data-postid="' + post.postid + '">Unapprove and Trash</a></div>';
+	var out = '<div class="status-approved"><p><i class="icon-admin-checkmark"></i> Approved ' + post.approval_date + ' by ' + post.firstname + ' ' + post.lastname + '</p><a href="#" class="remove-approved" data-id="' + id + '" data-type="' + type + '" data-postid="' + post.postid + '">Unapprove and Trash</a></div>';
 	$(item).find('.content').append(out);
 }
 
@@ -253,7 +254,8 @@ function removeApproved(id, type, item, postid)
 		},
 		success: function(data){
 			if (data == 'success'){
-				$(item).fadeOut();
+				$('#postfeed').masonry( 'remove', item );
+				$('#postfeed').masonry();
 			}
 		}
 	});
@@ -292,12 +294,13 @@ function importSingle(type, id)
 */
 function addNewTweet(tweet, id)
 {
-	var out = '<li class="tweet post"><div class="content"><div class="avatar"><img src="' + tweet.profile_image + '" alt="user icon"></div><div class="main"><ul class="info"><li><a href="https://twitter.com/' + tweet.screen_name + '/status/' + id + '" target="_blank"><i class="icon-twitter"></i></a></li><li>' + tweet.retweet_count + ' <i class="icon-loop"></i></li><li>' + tweet.favorite_count + ' <i class="icon-star"></i></li></ul><strong><a href="http://twitter.com/' + tweet.screen_name + '" target="_blank">' + tweet.screen_name + '</a></strong><span class="date">DATE HERE</span><p>' + tweet.text + '</p>';
+	var out = '<li class="tweet post"><div class="content"><div class="avatar"><img src="' + tweet.profile_image + '" alt="user icon"></div><div class="main"><ul class="info"><li><a href="https://twitter.com/' + tweet.screen_name + '/status/' + id + '" target="_blank"><i class="icon-admin-twitter"></i></a></li><li>' + tweet.retweet_count + ' <i class="icon-admin-loop"></i></li><li>' + tweet.favorite_count + ' <i class="icon-admin-star"></i></li></ul><strong><a href="http://twitter.com/' + tweet.screen_name + '" target="_blank">' + tweet.screen_name + '</a></strong><span class="date">DATE HERE</span><p>' + tweet.text + '</p>';
 	if ( tweet.image ){
 		out += '<div class="image"><img src="/assets/uploads/twitter_images/' + tweet.image + '" /></div>';
 	}
-	out += '</div></div><div class="status"><ul><li><a href="#" class="remove" data-id="' + id + '" data-type="twitter"><i class="icon-remove"></i> Trash</a></li><li><a href="#" class="approve" data-id="' + id + '" data-type="twitter"><i class="icon-checkmark"></i> Approve</a></li></ul></div></li>';
+	out += '</div></div><div class="status"><ul><li><a href="#" class="remove" data-id="' + id + '" data-type="twitter"><i class="icon-admin-remove"></i> Trash</a></li><li><a href="#" class="approve" data-id="' + id + '" data-type="twitter"><i class="icon-admin-checkmark"></i> Approve</a></li></ul></div></li>';
 	$('#postfeed').prepend(out);
+	$('#postfeed').masonry();
 }
 
 /**
@@ -305,7 +308,7 @@ function addNewTweet(tweet, id)
 */
 function addNewGram(gram, id)
 {
-	var out = '<li class="gram post"><div class="content"><div class="avatar"><img src="' + gram.profile_image + '" alt="user icon"></div><div class="main"><ul class="info"><li><a href="' + gram.link + '" target="_blank"><i class="icon-instagram"></i></a></li><li>' + gram.like_count +' <i class="icon-heart"></i></li></ul><strong><a href="http://instagram.com/' + gram.screen_name + '" target="_blank">' + gram.screen_name + '</a></strong><span class="date">DATE HERE</span>';
+	var out = '<li class="gram post"><div class="content"><div class="avatar"><img src="' + gram.profile_image + '" alt="user icon"></div><div class="main"><ul class="info"><li><a href="' + gram.link + '" target="_blank"><i class="icon-admin-instagram"></i></a></li><li>' + gram.like_count +' <i class="icon-admin-heart"></i></li></ul><strong><a href="http://instagram.com/' + gram.screen_name + '" target="_blank">' + gram.screen_name + '</a></strong><span class="date">DATE HERE</span>';
 	if ( gram.text ){
 		out += '<p>' + gram.text + '</p>';
 	}
@@ -314,8 +317,9 @@ function addNewGram(gram, id)
 	} else {
 		out += '<video width="480" height="480" controls><source src="' + gram.video_url + '" type="video/mp4"/></video>';
 	}
-	out += '</div><div class="status"><ul><li><a href="#" class="remove" data-id="' + gram.id + '" data-type="instagram"><i class="icon-remove"></i> Trash</a></li><li><a href="#" class="approve" data-id="' + gram.id + '" data-type="instagram"><i class="icon-checkmark"></i> Approve</a></li></ul></div></div></li>';
+	out += '</div><div class="status"><ul><li><a href="#" class="remove" data-id="' + gram.id + '" data-type="instagram"><i class="icon-admin-remove"></i> Trash</a></li><li><a href="#" class="approve" data-id="' + gram.id + '" data-type="instagram"><i class="icon-admin-checkmark"></i> Approve</a></li></ul></div></div></li>';
 	$('#postfeed').prepend(out);
+	$('#postfeed').masonry();
 }
 
 /**
@@ -347,7 +351,8 @@ function removeBanned(id, type, user)
 	$('.ban-user').each(function(){
 		if ( $(this).data('user') === user ){
 			var item = $(this).parents('.post');
-			$(item).fadeOut();
+			$('#postfeed').masonry( 'remove', item );
+			$('#postfeed').masonry();
 		}
 	});
 }

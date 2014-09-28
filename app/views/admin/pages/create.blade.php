@@ -3,7 +3,7 @@
 
 <section class="page-head">
 	<div class="container">
-		<h1>Add a New Page </h1>
+		<h1><i class="icon-admin-file"></i> Add a New Page </h1>
 	</div>
 </section>
 

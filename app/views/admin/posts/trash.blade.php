@@ -3,7 +3,7 @@
 
 <section class="page-head margin">
 	<div class="container">
-		<h1>Trashed Posts <span class="pull-right"><a href="{{URL::route('admin.post.index')}}">&laquo; Back to Posts</a></span></h1>
+		<h1><i class="icon-admin-remove"></i> Trashed Posts <span class="pull-right"><a href="{{URL::route('admin.post.index')}}">&laquo; Back to Posts</a></span></h1>
 	</div>
 </section>
 
@@ -11,7 +11,7 @@
 	<div class="alert alert-info">
 		Last emptied: {{$last_trash}}
 		@if( count($posts) > 0 )
-		<button class="btn btn-danger pull-right empty-trash"><i class="icon-remove2"></i> Empty Trash</button>
+		<button class="btn btn-danger pull-right empty-trash"><i class="icon-admin-remove2"></i> Empty Trash</button>
 		<span id="trash-loading" class="pull-right">
 			<img src="{{URL::asset('assets/images/loading-small-blue.gif')}}" alt="loading" />
 		</span>

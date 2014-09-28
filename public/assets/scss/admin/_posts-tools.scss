@@ -38,6 +38,7 @@
 .single-form {
 	background-color: darken($white, 70%);
 	margin-bottom: 20px;
+	border: 1px solid darken($white, 65%);
 	form {
 		display: none;
 		padding: 8px;
@@ -77,12 +78,11 @@
 .post-filters {
 	margin-bottom: 20px;
 	background-color: darken($white, 70%);
+	border: 1px solid darken($white, 65%);
 	padding: 8px;
 	p {
 		color: $white;
 		margin: 0;
-		padding-bottom: 8px;
-		border-bottom: 2px solid darken($white, 65%);
 	}
 	ul {
 		@include unstyled();

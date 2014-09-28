@@ -3,7 +3,7 @@
 
 <section class="page-head margin">
 	<div class="container">
-		<h1>Banned Users</h1>
+		<h1><i class="icon-admin-users"></i> Banned Users</h1>
 	</div>
 </section>
 

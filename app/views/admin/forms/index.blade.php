@@ -3,7 +3,7 @@
 
 <section class="page-head margin">
 	<div class="container">
-		<h1>Contact Form Entries</h1>
+		<h1><i class="icon-admin-pencil"></i> Contact Form Entries</h1>
 	</div>
 </section>
 

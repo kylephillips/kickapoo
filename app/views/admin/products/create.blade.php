@@ -3,7 +3,7 @@
 
 <section class="page-head margin">
 	<div class="container">
-		<h1>Add a Product <span class="pull-right"><a href="{{URL::route('edit_products')}}">Back to Products</a></span></h1>
+		<h1><i class="icon-admin-happy"></i> Add a Product <span class="pull-right"><a href="{{URL::route('edit_products')}}">Back to Products</a></span></h1>
 	</div>
 </section>
 
@@ -30,7 +30,7 @@
 		</p>
 		<div>
 			<label>Image</label>
-			<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="flavor_image"><i class="icon-image"></i> Add from Media Library</a>
+			<a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="flavor_image"><i class="icon-admin-image"></i> Add from Media Library</a>
 			<input type="hidden" id="flavor_image" name="image" value="">
 		</div>
 	</div><!-- .flavor-fields -->
@@ -86,9 +86,9 @@ function add_product_field()
 	html += '<p><label>Description</label><textarea name="new_product[' + count + '][description]" class="redactor"></textarea></p>';
 	html += '<p><label>Ingredients</label><textarea name="new_product[' + count + '][ingredients]"></textarea></p>';
 	
-	html += '<div><label>Image</label><div><a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_image_' + count + '"><i class="icon-image"></i> Add from Media Library</a><input type="hidden" id="product_image_' + count + '" name="new_product[' + count + '][image]"></div></div><p>&nbsp;</p>';
+	html += '<div><label>Image</label><div><a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_image_' + count + '"><i class="icon-admin-image"></i> Add from Media Library</a><input type="hidden" id="product_image_' + count + '" name="new_product[' + count + '][image]"></div></div><p>&nbsp;</p>';
 	
-	html += '<div><label>Nutrition Label</label><div><a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_nutrition_' + count + '"><i class="icon-image"></i> Add from Media Library</a><input type="hidden" id="product_nutrition_' + count + '" name="new_product[' + count + '][nutrition_label]"></div></div>';
+	html += '<div><label>Nutrition Label</label><div><a href="#" class="btn btn-success open-media-library" data-folder="product_images" data-field="product_nutrition_' + count + '"><i class="icon-admin-image"></i> Add from Media Library</a><input type="hidden" id="product_nutrition_' + count + '" name="new_product[' + count + '][nutrition_label]"></div></div>';
 	
 	html += '<input type="hidden" name="add_new" value="true">';
 	html += '<a href="#" class="btn btn-danger remove-new-product">Cancel</a></section></div>';
@@ -121,10 +121,10 @@ $(document).on('click', '.flavor h4', function(){
 	var section = $(this).parent('.flavor').children('section');
 	if ( $(section).is(':visible') ){
 		$(section).slideUp();
-		$(this).find('i').removeClass('icon-caret-up').addClass('icon-caret-down');
+		$(this).find('i').removeClass('icon-admin-caret-up').addClass('icon-admin-caret-down');
 	} else {
 		$(section).slideDown();
-		$(this).find('i').removeClass('icon-caret-down').addClass('icon-caret-up');
+		$(this).find('i').removeClass('icon-admin-caret-down').addClass('icon-admin-caret-up');
 	}
 });
 

@@ -2,7 +2,7 @@
 // Admin Icons
 // --------------------------------------------------
 @font-face {
-	font-family: 'icomoon';
+	font-family: 'icomoonadmin';
 	src:url('fonts-admin/icomoon.eot?c3n08j');
 	src:url('fonts-admin/icomoon.eot?#iefixc3n08j') format('embedded-opentype'),
 		url('fonts-admin/icomoon.woff?c3n08j') format('woff'),
@@ -12,8 +12,8 @@
 	font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-	font-family: 'icomoon';
+[class^="icon-admin-"], [class*=" icon-admin-"] {
+	font-family: 'icomoonadmin' !important;
 	speak: none;
 	font-style: normal;
 	font-weight: normal;
@@ -25,81 +25,112 @@
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-.icon-caret-down {
+.icon-admin-caret-down {
 	border-bottom: 5px solid transparent;
 	border-top: 5px solid darken($white, 100%);
 	border-right: 5px solid transparent;
 	border-left: 5px solid transparent;
 }
-.icon-caret-up {
+.icon-admin-caret-up {
 	border-top: 5px solid transparent;
 	border-bottom: 5px solid darken($white, 100%);
 	border-right: 5px solid transparent;
 	border-left: 5px solid transparent;
 }
-.icon-pencil:before {
+
+.icon-admin-home:before {
 	content: "\e600";
 }
-.icon-image:before {
-	content: "\e60a";
-}
-.icon-folder:before {
-	content: "\e60b";
-}
-.icon-folder-open:before {
-	content: "\e60c";
-}
-.icon-envelope:before {
-	content: "\e60d";
-}
-.icon-box-add:before {
-	content: "\e60e";
-}
-.icon-download:before {
-	content: "\e60f";
-}
-.icon-user:before {
+.icon-admin-pencil:before {
 	content: "\e601";
 }
-.icon-users:before {
+.icon-admin-image:before {
 	content: "\e602";
 }
-.icon-cog:before {
-	content: "\e610";
-}
-.icon-remove:before {
-	content: "\e611";
-}
-.icon-remove2:before {
-	content: "\e612";
-}
-.icon-star:before {
-	content: "\e605";
-}
-.icon-heart:before {
-	content: "\e609";
-}
-.icon-close:before {
-	content: "\e606";
-}
-.icon-checkmark:before {
-	content: "\e607";
-}
-.icon-loop:before {
-	content: "\e608";
-}
-.icon-loop2:before {
-	content: "\e613";
-}
-.icon-arrow-right:before {
-	content: "\e614";
-}
-.icon-crop:before {
-	content: "\e615";
-}
-.icon-instagram:before {
+.icon-admin-file:before {
 	content: "\e603";
 }
-.icon-twitter:before {
+.icon-admin-folder:before {
 	content: "\e604";
+}
+.icon-admin-folder-open:before {
+	content: "\e605";
+}
+.icon-admin-envelope:before {
+	content: "\e606";
+}
+.icon-admin-pushpin:before {
+	content: "\e607";
+}
+.icon-admin-clock:before {
+	content: "\e608";
+}
+.icon-admin-box-add:before {
+	content: "\e609";
+}
+.icon-admin-box-remove:before {
+	content: "\e60a";
+}
+.icon-admin-bubble:before {
+	content: "\e60b";
+}
+.icon-admin-bubbles:before {
+	content: "\e61f";
+}
+.icon-admin-user:before {
+	content: "\e60c";
+}
+.icon-admin-users:before {
+	content: "\e60d";
+}
+.icon-admin-search:before {
+	content: "\e60e";
+}
+.icon-admin-cog:before {
+	content: "\e60f";
+}
+.icon-admin-remove:before {
+	content: "\e610";
+}
+.icon-admin-attachment:before {
+	content: "\e611";
+}
+.icon-admin-star:before {
+	content: "\e612";
+}
+.icon-admin-heart:before {
+	content: "\e613";
+}
+.icon-admin-happy:before {
+	content: "\e614";
+}
+.icon-admin-close:before {
+	content: "\e615";
+}
+.icon-admin-checkmark:before {
+	content: "\e616";
+}
+.icon-admin-loop2:before {
+	content: "\e617";
+}
+.icon-admin-googleplus:before {
+	content: "\e618";
+}
+.icon-admin-facebook:before {
+	content: "\e619";
+}
+.icon-admin-instagram:before {
+	content: "\e61a";
+}
+.icon-admin-twitter:before {
+	content: "\e61b";
+}
+.icon-admin-vimeo:before {
+	content: "\e61c";
+}
+.icon-admin-flickr:before {
+	content: "\e61d";
+}
+.icon-admin-github:before {
+	content: "\e61e";
 }

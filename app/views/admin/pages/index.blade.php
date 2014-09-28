@@ -4,9 +4,9 @@
 <section class="page-head margin">
 	<div class="container">
 		@if( isset($_GET['name']) )
-			<h1>All {{$_GET['name']}} Pages</h1>
+			<h1><i class="icon-admin-file"></i> All {{$_GET['name']}} Pages</h1>
 		@else
-			<h1>All Pages</h1>
+			<h1><i class="icon-admin-file"></i> All Pages</h1>
 		@endif
 		<select id="language-select">
 			<option>Select Language</option>

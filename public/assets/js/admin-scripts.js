@@ -17,13 +17,13 @@ $('.admin-nav-toggle').on('click', function(e){
 $('.panel-side h4').on('click', function(e){
 	e.preventDefault();
 	var searchform = $(this).siblings('form');
-	var icon = $(this).find('i');
+	var icon = $(this).find('.caret-toggle');
 	if ( searchform.is(':visible') ){
 		searchform.hide();
-		icon.removeClass('icon-caret-up').addClass('icon-caret-down');
+		icon.removeClass('icon-admin-caret-up').addClass('icon-admin-caret-down');
 	} else {
 		searchform.show();
-		icon.removeClass('icon-caret-down').addClass('icon-caret-up');
+		icon.removeClass('icon-admin-caret-down').addClass('icon-admin-caret-up');
 	}
 });
 

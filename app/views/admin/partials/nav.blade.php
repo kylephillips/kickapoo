@@ -20,7 +20,7 @@
 	
 	<ul class="nav">
 		<li class="dropdown">
-		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Social Posts<span class="caret"></span></a>
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-admin-pushpin"></i> Social Posts<span class="caret"></span></a>
 			<ul class="dropdown-menu" role="menu">
 				<li><a href="{{URL::route('admin.post.index')}}">Social Feed ({{$pendingcount}})</a></li>
 				<li><a href="{{URL::route('post_trash')}}">Trash ({{$trashcount}})</a></li>
@@ -28,7 +28,7 @@
 			</ul>
 		</li>
 		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Products <span class="caret"></span></a>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-admin-happy"></i> Products <span class="caret"></span></a>
 			<ul class="dropdown-menu">
 				@foreach($products as $product)
 				<li><a href="{{URL::route('edit_flavor', ['id'=>$product->id])}}">{{$product->title}}</a></li>
@@ -39,7 +39,7 @@
 			</ul>
 		</li>
 		<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <span class="caret"></span></a>
+			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-admin-file"></i> Pages <span class="caret"></span></a>
 			<ul class="dropdown-menu" role="menu">
 				@foreach($allpages as $page)
 				<li><a href="{{URL::route('edit_page', ['page'=>$page->slug])}}">{{$page->title}}</a></li>
@@ -48,10 +48,10 @@
 				<li class="light"><a href="{{URL::route('create_page')}}">New Page</a></li>
 			</ul>
 		</li>
-		<li><a href="{{URL::route('form_entries')}}">Forms</a></li>
+		<li><a href="{{URL::route('form_entries')}}"><i class="icon-admin-pencil"></i> Forms</a></li>
 		<li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-				{{Auth::user()->first_name}} {{Auth::user()->last_name}} <span class="caret"></span>
+				<i class="icon-admin-user"></i> {{Auth::user()->first_name}} {{Auth::user()->last_name}} <span class="caret"></span>
 			</a>
 			<ul class="dropdown-menu pull-right" role="menu">
 				<li><a href="{{URL::route('admin.user.edit', ['id'=>Auth::user()->id])}}">Update Profile</a></li>

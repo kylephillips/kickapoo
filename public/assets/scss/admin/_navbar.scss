@@ -35,6 +35,9 @@
 				color: $white;
 				font-size: 15px;
 				i {
+					position: relative;
+					top: 2px;
+					margin-right: 3px;
 					color: darken($white, 25%);
 				}
 			}

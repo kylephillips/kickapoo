@@ -93,9 +93,9 @@
 
 // Facebook Captions
 .fb-caption {
-	background-color: darken($white, 8%);
+	//background-color: darken($white, 8%);
 	@include clearfix;
-	padding: 15px;
+	//padding: 15px;
 	border-radius: 3px;
 	.caption-text {
 		float: right;

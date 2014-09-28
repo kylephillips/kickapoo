@@ -3,7 +3,7 @@
 
 <section class="page-head">
 	<div class="container">
-		<h1>Add {{$language_name}} Translation of <a href="{{URL::route('edit_page', ['slug'=>$parent_page->slug])}}">{{$parent_page->title}}</a></h1>
+		<h1><i class="icon-admin-bubbles"></i> Add {{$language_name}} Translation of <a href="{{URL::route('edit_page', ['slug'=>$parent_page->slug])}}">{{$parent_page->title}}</a></h1>
 	</div>
 </section>
 
@@ -66,7 +66,7 @@
 		<?php $c = 0; ?>
 		@foreach($parent_page->customfields as $field)
 		<li class="customfield-existing">
-			<h4>{{$field->name}} <i class="icon-caret-down"></i></h4>
+			<h4>{{$field->name}} <i class="icon-admin-caret-down"></i></h4>
 			<section>
 				
 				<p>
@@ -99,7 +99,7 @@
 						$folder = substr($folder, 16);
 						$folder = rtrim($folder, '/');
 						?>
-						<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="customfield_image_{{$c}}" style="display:none;"><i class="icon-image"></i> Add from Media Library</a>
+						<a href="#" class="btn btn-success open-media-library" data-folder="{{$folder}}" data-field="customfield_image_{{$c}}" style="display:none;"><i class="icon-admin-image"></i> Add from Media Library</a>
 						<input type="hidden" id="customfield_image_{{$c}}" name="newcustomfield[{{$c}}][fieldvalue]" value="{{$field->image->id}}">
 						<div class="image-preview">
 							<div class="image-thumb">
