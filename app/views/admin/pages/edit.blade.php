@@ -54,7 +54,8 @@
 			{{$errors->first('slug', '<span class="text-danger"><strong>:message</strong></span><br>')}}
 			{{Form::label('slug', 'Page Link:')}}
 			<p>
-				{{URL::route('home')}}/{{$page['language']}}/
+				{{URL::route('home')}}/
+				@if($page['language'] !== 'en')/{{$page['language']}}@endif
 				<em>{{$page['slug']}}</em>
 			</p>
 			{{Form::text('slug', $page['slug'], ['class'=>'form-control hidden'])}}
