@@ -1429,11 +1429,21 @@ footer.admin {
   border-bottom: 1px solid #d9d9d9;
   -webkit-box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.75);
           box-shadow: 0px 1px 0px 0px rgba(255, 255, 255, 0.75);
-  padding: 20px 0; }
+  padding: 15px 0; }
   .page-head.margin {
     margin-bottom: 20px; }
   .page-head h1 {
-    margin: 0; }
+    margin: 0;
+    font-size: 26px; }
+    .page-head h1 .pull-right {
+      margin: 0; }
+    .page-head h1 i {
+      color: #808080;
+      position: relative;
+      top: 2px;
+      font-size: 26px; }
+  .page-head .pull-right {
+    margin-top: 5px; }
   .page-head select {
     float: right;
     width: 50%;
