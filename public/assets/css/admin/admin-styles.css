@@ -67,7 +67,10 @@ img {
   padding: 60px 15px 30px 15px;
   -webkit-box-sizing: border-box;
      -moz-box-sizing: border-box;
-          box-sizing: border-box; }
+          box-sizing: border-box;
+  border-right: 2px solid #cfcfcf;
+  -webkit-box-shadow: inset 0px -3px 8px 0px rgba(0, 0, 0, 0.9);
+          box-shadow: inset 0px -3px 8px 0px rgba(0, 0, 0, 0.9); }
   .panel-side h1 {
     margin: 0;
     padding: 15px 0;
@@ -111,7 +114,8 @@ img {
   float: right;
   width: 65%;
   margin-right: 5%;
-  padding-top: 20px; }
+  padding-top: 20px;
+  padding-bottom: 80px; }
 
 @media (max-width: 767px) {
   .panel-side {
@@ -1883,9 +1887,10 @@ footer.admin {
   padding-top: 15px; }
   .admin-posts ul.postfeed li .status-approved p {
     width: auto;
-    background-color: #00a950;
-    color: #ffffff;
+    background-color: #dff0d8;
+    color: #3c763d;
     padding: 8px;
+    border: 1px solid #d6e9c6;
     font-size: 14px;
     line-height: 18px;
     margin: 0 0 8px 0; }

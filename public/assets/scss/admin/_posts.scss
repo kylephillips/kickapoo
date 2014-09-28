@@ -183,9 +183,10 @@
 	padding-top: 15px;
 	p {
 		width: auto;
-		background-color: $green;
-		color: $white;
+		background-color: $success-bg;
+		color: $success-text;
 		padding: 8px;
+		border: 1px solid $success-border;
 		font-size: 14px;
 		line-height: 18px;
 		margin: 0 0 8px 0;

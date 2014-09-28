@@ -12,6 +12,8 @@
 	width: 25%;
 	padding: 60px 15px 30px 15px;
 	box-sizing: border-box;
+	border-right: 2px solid darken($white, 19%);
+	box-shadow: inset 0px -3px 8px 0px rgba(0,0,0,.9);
 	h1 {
 		margin: 0;
 		padding: 15px 0;
@@ -63,6 +65,7 @@
 	width: 65%;
 	margin-right: 5%;
 	padding-top: 20px;
+	padding-bottom: 80px;
 }
 
 @media (max-width: 767px)
