@@ -2195,8 +2195,8 @@ footer.admin {
           position: absolute;
           left: 0;
           top: 0;
-          font-family: 'icomoon';
-          content: '\e607';
+          font-family: 'icomoonadmin';
+          content: '\e616';
           color: #00a950;
           font-size: 15px; }
     .product-list li:first-child {
