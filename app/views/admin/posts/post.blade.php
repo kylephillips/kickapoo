@@ -21,7 +21,7 @@
 			<i class="icon-loop2"></i> Run Import
 		</span>
 		<span id="import-loading">
-			<img src="{{URL::asset('assets/images/loading-black.gif')}}" alt="loading" />
+			<img src="{{URL::asset('assets/images/loading-black-white.gif')}}" alt="loading" />
 		</span>
 	</div>
 	

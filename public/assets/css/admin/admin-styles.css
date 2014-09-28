@@ -1520,10 +1520,10 @@ footer.admin {
 
 .import-buttons {
   margin-bottom: 15px;
-  background-color: #4d4d4d;
+  background-color: #ffffff;
   cursor: pointer;
   font-size: 15px;
-  color: #ffffff;
+  color: #000000;
   padding: 8px 8px 0px 8px;
   height: 26px;
   -webkit-transition: all 200ms ease;
@@ -1538,7 +1538,7 @@ footer.admin {
   .import-buttons:after {
     clear: both; }
   .import-buttons:hover {
-    background-color: #666666;
+    background-color: #cccccc;
     -webkit-transition: all 200ms ease;
          -o-transition: all 200ms ease;
             transition: all 200ms ease; }
@@ -1551,7 +1551,7 @@ footer.admin {
   .import-buttons.disabled {
     cursor: not-allowed; }
     .import-buttons.disabled:hover {
-      background-color: #4d4d4d; }
+      background-color: #ffffff; }
 
 .single-form {
   background-color: #4d4d4d;

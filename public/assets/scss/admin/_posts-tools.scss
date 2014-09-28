@@ -5,16 +5,16 @@
 // Alert area for imports
 .import-buttons {
 	margin-bottom: 15px;
-	background-color: darken($white, 70%);
+	background-color: $white;
 	cursor: pointer;
 	font-size: 15px;
-	color: $white;
+	color: $black;
 	padding: 8px 8px 0px 8px;
 	height: 26px;
 	transition: all 200ms ease;
 	@include clearfix;
 	&:hover {
-		background-color: darken($white, 60%);
+		background-color: darken($white, 20%);
 		transition: all 200ms ease;
 	}
 	#import-loading {
@@ -28,7 +28,7 @@
 	&.disabled {
 		cursor: not-allowed;
 		&:hover {
-			background-color: darken($white, 70%);
+			background-color: $white;
 		}
 	}
 }
