@@ -153,19 +153,17 @@
 /**
 * Initialize masonry on posts container
 */
-function loadMasonry()
-{
-	var $container = $('#postfeed');
-	$container.imagesLoaded(function(){
-		$container.masonry({
-			itemSelector: '.post'
-		});
-	});
-}
 $(document).ready(function(){
 	loadMasonry();
 });
-
+function loadMasonry()
+{
+	var $container = $('#postfeed').masonry();
+	$container.imagesLoaded( function() {
+		$container.masonry();
+	});
+	
+}
 
 /**
 * Remove Post from list
@@ -180,9 +178,9 @@ function removePost(id, type, item)
 		},
 		success: function(data){
 			if (data == 'success'){
-				$(item).fadeOut();
+				$('#postfeed').masonry( 'remove', item );
+				$('#postfeed').masonry();
 				getPending();
-				loadMasonry();
 			}
 		}
 	});

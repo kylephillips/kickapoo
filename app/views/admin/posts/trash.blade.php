@@ -26,8 +26,8 @@
 		<div class="alert alert-success">The trash is empty.</div>
 	</div>
 @else
-	<div class="container admin-posts">	
-		<ul class="trash">
+	<div class="container admin-posts">
+		<ul class="trash" id="postfeed">
 		@foreach($posts as $post)
 			<?php 
 				$date = date('D, M jS Y - g:i a', strtotime($post['datetime'])); 
@@ -48,7 +48,23 @@
 @stop
 
 @section('footercontent')
+<script src="{{URL::asset('assets/js/imagesloaded.pkgd.min.js')}}"></script>
+<script src="{{URL::asset('assets/js/masonry.pkgd.min.js')}}"></script>
 <script>
+/**
+* Initialize masonry on posts container
+*/
+$(document).ready(function(){
+	loadMasonry();
+});
+function loadMasonry()
+{
+	var $container = $('#postfeed').masonry();
+	$container.imagesLoaded( function() {
+		$container.masonry();
+	});
+}
+
 /**
 * Restore a post back to the feed
 */
@@ -62,9 +78,8 @@ function restorePost(id, type, item)
 			type: type
 		},
 		success: function(data){
-			$(item).fadeOut('fast', function(){
-				$(item).remove();
-			});
+			$('#postfeed').masonry( 'remove', item );
+			$('#postfeed').masonry();
 		}
 	});
 }

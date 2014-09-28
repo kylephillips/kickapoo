@@ -1671,6 +1671,7 @@ footer.admin {
   .admin-posts ul.postfeed:after, .admin-posts ul.trash:after {
     clear: both; }
   .admin-posts ul.postfeed li, .admin-posts ul.trash li {
+    float: left;
     width: 50%;
     padding: 10px;
     -webkit-box-sizing: border-box;
