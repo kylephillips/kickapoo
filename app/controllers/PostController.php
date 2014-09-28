@@ -61,7 +61,7 @@ class PostController extends \BaseController {
 		$status_link .= ( $type !== 'all' ) ? '?type=' . $type : '?type=all';
 
 		// Paginate Posts
-		$perPage = 5;
+		$perPage = 10;
 		$currentPage = Input::get('page', 1) - 1;
 		$current_posts = array_slice($posts->toArray(), $currentPage * $perPage, $perPage);
 		$posts = Paginator::make($current_posts, count($posts), $perPage);
