@@ -5,7 +5,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Input\InputArgument;
 use Kickapoo\Repositories\PostRepository;
 
-class CleanImportsTableCommand extends Command {
+class CleanLogsTableCommand extends Command {
 
 	/**
 	* Post Repository
@@ -17,7 +17,7 @@ class CleanImportsTableCommand extends Command {
 	 *
 	 * @var string
 	 */
-	protected $name = 'kickapoo:cleanimports';
+	protected $name = 'kickapoo:cleanlogs';
 
 	/**
 	 * The console command description.
@@ -44,7 +44,7 @@ class CleanImportsTableCommand extends Command {
 	 */
 	public function fire()
 	{
-		$this->post_repo->cleanImportsTable();
+		$this->post_repo->cleanLogsTable();
 	}
 
 }

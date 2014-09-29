@@ -138,12 +138,12 @@ class PostRepository {
 	}
 
 	/**
-	* Clean up the Imports Table
+	* Clean up the Logs Table
 	*/
-	public function cleanImportsTable()
+	public function cleanLogsTable()
 	{
-		$daysOld = Carbon::now()->subDays(2);
-		$imports = AppLog::where('created_at', '<=', $daysOld)->where('type', 'import')->delete();
+		$daysOld = Carbon::now()->subDays(1);
+		$imports = AppLog::where('created_at', '<=', $daysOld)->where('type', 'import')->orWhere('type', 'trash')->delete();
 	}
 
 

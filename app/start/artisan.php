@@ -16,4 +16,4 @@ Artisan::resolve('ImportSocialCommand');
 Artisan::resolve('EmptyTrashCommand');
 Artisan::resolve('CleanOldPostsCommand');
 Artisan::resolve('AdminNotification');
-Artisan::resolve('CleanImportsTableCommand');
+Artisan::resolve('CleanLogsTableCommand');
