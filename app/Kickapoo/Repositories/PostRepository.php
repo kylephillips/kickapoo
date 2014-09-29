@@ -6,6 +6,7 @@ use \Tweet;
 use \Gram;
 use \FBPost;
 use \Paginator;
+use \AppLog;
 use \Carbon\Carbon;
 
 class PostRepository {
@@ -135,5 +136,15 @@ class PostRepository {
 		$fbposts = FBPost::where('created_at','<=',$monthOld)->whereRaw('approved IS NULL')->delete();
 		return 'cleaned';
 	}
+
+	/**
+	* Clean up the Imports Table
+	*/
+	public function cleanImportsTable()
+	{
+		$daysOld = Carbon::now()->subDays(2);
+		$imports = AppLog::where('created_at', '<=', $daysOld)->where('type', 'import')->delete();
+	}
+
 
 }
