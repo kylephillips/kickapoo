@@ -78,6 +78,10 @@ header {
 @media (max-width: 767px)
 {
 	header {
+		.language-select {
+			margin: 0;
+			display: none;
+		}
 		.buy-button {
 			display: none;
 		}

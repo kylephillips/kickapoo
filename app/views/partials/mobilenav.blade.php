@@ -2,6 +2,8 @@
 	<img src="{{URL::asset('assets/images/kickapoo-joy-juice-logo.png')}}" alt="Kickapoo Joy Juice Logo" />
 </a>
 
+@include('partials.language-select')
+
 <ul class="nav">
 	@foreach($page_navigation as $page)
 	<li><a href="{{url('/')}}/{{$page->slug}}">{{$page->title}}</a></li>

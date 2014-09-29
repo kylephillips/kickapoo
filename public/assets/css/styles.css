@@ -735,6 +735,7 @@ body.nav-open .page-wrap {
 
 .nav-toggle {
   display: none;
+  clear: right;
   float: right;
   margin-top: 18px;
   background-color: #fff200;
@@ -1005,6 +1006,9 @@ header {
         display: none; } }
 
 @media (max-width: 767px) {
+  header .language-select {
+    margin: 0;
+    display: none; }
   header .buy-button {
     display: none; } }
 
