@@ -33,14 +33,15 @@ gulp.task('admin_sass', function(){
 });
 
 /**
-* Smush the front end js plugins and output
+* Smush the front end js and output
 */
 gulp.task('js', function(){
 	return gulp.src(js_source)
-		.pipe(concat('plugins.min.js'))
+		.pipe(concat('scripts.min.js'))
 		.pipe(gulp.dest(js_front_end))
 		.pipe(uglify())
 		.pipe(gulp.dest(js_front_end))
+		.pipe(notify('Front-end scripts compiles & compressed.'));
 });
 
 /**
