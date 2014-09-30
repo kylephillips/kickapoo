@@ -63,6 +63,7 @@
 	<script src="{{URL::asset('assets/js/admin-scripts.js')}}"></script>
 	<script src="{{URL::asset('assets/js/admin-media-library.js')}}"></script>
 	<script src="{{URL::asset('assets/js/redactor.min.js')}}"></script>
+	<script src="{{URL::asset('assets/js/jquery.fitvids.js')}}"></script>
 	
 	@yield('footercontent')
 </body>

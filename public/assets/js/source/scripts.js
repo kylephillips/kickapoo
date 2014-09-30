@@ -29,6 +29,7 @@ $(window).on('load', function(){
 });
 
 $(document).ready(function(){
+	$('.container').fitVids();
 	$(window).stellar({ horizontalScrolling: false });
 });
 

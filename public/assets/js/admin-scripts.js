@@ -7,6 +7,7 @@ $('.admin-nav-toggle').on('click', function(e){
 });
 
 
+
 /**
 * ----------------------------------------------------------------------
 * Post Feed
@@ -47,6 +48,9 @@ function apply_redactor(item)
 		},
 		imageUploadErrorCallback: function(json){
 			console.log(json.error);
+		},
+		initCallback : function(){
+			$('.redactor-editor').fitVids();
 		}
 	});
 }
