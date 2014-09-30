@@ -141,8 +141,13 @@ $(document).on('click', '.media-library-item', function(e){
 		caption : $(this).attr('data-caption')
 	};
 	var item = $(this);
-	select_media_image(image, item);
-	set_image_fields(image);
+	if ( $(item).hasClass('selected') ){
+		$('.choose-media').prop('disabled', 'disabled');
+		remove_selected_image();
+	} else {
+		select_media_image(image, item);
+		set_image_fields(image);
+	}
 });
 
 
