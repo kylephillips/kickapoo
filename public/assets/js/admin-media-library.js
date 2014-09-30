@@ -5,7 +5,7 @@
 */
 
 /**
-* Remove an Image Thumbnail
+* Remove an Image Thumbnail and replace with media library button
 */
 $('.remove-thumb').on('click', function(e){
 	e.preventDefault();
@@ -27,26 +27,33 @@ $(document).on('click', '.open-media-library', function(e){
 	open_media_library(folder, false);
 });
 
-/*
+
+/**
 * Hidden field holds the correct field to populate once an image has been selected
+* @param field string - class of field
 */
 function save_selected_image_field(field)
 {
 	$('#field-selected').val(field);
 }
 
+
+/**
+* Open the modal window & display the correct directory
+* @param directory string
+* @param editor boolean
+*/
 function open_media_library(directory, editor)
 {
 	$('#media-library').modal('show');
 	get_media_library_data(directory);
-	if ( editor ){
-		$('#media-library').addClass('is-editor');
-	}
+	if ( editor ) $('#media-library').addClass('is-editor');
 }
 
 
 /**
 * Get data for populating media library
+* @param directory string
 */
 function get_media_library_data(directory)
 {
@@ -65,8 +72,10 @@ function get_media_library_data(directory)
 	});
 }
 
+
 /**
 * Populate the media library
+* @param items object (returned from AJAX response)
 */
 function populate_library(items)
 {
@@ -77,9 +86,8 @@ function populate_library(items)
 		} else {
 			out += '<li>';
 		}
-		out += '<div><a href="#" class="media-library-item" data-name="' + item.file + '" data-id="' + item.id + '" data-folder="' + item.folder + '">';
+		out += '<div><a href="#" class="media-library-item" data-name="' + item.file + '" data-id="' + item.id + '" data-folder="' + item.folder + '" data-title="' + item.title + '" data-alt="' + item.alt + '" data-caption="' + item.caption + '">';
 		out += '<img src="' + urls.site_index + item.folder + '_thumbs-large/' + item.file + '">';
-		out += '<span>' + item.title + '</span>';
 		out += '</a></div></li>';
 	});
 	out += '</ul>';
@@ -89,6 +97,8 @@ function populate_library(items)
 
 /**
 * Populate the Media Library Select Menu
+* @param folder object
+* @param current_dir string
 */
 function populate_library_menu(folders, current_dir)
 {
@@ -105,8 +115,9 @@ function populate_library_menu(folders, current_dir)
 	}
 }
 
+
 /**
-* No uploads yet
+* Display No uploads yet message
 */
 function no_media_uploads()
 {
@@ -115,35 +126,51 @@ function no_media_uploads()
 	$('#media-library .modal-body').html(out);
 }
 
+
 /**
-* Select an image and populate the custom field
+* Select image on click
 */
 $(document).on('click', '.media-library-item', function(e){
 	e.preventDefault();
-	var id = $(this).data('id');
-	var name = $(this).data('name');
-	var folder = $(this).data('folder');
+	var image = {
+		id : $(this).attr('data-id'),
+		name : $(this).attr('data-name'),
+		folder : $(this).attr('data-folder'),
+		title : $(this).attr('data-title'),
+		alt : $(this).attr('data-alt'),
+		caption : $(this).attr('data-caption')
+	};
 	var item = $(this);
-	select_media_image(id, name, folder, item);
+	select_media_image(image, item);
+	set_image_fields(image);
 });
-function select_media_image(id, name, folder, item)
+
+
+/**
+* Populate various required fields when selecting an image
+* @param image object
+* @param item DOM object
+*/
+function select_media_image(image, item)
 {
+	$('.ml-image-info-selected').hide();
+	$('#ml-image-details-saved').text('').hide();
+
 	if ( !$('#media-library').hasClass('is-editor') ){
-		// Set the hidden fields
 		var selected_field = '#' + $('#field-selected').val();
-		$(selected_field).val(id);
+		$(selected_field).val(image.id);
 
 		$(selected_field).removeAttr('data-name');
-		$(selected_field).attr('data-name', name);
+		$(selected_field).attr('data-name', image.name);
 		$(selected_field).removeAttr('data-folder');
-		$(selected_field).attr('data-folder', folder)
+		$(selected_field).attr('data-folder', image.folder)
 	}
 
 	// Editor 
 	$('#media-library').removeAttr('data-editor');
-	$('#media-library').attr('data-editor', folder + name);
+	$('#media-library').attr('data-editor', image.folder + image.name);
 	
-	$('.ml-chosen-image').text(name);
+	$('.ml-chosen-image').text(image.name);
 
 	$('.media-library-item').removeClass('selected');
 	if ( item  ){
@@ -151,6 +178,68 @@ function select_media_image(id, name, folder, item)
 	}
 	$('.choose-media').prop('disabled', '');
 }
+
+
+/**
+* Set the image details fields
+*/
+function set_image_fields(image)
+{
+	if ( image.alt !== 'null' ){
+		$('#ml-image-alt').val(image.alt);
+	} else {
+		$('#ml-image-alt').val('');
+	}
+	$('#ml-image-id').val(image.id);
+	if ( image.caption !== 'null' ){
+		$('#ml-image-caption').val(image.caption);
+	} else {
+		$('#ml-image-caption').val('');
+	}
+	$('#ml-image-title').text(image.title);
+	$('.ml-image-info-default').hide();
+	$('.ml-image-info-selected').show();
+}
+
+/**
+* Update Image Details
+*/
+$(document).on('click', '#update-image-details', function(e){
+	e.preventDefault();
+	update_image_details();
+});
+function update_image_details()
+{
+	$('.update-image-loading').show();
+	$('#ml-image-details-saved').text('').hide();
+
+	var id = $('#ml-image-id').val();
+	var alt = $('#ml-image-alt').val();
+	var caption = $('#ml-image-caption').val();
+	var item = $('.media-library-item[data-id="' + id + '"]');
+
+	$.ajax({
+		url : urls.update_image_details,
+		type : 'POST',
+		data : {
+			id : id,
+			alt : alt,
+			caption : caption
+		},
+		success : function(data){
+			if ( data.status === 'success' ){
+				$('.update-image-loading').hide();
+				$('#ml-image-details-saved').text('Image Successfully Updated').show();
+				$(item).attr('data-alt', alt);
+				$(item).attr('data-caption', caption);
+			} else {
+				$('.update-image-loading').hide();
+				$('#ml-image-details-saved').text('There was an error saving the image information.').show();
+			}
+		}
+	});
+}
+
 
 /**
 * Insert the selected image into the editor
@@ -213,6 +302,10 @@ function remove_selected_image()
 	$(selected_field_cont).find('input').val('');
 	$('.media-library-item').removeClass('selected');
 	$('.ml-chosen-image').text('Choose Your Image');
+
+	$('.ml-image-info-default').show();
+	$('.ml-image-info-selected').hide();
+	$('#ml-image-details-saved').text('').hide();
 }
 
 

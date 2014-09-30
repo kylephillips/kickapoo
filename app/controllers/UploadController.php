@@ -78,4 +78,21 @@ class UploadController extends BaseController {
 		}
 	}
 
+
+	/**
+	* Update Image Details (AJAX form in Media Library)
+	*/
+	public function updateImageDetails()
+	{
+		if ( Request::ajax() ){
+			$update = $this->upload_repo->updateUpload(Input::all());
+			$status = ( $update ) ? 'success' : 'error';
+			return Response::json([
+				'status' => $status
+			]);
+		}
+	}
+
+
+
 }

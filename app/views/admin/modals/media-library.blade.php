@@ -17,6 +17,33 @@
 					<p class="ml-chosen-image">Choose your image.</p>
 				</div>
 				<div class="modal-body ml-body loading"></div>
+				<div class="ml-image-info">
+					<div class="ml-image-info-default">
+						<i class="icon-admin-image"></i> Select an Image
+					</div>
+					<div class="ml-image-info-selected" style="display:none;">
+						<h4>Image Details</h4>
+						<div class="alert alert-info" style="display:none;" id="ml-image-details-saved"></div>
+						<p>
+							<span id="ml-image-title"></span>
+						</p>
+						<p>
+							<label for="ml-image-alt">Alt Text</label>
+							<input type="text" id="ml-image-alt" name="ml-image-alt">
+						</p>
+						<p>
+							<label for="ml-image-caption">Image Caption</label>
+							<textarea name="ml-image-caption" id="ml-image-caption"></textarea>
+						</p>
+						<p>
+							<input type="hidden" name="ml-image-id" id="ml-image-id">
+							<button id="update-image-details">Update</button>
+							<div class="update-image-loading" style="display:none;">
+								<img src="{{URL::asset('assets/images/loading-gray-light.gif')}}">
+							</div>
+						</p>
+					</div>
+				</div>
 			</div>
 			
 			<div id="media-new" class="modal-body-upload modal-body-panel" style="display:none;">

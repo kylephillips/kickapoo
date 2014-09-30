@@ -37,15 +37,8 @@
 	}
 } // .media-library-tabs
 
-// General Styles
+// General Styles (overriding modal styles)
 .modal.media {
-	.modal-dialog {
-		height: 95%;
-		overflow: auto;
-	}
-	.modal-content {
-		height: 100%;
-	}
 	.modal-header {
 		padding-bottom: 0;
 		padding-top: 8px;
@@ -66,9 +59,13 @@
 		}
 	}
 	.modal-body {
-		max-height: 400px;
+		max-height: 380px;
+		width: 75%;
+		float: left;
+		padding: 20px 0 0 0;
+		box-shadow: inset 0px 0px 3px 0px rgba(0,0,0,.2);
 		&.loading {
-			height: 100px;
+			height: 380px;
 			background: url('../../images/loading-gray-white.gif'), $white;
 			background-repeat: no-repeat;
 			background-position: center;
@@ -89,7 +86,82 @@
 		@extend .alert;
 		margin: 0;
 	}
+	.modal-footer {
+		clear: both;
+		background-color: darken($white, 10%);
+		border-top: 1px solid darken($white, 15%);
+	}
 }
+
+// Image Info & Form Fields
+.ml-image-info {
+	float: right;
+	width: 25%;
+	background-color: darken($white, 6%);
+	height: 400px;
+	padding: 10px;
+	box-sizing: border-box;
+	h4 {
+		border-bottom: 1px solid darken($white, 12%);
+		margin: 0;
+		padding: 0 0 8px 0;
+		color: darken($white, 75%);
+		font-weight: normal;
+	}
+	p {
+		margin: 0;
+	}
+	span {
+		display: block;
+		margin: 15px 0px;
+		background-color: darken($white, 12%);
+		padding: 4px;
+		border: 1px solid darken($white, 18%);
+	}
+	label {
+		font-weight: normal;
+	}
+	button {
+		display: inline-block;
+		background-color: darken($white, 10%);
+		border: 1px solid darken($white, 20%);
+		font-size: 15px;
+		padding: 5px 10px;
+		border-radius: 2px;
+		cursor: pointer;
+		transition: all 200ms ease;
+		&:hover {
+			background-color: $info-text;
+			color: $white;
+		}
+		&:focus {
+			outline: none;
+		}
+	}
+	// Loading Indicator
+	.update-image-loading {
+		display: none;
+		text-align: center;
+		margin-top: 10px;
+		display: block;
+		img {
+			width: 35px;
+		}
+	}
+	.ml-image-info-default {
+		text-align: center;
+		padding-top: 150px;
+		color: darken($white, 30%);
+		text-shadow: 0px 1px 0px $white;
+		i {
+			display: block;
+			font-size: 40px;
+			color: darken($white, 20%);
+			margin-bottom: 5px;
+		}
+	}
+} // .ml-image-info
+
 
 // Directory Select
 .modal-select {
@@ -102,7 +174,7 @@
 	@include clearfix;
 	margin-top: -20px;
 	padding: 10px;
-	background-color: darken($white, 10%);
+	min-height: 400px;
 	li {
 		float: left;
 		width: 25%;
@@ -110,16 +182,17 @@
 			clear: both;
 		}
 		div {
-			padding: 8px;
+			padding: 5px;
 		}
 		a {
 			box-sizing: border-box;
 			display: block;
-			padding: 10px;
+			padding: 6px 6px 4px 6px;
 			font-size: 14px;
-			background-color: $white;
+			background-color: darken($white, 6%);
+			transition: none;
 			&.selected {
-				border: 3px solid $green;
+				background-color: $green;
 			}
 		}
 		span {
@@ -145,10 +218,12 @@
 	@include clearfix;
 }
 
+// Upload Message (Drag files here)
 .dz-message {
 	padding: 0px 20px;
 	cursor: pointer;
 	display: block;
+	margin-bottom: 20px;
 	.dz-interior {
 		background-color: darken($white, 6%);
 		height: 180px;
@@ -252,6 +327,19 @@
 	}
 }
 
+@media(max-width: 1050px)
+{
+	.media-library-list {
+		li {
+			float: left;
+			width: 33.33%;
+			&.first {
+				clear: none;
+			}
+		}
+	}
+}
+
 @media(max-width: 767px)
 {
 	// General Styles
@@ -262,6 +350,7 @@
 		}
 		.modal-body {
 			max-height: 200px;
+			width: 100%;
 		}
 		select {
 			width: 100%;
@@ -270,6 +359,10 @@
 		.ml-chosen-image {
 			display: none;
 		}
+	}
+
+	.ml-image-info {
+		display: none;
 	}
 
 	.media-library-tabs li {

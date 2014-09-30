@@ -38,4 +38,21 @@ class UploadRepository {
 		}
 	}
 
+
+	/**
+	* Update an upload
+	*/
+	public function updateUpload($input)
+	{
+		$upload = Upload::where('id', $input['id'])->firstOrFail();
+		if ( $upload ){
+			$upload->alt = $input['alt'];
+			$upload->caption = $input['caption'];
+			$upload->save();
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 }

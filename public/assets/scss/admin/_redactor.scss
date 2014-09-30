@@ -1,6 +1,10 @@
 //
 // Editor Styles
 // --------------------------------------------------
+.redactor-box {
+	border: 1px solid darken($white, 12%);
+}
+
 .redactor-editor {
 	background-color: darken($green-dark, 4%);
 	font-size: 16px;

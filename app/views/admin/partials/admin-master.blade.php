@@ -49,7 +49,8 @@
 		'editor_styles' : "{{URL::asset('assets/css/editor-styles.css')}}",
 		'media_library_route' : "{{URL::route('media_library')}}",
 		'media_library_upload' : "{{URL::route('media_library_upload')}}",
-		'site_index' : "{{URL::route('home')}}"
+		'site_index' : "{{URL::route('home')}}",
+		'update_image_details' : "{{URL::route('update_image_details')}}"
 	}
 	</script>
 

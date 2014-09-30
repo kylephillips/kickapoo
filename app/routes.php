@@ -92,6 +92,7 @@ Route::group(['before'=>'auth'], function()
 	Route::post('admin/media/editor-upload', ['as'=>'editor_upload', 'uses'=>'UploadController@editorUpload']);
 	Route::get('admin/media/library', ['as'=>'media_library', 'uses'=>'UploadController@mediaLibrary']);
 	Route::post('admin/media/library-upload', ['as'=>'media_library_upload', 'uses'=>'UploadController@libraryUpload']);
+	Route::post('admin/media/update-image-details', ['as'=>'update_image_details', 'uses'=>'UploadController@updateImageDetails']);
 
 	// Social Search Terms
 	Route::post('searchterms', ['as'=>'update_search', 'uses'=>'PostController@updateSearchTerms']);
