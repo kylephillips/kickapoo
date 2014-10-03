@@ -49,7 +49,7 @@ class UploadRepository {
 			$upload->alt = $input['alt'];
 			$upload->caption = $input['caption'];
 			$upload->save();
-			return true;
+			return $upload;
 		} else {
 			return false;
 		}

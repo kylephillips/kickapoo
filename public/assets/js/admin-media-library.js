@@ -134,7 +134,7 @@ $(document).on('click', '.media-library-item', function(e){
 	e.preventDefault();
 	var image = {
 		id : $(this).attr('data-id'),
-		name : $(this).attr('data-name'),
+		file : $(this).attr('data-name'),
 		folder : $(this).attr('data-folder'),
 		title : $(this).attr('data-title'),
 		alt : $(this).attr('data-alt'),
@@ -166,22 +166,32 @@ function select_media_image(image, item)
 		$(selected_field).val(image.id);
 
 		$(selected_field).removeAttr('data-name');
-		$(selected_field).attr('data-name', image.name);
+		$(selected_field).attr('data-name', image.file);
 		$(selected_field).removeAttr('data-folder');
 		$(selected_field).attr('data-folder', image.folder)
 	}
-
-	// Editor 
-	$('#media-library').removeAttr('data-editor');
-	$('#media-library').attr('data-editor', image.folder + image.name);
 	
-	$('.ml-chosen-image').text(image.name);
+	$('.ml-chosen-image').text(image.file);
 
 	$('.media-library-item').removeClass('selected');
 	if ( item  ){
 		$(item).addClass('selected');
 	}
+
+	update_editor_data_attributes(image);
 	$('.choose-media').prop('disabled', '');
+}
+
+/**
+* Update the data attributes for inserting editor images
+* @param image object
+*/
+function update_editor_data_attributes(image)
+{
+	$('#media-library').removeAttr('data-editor');
+	var selected_alt = $('.selected').attr('data-alt');
+	var image_src = '<img src="' + image.folder + image.file + '" alt="' + selected_alt + '" >';
+	$('#media-library').attr('data-editor', image_src);
 }
 
 
@@ -233,10 +243,12 @@ function update_image_details()
 		},
 		success : function(data){
 			if ( data.status === 'success' ){
+				console.log(data);
 				$('.update-image-loading').hide();
 				$('#ml-image-details-saved').text('Image Successfully Updated').show();
 				$(item).attr('data-alt', alt);
 				$(item).attr('data-caption', caption);
+				update_editor_data_attributes(data.image);
 			} else {
 				$('.update-image-loading').hide();
 				$('#ml-image-details-saved').text('There was an error saving the image information.').show();
@@ -252,7 +264,7 @@ function update_image_details()
 function insert_editor_image()
 {
 	var selected = $('#media-library').attr('data-editor');
-	ActiveEditor.image_html = '<img src="' + selected + '">';
+	ActiveEditor.image_html = selected;
 	ActiveEditor.insert();
 	console.log(ActiveEditor);
 }

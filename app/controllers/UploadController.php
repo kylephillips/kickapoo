@@ -85,10 +85,11 @@ class UploadController extends BaseController {
 	public function updateImageDetails()
 	{
 		if ( Request::ajax() ){
-			$update = $this->upload_repo->updateUpload(Input::all());
+			$update = $this->upload_repo->updateUpload( Input::all() );
 			$status = ( $update ) ? 'success' : 'error';
 			return Response::json([
-				'status' => $status
+				'status' => $status,
+				'image' => $update
 			]);
 		}
 	}
