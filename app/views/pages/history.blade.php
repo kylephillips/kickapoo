@@ -3,7 +3,8 @@
 
 	<div class="container">
 		@if( $page->get_field('Header Image', $page->id) )
-			<img src="{{URL::asset($page->get_field('Header Image', $page->id))}}" class="header-image" alt="Swig Some Swag!" />
+		<?php $header_image = $page->get_field('Header Image', $page->id); ?>
+			<img src="{{URL::asset($header_image['image'])}}" class="header-image" alt="{{$header_image['alt']}}" />
 		@else
 			<h1>{{$page['title']}}</h1>
 		@endif
@@ -15,7 +16,8 @@
 
 <div class="container">
 	@if( $page->get_field('Hero Image', $page->id) )
-		<img src="{{URL::asset($page->get_field('Hero Image', $page->id))}}" class="history-hero" alt="Kickapoo Joy Juice History" />
+	<?php $hero_image = $page->get_field('Hero Image', $page->id); ?>
+		<img src="{{URL::asset($hero_image['image'])}}" class="history-hero" alt="{{$hero_image['alt']}}" />
 	@endif
 
 	@if($page->get_field('Intro Text', $page->id))
@@ -30,8 +32,9 @@
 <div class="container history">
 
 	@if($page->get_field('Large Bottle', $page->id))
+	<?php $bottle = $page->get_field('Large Bottle', $page->id); ?>
 		<aside>
-			<img src="{{URL::asset($page->get_field('Large Bottle', $page->id))}}" alt="Kickapoo Joy Juice 12oz Glass Bottle" />
+			<img src="{{URL::asset($bottle['image'])}}" alt="{{$bottle['alt']}}" />
 		</aside>
 		<section class="main">
 			{{$page['content']}}

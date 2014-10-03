@@ -18,12 +18,15 @@ class Page extends Eloquent {
 	/**
 	* Get a specified custom field - for use in templates
 	*/
-	public function get_field($field, $pageid)
+	public function get_field($field, $pageid, $options = null)
 	{
 		try {
 			$field = CustomField::where('name',$field)->with('image')->where('page_id',$pageid)->first();
 			if ( $field->field_type == 'image' ){
-				return $field->image->folder . $field->image->file;
+				$out['image'] = $field->image->folder . $field->image->file;
+				$out['alt'] = $field->image->alt;
+				$out['caption'] = $field->image->caption;
+				return $out;
 			}
 			return $field->value;
 		} catch (\Exception $e){

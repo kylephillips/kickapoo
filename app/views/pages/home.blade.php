@@ -3,7 +3,8 @@
 
 <section class="headline">
 	@if( $page->get_field('Headline', $page->id) )
-		<img src="{{URL::asset($page->get_field('Headline', $page->id))}}" class="header-image" alt="Share your Joy Face!" />
+	<?php $headline = $page->get_field('Headline', $page->id); ?>
+		<img src="{{URL::asset($headline['image'])}}" class="header-image" alt="{{$headline['alt']}}" />
 	@else
 		<img src="{{URL::asset('assets/images/home-headline.png')}}" class="home-headline" />
 	@endif
@@ -15,13 +16,15 @@
 </section>
 
 @if( $page->get_field('Can One', $page->id) )
-<img src="{{URL::asset( $page->get_field('Can One', $page->id) )}}" class="home-green-can" alt="Kickapoo Joy Juice Slim Can" />
+<?php $can_one = $page->get_field('Can One', $page->id); ?>
+<img src="{{URL::asset( $can_one['image'] )}}" class="home-green-can" alt="{{$can_one['alt']}}" />
 @else
 <img src="{{URL::asset('assets/images/kickapoo-joy-juice-can.png')}}" class="home-green-can" alt="Kickapoo Joy Juice Slim Can" />
 @endif
 
 @if( $page->get_field('Can Two', $page->id) )
-<img src="{{URL::asset( $page->get_field('Can Two', $page->id) )}}" class="home-red-can" alt="Kickapoo Fruit Shine Slim Can" />
+<?php $can_two = $page->get_field('Can Two', $page->id); ?>
+<img src="{{URL::asset( $can_two['image'] )}}" class="home-red-can" alt="{{$can_two['alt']}}" />
 @else
 <img src="{{URL::asset('assets/images/kickapoo-fruit-shine-can.png')}}" class="home-red-can" alt="Kickapoo Fruit Shine Slim Can" />
 @endif
