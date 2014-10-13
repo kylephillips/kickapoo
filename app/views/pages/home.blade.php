@@ -61,7 +61,7 @@
 
 @if(count($posts) > 0)
 	<div class="pagination hidden">{{$posts->links()}}</div>
-	<p class="center nextposts"><a href="#" class="load-more">{{Lang::get('messages.load_more')}}! <i class="icon-loop2"></i></a></p>
+	<p class="center nextposts"><a href="#" class="load-more" rel="nofollow">{{Lang::get('messages.load_more')}}! <i class="icon-loop2"></i></a></p>
 @endif
 
 
