@@ -5,6 +5,11 @@
 
     RewriteEngine On
 
+    RewriteRule ^history\.html$ /history [L,R=301]
+    RewriteRule ^about\.html$ /products [L,R=301]
+    RewriteRule ^contact\.html$ /contact [L,R=301]
+    RewriteRule ^locate-1\.html$ /products [L,R=301]
+
     # Redirect Trailing Slashes...
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 
