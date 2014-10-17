@@ -191,9 +191,9 @@
 		<div class="well-interior">
 			<div class="seo-preview">
 				@if($page['seo_title'])
-				<h4>Kickapoo Joy Juice - <span class="seo-title">{{$page['seo_title']}}</span></h4>
+					<h4 data-default="Kickapoo Joy Juice - {{$page['title']}}"><span class="seo-title">{{$page['seo_title']}}</span></h4>
 				@else
-				<h4>Kickapoo Joy Juice</h4>
+					<h4 data-default="Kickapoo Joy Juice - {{$page['title']}}">Kickapoo Joy Juice</h4>
 				@endif
 				<p>
 					<em>www.kickapoo.com/<span class="slug-seo">{{$page['slug']}}</span></em>

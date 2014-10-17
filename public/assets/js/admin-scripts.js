@@ -213,6 +213,11 @@ $('#seo_description').on('keyup', function(){
 });
 
 $('#seo_title').on('keyup', function(){
+	var defaulttitle = $('.seo-preview h4').attr('data-default');
 	var title = $(this).val();
-	$('.seo-title').text(title);
+	if ( title !== "" ){
+		$('.seo-preview h4').text(title);
+	} else {
+		$('.seo-preview h4').text(defaulttitle);
+	}
 });

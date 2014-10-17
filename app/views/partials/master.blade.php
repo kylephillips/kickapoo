@@ -3,7 +3,12 @@
 <head>
 	<meta charset="UTF-8" />
 
-	<title>Kickapoo Joy Juice @if($page['seo_title'])- {{$page['seo_title']}} @endif</title>
+@if($page['seo_title'])
+	<title>{{$page['seo_title']}}</title>
+@else
+	<title>Kickapoo Joy Juice - {{$page['title']}}</title>
+@endif
+
 
 @if($page['seo_description'])
 	<meta name="description" content="{{$page['seo_description']}}">
