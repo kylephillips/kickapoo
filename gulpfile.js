@@ -49,7 +49,7 @@ gulp.task('js', function(){
 */
 gulp.task('sass', function(){
 	return gulp.src(scss)
-		.pipe(sass())
+		.pipe(sass({ outputStyle: 'compressed' }))
 		.pipe(autoprefix('last 15 version'))
 		.pipe(gulp.dest(css))
 		.pipe(plumber())

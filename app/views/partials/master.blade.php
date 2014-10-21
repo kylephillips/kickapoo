@@ -21,7 +21,7 @@
 	<link rel="stylesheet" href="{{URL::asset('assets/css/admin/admin-styles.css')}}">
 @endif
 	
-	<link rel="stylesheet" href="{{URL::asset('assets/css/styles.css')}}">	
+	<link rel="stylesheet" href="{{URL::asset('assets/css/styles.css')}}?v=1.1">	
 
 	<!--[if IE 8]>
 		<link rel="stylesheet" type="text/css" href="{{URL::asset('assets/css/ie8.css')}}" />
