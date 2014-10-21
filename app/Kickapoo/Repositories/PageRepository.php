@@ -28,14 +28,18 @@ class PageRepository {
 	*/
 	public function getPage($slug, $lang = 'en')
 	{
-		$page = Page::where('slug', $slug)->with('customfields','translations','translation_of')->firstOrFail();
-		if ( $lang == $page->language ) return $page;
-		
-		// Return translated page if not english
-		foreach($page->translations as $translation)
-		{
-			if ( $translation->language == $lang )
-			return $this->getTranslatedPage($translation->id);
+		$page = Page::where('slug', $slug)->with('customfields','translations','translation_of')->first();
+		if ( $page ){
+			if ( $lang == $page->language ) return $page;
+			
+			// Return translated page if not english
+			foreach($page->translations as $translation)
+			{
+				if ( $translation->language == $lang )
+				return $this->getTranslatedPage($translation->id);
+			}
+		} else {
+			return false;
 		}
 	}
 

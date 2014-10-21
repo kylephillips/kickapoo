@@ -2,7 +2,12 @@
 	<section>
 		<a href="{{URL::route('home')}}" class="logo"><img src="{{URL::asset('assets/images/kickapoo-joy-juice-logo.png')}}" alt="Kickapoo Joy Juice Logo" /></a>
 
-		<p>&copy;{{date('Y')}} Monarch Beverage Company</p>
+		<p>&copy;{{date('Y')}} Monarch Beverage Company. 
+			@if($media_page)
+				@if ($media_page['status'] == 'publish')
+				<a href="{{URL::route('page', ['slug'=>$media_page['slug']])}}">{{$media_page['title']}}</a></p>
+				@endif
+			@endif
 	</section>
 
 	<nav>

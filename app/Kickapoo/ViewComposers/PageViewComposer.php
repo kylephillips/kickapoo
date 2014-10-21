@@ -2,6 +2,7 @@
 
 use Kickapoo\Repositories\PageRepository;
 use Kickapoo\Repositories\SettingRepository;
+use \LaravelLocalization;
 
 class PageViewComposer {
 
@@ -18,6 +19,7 @@ class PageViewComposer {
 	{
 		$view->with('page_navigation', $this->pageNav());
 		$view->with('store_link', $this->storeLink());
+		$view->with('media_page', $this->mediaPage());
 	}
 
 	private function pageNav()
@@ -28,6 +30,11 @@ class PageViewComposer {
 	private function storeLink()
 	{
 		return $this->setting_repo->getSetting('store_link');
+	}
+
+	private function mediaPage()
+	{
+		return $this->page_repo->getPage('media', LaravelLocalization::getCurrentLocale());
 	}
 
 }

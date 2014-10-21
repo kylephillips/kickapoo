@@ -111,7 +111,6 @@
 	<div class="bubble large" id="b2-5"></div>
 	<div class="bubble xlarge" id="b2-6"></div>
 	<div class="bubble medium" id="b2-7"></div>
-	<div class="bubble xlarge" id="b2-8"></div>
 </div>
 
 <div class="bubbles three" aria-hidden="true">
