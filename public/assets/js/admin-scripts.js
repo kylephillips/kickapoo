@@ -40,6 +40,7 @@ function apply_redactor(item)
 		imageUpload : urls.editor_upload,
 		buttonSource: true,
 		toolbarFixed: true,
+		replaceDivs: false,
 		toolbarFixedTopOffset: 42,
 		plugins: ['medialibrary'],
 		buttons: ['html', 'formatting', 'bold', 'italic', 'unorderedlist', 'orderedlist', 'outdent', 'indent', 'link', 'alignment', 'horizontalrule'],
