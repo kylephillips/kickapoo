@@ -46,7 +46,7 @@
 	<hr>
 
 	<div class="well">
-		<h4>Footer Scripts (include script tags)</h4>
+		<h4>Footer Scripts (do not include script tags)</h4>
 		<div class="well-interior">
 			<div class="form-group">
 				{{$errors->first('footer_scripts', '<span class="text-danger"><strong>:message</strong></span><br>')}}

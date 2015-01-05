@@ -6,7 +6,7 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"guzzle/guzzle": "3.8.*@dev",
-		"mohsen/captcha": "2.0",
+		"mohsen/captcha": "2.0.2",
 		"intervention/image": "dev-master",
 		"mcamara/laravel-localization": "0.14.*",
 		"doctrine/dbal": "2.5.*@dev"

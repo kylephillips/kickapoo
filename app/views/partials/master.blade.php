@@ -90,7 +90,9 @@
 	</div><!-- .page loading -->
 
 	@if( isset($footer_scripts) )
+	<script>
 		{{$footer_scripts}}
+	</script>
 	@endif
 
 </body>
