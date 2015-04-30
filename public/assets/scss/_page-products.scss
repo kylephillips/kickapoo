@@ -71,14 +71,13 @@
 			}
 		} // .heading
 		ul {
-			display: inline-block;
-			width: 90%;
-			@include clearfix;
+			//display: inline-block;
+			//width: 90%;
+			//@include clearfix;
 			li {
-				float: left;
-				&:first-child {
-					margin-left: 0;
-				}
+				display: inline-block;
+				// float: left;
+				margin: 0;
 				strong {
 					display: block;
 					@include altGothic;
@@ -112,10 +111,10 @@
 				width: 25%;
 			}
 			&.three li {
-				width: 33.33%;
+				width: 30%;
 			}
 			&.two li {
-				width: 50%;
+				width: 48%;
 			}
 		} // ul
 	} // .products

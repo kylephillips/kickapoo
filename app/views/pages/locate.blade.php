@@ -23,7 +23,10 @@
 
 			@if($store_link)
 			<br />
-			<a href="{{$store_link}}" target="_blank" class="store-button">
+			<?php 
+			$link = ( $page->get_field('Button Link', $page->id) ) ? $page->get_field('Button Link', $page->id) : $store_link;
+			?>
+			<a href="{{$link}}" target="_blank" class="store-button">
 				@if($page->get_field('Button Text', $page->id))
 					{{$page->get_field('Button Text', $page->id)}}
 				@else

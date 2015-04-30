@@ -12,12 +12,16 @@
 		li {
 			display: inline-block;
 			max-width: 250px;
-			margin-left: 20px;
+			margin-left: 0px;
 			img {
 				border-radius: 3px;
 			}
 			&:first-child {
 				margin-left: 0;
+			}
+			a {
+				display: block;
+				padding: 8px;
 			}
 		}
 	} // ul
